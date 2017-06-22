@@ -153,7 +153,6 @@ function keitaro_widgets_init() {
       'before_title' => '<h3 class="call-to-action-title">',
       'after_title' => '</h3>',
   ));
-
 }
 
 add_action('widgets_init', 'keitaro_widgets_init');
@@ -203,3 +202,21 @@ function keitaro_menu($menu_location, $menu_class = '') {
     <?php
   endif;
 }
+
+/*
+ * Override default link of the login form logo
+ */
+function keitaro_login_logo_url() {
+  return home_url();
+}
+
+add_filter('login_headerurl', 'keitaro_login_logo_url');
+
+/*
+ * Override default title attribute of the login form logo
+ */
+function keitaro_login_logo_url_title() {
+  return get_bloginfo('name') . ' - ' . get_bloginfo('description');
+}
+
+add_filter('login_headertitle', 'keitaro_login_logo_url_title');
