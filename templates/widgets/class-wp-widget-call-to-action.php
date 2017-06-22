@@ -150,5 +150,3 @@ class Keitaro_Call_To_Action extends WP_Widget {
   }
 
 }
-
-// class Foo_Widget
