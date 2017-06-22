@@ -12,7 +12,7 @@ The official WordPress theme of Keitaro Inc.
 
 Run `npm install` to install all required Node.js modules
 
-## LESS to CSS
+## Building static assets
 
 Run `gulp` to (re)build all static CSS and JS assets.
 
