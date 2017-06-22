@@ -4,6 +4,7 @@ The official WordPress theme of Keitaro Inc.
 
 ## Requirements
 
+* WordPress 4.8+
 * Node.js
 * LESS
 
