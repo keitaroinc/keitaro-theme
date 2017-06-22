@@ -1,0 +1,53 @@
+.connect {
+    margin-top: @grid-gutter-width*0.5;
+    label,
+    select {
+        color: inherit;
+        cursor: pointer;
+        &.form-control {
+            padding: @grid-gutter-width/3 0;
+            height: inherit;
+        }
+        font-weight: 500;
+        .text-uppercase;
+    }
+    .alert {
+        display: none;
+        color: @brand-danger;
+        padding: @grid-gutter-width/6 0 0 0;
+    }
+    label {
+        .unselectable;
+        .animate-position;
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        top: @grid-gutter-width/2;
+        left: 0;
+        display: block;
+    }
+    .form-group {
+        position: relative;
+    }
+    .form-control {
+        background: transparent;
+        border: transparent;
+        padding: @grid-gutter-width 0 @grid-gutter-width/3;
+        border-bottom: 2px solid @keitaro-green-gray;
+        box-shadow: none;
+        &:focus {
+            &,
+            &:valid {
+                border-bottom-color: @keitaro-green-dark; // &:required:invalid {
+            }
+            ~label {
+                top: @grid-gutter-width/3;
+                color: @brand-primary;
+            }
+        }
+    }
+}
+
+.animate-position {
+    transition: 100ms top ease-in-out;
+}

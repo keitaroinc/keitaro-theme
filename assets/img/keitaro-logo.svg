@@ -1,0 +1,26 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 225 50" xml:space="preserve">
+<title>Keitaro</title>
+<desc>Keitaro logo</desc>
+<metadata id="license"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:cc="http://creativecommons.org/ns#">
+  <rdf:RDF>
+    <cc:Work rdf:about="">
+      <dc:format>image/svg+xml</dc:format>
+      <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      <cc:license rdf:resource="http://creativecommons.org/ns#Reproduction" />
+    </cc:Work>
+    <cc:License rdf:about="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+      <cc:permits rdf:resource="http://creativecommons.org/ns#Sharing" />
+      <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution" />
+      <cc:prohibits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      <cc:prohibits rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+    </cc:License>
+  </rdf:RDF>
+</metadata>
+<style type="text/css">
+	.st0{fill:#0E9842;}
+	.st1{fill:#8CC04B;}
+	.st2{fill:#99938B;}
+</style><polygon class="st0" points="20 40 30 50 10 50 10 30 "/><polygon class="st1" points="40 30 30 40 50 40 50 20 "/><polygon class="st1" points="10 20 20 10 0 10 0 30 "/><polygon class="st0" points="30 10 20 0 40 0 40 20 "/><circle class="st2" cx="25" cy="25" r="5"/><path class="st2" d="M73.3 22.9L86 10h4.5l-14 14 14.4 16h-4.6L74.1 26.3l-0.9 0.9V40H70V10h3.3V22.9zM110.2 13.2H98v8.9h11.8v3.1H98v11.7h12.2V40H94.7V10h15.5V13.2zM119.5 10v30h-3.3V10H119.5zM135.5 13.2V40h-3.3V13.2h-7.3V10h17.8v3.1H135.5zM162 31.6h-12.7l-3.6 8.5H142l13.8-31.5L169.2 40h-3.7L162 31.6zM160.7 28.4l-5-12 -5.1 12H160.7zM178.1 10c2 0 5 0.1 7.3 1.7 1.7 1.2 3.3 3.5 3.3 6.7 0 4.6-3 8-7.5 8.3l9.5 13.4h-4l-9.1-13.1h-0.9V40h-3.3V10H178.1zM176.6 23.9h2.1c4.1 0 6.6-2 6.6-5.5 0-1.7-0.5-3.3-2.4-4.4 -1.3-0.8-2.9-0.9-4.3-0.9h-2V23.9zM193.5 25c0-9 6.9-15.5 15.6-15.5s15.6 6.6 15.6 15.5c0 8.9-6.9 15.5-15.6 15.5S193.5 34 193.5 25zM196.9 25c0 6.9 5.4 12.4 12.1 12.4 6.7 0 12.1-5.5 12.1-12.4s-5.4-12.4-12.1-12.4C202.3 12.7 196.9 18.2 196.9 25z"/></svg>

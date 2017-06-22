@@ -1,0 +1,205 @@
+<?php
+
+// Initialize theme
+function keitaro_theme_setup() {
+
+  // Load text domain for localization
+  load_theme_textdomain('keitaro');
+
+  // Add default posts and comments RSS feed links to head.
+  add_theme_support('automatic-feed-links');
+
+  /*
+   * Let WordPress manage the document title.
+   * By adding theme support, we declare that this theme does not use a
+   * hard-coded <title> tag in the document head, and expect WordPress to
+   * provide it for us.
+   */
+  add_theme_support('title-tag');
+
+  /*
+   * Enable support for Post Thumbnails on posts and pages.
+   *
+   * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+   */
+  add_theme_support('post-thumbnails');
+
+  add_image_size('keitaro-featured-image', 2000, 1200, true);
+  add_image_size('keitaro-thumbnail-avatar', 100, 100, true);
+
+  // Set the default content width.
+  $GLOBALS['content_width'] = 960;
+
+  // This theme uses wp_nav_menu() in two locations.
+  register_nav_menus(array(
+      'main' => __('Main Menu', 'keitaro'),
+      'footer' => __('Footer Menu'),
+      'social' => __('Social Links', 'keitaro'),
+      'footer-secondary' => __('Secondary Footer Menu', 'keitaro')
+  ));
+
+  /*
+   * Switch default core markup for search form, comment form, and comments
+   * to output valid HTML5.
+   */
+  add_theme_support('html5', array(
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'caption',
+  ));
+
+  /*
+   * Enable support for Post Formats.
+   *
+   * See: https://codex.wordpress.org/Post_Formats
+   */
+  add_theme_support('post-formats', array(
+      'aside',
+      'image',
+      'video',
+      'quote',
+      'link',
+      'gallery',
+      'audio',
+  ));
+
+  // Add theme support for Custom Logo.
+  add_theme_support('custom-logo', array(
+      'flex-width' => true,
+      'height' => 100,
+  ));
+
+  // Add theme support for selective refresh for widgets.
+  add_theme_support('customize-selective-refresh-widgets');
+}
+
+add_action('after_setup_theme', 'keitaro_theme_setup');
+
+// Add static CSS and JS theme assets
+function keitaro_theme_scripts() {
+
+  // Futura PT font from Typekit
+  wp_enqueue_script('futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.js');
+
+  // Main keitaro_theme stylesheet
+  wp_enqueue_style('keitaro-theme-style', get_stylesheet_uri());
+
+  // jQuery
+  wp_enqueue_script('jquery');
+
+  // Bootstrap JS modules
+  wp_enqueue_script('bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js');
+}
+
+add_action('wp_enqueue_scripts', 'keitaro_theme_scripts');
+
+// Add favicon links to <head>
+function keitaro_theme_favicons() {
+  ?>
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png' ?>">
+  <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png' ?>">
+  <?php
+}
+
+add_action('wp_head', 'keitaro_theme_favicons');
+
+// Override default WordPress logo on wp-login.php
+function keitaro_theme_login_logo() {
+
+  $custom_logo_id = get_theme_mod('custom_logo');
+  $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+  ?>
+  <style type="text/css">
+    #login h1 a, .login h1 a {
+      background-image: url(<?php echo $image[0]; ?>);
+      width:225px;
+      height:auto;
+      background-size: 225px auto;
+      background-repeat: no-repeat;
+      padding-bottom: 30px;
+    }
+  </style>
+  <?php
+}
+
+add_action('login_enqueue_scripts', 'keitaro_theme_login_logo');
+
+function keitaro_widgets_init() {
+
+  register_sidebar(array(
+      'name' => __('Services', 'keitaro'),
+      'id' => 'keitaro_services',
+      'before_widget' => '<a class="service-item" href="' . get_page_link(get_page_by_title('Services')->ID) . '">',
+      'after_widget' => '<span class="btn-discover">&gt;_</span></a>',
+      'before_title' => '<span class="service-title">',
+      'after_title' => '</span>',
+  ));
+
+  register_sidebar(array(
+      'name' => __('Service Icons', 'keitaro'),
+      'id' => 'keitaro_service_icons',
+      'before_widget' => '<li>',
+      'after_widget' => '</li>',
+      'before_title' => '',
+      'after_title' => '',
+  ));
+
+  register_sidebar(array(
+      'name' => __('Call to Action', 'keitaro'),
+      'id' => 'keitaro_call_to_action',
+      'before_widget' => '',
+      'after_widget' => '',
+      'before_title' => '<h3 class="call-to-action-title">',
+      'after_title' => '</h3>',
+  ));
+
+}
+
+add_action('widgets_init', 'keitaro_widgets_init');
+
+require_once 'templates/widgets/class-wp-widget-service.php';
+require_once 'templates/widgets/class-wp-widget-call-to-action.php';
+
+function keitaro_service_widget_init() {
+  register_widget('Keitaro_Service');
+}
+
+add_action('widgets_init', 'keitaro_service_widget_init');
+
+function keitaro_call_to_action_widget_init() {
+  register_widget('Keitaro_Call_To_Action');
+}
+
+add_action('widgets_init', 'keitaro_call_to_action_widget_init');
+
+add_shortcode('keitaro-hero-title', 'keitaro_hero_title_shortcode');
+
+function keitaro_hero_title_shortcode() {
+  $title = get_bloginfo('description');
+  $formatted_title = explode(' ', $title);
+  $formatted_title[2] = $formatted_title[2] . '<span class="hero-subtitle">';
+  printf('<h2 class="hero-title">%s</h2>', implode(' ', $formatted_title));
+}
+
+/*
+ * Generate navigation menu for a predefined/registered menu location
+ */
+
+function keitaro_menu($menu_location, $menu_class = '') {
+
+  if (has_nav_menu($menu_location)):
+    ?>
+    <nav id="site-navigation" role="navigation" aria-label="<?php esc_attr_e('Main Menu', 'keitaro'); ?>">
+      <?php
+      wp_nav_menu(array(
+          'theme_location' => $menu_location,
+          'container' => 'ul',
+          'menu_id' => $menu_location . '-menu',
+          'menu_class' => $menu_location . '-navigation list-inline ' . $menu_class
+      ));
+      ?>
+    </nav>
+    <?php
+  endif;
+}

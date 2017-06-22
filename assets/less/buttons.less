@@ -1,0 +1,38 @@
+.btn {
+  padding: @grid-gutter-width/6 @grid-gutter-width/2;
+  letter-spacing: 0.1em;
+}
+
+.btn-block {
+  display: block;
+}
+
+.btn-success-dark {
+  letter-spacing: .1em;
+  margin-right: 30px;
+  .button-variant(@body-bg;
+  @keitaro-green-dark;
+  transparent);
+}
+
+.btn-submit {
+  margin: @grid-gutter-width/2 0;
+  letter-spacing: .1em;
+}
+
+.btn-outline {
+  display: inline;
+}
+
+.btn-discover {
+  display: block;
+  font-weight: 500;
+  text-align: right;
+  font-size: @font-size-base *1.8;
+}
+
+.btn-inverse{
+  .btn-primary;
+  color: @link-color;
+  background-color: @body-bg;
+}

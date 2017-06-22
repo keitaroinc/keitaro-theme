@@ -1,0 +1,76 @@
+.locations {
+    .list-unstyled;
+    li {
+        .flex;
+        flex-basis: 50%;
+        @media (max-width: @screen-sm-max) {
+            .flex-column;
+        }
+        background: @body-bg;
+        margin: @grid-gutter-width/3 0;
+    }
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+    .map {
+        overflow: hidden;
+        position: relative;
+        @media (max-width: @screen-sm-max) {
+            img {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: @screen-md-max) {
+            img {
+                min-width: 100%;
+                height: auto;
+            }
+        }
+        @media (min-width: @screen-md-min) {
+            min-width: 50%;
+            img {
+                position: absolute;
+                top: 0;
+                right: -50%;
+                bottom: auto;
+                left: -50%;
+                height: 100%;
+                margin: auto;
+            }
+        }
+        @media (min-width: @screen-lg-min) {
+            text-align: right;
+        }
+    }
+    address {
+        flex-shrink: 1;
+        flex-grow: 5; // max-width: 30%;
+        span {
+            display: block;
+            margin: @grid-gutter-width/6 0;
+        }
+    }
+    .address {
+        .location-detail('A:');
+    }
+    .address-addition {
+        margin-top: -@grid-gutter-width/6;
+        margin-left: @grid-gutter-width/3;
+    }
+    .telephone {
+        .location-detail('T:');
+    }
+    .email {
+        .location-detail('E:');
+    }
+}
+
+.location-details {
+    padding: @grid-gutter-width/2;
+}
+
+.location-title {
+    color: @keitaro-green-dark;
+    margin-top: 0;
+}

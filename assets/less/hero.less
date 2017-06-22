@@ -1,0 +1,61 @@
+.hero-padding {
+  padding-top: @grid-gutter-width*3;
+  padding-bottom: @grid-gutter-width*3;
+}
+
+.hero,
+.hero-sm {
+  background: @keitaro-gray-lightest;
+}
+
+.hero-sm {
+  border-bottom: @hero-block-border;
+}
+
+.hero {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+  @media (max-width: @screen-xs-max) {
+    min-height: 45vh;
+  }
+  @media (min-width: @screen-sm-min) {
+    min-height: 500px;
+  }
+  .text-center;
+  background: @hero-bg url("../img/keitaro-hero-bg.svg") 90% bottom no-repeat;
+  background-size: 40%;
+  .content-block {
+    .hero-padding;
+  }
+}
+
+.hero-title {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 3em;
+  color: @keitaro-green-dark;
+  margin: @grid-gutter-width*3 auto @grid-gutter-width*2.5;
+  text-align: left;
+  @media (max-width: @screen-xs-max) {
+    font-size: @font-size-h1;
+  }
+  @media (min-width: @screen-sm-min) {
+    font-size: @font-size-h3*1.5;
+  }
+  @media (min-width: @screen-lg-min) {}
+}
+
+.hero-subtitle {
+  display: block;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  font-size: 0.6em;
+}
+
+.services-section {
+  position: relative;
+  bottom: -160px;
+}

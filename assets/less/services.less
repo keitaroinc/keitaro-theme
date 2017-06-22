@@ -1,0 +1,54 @@
+.services{
+  display: grid;
+  grid-gap: @grid-gutter-width/2;
+  @media (min-width: @screen-lg-min){
+    grid-template-columns: repeat(3, 1fr);
+  }
+  text-align: left;
+  align-items: flex-start;
+}
+
+.service-item{
+  @media (min-width: @screen-lg-min){
+    min-height: @service-item-min-height;
+  }
+
+  transition: .3s background-color ;
+  background-color: @body-bg;
+  border-top: @service-item-top-border;
+  padding: 0 @grid-gutter-width/2 @grid-gutter-width/6;
+
+  &:hover {
+    text-decoration: none;
+    background-color: @keitaro-green-light;
+    color: @keitaro-white;
+
+    .service-title,
+    .btn-discover,
+    .service-description{
+      color: inherit;
+    }
+  }
+  .btn-discover{
+    margin-bottom: @grid-gutter-width/6;
+  }
+}
+
+.service-title{
+  .h3;
+  margin-bottom: @grid-gutter-width/2;
+  display: block;
+  color: @brand-primary;
+  letter-spacing: .1em;
+}
+
+.service-description {
+  display: block;
+  color: @text-color;
+  text-align: justify;
+  font-size: @font-size-base;
+  @media (min-width: @screen-lg-min){
+    min-height: @grid-gutter-width*2.6;
+  }
+  margin-bottom: @grid-gutter-width/2;
+}
