@@ -1,3 +1,3 @@
 <?php
 
-keitaro_menu('footer-secondary', 'licenses');
+keitaro_menu('footer-secondary');
