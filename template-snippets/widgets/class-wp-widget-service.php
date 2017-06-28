@@ -106,5 +106,3 @@ class Keitaro_Service extends WP_Widget {
     }
 
 }
-
-// class Foo_Widget
