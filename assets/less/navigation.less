@@ -100,3 +100,16 @@
     letter-spacing: 0.07em;
     color: @keitaro-green-dark;
 }
+
+.breadcrumb{
+    margin-bottom: 0;
+
+    > li {
+        + li{
+            &:before{
+                padding: 0 @grid-gutter-width/8 0 @grid-gutter-width/4;
+            }
+        }
+    }
+
+}
