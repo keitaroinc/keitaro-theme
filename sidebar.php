@@ -1,5 +1,5 @@
 <?php
 
 if (is_home()):
-  get_template_part('templates/home/service', 'icons');
+    get_template_part(SNIPPETS_DIR . '/home/service', 'icons');
 endif;
