@@ -10,17 +10,7 @@ $home_title = __('Home', 'keitaro');
 global $post, $wp_query;
 
 function breadcrumb_item($url, $title = '', $wrapper = 'a') {
-    ?>
-    <li>
-        <<?php echo $wrapper; ?> <?php
-        if ($url) {
-            echo 'href="' . $url . '"';
-        }
-        ?>>
-        <?php echo $title; ?>
-        </<?php echo $wrapper ?>>
-    </li>
-    <?php
+    printf('<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper);
 }
 
 // Do not display on the homepage
