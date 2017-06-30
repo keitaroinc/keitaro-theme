@@ -58,7 +58,7 @@
 
 .main-post-title {
     color: @keitaro-green-dark;
-    letter-spacing: .04em;
+    letter-spacing: @letter-spacing-base;
 }
 
 .main-post-item {
@@ -79,7 +79,7 @@
 }
 
 .main-tweets-title {
-    letter-spacing: .04em;
+    letter-spacing: @letter-spacing-base;
 }
 
 .date-stamp {
@@ -259,7 +259,7 @@ hr {
 .call-to-action-title {
     color: white;
     font-weight: 400;
-    letter-spacing: .07em;
+    letter-spacing: @letter-spacing-small;
     margin-top: 0;
     padding-bottom: @grid-gutter-width/3;
 }
@@ -269,7 +269,7 @@ hr {
 }
 
 .list-wide {
-    letter-spacing: 0.1em;
+    letter-spacing: @letter-spacing-large;
     li {
         &:not(:first-child) {
             margin-left: @grid-gutter-width/3;
@@ -279,5 +279,41 @@ hr {
 
 .subpage-title {
     text-transform: uppercase;
-    letter-spacing: .07em;
+    letter-spacing: @letter-spacing-small;
+}
+
+.hentry{
+    &:not(:last-child){
+        margin-bottom: @grid-gutter-width;
+    }
+}
+
+.post-meta-list{
+    .list-inline;
+    margin-top: @padding-large-vertical*2;
+
+    li{
+        margin-bottom: @padding-large-vertical;
+    }
+}
+
+.post-categories{
+
+    .post-meta-list;
+
+    a{
+        .btn;
+        .btn-default;
+    }
+}
+
+.post-tags{
+
+    .post-meta-list;
+
+    a{
+        .btn;
+        .btn-sm;
+        .btn-default;
+    }
 }
