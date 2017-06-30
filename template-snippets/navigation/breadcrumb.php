@@ -1,11 +1,13 @@
 <?php
+
 // Settings
 $breadcrums_id = 'breadcrumb';
-$breadcrums_class = 'breadcrumb';
+$breadcrums_class = $breadcrums_id;
 $home_title = __('Home', 'keitaro');
 
 // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
-//$custom_taxonomy = 'product_cat';
+$custom_taxonomy = '';
+
 // Get the query & post information
 global $post, $wp_query;
 
@@ -55,8 +57,10 @@ if (!is_front_page()) {
 
             if (!empty($category)) {
 
+                $cat_array = array_values($category);
+
                 // Get last category post is in
-                $last_category = end(array_values($category));
+                $last_category = end($cat_array);
 
                 // Get parent any categories and create array
                 $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','), ',');
