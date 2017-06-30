@@ -30,7 +30,7 @@
 
 .main-navigation {
     margin-bottom: 0;
-    letter-spacing: 0.1em;
+    letter-spacing: @letter-spacing-large;
     @media(min-width: @screen-sm-min) {
         .text-right;
     }
@@ -97,7 +97,7 @@
 }
 
 .main-panel-title {
-    letter-spacing: 0.07em;
+    letter-spacing: @letter-spacing-small;
     color: @keitaro-green-dark;
 }
 
@@ -112,4 +112,27 @@
         }
     }
 
+}
+
+.page-links{
+    margin-top: @padding-large-horizontal;
+    margin-bottom: @padding-large-horizontal;
+
+    .page-number {
+        margin: @padding-small-vertical @padding-small-horizontal @padding-small-vertical 0;
+    }
+
+    > .page-number{
+        .btn;
+        .btn-sm;
+        .btn-success;
+    }
+
+    a{
+        .page-number{
+            .btn;
+            .btn-sm;
+            .btn-default;
+        }
+    }
 }
