@@ -1,6 +1,6 @@
 .btn {
   padding: @grid-gutter-width/6 @grid-gutter-width/2;
-  letter-spacing: 0.1em;
+  letter-spacing: @letter-spacing-large;
 }
 
 .btn-block {
@@ -8,16 +8,11 @@
 }
 
 .btn-success-dark {
-  letter-spacing: .1em;
-  margin-right: 30px;
-  .button-variant(@body-bg;
-  @keitaro-green-dark;
-  transparent);
+  .button-variant(@body-bg; @keitaro-green-dark; transparent);
 }
 
 .btn-submit {
   margin: @grid-gutter-width/2 0;
-  letter-spacing: .1em;
 }
 
 .btn-outline {
@@ -32,7 +27,5 @@
 }
 
 .btn-inverse{
-  .btn-primary;
-  color: @link-color;
-  background-color: @body-bg;
+  .button-variant(@link-color; @body-bg; transparent);
 }
