@@ -11,26 +11,32 @@ $custom_taxonomy = '';
 // Get the query & post information
 global $post, $wp_query;
 
-function breadcrumb_item($url, $title = '', $wrapper = 'a') {
-    printf('<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper);
-}
+if (!function_exists('breadcrumb_item')):
+
+    function breadcrumb_item($url, $title = '', $wrapper = 'a') {
+        printf('<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper);
+
+    }
+
+endif;
 
 // Do not display on the homepage
 if (!is_front_page()) {
-    $post_type_object
+
     ?>
     <div class="container-fluid">
 
         <?php
+
         // Build the breadcrums
         echo '<ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
 
         // Home page
         breadcrumb_item(get_home_url(), __('Home', 'keitaro'));
 
-        if (is_archive() && !is_tax() && !is_category() && !is_tag()) {
+        if (is_post_type_archive()) {
             breadcrumb_item(false, post_type_archive_title(false), 'span');
-        } else if (is_archive() && is_tax() && !is_category() && !is_tag()) {
+        } elseif (is_archive() && is_tax() && !is_category() && !is_tag()) {
 
             // If post is a custom post type
             $post_type = get_post_type();
@@ -42,7 +48,7 @@ if (!is_front_page()) {
             }
 
             breadcrumb_item(false, get_queried_object()->name, 'span');
-        } else if (is_single()) {
+        } elseif (is_single()) {
 
             // If post is a custom post type
             $post_type = get_post_type();
@@ -72,7 +78,6 @@ if (!is_front_page()) {
                     $cat_display .= '<li class="item-cat">' . $parents . '</li>';
                 }
             }
-            breadcrumb_item(get_post_type_archive_link($post_type), get_post_type_object($post_type)->labels->name);
             // If it's a custom post type within a custom taxonomy
             $taxonomy_exists = taxonomy_exists($custom_taxonomy);
             if (empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
@@ -91,18 +96,18 @@ if (!is_front_page()) {
                 breadcrumb_item(false, get_the_title(), 'span');
 
                 // Else if post is in a custom taxonomy
-            } else if (!empty($cat_id)) {
+            } elseif (!empty($cat_id)) {
 
                 breadcrumb_item($cat_link, $cat_name);
                 breadcrumb_item(false, get_the_title(), 'span');
             } else {
                 breadcrumb_item(false, get_the_title(), 'span');
             }
-        } else if (is_category()) {
+        } elseif (is_category()) {
 
             // Category page
             breadcrumb_item(false, single_cat_title('', false), 'span');
-        } else if (is_page()) {
+        } elseif (is_page()) {
 
             // Standard page
             if ($post->post_parent) {
@@ -128,7 +133,7 @@ if (!is_front_page()) {
                 // Just display current page if not parents
                 breadcrumb_item(false, get_the_title(), 'span');
             }
-        } else if (is_tag()) {
+        } elseif (is_tag()) {
 
             // Tag page
             // Get tag information
@@ -147,35 +152,34 @@ if (!is_front_page()) {
             // Day archive
             // Year link
             breadcrumb_item(get_year_link(get_the_time('Y')), get_the_time('Y'));
+
             // Month link
             breadcrumb_item(get_year_link(get_the_time('M')), get_the_time('M'));
+
             // Day display
             breadcrumb_item(false, get_the_time('j'), 'span');
-        } else if (is_month()) {
+        } elseif (is_month()) {
 
             // Month Archive
             // Year link
             breadcrumb_item(get_year_link(get_the_time('Y')), get_the_time('Y'));
             // Month display
             breadcrumb_item(false, get_the_time('m'), 'span');
-        } else if (is_year()) {
+        } elseif (is_year()) {
 
             // Display year archive
             breadcrumb_item(false, get_the_time('Y'), 'span');
-        } else if (is_author()) {
+        } elseif (is_author()) {
 
-            // Auhor archive
-            // Get the author information
-            global $author;
-            $userdata = get_userdata($author);
-
+            // Author Archive
             // Display author name
-            breadcrumb_item(false, __('Author: ') . $userdata->display_name, 'span');
-        } else if (get_query_var('paged')) {
+            breadcrumb_item(false, __('Author'), 'span');
+            breadcrumb_item(false, get_the_author_meta('display_name'), 'span');
+        } elseif (get_query_var('paged')) {
 
             // Paginated archives
             breadcrumb_item(false, __('Page ', 'keitaro') . get_query_var('paged'), 'span');
-        } else if (is_search()) {
+        } elseif (is_search()) {
 
             // Search results page
             breadcrumb_item(false, __('Search results for: ', 'keitaro') . get_search_query(), 'span');
@@ -187,5 +191,6 @@ if (!is_front_page()) {
 
         echo '</ol>';
     }
+
     ?>
 </div>
