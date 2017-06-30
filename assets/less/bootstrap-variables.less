@@ -48,7 +48,7 @@
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          16px;
+@font-size-base:          18px;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
 
@@ -87,11 +87,11 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical:     6px;
-@padding-base-horizontal:   12px;
+@padding-base-vertical:     10px;
+@padding-base-horizontal:   15px;
 
-@padding-large-vertical:    10px;
-@padding-large-horizontal:  16px;
+@padding-large-vertical:    15px;
+@padding-large-horizontal:  30px;
 
 @padding-small-vertical:    5px;
 @padding-small-horizontal:  10px;
@@ -144,9 +144,9 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
+@btn-default-color:              @keitaro-green-gray;
 @btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-border:             @keitaro-green-gray-l-20;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
@@ -829,15 +829,15 @@
 //
 //##
 
-@code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
+@code-color:                  @keitaro-green-gray-d-30;
+@code-bg:                     @keitaro-green-gray-l-35;
 
-@kbd-color:                   #fff;
-@kbd-bg:                      #333;
+@kbd-color:                   @code-color;
+@kbd-bg:                      @code-bg;
 
-@pre-bg:                      #f5f5f5;
+@pre-bg:                      @code-bg;
 @pre-color:                   @gray-dark;
-@pre-border-color:            #ccc;
+@pre-border-color:            @keitaro-green-gray-l-10;
 @pre-scrollable-max-height:   340px;
 
 
@@ -856,7 +856,7 @@
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
 //** Blockquote font size
-@blockquote-font-size:        (@font-size-base * 1.25);
+@blockquote-font-size:        @font-size-base;
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
 //** Page header border color
