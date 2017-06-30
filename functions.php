@@ -1,11 +1,10 @@
 <?php
-if (!defined('SNIPPETS_DIR')):
-    define('SNIPPETS_DIR', 'template-snippets');
-endif;
+define('SNIPPETS_DIR', 'template-snippets');
 
 // Initialize theme
 function keitaro_theme_setup() {
 
+    // require_once dirname(__FILE__) . '/inc/theme-settings.php';
 
     // Load text domain for localization
     load_theme_textdomain('keitaro');
