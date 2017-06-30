@@ -4,9 +4,6 @@
             <?php
             get_template_part(SNIPPETS_DIR . '/header/entry', 'header');
             get_template_part(SNIPPETS_DIR . '/entry', 'content');
-            if (is_single()) {
-//		twentyseventeen_entry_footer();
-            }
             ?>
         </div>
         <div class="col-md-4">
