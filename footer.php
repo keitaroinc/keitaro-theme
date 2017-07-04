@@ -1,4 +1,4 @@
-<?php get_template_part(SNIPPETS_DIR . '/navigation/breadcrumb'); ?>
+<?php // get_template_part(SNIPPETS_DIR . '/navigation/breadcrumb'); ?>
 <?php get_template_part(SNIPPETS_DIR . '/home/call-to-action'); ?>
 <div class="container">
     <div class="content main-footer">
