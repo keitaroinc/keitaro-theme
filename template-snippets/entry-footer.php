@@ -1,19 +1,19 @@
 <?php
 
-// Number of author posts
-the_author_posts();
+// Display author box with relevant meta information
+if (!is_author()):
+    keitaro_author_box(get_queried_object_id());
+endif;
 
-// Link to author archive
-the_author_posts_link();
-
-// Post publish date
-the_date();
+if (is_single()):
 
 // Display a list of post categories
-if (get_the_category()) {
-    printf('<h4>%s</h4>', __('Categories', 'keitaro'));
-}
-the_category();
+    if (get_the_category()) {
+        printf('<h4>%s</h4>', __('Categories', 'keitaro'));
+    }
+    the_category();
 
 // Display a list of post tags
-the_tags(sprintf('<h4>%s</h4>', __('Tags', 'keitaro')) . '<ul class="post-tags"><li>', '</li><li>', '</li></ul>');
+    the_tags(sprintf('<h4>%s</h4>', __('Tags', 'keitaro')) . '<ul class="post-tags"><li>', '</li><li>', '</li></ul>');
+    
+endif;
