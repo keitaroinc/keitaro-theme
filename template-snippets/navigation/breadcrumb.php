@@ -23,6 +23,14 @@ endif;
 // Do not display on the homepage
 if (!is_front_page()) {
 
+    // Set default variables for date archive pages
+    if (is_date()):
+        $day_display = get_the_time('j');
+        $month_numeric = get_the_time('m');
+        $month_display = get_the_time('F');
+        $year_display = get_the_time('Y');
+    endif;
+
     ?>
     <div class="container-fluid">
 
@@ -151,24 +159,24 @@ if (!is_front_page()) {
 
             // Day archive
             // Year link
-            breadcrumb_item(get_year_link(get_the_time('Y')), get_the_time('Y'));
+            breadcrumb_item(get_year_link($year_display), $year_display);
 
             // Month link
-            breadcrumb_item(get_year_link(get_the_time('M')), get_the_time('M'));
+            breadcrumb_item(get_month_link($year_display, $month_numeric), $month_display);
 
             // Day display
-            breadcrumb_item(false, get_the_time('j'), 'span');
+            breadcrumb_item(false, $day_display, 'span');
         } elseif (is_month()) {
 
             // Month Archive
             // Year link
-            breadcrumb_item(get_year_link(get_the_time('Y')), get_the_time('Y'));
+            breadcrumb_item(get_year_link($year_display), $year_display);
             // Month display
-            breadcrumb_item(false, get_the_time('m'), 'span');
+            breadcrumb_item(false, $month_display, 'span');
         } elseif (is_year()) {
 
             // Display year archive
-            breadcrumb_item(false, get_the_time('Y'), 'span');
+            breadcrumb_item(false, $year_display, 'span');
         } elseif (is_author()) {
 
             // Author Archive
