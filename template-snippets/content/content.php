@@ -20,12 +20,14 @@
         <div class="col-md-4">
             <?php
 
-            if (is_archive()):
-            // show something
-            else:
-                keitaro_child_pages_list($post->ID);
+            keitaro_child_pages_list(get_the_ID());
 
-            endif;
+            var_dump(get_children(get_ancestors(get_the_ID())));
+
+            foreach (get_children(get_ancestors(get_the_ID())) as $page):
+                dynamic_sidebar('keitaro_page_icon_blocks');
+            endforeach;
+
             get_template_part(SNIPPETS_DIR . '/entry', 'footer');
 
             ?>
