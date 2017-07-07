@@ -1,16 +1,17 @@
 <?php
 
-class Keitaro_Service extends WP_Widget {
+class Keitaro_Icon_Block extends WP_Widget {
 
     /**
      * Register widget with WordPress.
      */
     function __construct() {
         parent::__construct(
-                'widget_keitaro_service', // Base ID
-                esc_html__('Keitaro Service', 'keitaro'), // Name
-                array('description' => esc_html__('Keitaro service item for landing page section', 'keitaro'),) // Args
+                'widget_keitaro_icon_block', // Base ID
+                esc_html__('Keitaro Icon Block', 'keitaro'), // Name
+                array('description' => esc_html__('Keitaro icon block item for pages', 'keitaro'),) // Args
         );
+
     }
 
     /**
@@ -22,18 +23,40 @@ class Keitaro_Service extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget($args, $instance) {
+        
+        global $post;
 
-        echo $args['before_widget'];
-        echo '<a class="service-item" href="' . (isset($instance['service_link']) ? get_permalink($instance['service_link']) : '#') . '">';
-        if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
-        }
-        if (!empty($instance['service_desc'])) {
-            printf('<span class="service-description">%s</span>', apply_filters('widget_text', $instance['service_desc']));
-        }
-        echo '<span class="btn-discover">&gt;_</span>';
-        echo '</a>';
-        echo $args['after_widget'];
+        if (isset($instance['show_on_page']) && $instance['show_on_page'] == $post->ID):
+
+            echo $args['before_widget'];
+
+            ?>
+
+            <div class="panel panel-default panel-transparent">
+                <div class="panel-heading">
+                    <div class="clearfix">
+                        <!--<img class="panel-title-icon pull-left" src="#" alt="Keitaro Icon Block icon">-->
+                        <h4 class="panel-title"><?php echo (!empty($instance['title'])) ? apply_filters('widget_text', $instance['title']) : ''; ?></h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="panel-value-xs"><?php echo (!empty($instance['subtitle'])) ? apply_filters('widget_text', $instance['subtitle']) : ''; ?></span>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <span class="panel-value-xl panel-value-important"><?php echo (!empty($instance['amount'])) ? apply_filters('widget_text', $instance['amount']) : ''; ?></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+
+            echo $args['after_widget'];
+
+        endif;
+
     }
 
     /**
@@ -46,20 +69,28 @@ class Keitaro_Service extends WP_Widget {
     public function form($instance) {
 
         $title = !empty($instance['title']) ? $instance['title'] : '';
-        $service_desc = !empty($instance['service_desc']) ? $instance['service_desc'] : '';
-        $service_link = !empty($instance['service_link']) ? $instance['service_link'] : '';
+        $subtitle = !empty($instance['subtitle']) ? $instance['subtitle'] : '';
+        $amount = !empty($instance['amount']) ? $instance['amount'] : '';
+        $show_on_page = !empty($instance['show_on_page']) ? $instance['show_on_page'] : '';
+        
+
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Name:', 'keitaro'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'keitaro'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('service_desc')); ?>"><?php esc_attr_e('Description:', 'keitaro'); ?></label>
-            <textarea id="<?php echo esc_attr($this->get_field_id('service_desc')); ?>" name="<?php echo esc_attr($this->get_field_name('service_desc')); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_attr($service_desc); ?></textarea>
+            <label for="<?php echo esc_attr($this->get_field_id('subtitle')); ?>"><?php esc_attr_e('Subtitle:', 'keitaro'); ?></label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('subtitle')); ?>" name="<?php echo esc_attr($this->get_field_name('subtitle')); ?>" type="text" value="<?php echo esc_attr($subtitle); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('service_link') ?>"><?php esc_attr_e('Linked page:', 'keitaro'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('amount')); ?>"><?php esc_attr_e('Amount:', 'keitaro'); ?></label>
+            <input type="number" class="widefat" id="<?php echo esc_attr($this->get_field_id('amount')); ?>" name="<?php echo esc_attr($this->get_field_name('amount')); ?>" type="text" value="<?php echo esc_attr($amount); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('show_on_page') ?>"><?php esc_attr_e('Show on page:', 'keitaro'); ?></label>
             <?php
+
             $wp_pages = get_posts(array(
                 'post_type' => 'page',
                 'nopaging' => 1,
@@ -68,20 +99,24 @@ class Keitaro_Service extends WP_Widget {
             ));
 
             if ($wp_pages):
+
                 ?>
-                <select name="<?php echo esc_attr($this->get_field_name('service_link')); ?>" id="<?php echo esc_attr($this->get_field_id('service_link')); ?>" class="widefat">
+                <select name="<?php echo esc_attr($this->get_field_name('show_on_page')); ?>" id="<?php echo esc_attr($this->get_field_id('show_on_page')); ?>" class="widefat">
                     <option value="0"><?php _e('&mdash; Select &mdash;'); ?></option>
                     <?php foreach ($wp_pages as $page): ?>
-                        <option value="<?php echo esc_attr($page->ID); ?>" <?php selected($service_link, $page->ID); ?>>
+                        <option value="<?php echo esc_attr($page->ID); ?>" <?php selected($show_on_page, $page->ID); ?>>
                             <?php echo esc_html($page->post_title); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
                 <?php
+
             endif;
+
             ?>
         </p>
         <?php
+
     }
 
     /**
@@ -99,10 +134,12 @@ class Keitaro_Service extends WP_Widget {
         $instance = $old_instance;
 
         $instance['title'] = (!empty($new_instance['title']) ) ? strip_tags($new_instance['title']) : '';
-        $instance['service_desc'] = (!empty($new_instance['service_desc']) ) ? strip_tags($new_instance['service_desc']) : '';
-        $instance['service_link'] = (!empty($new_instance['service_link']) ) ? strip_tags($new_instance['service_link']) : '';
+        $instance['subtitle'] = (!empty($new_instance['subtitle']) ) ? strip_tags($new_instance['subtitle']) : '';
+        $instance['amount'] = (!empty($new_instance['amount']) ) ? strip_tags($new_instance['amount']) : '';
+        $instance['show_on_page'] = (!empty($new_instance['show_on_page']) ) ? strip_tags($new_instance['show_on_page']) : '';
 
         return $instance;
+
     }
 
 }
