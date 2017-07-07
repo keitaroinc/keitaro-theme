@@ -4,7 +4,7 @@
 
     .page{
         &:not(:last-child){
-            margin-bottom: @grid-gutter-width;            
+            margin-bottom: @grid-gutter-width + (@grid-gutter-width/2);            
         }
     }
 
@@ -100,14 +100,12 @@
 }
 
 .panel-transparent {
-    @media (min-width: @screen-md-min) {
-        margin: @grid-gutter-width/2 0;
-    }
     .border-transparent;
     box-shadow: none;
     .panel-heading {
         .panel-transarent-no-l-r-padding;
         border-width: 2px;
+        padding-top: 0;
         padding-bottom: @grid-gutter-width/3;
         background: transparent;
     }
