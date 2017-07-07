@@ -134,6 +134,16 @@ function keitaro_theme_login_logo() {
 
 add_action('login_enqueue_scripts', 'keitaro_theme_login_logo');
 
+// Require Keitaro Service widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-service.php';
+
+// Require Keitaro Call to Action widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-call-to-action.php';
+
+// Require Keitaro Call to Action widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-icon-block.php';
+
+// Register Widget areas
 function keitaro_widgets_init() {
 
     register_sidebar(array(
@@ -163,30 +173,28 @@ function keitaro_widgets_init() {
         'after_title' => '</h3>',
     ));
 
+    register_sidebar(array(
+        'name' => __('Page Icon Blocks', 'keitaro'),
+        'id' => 'keitaro_page_icon_blocks',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h3 class="page-icon-blocks-title">',
+        'after_title' => '</h3>',
+    ));
+
+    register_widget('Keitaro_Service');
+    register_widget('Keitaro_Call_To_Action');
+    register_widget('Keitaro_Icon_Block');
 }
 
 add_action('widgets_init', 'keitaro_widgets_init');
 
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-service.php';
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-call-to-action.php';
 
-function keitaro_service_widget_init() {
-    register_widget('Keitaro_Service');
-
-}
-
-add_action('widgets_init', 'keitaro_service_widget_init');
-
-function keitaro_call_to_action_widget_init() {
-    register_widget('Keitaro_Call_To_Action');
-
-}
-
-add_action('widgets_init', 'keitaro_call_to_action_widget_init');
-
+// Shortcode to modify hero title to show first three words in bold
 add_shortcode('keitaro-hero-title', 'keitaro_hero_title_shortcode');
 
 function keitaro_hero_title_shortcode() {
+    
     $title = get_bloginfo('description');
     $formatted_title = explode(' ', $title);
     $formatted_title[2] = $formatted_title[2] . '<span class="hero-subtitle">';
