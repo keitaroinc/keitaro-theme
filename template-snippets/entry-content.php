@@ -8,7 +8,7 @@
     endif;
 
     wp_link_pages(array(
-        'before' => '<div class="page-links">' . sprintf('<h3>%s</h3>', __('Page', 'twentyseventeen')),
+        'before' => '<div class="page-links">' . sprintf('<h3>%s</h3>', __('Page', 'keitaro')),
         'after' => '</div>',
         'link_before' => '<span class="page-number">',
         'link_after' => '</span>',
