@@ -15,14 +15,14 @@
                 get_template_part(SNIPPETS_DIR . '/entry', 'content');
             endif;
 
+            comments_template();
+
             ?>
         </div>
         <div class="col-md-4">
             <?php
 
             keitaro_child_pages_list(get_the_ID());
-
-            var_dump(get_children(get_ancestors(get_the_ID())));
 
             foreach (get_children(get_ancestors(get_the_ID())) as $page):
                 dynamic_sidebar('keitaro_page_icon_blocks');
