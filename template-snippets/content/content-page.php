@@ -6,6 +6,8 @@
             get_template_part(SNIPPETS_DIR . '/header/entry', 'header');
             get_template_part(SNIPPETS_DIR . '/entry', 'content');
 
+            comments_template();
+
             ?>
         </div>
         <div class="col-md-4">
