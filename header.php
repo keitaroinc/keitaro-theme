@@ -11,8 +11,10 @@
 
         <div class="container-bg">
             <div class="<?php
-            if (is_home()) : echo 'container';
-            else : echo 'container-fluid';
+            if (is_home()) :
+                echo 'container';
+            else :
+                echo 'container-fluid';
             endif;
             ?>">
                 <header class="main-navbar content-block">
@@ -27,8 +29,9 @@
                 </header>
             </div>
         </div>
-        <?php get_template_part(SNIPPETS_DIR . '/navigation/breadcrumb'); ?>
         <?php
-        if (is_home()):
+        get_template_part(SNIPPETS_DIR . '/navigation/breadcrumb');
+        
+        if (is_home()) :
             get_template_part(SNIPPETS_DIR . '/header/hero');
-    endif;
+        endif;
