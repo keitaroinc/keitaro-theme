@@ -2,7 +2,6 @@
 
 // Based on an example provided on The Web Taylor
 // https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
-
 // Settings
 $breadcrums_id = 'breadcrumb';
 $breadcrums_class = $breadcrums_id;
@@ -22,6 +21,23 @@ if (!function_exists('breadcrumb_item')):
     }
 
 endif;
+
+if (!function_exists('is_paginated_url')) {
+
+    function is_paginated_url() {
+        global $paged;
+
+        if ($paged > 1):
+            $url = get_term_link(get_queried_object()->term_id, get_queried_object()->taxonomy);
+        else:
+            $url = false;
+        endif;
+
+        return $url;
+
+    }
+
+}
 
 // Do not display on the homepage
 if (!is_front_page()) {
@@ -117,7 +133,7 @@ if (!is_front_page()) {
         } elseif (is_category()) {
 
             // Category page
-            breadcrumb_item(false, single_cat_title('', false), 'span');
+            breadcrumb_item(is_paginated_url(), single_cat_title('', false), (is_paginated_url() ? 'a' : 'span'));
         } elseif (is_page()) {
 
             // Standard page
@@ -145,7 +161,7 @@ if (!is_front_page()) {
 
             // Tag page
             // Display the tag name
-            breadcrumb_item(false, get_queried_object()->name, 'span');
+            breadcrumb_item(is_paginated_url(), get_queried_object()->name, (is_paginated_url() ? 'a' : 'span'));
         } elseif (is_day()) {
 
             // Day archive
@@ -171,13 +187,17 @@ if (!is_front_page()) {
         } elseif (is_author()) {
 
             // Author Archive
+            global $paged;
+
             // Display author name
             breadcrumb_item(false, __('Author'), 'span');
-            breadcrumb_item(false, get_the_author_meta('display_name'), 'span');
-        } elseif (get_query_var('paged')) {
 
-            // Paginated archives
-            breadcrumb_item(false, __('Page ', 'keitaro') . get_query_var('paged'), 'span');
+            if ($paged > 1):
+                printf('<li>%s</li>', get_the_author_posts_link());
+            else:
+                breadcrumb_item(false, get_the_author_meta('display_name'), 'span');
+                $url = false;
+            endif;
         } elseif (is_search()) {
 
             // Search results page
@@ -186,6 +206,12 @@ if (!is_front_page()) {
 
             // 404 page
             echo '<li>' . __('Error 404', 'keitaro') . '</li>';
+        }
+
+        if (get_query_var('paged')) {
+
+            // Paginated archives
+            breadcrumb_item(false, __('Page ', 'keitaro') . get_query_var('paged'), 'span');
         }
 
         echo '</ol>';
