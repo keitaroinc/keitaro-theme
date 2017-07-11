@@ -1,5 +1,8 @@
 <?php
 
+// Based on an example provided on The Web Taylor
+// https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
+
 // Settings
 $breadcrums_id = 'breadcrumb';
 $breadcrums_class = $breadcrums_id;
@@ -120,11 +123,8 @@ if (!is_front_page()) {
             // Standard page
             if ($post->post_parent) {
 
-                // If child page, get parents 
-                $anc = get_post_ancestors($post->ID);
-
-                // Get parents in the right order
-                $anc = array_reverse($anc);
+                // If child page, get parents
+                $anc = array_reverse(get_post_ancestors($post->ID));
 
                 // Parent page loop
                 if (!isset($parents)) {
@@ -144,17 +144,8 @@ if (!is_front_page()) {
         } elseif (is_tag()) {
 
             // Tag page
-            // Get tag information
-            $term_id = get_query_var('tag_id');
-            $taxonomy = 'post_tag';
-            $args = 'include=' . $term_id;
-            $terms = get_terms($taxonomy, $args);
-            $get_term_id = $terms[0]->term_id;
-            $get_term_slug = $terms[0]->slug;
-            $get_term_name = $terms[0]->name;
-
             // Display the tag name
-            breadcrumb_item(false, $get_term_name, 'span');
+            breadcrumb_item(false, get_queried_object()->name, 'span');
         } elseif (is_day()) {
 
             // Day archive
