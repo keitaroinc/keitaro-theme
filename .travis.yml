@@ -54,13 +54,12 @@ before_script:
     - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
     # Install ESLint: The pluggable linting utility for JavaScript and JSX.
     # @link http://eslint.org/
-    - if [[ "$SNIFF" == "1" ]]; then npm i -g eslint; fi
+    # - if [[ "$SNIFF" == "1" ]]; then npm i -g eslint; fi
     # Install WordPress JavaScript Coding Standards shareable config for ESLint.
     # @link https://www.npmjs.com/package/eslint-config-wordpress
     - if [[ "$SNIFF" == "1" ]]; then npm i -g eslint-config-wordpress; fi
-    # Install Sass Lint.
-    # @link https://github.com/sasstools/sass-lint
-    - if [[ "$SNIFF" == "1" ]]; then npm i -g sass-lint; fi
+    # Install Less Lint.
+    - if [[ "$SNIFF" == "1" ]]; then npm i -g lesslint; fi
 
 # Run test script commands.
 # Default is specific to project language.
@@ -79,9 +78,9 @@ script:
     # --extensions: Only sniff PHP files.
     - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n . --standard=./phpcs.xml --extensions=php; fi
     # Run the theme JavaScript partials through ESLint.
-    - if [[ "$SNIFF" == "1" ]]; then eslint -v -c ./.eslintrc.js ./assets/scripts/concat; fi
-    # Run the theme Sass partials through Sass Lint.
-    - if [[ "$SNIFF" == "1" ]]; then sass-lint -v -q -c ./.sass-lint.yml ./assets/sass/**/*.scss; fi
+    # - if [[ "$SNIFF" == "1" ]]; then eslint -v -c ./.eslintrc.js ./assets/scripts/concat; fi
+    # Run the theme Less partials through Less Lint.
+    - if [[ "$SNIFF" == "1" ]]; then lesslint ./assets/less/*.less; fi
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
