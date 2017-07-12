@@ -1,3 +1,3 @@
-  <?php
+<?php
 
-  keitaro_menu('social', 'list-wide');
+  keitaro_menu( 'social', 'list-wide' );

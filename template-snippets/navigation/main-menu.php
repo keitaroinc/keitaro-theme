@@ -1,3 +1,3 @@
 <?php
 
-keitaro_menu('main');
+keitaro_menu( 'main' );

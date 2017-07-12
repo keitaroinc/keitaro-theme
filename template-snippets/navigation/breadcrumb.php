@@ -5,7 +5,7 @@
 // Settings
 $breadcrums_id = 'breadcrumb';
 $breadcrums_class = $breadcrums_id;
-$home_title = __('Home', 'keitaro');
+$home_title = __( 'Home', 'keitaro' );
 
 // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
 $custom_taxonomy = '';
@@ -13,209 +13,217 @@ $custom_taxonomy = '';
 // Get the query & post information
 global $post, $wp_query;
 
-if (!function_exists('breadcrumb_item')):
+if ( ! function_exists( 'breadcrumb_item' ) ) :
 
-    function breadcrumb_item($url, $title = '', $wrapper = 'a') {
-        printf('<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper);
+	function breadcrumb_item( $url, $title = '', $wrapper = 'a' ) {
+		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper );
 
-    }
+	}
 
 endif;
 
-if (!function_exists('is_paginated_url')) {
+if ( ! function_exists( 'is_paginated_url' ) ) {
 
-    function is_paginated_url() {
-        global $paged;
+	function is_paginated_url() {
+		global $paged;
 
-        if ($paged > 1):
-            $url = get_term_link(get_queried_object()->term_id, get_queried_object()->taxonomy);
-        else:
-            $url = false;
-        endif;
+		if ( $paged > 1 ) :
+			$url = get_term_link( get_queried_object()->term_id, get_queried_object()->taxonomy );
+		else :
+			$url = false;
+		endif;
 
-        return $url;
+		return $url;
 
-    }
-
+	}
 }
 
 // Do not display on the homepage
-if (!is_front_page()) {
+if ( ! is_front_page() ) {
 
-    // Set default variables for date archive pages
-    if (is_date()):
-        $day_display = get_the_time('j');
-        $month_numeric = get_the_time('m');
-        $month_display = get_the_time('F');
-        $year_display = get_the_time('Y');
-    endif;
+	// Set default variables for date archive pages
+	if ( is_date() ) :
+		$day_display = get_the_time( 'j' );
+		$month_numeric = get_the_time( 'm' );
+		$month_display = get_the_time( 'F' );
+		$year_display = get_the_time( 'Y' );
+	endif;
 
-    ?>
-    <div class="container-fluid">
+	?>
+	<div class="container-fluid">
 
-        <?php
+		<?php
 
-        // Build the breadcrums
-        echo '<ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
+		// Build the breadcrums
+		echo '<ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
 
-        // Home page
-        breadcrumb_item(get_home_url(), __('Home', 'keitaro'));
+		// Home page
+		breadcrumb_item( get_home_url(), __( 'Home', 'keitaro' ) );
 
-        if (is_post_type_archive()) {
-            breadcrumb_item(false, post_type_archive_title(false), 'span');
-        } elseif (is_archive() && is_tax() && !is_category() && !is_tag()) {
+		if ( is_home() ) {
 
-            // If post is a custom post type
-            $post_type = get_post_type();
+			global $paged;
 
-            // If it is a custom post type display name and link
-            if ($post_type != 'post') {
+			if ( $paged > 1 ) :
+				breadcrumb_item( get_page_link( get_queried_object()->ID ), get_queried_object()->post_title );
+			else :
+				breadcrumb_item( false, get_queried_object()->post_title, 'span' );
+			endif;
+		} elseif ( is_post_type_archive() ) {
+			breadcrumb_item( false, post_type_archive_title( false ), 'span' );
+		} elseif ( is_archive() && is_tax() && ! is_category() && ! is_tag() ) {
 
-                breadcrumb_item(get_post_type_archive_link($post_type), get_post_type_object($post_type)->labels->name);
-            }
+			// If post is a custom post type
+			$post_type = get_post_type();
 
-            breadcrumb_item(false, get_queried_object()->name, 'span');
-        } elseif (is_single()) {
+			// If it is a custom post type display name and link
+			if ( $post_type != 'post' ) {
 
-            // If post is a custom post type
-            $post_type = get_post_type();
+				breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
+			}
 
-            // If it is a custom post type display name and link
-            if ($post_type != 'post') {
-                breadcrumb_item(get_post_type_archive_link($post_type), get_post_type_object($post_type)->labels->name);
-            }
+			breadcrumb_item( false, get_queried_object()->name, 'span' );
+		} elseif ( is_single() ) {
 
-            // Get post category info
-            $category = get_the_category();
+			// If post is a custom post type
+			$post_type = get_post_type();
 
-            if (!empty($category)) {
+			// If it is a custom post type display name and link
+			if ( $post_type != 'post' ) {
+				breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
+			}
 
-                $cat_array = array_values($category);
+			// Get post category info
+			$category = get_the_category();
 
-                // Get last category post is in
-                $last_category = end($cat_array);
+			if ( ! empty( $category ) ) {
 
-                // Get parent any categories and create array
-                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','), ',');
-                $cat_parents = explode(',', $get_cat_parents);
+				$cat_array = array_values( $category );
 
-                // Loop through parent categories and store in variable $cat_display
-                $cat_display = '';
-                foreach ($cat_parents as $parents) {
-                    $cat_display .= '<li class="item-cat">' . $parents . '</li>';
-                }
-            }
-            // If it's a custom post type within a custom taxonomy
-            $taxonomy_exists = taxonomy_exists($custom_taxonomy);
-            if (empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
+				// Get last category post is in
+				$last_category = end( $cat_array );
 
-                $taxonomy_terms = get_the_terms($post->ID, $custom_taxonomy);
-                $cat_id = $taxonomy_terms[0]->term_id;
-                $cat_nicename = $taxonomy_terms[0]->slug;
-                $cat_link = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
-                $cat_name = $taxonomy_terms[0]->name;
-            }
+				// Get parent any categories and create array
+				$get_cat_parents = rtrim( get_category_parents( $last_category->term_id, true, ',' ), ',' );
+				$cat_parents = explode( ',', $get_cat_parents );
 
-            // Check if the post is in a category
-            if (!empty($last_category)) {
-                echo $cat_display;
+				// Loop through parent categories and store in variable $cat_display
+				$cat_display = '';
+				foreach ( $cat_parents as $parents ) {
+					$cat_display .= '<li class="item-cat">' . $parents . '</li>';
+				}
+			}
+			// If it's a custom post type within a custom taxonomy
+			$taxonomy_exists = taxonomy_exists( $custom_taxonomy );
+			if ( empty( $last_category ) && ! empty( $custom_taxonomy ) && $taxonomy_exists ) {
 
-                breadcrumb_item(false, get_the_title(), 'span');
+				$taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
+				$cat_id = $taxonomy_terms[0]->term_id;
+				$cat_nicename = $taxonomy_terms[0]->slug;
+				$cat_link = get_term_link( $taxonomy_terms[0]->term_id, $custom_taxonomy );
+				$cat_name = $taxonomy_terms[0]->name;
+			}
 
-                // Else if post is in a custom taxonomy
-            } elseif (!empty($cat_id)) {
+			// Check if the post is in a category
+			if ( ! empty( $last_category ) ) {
+				echo $cat_display;
 
-                breadcrumb_item($cat_link, $cat_name);
-                breadcrumb_item(false, get_the_title(), 'span');
-            } else {
-                breadcrumb_item(false, get_the_title(), 'span');
-            }
-        } elseif (is_category()) {
+				breadcrumb_item( false, get_the_title(), 'span' );
 
-            // Category page
-            breadcrumb_item(is_paginated_url(), single_cat_title('', false), (is_paginated_url() ? 'a' : 'span'));
-        } elseif (is_page()) {
+				// Else if post is in a custom taxonomy
+			} elseif ( ! empty( $cat_id ) ) {
 
-            // Standard page
-            if ($post->post_parent) {
+				breadcrumb_item( $cat_link, $cat_name );
+				breadcrumb_item( false, get_the_title(), 'span' );
+			} else {
+				breadcrumb_item( false, get_the_title(), 'span' );
+			}
+		} elseif ( is_category() ) {
 
-                // If child page, get parents
-                $anc = array_reverse(get_post_ancestors($post->ID));
+			// Category page
+			breadcrumb_item( is_paginated_url(), single_cat_title( '', false ), (is_paginated_url() ? 'a' : 'span') );
+		} elseif ( is_page() ) {
 
-                // Parent page loop
-                if (!isset($parents)) {
-                    $parents = null;
-                }
-                foreach ($anc as $ancestor) {
-                    breadcrumb_item(get_permalink($ancestor), get_the_title($ancestor));
-                }
+			// Standard page
+			if ( $post->post_parent ) {
 
-                // Current page
-                breadcrumb_item(false, get_the_title(), 'span');
-            } else {
+				// If child page, get parents
+				$anc = array_reverse( get_post_ancestors( $post->ID ) );
 
-                // Just display current page if not parents
-                breadcrumb_item(false, get_the_title(), 'span');
-            }
-        } elseif (is_tag()) {
+				// Parent page loop
+				if ( ! isset( $parents ) ) {
+					$parents = null;
+				}
+				foreach ( $anc as $ancestor ) {
+					breadcrumb_item( get_permalink( $ancestor ), get_the_title( $ancestor ) );
+				}
 
-            // Tag page
-            // Display the tag name
-            breadcrumb_item(is_paginated_url(), get_queried_object()->name, (is_paginated_url() ? 'a' : 'span'));
-        } elseif (is_day()) {
+				// Current page
+				breadcrumb_item( false, get_the_title(), 'span' );
+			} else {
 
-            // Day archive
-            // Year link
-            breadcrumb_item(get_year_link($year_display), $year_display);
+				// Just display current page if not parents
+				breadcrumb_item( false, get_the_title(), 'span' );
+			}
+		} elseif ( is_tag() ) {
 
-            // Month link
-            breadcrumb_item(get_month_link($year_display, $month_numeric), $month_display);
+			// Tag page
+			// Display the tag name
+			breadcrumb_item( is_paginated_url(), get_queried_object()->name, (is_paginated_url() ? 'a' : 'span') );
+		} elseif ( is_day() ) {
 
-            // Day display
-            breadcrumb_item(false, $day_display, 'span');
-        } elseif (is_month()) {
+			// Day archive
+			// Year link
+			breadcrumb_item( get_year_link( $year_display ), $year_display );
 
-            // Month Archive
-            // Year link
-            breadcrumb_item(get_year_link($year_display), $year_display);
-            // Month display
-            breadcrumb_item(false, $month_display, 'span');
-        } elseif (is_year()) {
+			// Month link
+			breadcrumb_item( get_month_link( $year_display, $month_numeric ), $month_display );
 
-            // Display year archive
-            breadcrumb_item(false, $year_display, 'span');
-        } elseif (is_author()) {
+			// Day display
+			breadcrumb_item( false, $day_display, 'span' );
+		} elseif ( is_month() ) {
 
-            // Author Archive
-            global $paged;
+			// Month Archive
+			// Year link
+			breadcrumb_item( get_year_link( $year_display ), $year_display );
+			// Month display
+			breadcrumb_item( false, $month_display, 'span' );
+		} elseif ( is_year() ) {
 
-            // Display author name
-            breadcrumb_item(false, __('Author'), 'span');
+			// Display year archive
+			breadcrumb_item( false, $year_display, 'span' );
+		} elseif ( is_author() ) {
 
-            if ($paged > 1):
-                printf('<li>%s</li>', get_the_author_posts_link());
-            else:
-                breadcrumb_item(false, get_the_author_meta('display_name'), 'span');
-                $url = false;
-            endif;
-        } elseif (is_search()) {
+			// Author Archive
+			global $paged;
 
-            // Search results page
-            breadcrumb_item(false, __('Search results for: ', 'keitaro') . get_search_query(), 'span');
-        } elseif (is_404()) {
+			// Display author name
+			breadcrumb_item( false, __( 'Author' ), 'span' );
 
-            // 404 page
-            echo '<li>' . __('Error 404', 'keitaro') . '</li>';
-        }
+			if ( $paged > 1 ) :
+				printf( '<li>%s</li>', get_the_author_posts_link() );
+			else :
+				breadcrumb_item( false, get_the_author_meta( 'display_name' ), 'span' );
+				$url = false;
+			endif;
+		} elseif ( is_search() ) {
 
-        if (get_query_var('paged')) {
+			// Search results page
+			breadcrumb_item( false, __( 'Search results for: ', 'keitaro' ) . get_search_query(), 'span' );
+		} elseif ( is_404() ) {
 
-            // Paginated archives
-            breadcrumb_item(false, __('Page ', 'keitaro') . get_query_var('paged'), 'span');
-        }
+			// 404 page
+			echo '<li>' . __( 'Error 404', 'keitaro' ) . '</li>';
+		}// End if().
 
-        echo '</ol>';
-    }
+		if ( get_query_var( 'paged' ) ) {
 
-    ?>
+			// Paginated archives
+			breadcrumb_item( false, __( 'Page ', 'keitaro' ) . get_query_var( 'paged' ), 'span' );
+		}
+
+		echo '</ol>';
+	}// End if().
+
+	?>
 </div>
