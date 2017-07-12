@@ -1,7 +1,7 @@
 <?php
 
 /* This is the default template for rendering comments.
-It reuses code from the WordPress twentyseventeen theme.
+* It reuses code from the WordPress twentyseventeen theme.
 */
 
 if ( post_password_required() ) {
