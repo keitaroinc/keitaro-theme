@@ -2,12 +2,6 @@
     padding-top: @grid-gutter-width;
     padding-bottom: @grid-gutter-width;
 
-    .page{
-        &:not(:last-child){
-            margin-bottom: @grid-gutter-width + (@grid-gutter-width/2);            
-        }
-    }
-
     .post-thumbnail{
         &:not(:first-child){
             margin-top: @grid-gutter-width/2;            
@@ -224,9 +218,7 @@ hr {
 }
 
 .hentry{
-    &:not(:last-child){
         margin-bottom: @grid-gutter-width;
-    }
 }
 
 .post-meta-list{
@@ -267,4 +259,8 @@ iframe,
 embed,
 object{
     max-width: 100%;
+}
+
+hr{
+    border-width: 1px;
 }
