@@ -3,8 +3,15 @@
 <div class="container">
 
 	<?php if (!is_front_page()) : ?>
+		<?php
+
+		if (!is_404()):
+			get_search_form();
+		endif;
+
+		?>
 		<div id="primary" class="content-area">
-			<?php get_template_part(SNIPPETS_DIR . '/header/page', 'header'); ?>
+				<?php get_template_part(SNIPPETS_DIR . '/header/page', 'header'); ?>
 			<main id="main" class="site-main" role="main">
 
 				<?php
@@ -32,7 +39,7 @@
 				endif;
 
 				echo paginate_links(array(
-					'mid_size' => 4,
+					'mid_size' => 6,
 					'type' => 'list',
 				));
 
@@ -40,8 +47,8 @@
 			</main>
 
 		</div>
-	<?php endif; ?>
-	<?php get_sidebar(); ?>
+<?php endif; ?>
+<?php get_sidebar(); ?>
 </div>
 
 <?php
