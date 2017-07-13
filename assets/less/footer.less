@@ -1,3 +1,32 @@
+.blog,
+.search,
+.single,
+.author,
+.archive,
+.error404{
+    .footer-bg{
+        border-top: @container-bg-border;
+        background-color: @keitaro-gray-lightest;
+
+        hr{
+            border-color: @keitaro-green-gray-l-30;
+        }
+    }
+
+    .copyright{
+        &,
+        a{
+            color: @keitaro-green-gray;
+        }
+    }
+    
+    .footer-secondary-navigation{
+        a{
+            color: @keitaro-green-gray;
+        }
+    }
+}
+
 .footer-links{
     color: @keitaro-gray-light;
     letter-spacing: @letter-spacing-base;
@@ -5,10 +34,10 @@
 }
 
 .main-footer {
-    margin-bottom: @grid-gutter-width*1.5;
+    margin-bottom: @grid-gutter-width;
     .keitaro-symbol {
         width: @grid-gutter-width - 10;
-        margin: @grid-gutter-width*1.5 @grid-gutter-width @grid-gutter-width*1.5;
+        margin: @grid-gutter-width*1.5 @grid-gutter-width;
     }
 }
 
