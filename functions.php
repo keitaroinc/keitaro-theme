@@ -151,6 +151,9 @@ require_once SNIPPETS_DIR . '/widgets/class-wp-widget-call-to-action.php';
 // Require Keitaro Call to Action widget
 require_once SNIPPETS_DIR . '/widgets/class-wp-widget-icon-block.php';
 
+// Require Twitter Grid widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-twitter-grid.php';
+
 // Register Widget areas
 function keitaro_widgets_init() {
 
@@ -189,6 +192,15 @@ function keitaro_widgets_init() {
 		'before_title' => '<h3 class="page-icon-blocks-title">',
 		'after_title' => '</h3>',
 	));
+    
+	register_sidebar(array(
+		'name' => __('Twitter Content', 'keitaro'),
+		'id' => 'keitaro_twitter_content',
+		'before_widget' => '<div class="twitter-content-widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h2 class="twitter-content-widget-title text-center">',
+		'after_title' => '</h2>',
+	));
 
 	if (class_exists('Keitaro_Service')):
 		register_widget('Keitaro_Service');
@@ -200,6 +212,10 @@ function keitaro_widgets_init() {
 
 	if (class_exists('Keitaro_Icon_Block')):
 		register_widget('Keitaro_Icon_Block');
+	endif;
+	
+	if (class_exists('Keitaro_Twitter_Grid')):
+		register_widget('Keitaro_Twitter_Grid');
 	endif;
 
 }
