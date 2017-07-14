@@ -1,28 +1,36 @@
 <?php
+
 /*
- * Template Name: Services
+ * Template Name: Parent Page
  */
 get_header();
+
 ?>
 
 <div class="container">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
 
-			<?php
-			if ( have_posts() ) :
-				/* Start the Loop */
-				while ( have_posts() ) :
-					the_post();
-					get_template_part( SNIPPETS_DIR . '/content/content', 'services' );
-				endwhile;
-			endif;
-			?>
-		</main>
+            <?php
 
-	</div>
-	<?php get_sidebar(); ?>
+            if (have_posts()) :
+                /* Start the Loop */
+                while (have_posts()) :
+                    the_post();
+
+                    get_template_part(SNIPPETS_DIR . '/content/content-parent-page');
+                    get_template_part(SNIPPETS_DIR . '/content/content-services');
+
+                endwhile;
+            endif;
+
+            ?>
+        </main>
+
+    </div>
+    <?php get_sidebar(); ?>
 </div>
 
 <?php
+
 get_footer();
