@@ -20,13 +20,11 @@
 		<div class="container-bg">
 			<div class="<?php echo $container_class; ?>">
 				<header class="main-navbar content-block">
-					<div class="row">
-						<div class="col-sm-3 col-md-4 col-lg-3">
+                    <div class="pull-left">
 							<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
-						</div>
-						<div class="col-sm-9 col-md-8 col-lg-9">
+                    </div>
+                    <div class="pull-right">
 							<?php get_template_part( SNIPPETS_DIR . '/navigation/main-menu' ); ?>
-						</div>
 					</div>
 				</header>
 			</div>
