@@ -8,7 +8,7 @@
  * @version 1.0
  */
 ?>
-<div class="site-branding">
+<div class="site-branding pull-left">
 
 	<?php if ( get_custom_logo() ) : ?>
 	  <?php the_custom_logo(); ?>
