@@ -25,7 +25,7 @@
 							<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
 						</div>
 						<div class="col-sm-9 col-md-8 col-lg-9">
-							<?php get_template_part( SNIPPETS_DIR . '/navigation/main', 'menu' ); ?>
+							<?php get_template_part( SNIPPETS_DIR . '/navigation/main-menu' ); ?>
 						</div>
 					</div>
 				</header>

@@ -23,18 +23,18 @@ endif;
             <?php endif; ?>
             <div class="row">
                 <div class="col-md-6">
-                    <?php get_template_part(SNIPPETS_DIR . '/navigation/footer', 'menu'); ?>
+                    <?php get_template_part(SNIPPETS_DIR . '/navigation/footer-menu'); ?>
                 </div>
                 <div class="col-md-6">
                     <div class="text-right">
-                        <?php get_template_part(SNIPPETS_DIR . '/navigation/social', 'menu'); ?>
+                        <?php get_template_part(SNIPPETS_DIR . '/navigation/social-menu'); ?>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-6">
-                    <?php get_template_part(SNIPPETS_DIR . '/navigation/footer-secondary', 'menu'); ?>
+                    <?php get_template_part(SNIPPETS_DIR . '/navigation/footer-secondary-menu'); ?>
                 </div>
                 <div class="col-md-6">
                     <footer class="copyright">
