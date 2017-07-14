@@ -19,27 +19,19 @@ if ($child_pages->have_posts()) :
             <div class="row">
 
                 <div class="col-md-4">
-                    <div class="text-right">
-                        <?php
+                    <?php
 
-                        if ('' !== get_the_post_thumbnail() && !is_single()) :
-                            get_template_part(SNIPPETS_DIR . '/post', 'thumbnail');
-                        endif;
+                    if ('' !== get_the_post_thumbnail() && !is_single()) :
+                        get_template_part(SNIPPETS_DIR . '/post', 'thumbnail');
+                    endif;
 
-                        keitaro_child_pages_list(get_the_ID());
+                    keitaro_child_pages_list(get_the_ID());
 
-                        ?>
-                    </div>
+                    ?>
                     <?php get_template_part(SNIPPETS_DIR . '/sidebars/icon-blocks'); ?>
                 </div>
                 <div class="col-md-8">
-                    <?php
 
-                    if (is_sticky() && is_home()) :
-//		echo twentyseventeen_get_svg( array( 'icon' => 'thumb-tack' ) );
-                    endif;
-
-                    ?>
                     <header class="entry-header">
                         <?php
 
