@@ -1,6 +1,7 @@
 .main-navbar {
     padding-top: @grid-gutter-width/2;
     padding-bottom: @grid-gutter-width/2;
+    overflow: auto;
 
     @media(min-width: @screen-sm-min) {
         .row {
@@ -8,11 +9,11 @@
             align-items: center;
         }
     }
+
     .navbar-collapse {
         clear: both;
-        padding-right: 0;
-        @media(max-width: @screen-xs-max) {
-            padding: @grid-gutter-width/3 0 0;
+        padding: 0;
+        @media(max-width: @screen-sm-max) {
             li {
                 margin: @grid-gutter-width/6 0;
                 text-align: right;
@@ -24,7 +25,11 @@
         margin-top: @main-navigation-top-margin;
         margin-bottom: 0;
         margin-right: 0;
-        background-color: @brand-primary;
+
+        &:hover,
+            &:active{
+            color: @brand-primary;
+        }
     }
 }
 
@@ -139,7 +144,7 @@
 
 .page-numbers{
     .pagination;
-    
+
     margin: 0 0 @grid-gutter-width/2;
 
     .current{
@@ -147,5 +152,5 @@
         .btn-success;
         padding: @padding-base-vertical @padding-base-horizontal;
     }
-    
+
 }
