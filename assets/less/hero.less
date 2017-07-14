@@ -41,15 +41,18 @@
     letter-spacing: @letter-spacing-base;
     font-size: 3em;
     color: @keitaro-green-dark;
-    margin: @grid-gutter-width*3 auto;
     text-align: left;
     @media (max-width: @screen-xs-max) {
         font-size: @font-size-h1;
+        margin: @grid-gutter-width auto;
     }
     @media (min-width: @screen-sm-min) {
+        margin: @grid-gutter-width*2 auto;        
         font-size: @font-size-h3*1.5;
     }
-    @media (min-width: @screen-lg-min) {}
+    @media (min-width: @screen-lg-min) {
+        margin: @grid-gutter-width*3 auto;        
+    }
 }
 
 .hero-subtitle {
@@ -57,9 +60,4 @@
     font-weight: 200;
     letter-spacing: @letter-spacing-large;
     font-size: 0.6em;
-}
-
-.services-section {
-    position: relative;
-    bottom: -160px;
 }
