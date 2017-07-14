@@ -9,7 +9,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 		parent::__construct(
 				'widget_keitaro_call_to_action', // Base ID
 				esc_html__( 'Keitaro Call to Action', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons', 'keitaro' ) ) // Args
+				array( 'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons.', 'keitaro' ) ) // Args
 		);
 	}
 
@@ -100,11 +100,11 @@ class Keitaro_Call_To_Action extends WP_Widget {
 		}
 		?>>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Call to Action Title:', 'keitaro' ) ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Call to Action title:', 'keitaro' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select buttons:' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'WordPress menu:' ); ?></label>
 				<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
 					<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
 					<?php foreach ( $menus as $menu ) : ?>
