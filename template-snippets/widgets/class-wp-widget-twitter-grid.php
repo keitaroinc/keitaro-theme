@@ -1,6 +1,6 @@
 <?php
 
-class Keitaro_Twitter_Grid extends WP_Widget {
+class Keitaro_Tweets extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -8,8 +8,8 @@ class Keitaro_Twitter_Grid extends WP_Widget {
     function __construct() {
         parent::__construct(
                 'widget_keitaro_twitter_grid', // Base ID
-                esc_html__('Twitter Grid', 'keitaro'), // Name
-                array('description' => esc_html__('Twitter timeline grid widget', 'keitaro')) // Args
+                esc_html__('Tweets', 'keitaro'), // Name
+                array('description' => esc_html__('Timeline or grid content from Twitter.', 'keitaro')) // Args
         );
 
     }
@@ -30,10 +30,10 @@ class Keitaro_Twitter_Grid extends WP_Widget {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
-        if (!empty($instance['timeline_url'])) {
+        if (!empty($instance['tweets_url'])) {
 
             ?>
-            <a class="twitter-<?php echo (!empty($instance['timeline_type']) ? esc_attr($instance['timeline_type']) : ''); ?>" data-lang="en" data-dnt="true" href="<?php echo esc_url($instance['timeline_url']); ?>"><?php echo apply_filters('widget_title', $instance['title']); ?></a>
+            <a class="twitter-<?php echo (!empty($instance['tweets_type']) ? esc_attr($instance['tweets_type']) : ''); ?>" data-lang="en" data-dnt="true" href="<?php echo esc_url($instance['tweets_url']); ?>"><?php echo apply_filters('widget_title', $instance['title']); ?></a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             <?php
 
@@ -53,24 +53,29 @@ class Keitaro_Twitter_Grid extends WP_Widget {
     public function form($instance) {
 
         $title = !empty($instance['title']) ? $instance['title'] : '';
-        $timeline_url = !empty($instance['timeline_url']) ? $instance['timeline_url'] : '';
-        $timeline_type = !empty($instance['timeline_type']) ? $instance['timeline_type'] : '';
+        $tweets_url = !empty($instance['tweets_url']) ? $instance['tweets_url'] : '';
+        $tweets_type = !empty($instance['tweets_type']) ? $instance['tweets_type'] : '';
+        $visualization_type = array(
+            'grid' => __('Used with timeline URLs', 'keitaro'),
+            'timeline' => __('Used with profile URLs', 'keitaro')
+        );
 
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Name:', 'keitaro'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'keitaro'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('timeline_url')); ?>"><?php esc_attr_e('Timeline URL:', 'keitaro'); ?></label>
-            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('timeline_url')); ?>" name="<?php echo esc_attr($this->get_field_name('timeline_url')); ?>" type="text" value="<?php echo esc_attr($timeline_url); ?>">
+            <label for="<?php echo esc_attr($this->get_field_id('tweets_url')); ?>"><?php esc_attr_e('Twitter URL:', 'keitaro'); ?></label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('tweets_url')); ?>" name="<?php echo esc_attr($this->get_field_name('tweets_url')); ?>" type="text" value="<?php echo esc_attr($tweets_url); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('timeline_type') ?>"><?php esc_attr_e('Timeline Type:', 'keitaro'); ?></label>
-            <select name="<?php echo esc_attr($this->get_field_name('timeline_type')); ?>" id="<?php echo esc_attr($this->get_field_id('timeline_type')); ?>" class="widefat">
+            <label for="<?php echo $this->get_field_id('tweets_type') ?>"><?php esc_attr_e('Show as:', 'keitaro'); ?></label>
+            <select name="<?php echo esc_attr($this->get_field_name('tweets_type')); ?>" id="<?php echo esc_attr($this->get_field_id('tweets_type')); ?>" class="widefat">
                 <option value="0"><?php _e('&mdash; Select &mdash;'); ?></option>
-                <option <?php selected($timeline_type, 'grid'); ?> value="grid"><?php _e('Grid', 'keitaro'); ?></option>
-                <option <?php selected($timeline_type, 'timeline'); ?> value="timeline"><?php _e('Timeline', 'keitaro'); ?></option>
+                <?php foreach ($visualization_type as $key => $value) : ?>
+                    <option <?php selected($tweets_type, $key); ?> value="<?php echo $key; ?>"><?php echo ucfirst($key) . ' &ndash; ' . $value; ?></option>
+                <?php endforeach; ?>
             </select>
         <p>
             <?php
@@ -92,8 +97,8 @@ class Keitaro_Twitter_Grid extends WP_Widget {
             $instance = $old_instance;
 
             $instance['title'] = (!empty($new_instance['title']) ) ? strip_tags($new_instance['title']) : '';
-            $instance['timeline_url'] = (!empty($new_instance['timeline_url']) ) ? strip_tags($new_instance['timeline_url']) : '';
-            $instance['timeline_type'] = (!empty($new_instance['timeline_type']) ) ? strip_tags($new_instance['timeline_type']) : '';
+            $instance['tweets_url'] = (!empty($new_instance['tweets_url']) ) ? strip_tags($new_instance['tweets_url']) : '';
+            $instance['tweets_type'] = (!empty($new_instance['tweets_type']) ) ? strip_tags($new_instance['tweets_type']) : '';
 
             return $instance;
 

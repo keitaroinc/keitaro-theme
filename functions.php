@@ -214,8 +214,8 @@ function keitaro_widgets_init() {
 		register_widget('Keitaro_Icon_Block');
 	endif;
 	
-	if (class_exists('Keitaro_Twitter_Grid')):
-		register_widget('Keitaro_Twitter_Grid');
+	if (class_exists('Keitaro_Tweets')):
+		register_widget('Keitaro_Tweets');
 	endif;
 
 }
