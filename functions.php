@@ -159,6 +159,7 @@ function keitaro_widgets_init() {
 
 	register_sidebar(array(
 		'name' => __('Services', 'keitaro'),
+        'description' => __('Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro'),
 		'id' => 'keitaro_services',
 		'before_widget' => '',
 		'after_widget' => '',
@@ -168,6 +169,7 @@ function keitaro_widgets_init() {
 
 	register_sidebar(array(
 		'name' => __('Service Icons', 'keitaro'),
+        'description' => __('Reserved for Image widgets and rendered below the Hero section on the home page.', 'keitaro'),
 		'id' => 'keitaro_service_icons',
 		'before_widget' => '<li>',
 		'after_widget' => '</li>',
@@ -177,6 +179,7 @@ function keitaro_widgets_init() {
 
 	register_sidebar(array(
 		'name' => __('Call to Action', 'keitaro'),
+        'description' => __('Reserved for Keitaro Call to Action widgets and rendered above the footer section on static pages and the front page.', 'keitaro'),
 		'id' => 'keitaro_call_to_action',
 		'before_widget' => '',
 		'after_widget' => '',
@@ -186,6 +189,7 @@ function keitaro_widgets_init() {
 
 	register_sidebar(array(
 		'name' => __('Page Icon Blocks', 'keitaro'),
+        'description' => __('Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro'),
 		'id' => 'keitaro_page_icon_blocks',
 		'before_widget' => '',
 		'after_widget' => '',
@@ -195,6 +199,7 @@ function keitaro_widgets_init() {
     
 	register_sidebar(array(
 		'name' => __('Twitter Content', 'keitaro'),
+        'description' => __('Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro'),
 		'id' => 'keitaro_twitter_content',
 		'before_widget' => '<div class="twitter-content-widget">',
 		'after_widget' => '</div>',
