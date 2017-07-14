@@ -2,10 +2,11 @@
 
 <div class="container">
 
-    <?php if (!is_front_page()) : ?>
-        <?php
+    <?php
 
-        if (!is_404()):
+    if (!is_front_page()) :
+
+        if (!is_404() && !is_page()):
             get_search_form();
         endif;
 
@@ -38,31 +39,20 @@
                     get_template_part(SNIPPETS_DIR . '/content/content', 'none');
                 endif;
 
-                echo paginate_links(array(
-                    'mid_size' => 6,
-                    'type' => 'list',
-                ));
+                get_template_part(SNIPPETS_DIR . '/navigation/pagination');
 
-                global $paged;
-
-                if ($paged < 1):
-
-                    ?>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <?php dynamic_sidebar('keitaro_twitter_content'); ?>
-                        </div>
-                    </div>
-                <?php endif;
+                get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
 
                 ?>
+
             </main>
 
         </div>
     <?php endif; ?>
-    <?php get_sidebar(); ?>
 </div>
 
 <?php
+
+get_sidebar();
 
 get_footer();
