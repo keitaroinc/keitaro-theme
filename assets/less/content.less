@@ -129,6 +129,17 @@
     }
 }
 
+.page-parent{
+    &:not(.page-child){
+        @media (min-width: @screen-md-min){
+            .post-thumbnail,
+            .service-list{
+                text-align: right;
+            }
+        }
+    }
+}
+
 .img-round {
     border-radius: 50%;
     border: 1px solid @keitaro-green-gray-l-30;
@@ -218,7 +229,7 @@ hr {
 }
 
 .hentry{
-        margin-bottom: @grid-gutter-width;
+    margin-bottom: @grid-gutter-width;
 }
 
 .post-meta-list{
@@ -271,4 +282,11 @@ hr{
 
 .twitter-content-widget-title{
     margin-bottom: @grid-gutter-width;
+}
+
+.no-results{
+    margin-bottom: @grid-gutter-width;
+    .page-header{
+        margin-bottom: 0;   
+    }
 }
