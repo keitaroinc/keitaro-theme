@@ -5,8 +5,6 @@
         <?php do_shortcode( '[keitaro-hero-title]' ); ?>
 	  </div>
 	</div>
-	<div class="services">
-	  <?php dynamic_sidebar( 'keitaro_services' ); ?>
-	</div>
+      <?php get_template_part(SNIPPETS_DIR . '/sidebars/services'); ?>
   </div>
 </div>
