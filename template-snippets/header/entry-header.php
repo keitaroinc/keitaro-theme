@@ -1,12 +1,10 @@
 <header class="entry-header">
     <?php
 
-    if (is_single()) {
-        the_title('<h1 class="entry-title">', '</h1>');
+    if (is_singular()) {
+        the_title('<h1 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h1>');
     } elseif (is_front_page() && is_home()) {
         the_title('<h3 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
-    } elseif (is_page_template('page-parent.php') && empty(get_the_content())) {
-        // Don't render the title if content is empty on pages with the Parent Page template applied
     } else {
         the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
     }
