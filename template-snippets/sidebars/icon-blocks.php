@@ -1,3 +1,3 @@
 <?php
 
-dynamic_sidebar('keitaro_page_icon_blocks');
+dynamic_sidebar('keitaro_icon_blocks');
