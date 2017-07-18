@@ -1,5 +1,10 @@
 <?php
 
+// Don't render anything if the template does not match
+if (!is_page_template('parent.php')):
+    return;
+endif;
+
 $child_pages = new WP_Query(
         array(
     'post_parent' => get_the_ID(),
@@ -8,6 +13,7 @@ $child_pages = new WP_Query(
     'orderby' => 'menu_order',
         )
 );
+
 
 if ($child_pages->have_posts()) :
     while ($child_pages->have_posts()) :
@@ -22,7 +28,7 @@ if ($child_pages->have_posts()) :
                     <?php
 
                     if ('' !== get_the_post_thumbnail() && !is_single()) :
-                        get_template_part(SNIPPETS_DIR . '/post', 'thumbnail');
+                        get_template_part(SNIPPETS_DIR . '/post-thumbnail');
                     endif;
 
                     keitaro_child_pages_list(get_the_ID());
@@ -46,7 +52,7 @@ if ($child_pages->have_posts()) :
                         ?>
                     </header><!-- .entry-header -->
 
-                    <?php get_template_part(SNIPPETS_DIR . '/entry', 'content'); ?>
+                    <?php get_template_part(SNIPPETS_DIR . '/entry-content'); ?>
 
                 </div>
             </div>
@@ -57,6 +63,4 @@ if ($child_pages->have_posts()) :
 
     unset($child_pages);
 
-else :
-    get_template_part(SNIPPETS_DIR . '/content/content-services', 'none');
 endif;
