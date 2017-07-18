@@ -151,6 +151,12 @@ require_once SNIPPETS_DIR . '/widgets/class-wp-widget-call-to-action.php';
 // Require Keitaro Call to Action widget
 require_once SNIPPETS_DIR . '/widgets/class-wp-widget-icon-block.php';
 
+// Require Keitaro Location widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-location.php';
+
+// Require Contact Form widget
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-contact-form.php';
+
 // Require Twitter Grid widget
 require_once SNIPPETS_DIR . '/widgets/class-wp-widget-twitter-grid.php';
 
@@ -188,9 +194,9 @@ function keitaro_widgets_init() {
     ));
 
     register_sidebar(array(
-        'name' => __('Page Icon Blocks', 'keitaro'),
+        'name' => __('Icon Blocks', 'keitaro'),
         'description' => __('Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro'),
-        'id' => 'keitaro_page_icon_blocks',
+        'id' => 'keitaro_icon_blocks',
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h3 class="page-icon-blocks-title">',
@@ -198,9 +204,29 @@ function keitaro_widgets_init() {
     ));
 
     register_sidebar(array(
-        'name' => __('Twitter Content', 'keitaro'),
+        'name' => __('Locations', 'keitaro'),
+        'description' => __('Reserved for Keitaro Location widgets and rendered within static pages with the Contact page template.', 'keitaro'),
+        'id' => 'keitaro_locations',
+        'before_widget' => '<div class="location">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="location-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('Contact', 'keitaro'),
+        'description' => __('Reserved for Contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro'),
+        'id' => 'keitaro_contact',
+        'before_widget' => '<div class="widget-contact">',
+        'after_widget' => '</div>',
+        'before_title' => '<header class="entry-header"><h2 class="entry-title">',
+        'after_title' => '</h2></header>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('Twitter', 'keitaro'),
         'description' => __('Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro'),
-        'id' => 'keitaro_twitter_content',
+        'id' => 'keitaro_twitter',
         'before_widget' => '<div class="twitter-content-widget">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="twitter-content-widget-title text-center">',
@@ -219,8 +245,16 @@ function keitaro_widgets_init() {
         register_widget('Keitaro_Icon_Block');
     endif;
 
+    if (class_exists('Keitaro_Location')):
+        register_widget('Keitaro_Location');
+    endif;
+
     if (class_exists('Keitaro_Tweets')):
         register_widget('Keitaro_Tweets');
+    endif;
+    
+    if (class_exists('Keitaro_Contact_Form')):
+        register_widget('Keitaro_Contact_Form');
     endif;
 
 }
@@ -348,7 +382,7 @@ function keitaro_author_box($author = false, $display = true) {
 
 function keitaro_posted_on() {
 
-    the_date(get_option('date_format'), '<p>', '</p>');
+    the_date('', '<p>', '</p>');
 
 }
 
