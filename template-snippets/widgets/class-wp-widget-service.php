@@ -55,7 +55,7 @@ class Keitaro_Service extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
-			<textarea id="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'service_desc' ) ); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_attr( $service_desc ); ?></textarea>
+            <textarea id="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'service_desc' ) ); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $service_desc ); ?></textarea>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'service_link' ) ?>"><?php esc_attr_e( 'Linked page:', 'keitaro' ); ?></label>
