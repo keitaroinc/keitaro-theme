@@ -2,22 +2,20 @@
 
 <div class="container">
 
-    <?php
+    <div id="primary" class="content-area">
+        <?php
 
-    if (!is_front_page()) :
+        if (!is_front_page()) :
 
-        if (!is_404() && !is_page()):
-            get_search_form();
-        endif;
+            if (have_posts()) :
 
-        ?>
-        <div id="primary" class="content-area">
-            <?php get_template_part(SNIPPETS_DIR . '/header/page-header'); ?>
-            <main id="main" class="site-main" role="main">
+                get_template_part(SNIPPETS_DIR . '/header/page-header');
 
-                <?php
+                ?>
+                <main id="main" class="site-main" role="main">
 
-                if (have_posts()) :
+                    <?php
+
                     /* Start the Loop */
                     while (have_posts()) :
                         the_post();
@@ -35,20 +33,24 @@
 
                     endwhile;
 
-                else :
-                    get_template_part(SNIPPETS_DIR . '/content/content-none');
-                endif;
+                    get_template_part(SNIPPETS_DIR . '/navigation/pagination');
 
-                get_template_part(SNIPPETS_DIR . '/navigation/pagination');
+                    ?>
+                </main>
 
-                get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
+                <?php
 
-                ?>
+            else :
+                get_template_part(SNIPPETS_DIR . '/content/content-none');
+            endif;
 
-            </main>
 
-        </div>
-    <?php endif; ?>
+            get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
+
+            ?>
+
+        <?php endif; ?>
+    </div>
 </div>
 
 <?php
