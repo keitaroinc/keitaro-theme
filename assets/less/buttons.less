@@ -1,33 +1,42 @@
 .btn {
-  padding: @grid-gutter-width/6 @grid-gutter-width/2;
-  letter-spacing: @letter-spacing-large;
+    padding: @grid-gutter-width/6 @grid-gutter-width/2;
+    letter-spacing: @letter-spacing-large;
+}
+
+.input-group-btn{
+    height: @input-height-base;
+    .btn{
+        padding-top: @input-group-btn-padding;
+        padding-bottom: @input-group-btn-padding;
+        height: inherit;
+    }
 }
 
 .btn-block {
-  display: block;
+    display: block;
 }
 
 .btn-success-dark {
-  .button-variant(@body-bg; @keitaro-green-dark; transparent);
+    .button-variant(@body-bg; @keitaro-green-dark; transparent);
 }
 
 .btn-submit {
-  margin: @grid-gutter-width/2 0;
+    margin: @grid-gutter-width/2 0;
 }
 
 .btn-outline {
-  display: inline;
+    display: inline;
 }
 
 .btn-discover {
-  display: block;
-  font-weight: 500;
-  text-align: right;
-  font-size: @font-size-base *1.8;
+    display: block;
+    font-weight: 500;
+    text-align: right;
+    font-size: @font-size-base *1.8;
 }
 
 .btn-inverse{
-  .button-variant(@link-color; @body-bg; transparent);
+    .button-variant(@link-color; @body-bg; transparent);
 }
 
 .btn-read-more{
