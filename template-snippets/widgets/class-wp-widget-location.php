@@ -30,7 +30,14 @@ class Keitaro_Location extends WP_Widget {
         }
 
         if (!empty($instance['location_address'])) {
-            printf('<iframe class="location-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;output=embed"></iframe>', urlencode($instance['location_address']));
+
+            ?>
+            <div class="location-map-container">
+                <div class="location-map-iframe-wrap">
+                    <iframe class="location-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo urlencode($instance['location_address']); ?>&amp;output=embed"></iframe>
+                </div>
+            </div>
+            <?php
 
             printf('<address class="location-address">%s</address>', apply_filters('widget_text', $instance['location_address']));
         }
