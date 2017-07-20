@@ -26,11 +26,9 @@ class Keitaro_Contact_Form extends WP_Widget {
 
         echo $args['before_widget'];
 
-        if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title￼', $instance['title']) . $args['after_title'];
-        }
-
         if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit'])) :
+
+            echo $args['before_title'] . apply_filters('widget_title￼', __('Message sent', 'keitaro')) . $args['after_title'];
 
             ?>
             <div class="entry-content">
@@ -39,6 +37,10 @@ class Keitaro_Contact_Form extends WP_Widget {
             <?php
 
         else:
+
+            if (!empty($instance['title'])) {
+                echo $args['before_title'] . apply_filters('widget_title￼', $instance['title']) . $args['after_title'];
+            }
 
             if (!empty($instance['description'])) {
 
@@ -51,7 +53,7 @@ class Keitaro_Contact_Form extends WP_Widget {
             }
 
             ?>
-            <form method="POST" class="contact-form" action="">
+            <form method="POST" class="contact-form" action="<?php esc_url(get_the_permalink()); ?>">
 
                 <?php if (!empty($instance['name_label'])) : ?>            
                     <div class="form-group">
