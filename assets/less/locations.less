@@ -16,6 +16,30 @@
     }
 }
 
+.location-map-container{
+    position: relative;
+}
+
+.location-map-iframe-wrap{
+
+    &:before{
+        content: '';
+        display: block;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &.activate-map{
+        &:before{
+            display: none;
+        }
+    }
+}
+
 .location-address{
     margin-bottom: @padding-small-vertical;
 }
