@@ -110,9 +110,13 @@
 }
 
 .breadcrumb{
+
     margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
 
     > li {
+
         + li{
             &:before{
                 padding: 0 @grid-gutter-width/8 0 @grid-gutter-width/4;
