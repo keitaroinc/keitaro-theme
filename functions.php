@@ -103,6 +103,9 @@ function keitaro_theme_scripts() {
     // Bootstrap JS modules
     wp_enqueue_script('bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js');
 
+    // Custom JS
+    // SWITCH TO A MINIFIED FILE SOON!
+    wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.js');
 }
 
 add_action('wp_enqueue_scripts', 'keitaro_theme_scripts');
@@ -252,7 +255,7 @@ function keitaro_widgets_init() {
     if (class_exists('Keitaro_Tweets')):
         register_widget('Keitaro_Tweets');
     endif;
-    
+
     if (class_exists('Keitaro_Contact_Form')):
         register_widget('Keitaro_Contact_Form');
     endif;
@@ -389,5 +392,11 @@ function keitaro_posted_on() {
 function keitaro_read_more() {
     printf('<a class="btn btn-sm btn-default btn-read-more" href="%1$s" title="%2$s">%3$s</a>', get_permalink(), sprintf(__('Continue reading', 'keitaro') . ' %s', get_the_title()), __('Read more', 'keitaro')
     );
+
+}
+
+// Wrap text in highlight wrapper
+function highlight($text) {
+    return sprintf('<span class="highlight">%s</span>', $text);
 
 }
