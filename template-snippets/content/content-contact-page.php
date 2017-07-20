@@ -9,7 +9,10 @@
 
             keitaro_child_pages_list(get_the_ID());
 
-            get_template_part(SNIPPETS_DIR . '/sidebars/locations');
+            // Don't show Locations sidebar when contact form data is successfully submitted
+            if (!isset($_POST['submit'])) :
+                get_template_part(SNIPPETS_DIR . '/sidebars/locations');
+            endif;
 
             ?>
         </div>
