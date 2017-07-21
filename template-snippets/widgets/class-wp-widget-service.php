@@ -8,7 +8,7 @@ class Keitaro_Service extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 				'widget_keitaro_service', // Base ID
-				esc_html__( 'Keitaro Service', 'keitaro' ), // Name
+				esc_html__( 'Service', 'keitaro' ), // Name
 				array( 'description' => esc_html__( 'Keitaro service item for landing page section.', 'keitaro' ) ) // Args
 		);
 	}

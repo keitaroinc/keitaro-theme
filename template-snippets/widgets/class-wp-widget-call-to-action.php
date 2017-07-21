@@ -8,7 +8,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 				'widget_keitaro_call_to_action', // Base ID
-				esc_html__( 'Keitaro Call to Action', 'keitaro' ), // Name
+				esc_html__( 'Call to Action', 'keitaro' ), // Name
 				array( 'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons.', 'keitaro' ) ) // Args
 		);
 	}

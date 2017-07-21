@@ -8,7 +8,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 				'widget_keitaro_icon_block', // Base ID
-				esc_html__('Keitaro Icon Block', 'keitaro'), // Name
+				esc_html__('Icon Block', 'keitaro'), // Name
 				array('description' => esc_html__('Keitaro icon block item for pages.', 'keitaro')) // Args
 		);
 

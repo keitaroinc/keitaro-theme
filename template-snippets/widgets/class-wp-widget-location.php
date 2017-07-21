@@ -8,7 +8,7 @@ class Keitaro_Location extends WP_Widget {
     function __construct() {
         parent::__construct(
                 'widget_keitaro_location', // Base ID
-                esc_html__('Keitaro Location', 'keitaro'), // Name
+                esc_html__('Location', 'keitaro'), // Name
                 array('description' => esc_html__('Keitaro location widget with interactive map and address. The map is rendered automatically from the location address.', 'keitaro')) // Args
         );
 
