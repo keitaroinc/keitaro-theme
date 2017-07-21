@@ -19,7 +19,7 @@
             color: @keitaro-green-gray;
         }
     }
-    
+
     .footer-secondary-navigation{
         a{
             color: @keitaro-green-gray;
@@ -48,7 +48,11 @@
 }
 
 .copyright {
-    text-align: right;
+    text-align: center;
+    @media (min-width: @screen-md-min){
+        text-align: right;
+    }
+    
     &,
     a{
         .footer-links;      
