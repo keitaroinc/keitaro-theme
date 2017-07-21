@@ -106,6 +106,7 @@ function keitaro_theme_scripts() {
     // Custom JS
     // SWITCH TO A MINIFIED FILE SOON!
     wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.js');
+
 }
 
 add_action('wp_enqueue_scripts', 'keitaro_theme_scripts');
@@ -281,7 +282,7 @@ function keitaro_hero_title_shortcode() {
  * Generate navigation menu for a predefined/registered menu location
  */
 
-function keitaro_menu($menu_location, $menu_class = '', $menu_id = '') {
+function keitaro_menu($menu_location, $menu_class = '', $menu_id = '', $collapse = false) {
 
     if (has_nav_menu($menu_location)) :
 
@@ -290,12 +291,14 @@ function keitaro_menu($menu_location, $menu_class = '', $menu_id = '') {
         endif;
 
         ?>
-        <nav id="site-navigation" role="navigation" aria-label="<?php esc_attr_e('Main Menu', 'keitaro'); ?>">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo $menu_id ?>" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
-            </button>
-            <div id="<?php echo $menu_id ?>" class="collapse navbar-collapse">
+        <nav class="navigation" role="navigation" aria-label="<?php esc_attr_e('Main Menu', 'keitaro'); ?>">
+            <?php if ($collapse): ?>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo $menu_id ?>" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+            <?php endif; ?>
+            <div id="<?php echo $menu_id ?>" class="<?php echo ($collapse) ? 'collapse navbar-collapse' : ''; ?>">
                 <?php
 
                 wp_nav_menu(array(
