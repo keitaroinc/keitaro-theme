@@ -1,17 +1,16 @@
-<?php get_header(); ?>
+<?php
 
-<div class="container">
+get_header();
 
-    <div id="primary" class="content-area">
-        <?php
+if (!is_front_page()) :
 
-        if (!is_front_page()) :
+    if (have_posts()) :
 
-            if (have_posts()) :
+        ?>
+        <div class="container">
+            <div id="primary" class="content-area">
 
-                get_template_part(SNIPPETS_DIR . '/header/page-header');
-
-                ?>
+                <?php get_template_part(SNIPPETS_DIR . '/header/page-header'); ?>
                 <main id="main" class="site-main" role="main">
 
                     <?php
@@ -44,16 +43,15 @@
                 get_template_part(SNIPPETS_DIR . '/content/content-none');
             endif;
 
-
-            get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
-
             ?>
-
-        <?php endif; ?>
+        </div>
     </div>
-</div>
 
-<?php
+    <?php
+
+    get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
+
+endif;
 
 get_sidebar();
 
