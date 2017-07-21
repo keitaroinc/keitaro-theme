@@ -26,16 +26,71 @@ class Keitaro_Contact_Form extends WP_Widget {
 
         echo $args['before_widget'];
 
+        // Check submitted data and send message
         if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit'])) :
 
-            echo $args['before_title'] . apply_filters('widget_title￼', __('Message sent', 'keitaro')) . $args['after_title'];
+            $email_sent = false;
+            $autoreply_sent = false;
 
-            ?>
-            <div class="entry-content">
-                <?php echo (isset($instance['thank_you']) ? apply_filters('the_content', $instance['thank_you']) : ''); ?>
-            </div>
-            <?php
+            $to = 'goce.mitevski@keitaro.com';
+            $subject = __('New message from Keitaro.com', 'keitaro');
+            $subject_autoreply = __('Thank you for contacting Keitaro Inc.', 'keitaro');
+            $company = (isset($_POST['company-name'])) ? trim(esc_html($_POST['company-name'])) : '';
+            $company_email = (isset($_POST['business-email'])) ? trim(esc_html($_POST['business-email'])) : '';
+            $intent = (isset($_POST['intent'])) ? trim(esc_html($_POST['intent'])) : '';
+            $submitted_message = (isset($_POST['message'])) ? str_replace("\r\n", "<br>", trim(esc_html($_POST['message']))) : '';
 
+            $headers = array(
+                'Content-Type: text/html; charset=UTF-8',
+                'From: Keitaro Inc. <info@keitaro.com>'
+            );
+            $body = join("<br>", array(
+                __('Hello,', 'keitaro') . "<br>",
+                sprintf(__('%1$s submitted the following message from %2$s though the contact form on %3$s', 'keitaro'), $company, $company_email, get_permalink()) . "<br>",
+                sprintf(__('The intent is: %s', 'keitaro'), str_replace('-', ' ', ucwords($intent))) . "<br>",
+                $submitted_message . "<br>",
+                __('Regards,', 'keitaro'),
+                __('WordPress @ Keitaro Inc.', 'keitaro')
+            ));
+
+            $body_autoreply = join("<br>", array(
+                __('Hello,', 'keitaro') . "<br>",
+                __('Thank you for contacting us at Keitaro Inc. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro') . "<br>",
+                __('Kind Regards,', 'keitaro'),
+                __('Keitaro Inc.', 'keitaro')
+            ));
+
+            try {
+
+                // Send mail to Keitaro Inc.
+                if (wp_mail($to, $subject, $body, $headers)) :
+                    $email_sent = true;
+                else:
+                    throw new Exception(__("Something's wrong. The email message was not sent to Keitaro Inc.", 'keitaro'));
+                endif;
+
+                // Send autoreply to sender
+                if (wp_mail($company_email, $subject_autoreply, $body_autoreply, $headers)) :
+                    $autoreply_sent = true;
+                else:
+                    throw new Exception(__("Something's wrong. The auto respond email message was not sent to sender.", 'keitaro'));
+                endif;
+            } catch (Exception $e) {
+                echo 'Caught exception: ', $e->getMessage(), "\n";
+            }
+
+            if ($email_sent && $autoreply_sent):
+                echo $args['before_title'] . apply_filters('widget_title￼', __('Message sent', 'keitaro')) . $args['after_title'];
+
+                ?>
+                <div class="entry-content">
+                    <?php echo (isset($instance['thank_you']) ? apply_filters('the_content', $instance['thank_you']) : ''); ?>
+                </div>
+                <?php
+
+            endif;
+
+        // Show contact form when nothing has been submitted
         else:
 
             if (!empty($instance['title'])) {
@@ -57,7 +112,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
                 <?php if (!empty($instance['name_label'])) : ?>            
                     <div class="form-group">
-                        <input class="form-control" type="text" id="company-name" required="required" value="<?php echo (isset($_POST['company-name']) ? esc_attr($_POST['company-name']) : '') ?>">
+                        <input class="form-control" type="text" name="company-name" id="company-name" required="required" value="<?php echo (isset($_POST['company-name']) ? esc_attr($_POST['company-name']) : '') ?>">
                         <label for="company-name"><?php echo $instance['name_label']; ?></label>
                     </div>
                     <?php
@@ -68,7 +123,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
                     ?>
                     <div class="form-group">
-                        <input class="form-control" type="email" id="business-email" required="required" value="<?php echo (isset($_POST['business-email']) ? esc_attr($_POST['business-email']) : '') ?>">
+                        <input class="form-control" type="email" name="business-email" id="business-email" required="required" value="<?php echo (isset($_POST['business-email']) ? esc_attr($_POST['business-email']) : '') ?>">
                         <label for="business-email"><?php echo $instance['email_label']; ?></label>
                     </div>
                     <?php
@@ -84,9 +139,9 @@ class Keitaro_Contact_Form extends WP_Widget {
                         ?>
                         <div class="form-group">
 
-                            <select class="form-control">
+                            <select name="intent" id="intent" class="form-control">
                                 <?php foreach ($intent_options as $key => $value): ?>
-                                    <option value="<?php echo $key; ?>"><?php echo trim($value); ?></option>
+                                    <option value="<?php echo str_replace(' ', '-', strtolower($value)); ?>"><?php echo trim($value); ?></option>
                                 <?php endforeach;
 
                                 ?>
@@ -101,7 +156,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
                     ?>
                     <div class="form-group">
-                        <textarea id="message" class="form-control" rows="8" required="required"><?php echo (isset($_POST['message']) ? esc_textarea($_POST['message']) : '') ?></textarea>
+                        <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset($_POST['message']) ? esc_textarea($_POST['message']) : '') ?></textarea>
                         <label for="message"><?php echo $instance['message_label']; ?></label>
                     </div>
                 <?php endif;
