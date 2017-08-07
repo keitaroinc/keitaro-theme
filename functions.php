@@ -162,7 +162,7 @@ require_once SNIPPETS_DIR . '/widgets/class-wp-widget-location.php';
 require_once SNIPPETS_DIR . '/widgets/class-wp-widget-contact-form.php';
 
 // Require Twitter Grid widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-twitter-grid.php';
+require_once SNIPPETS_DIR . '/widgets/class-wp-widget-tweets.php';
 
 // Register Widget areas
 function keitaro_widgets_init() {
