@@ -218,10 +218,6 @@ class Keitaro_Contact_Form extends WP_Widget {
             <textarea id="<?php echo esc_attr($this->get_field_id('intent_list')); ?>" name="<?php echo esc_attr($this->get_field_name('intent_list')); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea($intent_list); ?></textarea>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('sent_to')); ?>"><?php esc_attr_e('Send email messages to:', 'keitaro'); ?></label>
-            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('sent_to')); ?>" name="<?php echo esc_attr($this->get_field_name('sent_to')); ?>" type="text" value="<?php echo esc_attr($send_to); ?>">
-        </p>
-        <p>
             <label for="<?php echo esc_attr($this->get_field_id('message_label')); ?>"><?php esc_attr_e('Message field label:', 'keitaro'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('message_label')); ?>" name="<?php echo esc_attr($this->get_field_name('message_label')); ?>" type="text" value="<?php echo esc_attr($message_label); ?>">
         </p>
@@ -230,7 +226,11 @@ class Keitaro_Contact_Form extends WP_Widget {
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('submit_label')); ?>" name="<?php echo esc_attr($this->get_field_name('submit_label')); ?>" type="text" value="<?php echo esc_attr($submit_label); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('thank_you')); ?>"><?php esc_attr_e('Thank you message:', 'keitaro'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('sent_to')); ?>"><?php esc_attr_e('Recipient email address:', 'keitaro'); ?></label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('sent_to')); ?>" name="<?php echo esc_attr($this->get_field_name('sent_to')); ?>" type="text" value="<?php echo esc_attr($send_to); ?>">
+        </p>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('thank_you')); ?>"><?php esc_attr_e('Message sent notice:', 'keitaro'); ?></label>
             <textarea id="<?php echo esc_attr($this->get_field_id('thank_you')); ?>" name="<?php echo esc_attr($this->get_field_name('thank_you')); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea($thank_you); ?></textarea>
         </p>
         <?php
