@@ -1,7 +1,7 @@
 .main-navbar {
+    .clearfix;
     padding-top: @grid-gutter-width/2;
     padding-bottom: @grid-gutter-width/2;
-    overflow: auto;
 
     @media(min-width: @screen-sm-min) {
         .row {
@@ -47,33 +47,56 @@
         margin-bottom: 0;
     }
     li {
-        padding-left: @grid-gutter-width/4;
-        &:not(:last-child) {
-            padding-right: @grid-gutter-width/4;
+
+        > a{
+            display: block;
+            padding: @grid-gutter-width/6 @grid-gutter-width/6;
         }
-        &:last-child{
-            @media (min-width: @screen-md-min){
-                margin-left: @grid-gutter-width/2;
+
+    }
+
+    > li{
+
+        &:last-child {
+            &.current-menu-item {
+                > a{
+                    .btn-primary;
+                    color: @body-bg;
+                }
             }
-            .btn;
-            .btn-success;
+        }
+
+        > .sub-menu{
+            @media (min-width: @screen-md-min){
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 99;
+            }
+            background-color: @body-bg;
+            padding: @padding-base-vertical @padding-large-horizontal;
+            border: @container-bg-border;
+        }
+
+        &:last-child{
+            > a{
+                @media (min-width: @screen-md-min){
+                    margin-left: @grid-gutter-width/4;
+                }
+                .btn;
+                .btn-success;
+
+            }
         }
     }
     a {
-        color: inherit;
+        color: @text-color;
         &,
         &:hover {
             text-decoration: none;
         }
     }
-    .current-menu-item {
-        &:last-child {
-            .btn-primary;
-            a{
-                color: @body-bg;
-            }
-        }
-    }
+
 }
 
 .footer-navigation{
@@ -84,15 +107,53 @@
 }
 
 .menu-item{
-    a{
-        color: inherit;
+    position: relative;
+
+    &:hover{
+        @media (min-width: @screen-md-min){
+            .sub-menu{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
+
 }
 
 .current-menu-item {
-    a {
+    > a {
         color: @keitaro-green-dark;
     }
+}
+
+.sub-menu{
+    @media (min-width: @screen-md-min){
+        opacity: 0;
+        visibility: hidden;
+    }
+    transition: 150ms opacity ease-in-out 20ms;
+    min-width: 100%;
+    text-align: left;
+    list-style: outside none;
+    padding: 0 0 0 @padding-small-vertical;
+    margin: 0;
+
+    .sub-menu{
+        position: relative;
+    }
+
+    li{        
+        &,
+        &:not(:last-child){
+            padding: 0;
+        }
+
+        > a{
+            display: block;
+            padding: @padding-base-vertical 0;
+        }
+    }
+
 }
 
 .navbar-title {
