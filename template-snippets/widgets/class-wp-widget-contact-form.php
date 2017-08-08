@@ -26,154 +26,200 @@ class Keitaro_Contact_Form extends WP_Widget {
 
         echo $args['before_widget'];
 
-        // Check submitted data and send message
-        if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit'])) :
+        ?>
 
-            $email_sent = false;
-            $autoreply_sent = false;
-
-            $send_to = !empty($instance['sent_to']) ? $instance['sent_to'] : get_option('admin_email');
-            $subject = __('New message from Keitaro.com', 'keitaro');
-            $subject_autoreply = __('Thank you for contacting Keitaro Inc.', 'keitaro');
-            $sender = (isset($_POST['sender-name'])) ? trim(esc_html($_POST['sender-name'])) : '';
-            $sender_email = (isset($_POST['sender-email'])) ? trim(esc_html($_POST['sender-email'])) : '';
-            $intent = (isset($_POST['intent'])) ? trim(esc_html($_POST['intent'])) : '';
-            $submitted_message = (isset($_POST['message'])) ? str_replace("\r\n", "<br>", trim(esc_html($_POST['message']))) : '';
-
-            $headers = array(
-                'Content-Type: text/html; charset=UTF-8',
-                'From: Keitaro Inc. <info@keitaro.com>'
-            );
-            $body = join("<br>", array(
-                __('Hello,', 'keitaro') . "<br>",
-                sprintf(__('%1$s submitted the following message from %2$s though the contact form on %3$s', 'keitaro'), $sender, $sender_email, get_permalink()) . "<br>",
-                sprintf(__('The intent is: %s', 'keitaro'), str_replace('-', ' ', ucwords($intent))) . "<br>",
-                $submitted_message . "<br>",
-                __('Regards,', 'keitaro'),
-                __('WordPress @ Keitaro Inc.', 'keitaro')
-            ));
-
-            $body_autoreply = join("<br>", array(
-                __('Hello,', 'keitaro') . "<br>",
-                __('Thank you for contacting us at Keitaro Inc. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro') . "<br>",
-                __('Kind Regards,', 'keitaro'),
-                __('Keitaro Inc.', 'keitaro') . "<br>",
-                esc_url(get_home_url()),
-                $send_to,
-            ));
-
-            try {
-
-                // Send mail to Keitaro Inc.
-                if (wp_mail($send_to, $subject, $body, $headers)) :
-                    $email_sent = true;
-                else:
-                    throw new Exception(__("Something's wrong. The email message was not sent to Keitaro Inc.", 'keitaro'));
-                endif;
-
-                // Send autoreply to sender
-                if (wp_mail($sender_email, $subject_autoreply, $body_autoreply, $headers)) :
-                    $autoreply_sent = true;
-                else:
-                    throw new Exception(__("Something's wrong. The auto respond email message was not sent to sender.", 'keitaro'));
-                endif;
-            } catch (Exception $e) {
-                echo 'Caught exception: ', $e->getMessage(), "\n";
-            }
-
-            if ($email_sent && $autoreply_sent):
-                echo $args['before_title'] . apply_filters('widget_title￼', __('Message sent', 'keitaro')) . $args['after_title'];
-
-                ?>
-                <div class="entry-content">
-                    <?php echo (isset($instance['thank_you']) ? apply_filters('the_content', $instance['thank_you']) : ''); ?>
-                </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
                 <?php
 
-            endif;
+                if ('' !== get_the_post_thumbnail() && !is_single()) :
+                    get_template_part(SNIPPETS_DIR . '/post-thumbnail');
+                endif;
 
-        // Show contact form when nothing has been submitted
-        else:
-
-            if (!empty($instance['title'])) {
-                echo $args['before_title'] . apply_filters('widget_title￼', $instance['title']) . $args['after_title'];
-            }
-
-            if (!empty($instance['description'])) {
+                keitaro_child_pages_list(get_the_ID());
 
                 ?>
-                <div class="entry-content">
-                    <?php echo apply_filters('the_content', $instance['description']); ?>
-                </div>
+            </div>
+            <div class="col-md-7 col-lg-6">
                 <?php
 
-            }
-
-            ?>
-            <form method="POST" class="contact-form" action="<?php esc_url(get_the_permalink()); ?>">
-
-                <?php if (!empty($instance['name_label'])) : ?>            
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset($_POST['sender-name']) ? esc_attr($_POST['sender-name']) : '') ?>">
-                        <label for="sender-name"><?php echo $instance['name_label']; ?></label>
-                    </div>
-                    <?php
-
+                if (get_the_content()):
+                    get_template_part(SNIPPETS_DIR . '/header/entry-header');
+                    get_template_part(SNIPPETS_DIR . '/entry-content');
                 endif;
 
-                if (!empty($instance['email_label'])) :
+                if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit'])) :
+                    $email_sent = false;
+                    $autoreply_sent = false;
 
-                    ?>
-                    <div class="form-group">
-                        <input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset($_POST['sender-email']) ? esc_attr($_POST['sender-email']) : '') ?>">
-                        <label for="sender-email"><?php echo $instance['email_label']; ?></label>
-                    </div>
-                    <?php
+                    $send_to = !empty($instance['sent_to']) ? $instance['sent_to'] : get_option('admin_email');
+                    $subject = __('New message from Keitaro.com', 'keitaro');
+                    $subject_autoreply = __('Thank you for contacting Keitaro Inc.', 'keitaro');
+                    $sender = (isset($_POST['sender-name'])) ? trim(esc_html($_POST['sender-name'])) : '';
+                    $sender_email = (isset($_POST['sender-email'])) ? trim(esc_html($_POST['sender-email'])) : '';
+                    $intent = (isset($_POST['intent'])) ? trim(esc_html($_POST['intent'])) : '';
+                    $submitted_message = (isset($_POST['message'])) ? str_replace("\r\n", "<br>", trim(esc_html($_POST['message']))) : '';
 
-                endif;
+                    $headers = array(
+                        'Content-Type: text/html; charset=UTF-8',
+                        'From: Keitaro Inc. <info@keitaro.com>'
+                    );
+                    $body = join("<br>", array(
+                        __('Hello,', 'keitaro') . "<br>",
+                        sprintf(__('%1$s submitted the following message from %2$s though the contact form on %3$s', 'keitaro'), $sender, $sender_email, get_permalink()) . "<br>",
+                        $submitted_message . "<br>",
+                        sprintf(__('The intent is: %s', 'keitaro'), str_replace('-', ' ', ucwords($intent))) . "<br>",
+                        __('Regards,', 'keitaro'),
+                        __('WordPress @ Keitaro Inc.', 'keitaro')
+                    ));
 
-                if (!empty($instance['intent_list'])) :
+                    $body_autoreply = join("<br>", array(
+                        __('Hello,', 'keitaro') . "<br>",
+                        __('Thank you for contacting us at Keitaro Inc. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro') . "<br>",
+                        __('Kind Regards,', 'keitaro'),
+                        __('Keitaro Inc.', 'keitaro') . "<br>",
+                        esc_url(get_home_url()),
+                        $send_to,
+                    ));
 
-                    $intent_options = explode("\n", $instance['intent_list']);
+                    try {
 
-                    if ($intent_options):
+                        // Send mail to Keitaro Inc.
+                        if (wp_mail($send_to, $subject, $body, $headers)) :
+                            $email_sent = true;
+                        else:
+                            throw new Exception(__("Something's wrong. The email message was not sent to Keitaro Inc.", 'keitaro'));
+                        endif;
+
+                        // Send autoreply to sender
+                        if (wp_mail($sender_email, $subject_autoreply, $body_autoreply, $headers)) :
+                            $autoreply_sent = true;
+                        else:
+                            throw new Exception(__("Something's wrong. The auto respond email message was not sent to sender.", 'keitaro'));
+                        endif;
+                    } catch (Exception $e) {
+
+                        echo 'Caught exception: ', $e->getMessage(), "\n";
+                    }
+
+                    if ($email_sent && $autoreply_sent):
+                        echo $args['before_title'] . apply_filters('widget_title￼', __('Message sent', 'keitaro')) . $args['after_title'];
 
                         ?>
-                        <div class="form-group">
-
-                            <select name="intent" id="intent" class="form-control">
-                                <?php foreach ($intent_options as $key => $value): ?>
-                                    <option value="<?php echo str_replace(' ', '-', strtolower($value)); ?>"><?php echo trim($value); ?></option>
-                                <?php endforeach;
-
-                                ?>
-                            </select>
+                        <div class="entry-content">
+                            <?php echo (isset($instance['thank_you']) ? apply_filters('the_content', $instance['thank_you']) : ''); ?>
                         </div>
                         <?php
 
                     endif;
+                else:
+                    if (!empty($instance['title'])) {
+                        echo $args['before_title'] . apply_filters('widget_title￼', $instance['title']) . $args['after_title'];
+                    }
+
+                    if (!empty($instance['description'])) {
+
+                        ?>
+                        <div class="entry-content">
+                            <?php echo apply_filters('the_content', $instance['description']); ?>
+                        </div>
+                        <?php
+
+                    }
                 endif;
 
-                if (!empty($instance['message_label'])) :
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                <?php
 
-                    ?>
-                    <div class="form-group">
-                        <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset($_POST['message']) ? esc_textarea($_POST['message']) : '') ?></textarea>
-                        <label for="message"><?php echo $instance['message_label']; ?></label>
-                    </div>
-                <?php endif;
+                // Don't show Locations sidebar when contact form data is successfully submitted
+                if (!isset($_POST['submit'])) :
+                    get_template_part(SNIPPETS_DIR . '/sidebars/locations');
+                endif;
 
                 ?>
-                <input type="hidden" name="submit" id="submit" value="1">
-                <?php if (!empty($instance['submit_label'])) : ?>
-                    <button type="submit" class="btn btn-primary btn-submit"><?php echo $instance['submit_label']; ?></button>
-                <?php endif; ?>
-            </form>
+            </div>
+            <div class="col-md-7 col-lg-6">
+                <?php
+
+                // Check submitted data and send message
+                if (!isset($_POST['submit'])) :
+
+                    // Show contact form when nothing has been submitted
+
+                    ?>
+                    <form method="POST" class="contact-form" action="<?php esc_url(get_the_permalink()); ?>">
+
+                        <?php if (!empty($instance['name_label'])) : ?>            
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset($_POST['sender-name']) ? esc_attr($_POST['sender-name']) : '') ?>">
+                                <label for="sender-name"><?php echo $instance['name_label']; ?></label>
+                            </div>
+                            <?php
+
+                        endif;
+
+                        if (!empty($instance['email_label'])) :
+
+                            ?>
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset($_POST['sender-email']) ? esc_attr($_POST['sender-email']) : '') ?>">
+                                <label for="sender-email"><?php echo $instance['email_label']; ?></label>
+                            </div>
+                            <?php
+
+                        endif;
+
+                        if (!empty($instance['intent_list'])) :
+
+                            $intent_options = explode("\n", $instance['intent_list']);
+
+                            if ($intent_options):
+
+                                ?>
+                                <div class="form-group">
+
+                                    <select name="intent" id="intent" class="form-control">
+                                        <?php foreach ($intent_options as $key => $value): ?>
+                                            <option value="<?php echo str_replace(' ', '-', strtolower($value)); ?>"><?php echo trim($value); ?></option>
+                                        <?php endforeach;
+
+                                        ?>
+                                    </select>
+                                </div>
+                                <?php
+
+                            endif;
+                        endif;
+
+                        if (!empty($instance['message_label'])) :
+
+                            ?>
+                            <div class="form-group">
+                                <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset($_POST['message']) ? esc_textarea($_POST['message']) : '') ?></textarea>
+                                <label for="message"><?php echo $instance['message_label']; ?></label>
+                            </div>
+                        <?php endif;
+
+                        ?>
+                        <input type="hidden" name="submit" id="submit" value="1">
+                        <?php if (!empty($instance['submit_label'])) : ?>
+                            <button type="submit" class="btn btn-primary btn-submit"><?php echo $instance['submit_label']; ?></button>
+                        <?php endif; ?>
+                    </form>
+                    <?php
+
+                endif;
+
+                echo $args['after_widget'];
+
+                ?>
+            </div>
+        </div>
         <?php
-
-        endif;
-
-        echo $args['after_widget'];
 
     }
 
