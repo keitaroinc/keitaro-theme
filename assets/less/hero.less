@@ -30,10 +30,14 @@
 
 .hero-background{
     background-color: @hero-bg;
-    background-image: url("../img/keitaro-hero-bg.png"), url("../img/keitaro-hero-bg-extend.png");
+    /*    background-image: url("../img/keitaro-hero-bg.png"), url("../img/keitaro-hero-bg-extend.png");*/
     background-position: 90% top, 90% bottom;
     background-repeat: no-repeat, repeat-y;
-    background-size: 40%;
+    background-size: 35%;
+    
+    @media (max-width: @screen-sm-max){
+        background-image: none !important;
+    }
 }
 
 .hero-title {
@@ -60,4 +64,10 @@
     font-weight: 200;
     letter-spacing: @letter-spacing-large;
     font-size: 0.6em;
+}
+
+.hero-non-default{
+    .hero-title{
+        color: @body-bg;
+    }
 }
