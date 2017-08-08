@@ -1,9 +1,20 @@
 <?php
 
 define('SNIPPETS_DIR', 'template-snippets');
+define('DEFAULT_HEADER_IMAGE', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png');
+define('DEFAULT_HEADER_IMAGE_EXTEND', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg-extend.png');
 
 // Initialize theme
 function keitaro_theme_setup() {
+
+    // Register Custom Headers
+    register_default_headers(array(
+        'keitaro' => array(
+            'url' => DEFAULT_HEADER_IMAGE,
+            'thumbnail_url' => DEFAULT_HEADER_IMAGE,
+            'description' => __('The default hero image of Keitaro Inc.', 'keitaro')
+        )
+    ));
 
     // require_once dirname(__FILE__) . '/inc/theme-settings.php';
     // Load text domain for localization
@@ -78,11 +89,11 @@ function keitaro_theme_setup() {
     add_theme_support('customize-selective-refresh-widgets');
 
     // Add theme support for custom headers
-//    add_theme_support('custom-header', array(
-//        'default-image' => get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png',
-//        'flex-height' => true,
-//        'flex-width' => true,
-//    ));
+    add_theme_support('custom-header', array(
+        'default-image' => DEFAULT_HEADER_IMAGE,
+        'flex-height' => true,
+        'flex-width' => true,
+    ));
 
 }
 
