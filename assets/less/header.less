@@ -17,12 +17,14 @@
     .entry-title{
         font-size: @font-size-h3;
     }
-    
+
 }
 
 .page-title,
 .entry-title{
-    margin-top: 0;
+    @media (min-width: @screen-md-min){
+        margin-top: 0;
+    }
     .text-uppercase;
     letter-spacing: @letter-spacing-small;
 }
