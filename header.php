@@ -16,8 +16,14 @@
             $container_class = 'container-fluid';
         endif;
 
+        if (get_header_image() == DEFAULT_HEADER_IMAGE):
+            $container_wrapper_class = 'container-bottom-border';
+        else:
+            $container_wrapper_class = '';
+        endif;
+
         ?>
-        <div class="container-bg">
+        <div class="container-bg <?php echo $container_wrapper_class; ?>">
             <div class="<?php echo $container_class; ?>">
                 <header class="main-navbar content-block">
                     <div class="pull-left">
