@@ -35,6 +35,8 @@
                 </header>
             </div>
         </div>
+
+        <?php if (!is_front_page()) : ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-lg-9">
@@ -48,6 +50,7 @@
             </div> 
         </div>
         <?php
+        endif;
 
         /* Show Hero section only on the front page */
         if (is_front_page()) :
