@@ -182,8 +182,8 @@ function keitaro_widgets_init() {
         'name' => __('Services', 'keitaro'),
         'description' => __('Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro'),
         'id' => 'keitaro_services',
-        'before_widget' => '',
-        'after_widget' => '',
+        'before_widget' => '<div class="service-wrapper">',
+        'after_widget' => '</div>',
         'before_title' => '<span class="service-title">',
         'after_title' => '</span>',
     ));
@@ -212,8 +212,8 @@ function keitaro_widgets_init() {
         'name' => __('Icon Blocks', 'keitaro'),
         'description' => __('Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro'),
         'id' => 'keitaro_icon_blocks',
-        'before_widget' => '',
-        'after_widget' => '',
+        'before_widget' => '<div class="icon-block-wrapper">',
+        'after_widget' => '</div>',
         'before_title' => '<h3 class="page-icon-blocks-title">',
         'after_title' => '</h3>',
     ));
