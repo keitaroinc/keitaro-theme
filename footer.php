@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-6">
                     <footer class="copyright">
-                        <p>&copy; <?php echo date('Y'); ?> <a href="<?php home_url(); ?>" class="text-uppercase"><?php bloginfo('name'); ?></a>. <?php _e('Some rights reserved.', 'keitaro') ?></p>
+                        <p>&copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>" class="text-uppercase"><?php bloginfo('name'); ?></a>. <?php _e('Some rights reserved.', 'keitaro') ?></p>
                     </footer>
                 </div>
             </div>
