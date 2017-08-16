@@ -36,18 +36,14 @@ class Keitaro_Tweets extends WP_Widget {
 
             if ($instance['tweets_type'] == $timeline):
 
-                ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                        <?php endif; ?>
-                        <a class="twitter-<?php echo (!empty($instance['tweets_type']) ? esc_attr($instance['tweets_type']) : ''); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo $instance['tweets_limit']; ?>" href="<?php echo esc_url($instance['tweets_url']); ?>"><?php echo apply_filters('widget_title', $instance['title']); ?></a>
-                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        <?php if ($instance['tweets_type'] == $timeline): ?>
-                        </div>
-                    </div>
-                </div>
-                <?php
+            endif;
+
+            ?>
+            <a class="twitter-<?php echo (!empty($instance['tweets_type']) ? esc_attr($instance['tweets_type']) : ''); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo $instance['tweets_limit']; ?>" href="<?php echo esc_url($instance['tweets_url']); ?>"><?php echo apply_filters('widget_title', $instance['title']); ?></a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <?php
+
+            if ($instance['tweets_type'] == $timeline):
 
             endif;
         }
@@ -93,7 +89,7 @@ class Keitaro_Tweets extends WP_Widget {
                 <option value="0"><?php _e('&mdash; Select &mdash;'); ?></option>
                 <?php foreach ($visualization_type as $key => $value) : ?>
                     <option <?php selected($tweets_type, $key); ?> value="<?php echo $key; ?>"><?php echo ucfirst($key) . ' &ndash; ' . $value; ?></option>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </select>
         <p>
             <?php
