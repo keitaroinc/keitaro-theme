@@ -31,5 +31,7 @@
         </div>
     </div>
     <?php wp_footer(); ?>
+</div>
+<?php keitaro_go_to_top_link(__('Go to Top', 'keitaro')); ?>
 </body>
 </html>

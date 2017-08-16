@@ -414,3 +414,7 @@ function highlight($text) {
     return sprintf('<span class="highlight">%s</span>', $text);
 
 }
+
+function keitaro_go_to_top_link($link_title){
+    printf('<a class="btn btn-go-to-top btn-info"><span class="glyphicon glyphicon-triangle-top"></span></a>', $link_title);
+}
