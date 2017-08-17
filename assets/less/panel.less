@@ -24,15 +24,12 @@
 }
 
 .panel-title-icon {
-    max-width: 3vw;
+    max-width: @grid-gutter-width - 20;
+    margin-right: @grid-gutter-width/6;
     &,
     & + .panel-title{
         vertical-align: middle;
         display: inline-block;
-    }
-
-    & + .panel-title{
-        margin-left: @grid-gutter-width/6;
     }
 }
 
