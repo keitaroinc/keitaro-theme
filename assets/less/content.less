@@ -1,6 +1,6 @@
 .content-area{
-    padding-top: @grid-gutter-width;
-    padding-bottom: @grid-gutter-width;
+    padding-top: @content-area-padding;
+    padding-bottom: @content-area-padding;
 
     .post-thumbnail{
         &:not(:first-child){
@@ -225,7 +225,14 @@ hr {
 }
 
 .hentry{
-    margin-bottom: @grid-gutter-width;
+    &:not(:last-child){
+        margin-bottom: @content-area-padding;
+    }
+    
+    &:last-child{
+        margin-bottom: @grid-gutter-width/2;        
+    }
+    
 }
 
 .post-meta-list{
