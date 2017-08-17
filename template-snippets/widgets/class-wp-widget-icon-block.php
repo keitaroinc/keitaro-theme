@@ -35,7 +35,9 @@ class Keitaro_Icon_Block extends WP_Widget {
             <div class="panel panel-default panel-transparent">
                 <div class="panel-heading">
                     <div class="clearfix">
-                        <img class="panel-title-icon pull-left" <?php echo (isset($instance['icon']) ? 'src="data:image/png;base64,'.$instance['icon'].'" alt="icon"' : '' ) ?>>
+                        <?php if (isset($instance['icon'])) : ?>
+                            <img class="panel-title-icon" src="data:image/png;base64,<?php echo $instance['icon'] ?>" alt="icon">
+                        <?php endif ?>
                         <h4 class="panel-title"><?php echo (!empty($instance['title'])) ? apply_filters('widget_text', $instance['title']) : ''; ?></h4>
                     </div>
                 </div>
