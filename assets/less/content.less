@@ -206,6 +206,11 @@ hr {
     padding-bottom: @grid-gutter-width/3;
 }
 
+.call-to-action-secondary{
+    .text-center;
+    margin: @grid-gutter-width 0;
+}
+
 .discover {
     text-align: right;
 }
@@ -228,11 +233,26 @@ hr {
     &:not(:last-child){
         margin-bottom: @content-area-padding;
     }
-    
+
     &:last-child{
         margin-bottom: @grid-gutter-width/2;        
     }
-    
+
+}
+
+.featured-post{
+
+    &:not(.sticky){
+        &.hentry{
+            &:first-child{
+                margin-bottom: @content-area-padding;
+            }
+        }
+        &:not(:last-child){
+            margin-bottom: @content-area-padding/3;
+        }
+
+    }
 }
 
 .post-meta-list{
@@ -280,7 +300,13 @@ hr{
 }
 
 .twitter-content-widget{
+    border: @sticky-border;
     margin: @grid-gutter-width 0;
+    padding: 0 @grid-gutter-width;
+    
+    &:last-child{
+        margin-bottom: 0;
+    }
 }
 
 .twitter-content-widget-title{
