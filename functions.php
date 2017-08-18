@@ -386,8 +386,22 @@ function keitaro_author_box($author = false, $display = true) {
     endif;
 
     $print .= sprintf('<h3 class="sr-only">%1$s</h3><div class="author-box">%2$s<h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div>', __('Author', 'keitaro'), sprintf(
-                    __('%s', 'twentyseventeen'), '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author) . '</a></span>'), $author_title, $author_description, $author_stats
+                    __('%s', 'keitaro'), '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author) . '</a></span>'), $author_title, $author_description, $author_stats
     );
+
+    if ($display == true) {
+        echo $print;
+    } else {
+        return $print;
+    }
+
+}
+
+function keitaro_author_avatar($author = false, $size = 96, $display = true) {
+
+    $print = '';
+
+    $print .= sprintf('<a title="%s" class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author, $size) . '</a>', get_the_author_meta('display_name'));
 
     if ($display == true) {
         echo $print;
@@ -403,8 +417,8 @@ function keitaro_posted_on() {
 
 }
 
-function keitaro_read_more() {
-    printf('<a class="btn btn-sm btn-default btn-read-more" href="%1$s" title="%2$s">%3$s</a>', get_permalink(), sprintf(__('Continue reading', 'keitaro') . ' %s', get_the_title()), __('Read more', 'keitaro')
+function keitaro_read_more($class = 'btn-default') {
+    printf('<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', get_permalink(), sprintf(__('Continue reading', 'keitaro') . ' %s', get_the_title()), __('Read more', 'keitaro'), $class
     );
 
 }
@@ -415,6 +429,13 @@ function highlight($text) {
 
 }
 
-function keitaro_go_to_top_link($link_title){
+function keitaro_go_to_top_link($link_title) {
     printf('<a class="btn btn-go-to-top btn-info"><span class="glyphicon glyphicon-triangle-top"></span></a>', $link_title);
+
+}
+
+function keitaro_continue_to_second_blog_posts_page_button($text, $link) {
+    $link = get_post_type_archive_link('post') . 'page/2/';
+    printf('<div class="call-to-action-secondary text-center"><a class="btn btn-success" href="%2$s">%1$s</a></div>', $text, $link);
+
 }
