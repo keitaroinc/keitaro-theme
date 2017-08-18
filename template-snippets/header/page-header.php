@@ -33,7 +33,7 @@ if (!empty($page_title)) :
                 keitaro_posted_on();
 
                 if (is_author()) :
-                    keitaro_author_box();
+                    keitaro_author_box(get_the_author_meta('ID'));
                 endif;
 
                 ?>

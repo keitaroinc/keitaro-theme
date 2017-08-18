@@ -2,7 +2,7 @@
 
 // Display author box with relevant meta information
 if ( ! is_author() ) :
-	keitaro_author_box( get_queried_object_id() );
+	keitaro_author_box( get_the_author_meta('ID') );
 endif;
 
 if ( is_single() ) :
