@@ -83,14 +83,16 @@ if (!is_front_page()) {
         }
 
         breadcrumb_item(false, get_queried_object()->name, 'span');
-    } elseif (is_single()) {
+    } elseif (is_singular()) {
 
         // If post is a custom post type
         $post_type = get_post_type();
 
         // If it is a custom post type display name and link
         if ($post_type != 'post') {
-            breadcrumb_item(get_post_type_archive_link($post_type), get_post_type_object($post_type)->labels->name);
+            breadcrumb_item(get_post_type_archive_link($post_type), get_post_type_object($post_type)->labels->name, 'span');
+        } else {
+            breadcrumb_item(get_post_type_archive_link('post'), get_the_title(get_option('page_for_posts')));
         }
 
         // Get post category info
@@ -125,7 +127,7 @@ if (!is_front_page()) {
         }
 
         // Check if the post is in a category
-        if (!empty($last_category)) {
+        if (!empty($last_category) && !is_singular()) {
             echo $cat_display;
 
             breadcrumb_item(false, get_the_title(), 'span');
