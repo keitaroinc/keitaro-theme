@@ -1,21 +1,23 @@
-.page-header{
-    .author-box{
-        padding-bottom: @grid-gutter-width/2 + @padding-base-vertical;
-        border-bottom: 1px solid @keitaro-green-gray-l-30;
-    }
-}
-
 .author-box{
     overflow: auto;
-    margin: @grid-gutter-width/2 0;
+    @media (max-width: @screen-sm-max){
+        margin-top: @grid-gutter-width/2;
+    }
 
     .avatar{
         float: left;
         margin-right: @grid-gutter-width/2;
+        margin-top: @grid-gutter-width/4;
         margin-bottom: @grid-gutter-width/4;
     }
-    
+
     /*.author-title{}*/
 
-    /*.author-description{}*/
+    .author-description{
+        margin-bottom: @grid-gutter-width/2;
+    }
+}
+
+.author-photo {
+    margin-top: @grid-gutter-width/3;
 }
