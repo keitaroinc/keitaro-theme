@@ -21,19 +21,11 @@ if (!is_front_page()) :
 
                         if (is_page()) :
                             get_template_part(SNIPPETS_DIR . '/content/content-page');
-                        elseif (is_home() && $paged < 1):
-                            get_template_part(SNIPPETS_DIR . '/content/content-featured');
                         else :
                             get_template_part(SNIPPETS_DIR . '/content/content');
                         endif;
 
                     endwhile;
-
-                    if (is_home() && $paged < 1):
-                        keitaro_continue_to_second_blog_posts_page_button(__('Continue', 'keitaro'), get_post_type_archive_link('post'));
-                    else:
-                        get_template_part(SNIPPETS_DIR . '/navigation/pagination');
-                    endif;
 
                     ?>
                 </main>
@@ -46,9 +38,14 @@ if (!is_front_page()) :
 
             endif;
 
-            get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
-
             ?>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <?php get_template_part(SNIPPETS_DIR . '/navigation/pagination'); ?>
+                </div>
+            </div>
+            <?php get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content'); ?>
+                
         </div>
     </div>
 
