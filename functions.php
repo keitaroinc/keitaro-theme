@@ -378,15 +378,13 @@ function keitaro_author_box($author = false, $display = true) {
 
     $print = '';
     $author_title = get_the_author_posts_link($author);
-    $author_description = '';
-    $author_stats = sprintf('<p class="author-stats">' . __('Contributed', 'keitaro') . ' <strong>%s</strong> %s.</p>', get_the_author_posts($author), __('posts so far', 'keitaro'));
+    $author_description = get_the_author_meta('description');
+    $author_posts_number = get_the_author_posts($author);
+    $author_stats = sprintf('<div class="panel panel-default"><div class="panel-body author-stats">' . _n('Contributed <strong>%s</strong> post so far', 'Contributed <strong>%s</strong> posts so far', $author_posts_number, 'keitaro') . '.</div></div>', $author_posts_number);
 
-    if (is_single() || is_author()) :
-        $author_description = get_the_author_meta('description');
-    endif;
 
     $print .= sprintf('<h3 class="sr-only">%1$s</h3><div class="author-box">%2$s<h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div>', __('Author', 'keitaro'), sprintf(
-                    __('%s', 'keitaro'), '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author) . '</a></span>'), $author_title, $author_description, $author_stats
+                    __('%s', 'keitaro'), '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author, (is_single() ? 96 : 112)) . '</a></span>'), $author_title, $author_description, $author_stats
     );
 
     if ($display == true) {
@@ -397,7 +395,7 @@ function keitaro_author_box($author = false, $display = true) {
 
 }
 
-function keitaro_author_avatar($author = false, $size = 96, $display = true) {
+function keitaro_author_avatar($author = false, $size = 112, $display = true) {
 
     $print = '';
 
