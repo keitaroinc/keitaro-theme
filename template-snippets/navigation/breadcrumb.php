@@ -83,7 +83,7 @@ if (!is_front_page()) {
         }
 
         breadcrumb_item(false, get_queried_object()->name, 'span');
-    } elseif (is_singular()) {
+    } elseif (is_single()) {
 
         // If post is a custom post type
         $post_type = get_post_type();
