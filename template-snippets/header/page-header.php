@@ -12,7 +12,8 @@ elseif (is_search()):
     $page_subtitle = __('Found', 'keitaro') . ' ' . highlight($wp_query->found_posts) . ' ' . __('search results', 'keitaro');
 
 elseif (is_archive()) :
-    $page_title = single_cat_title(__('Archive:', 'keitaro') . ' ', false);
+    $page_title = get_the_archive_title();
+
 endif;
 
 if (!empty($page_title)) :
@@ -41,55 +42,4 @@ if (!empty($page_title)) :
         </div>
     </header>
     <?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 endif;
