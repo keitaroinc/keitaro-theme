@@ -380,11 +380,12 @@ function keitaro_author_box($author = false, $display = true) {
     $author_title = get_the_author_posts_link($author);
     $author_description = get_the_author_meta('description');
     $author_posts_number = get_the_author_posts($author);
-    $author_stats = sprintf('<div class="panel panel-default"><div class="panel-body author-stats">' . _n('Contributed <strong>%s</strong> post so far', 'Contributed <strong>%s</strong> posts so far', $author_posts_number, 'keitaro') . '.</div></div>', $author_posts_number);
+    $author_comments_number = count(get_comments(array('post_author' => $author)));
+    $author_stats = sprintf('<p class="author-stats"><small>' . __('Contributed', 'keitaro') . ' <strong>' . _n('%s post', '%s posts', $author_posts_number, 'keitaro') . '</strong> ' . __('and', 'keitaro') . ' <strong>' . _n('%s comment', '%s comments', $author_comments_number, 'keitaro') . '</strong> ' . __('so far', 'keitaro') . '.</small></p>', $author_posts_number, $author_comments_number);
 
 
-    $print .= sprintf('<h3 class="sr-only">%1$s</h3><div class="author-box">%2$s<h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div>', __('Author', 'keitaro'), sprintf(
-                    __('%s', 'keitaro'), '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author, (is_single() ? 96 : 112)) . '</a></span>'), $author_title, $author_description, $author_stats
+    $print .= sprintf('<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div></div>', __('Author', 'keitaro'), sprintf(
+                    __('%s', 'keitaro'), '<div class="author-avatar"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar($author, (is_single() ? 96 : 112)) . '</a></div>'), $author_title, $author_description, $author_stats
     );
 
     if ($display == true) {
