@@ -211,7 +211,7 @@ if (!is_front_page()) {
     } elseif (is_search()) {
 
         // Search results page
-        breadcrumb_item(false, __('Search results for: ', 'keitaro') . highlight(get_search_query()), 'span');
+        breadcrumb_item(false, __('Search results for: ', 'keitaro') . get_search_query(), 'span');
     } elseif (is_404()) {
 
         // 404 page
