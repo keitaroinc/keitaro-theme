@@ -55,10 +55,17 @@ if (!empty($read_more_content)):
 
                 endif;
 
+                // Reset query data to go back to the default WordPress loop
+                wp_reset_query();
+
                 ?>
             </div>
         </div>
     </section>
     <?php
+
+
+
+
 
 endif;
