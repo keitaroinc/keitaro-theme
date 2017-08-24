@@ -1,17 +1,24 @@
 <?php
 
+$get_cats = get_the_terms(get_the_ID(), 'category');
+$get_tags = get_the_terms(get_the_ID(), 'post_tag');
+
 $post_cats = '';
 $post_tags = '';
 
-// Get current post tags
-foreach (get_the_terms(get_the_ID(), 'post_tag') as $tag):
-    $post_tags[] = $tag->term_id;
-endforeach;
-
 // Get current post categories
-foreach (get_the_terms(get_the_ID(), 'category') as $tag):
-    $post_cats[] = $tag->term_id;
-endforeach;
+if ($get_cats):
+    foreach ($get_cats as $tag):
+        $post_cats[] = $tag->term_id;
+    endforeach;
+endif;
+
+// Get current post tags
+if ($get_tags):
+    foreach (get_the_terms(get_the_ID(), 'post_tag') as $tag):
+        $post_tags[] = $tag->term_id;
+    endforeach;
+endif;
 
 // Get posts that have any of the tags and categories of the current post
 $read_more_content = new WP_Query(
@@ -63,9 +70,5 @@ if (!empty($read_more_content)):
         </div>
     </section>
     <?php
-
-
-
-
 
 endif;
