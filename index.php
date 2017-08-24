@@ -3,7 +3,7 @@
 $pagination_wrapper_start = '<div class="row"><div class="col-md-8 col-md-offset-2">';
 $pagination_wrapper_end = '</div></div>';
 
-if (is_author()):
+if (is_author() || is_404()):
     
     $pagination_wrapper_start = '';
     $pagination_wrapper_end = '';
@@ -59,6 +59,7 @@ if (!is_front_page()) :
             ?>
 
         </div>
+            
     </div>
 
     <?php
