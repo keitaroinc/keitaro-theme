@@ -1,5 +1,4 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
     <div class="row">
         <?php if (!is_author() && !is_single()): ?>
             <div class="col-md-2 avatar-wrapper">
@@ -7,6 +6,7 @@
             </div>
         <?php endif; ?>
         <div class="col-md-8">
+
             <?php
 
             get_template_part(SNIPPETS_DIR . '/header/entry-header');
@@ -18,6 +18,12 @@
             endif;
 
             comments_template();
+
+            if (is_single()):
+
+                get_template_part(SNIPPETS_DIR . '/content/content-read-next');
+
+            endif;
 
             ?>
         </div> 
