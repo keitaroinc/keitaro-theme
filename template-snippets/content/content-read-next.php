@@ -23,32 +23,39 @@ $read_more_content = new WP_Query(
         )
 );
 
-?>
-<section class="read-next">
-    <h4 class="read-next-title"><?php _e('Read next', 'keitaro'); ?></h4>
-    <?php
-
-    if ($read_more_content->have_posts()):
-
-        while ($read_more_content->have_posts()):
-
-            $read_more_content->the_post();
-
-            ?>
-            <div class="media">
-                <div class="media-left">
-                    <?php keitaro_author_avatar(get_the_author_meta('ID'), 48); ?>
-                </div>
-                <div class="media-body">
-                    <?php the_title('<h4 class="media-heading"><a href="' . get_permalink() . '">', '</a></h4>'); ?>
-                </div>
-            </div>
-
-            <?php
-
-        endwhile;
-
-    endif;
+if (!empty($read_more_content)):
 
     ?>
-</section>
+    <section class="read-next">
+        <h4 class="read-next-title"><?php _e('Read next', 'keitaro'); ?></h4>
+        <?php
+
+        if ($read_more_content->have_posts()):
+
+            while ($read_more_content->have_posts()):
+
+                $read_more_content->the_post();
+
+                ?>
+                <div class="media">
+                    <div class="media-left">
+                        <?php keitaro_author_avatar(get_the_author_meta('ID'), 48); ?>
+                    </div>
+                    <div class="media-body">
+                        <?php the_title('<h4 class="media-heading"><a href="' . get_permalink() . '">', '</a></h4>'); ?>
+                    </div>
+                </div>
+
+                <?php
+
+            endwhile;
+
+        endif;
+
+        ?>
+    </section>
+    <?php
+
+
+
+endif;
