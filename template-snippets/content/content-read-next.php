@@ -27,35 +27,38 @@ if (!empty($read_more_content)):
 
     ?>
     <section class="read-next">
-        <h4 class="read-next-title"><?php _e('Read next', 'keitaro'); ?></h4>
-        <?php
+        <div class="row">
+            <div class="col-md-10">
 
-        if ($read_more_content->have_posts()):
-
-            while ($read_more_content->have_posts()):
-
-                $read_more_content->the_post();
-
-                ?>
-                <div class="media">
-                    <div class="media-left">
-                        <?php keitaro_author_avatar(get_the_author_meta('ID'), 48); ?>
-                    </div>
-                    <div class="media-body">
-                        <?php the_title('<h4 class="media-heading"><a href="' . get_permalink() . '">', '</a></h4>'); ?>
-                    </div>
-                </div>
-
+                <h3 class="read-next-title"><?php _e('Read next', 'keitaro'); ?></h3>
                 <?php
 
-            endwhile;
+                if ($read_more_content->have_posts()):
 
-        endif;
+                    while ($read_more_content->have_posts()):
 
-        ?>
+                        $read_more_content->the_post();
+
+                        ?>
+                        <div class="media">
+                            <div class="media-left">
+                                <?php keitaro_author_avatar(get_the_author_meta('ID'), 48); ?>
+                            </div>
+                            <div class="media-body">
+                                <?php the_title('<h4 class="read-more-item-title media-heading"><a href="' . get_permalink() . '">', '</a></h4>'); ?>
+                            </div>
+                        </div>
+
+                        <?php
+
+                    endwhile;
+
+                endif;
+
+                ?>
+            </div>
+        </div>
     </section>
     <?php
-
-
 
 endif;
