@@ -3,66 +3,66 @@
 $pagination_wrapper_start = '<div class="row"><div class="col-md-8 col-md-offset-2">';
 $pagination_wrapper_end = '</div></div>';
 
-if (is_author() || is_404()):
-    
-    $pagination_wrapper_start = '';
-    $pagination_wrapper_end = '';
-    
-endif;
+if ( is_author() || is_404() ) :
+
+		$pagination_wrapper_start = '';
+	$pagination_wrapper_end = '';
+
+	endif;
 
 get_header();
 
-if (!is_front_page()) :
+if ( ! is_front_page() ) :
 
-    if (have_posts()) :
+	if ( have_posts() ) :
 
-        ?>
-        <div class="container">
-            <div id="primary" class="content-area">
+		?>
+		<div class="container">
+			<div id="primary" class="content-area">
 
-                <?php get_template_part(SNIPPETS_DIR . '/header/page-header'); ?>
-                <main id="main" class="site-main" role="main">
+				<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
+				<main id="main" class="site-main" role="main">
 
-                    <?php
+					<?php
 
-                    /* Start the Loop */
-                    while (have_posts()) :
-                        the_post();
+					/* Start the Loop */
+					while ( have_posts() ) :
+						the_post();
 
-                        if (is_page()) :
-                            get_template_part(SNIPPETS_DIR . '/content/content-page');
-                        else :
-                            get_template_part(SNIPPETS_DIR . '/content/content');
-                        endif;
+						if ( is_page() ) :
+							get_template_part( SNIPPETS_DIR . '/content/content-page' );
+						else :
+							get_template_part( SNIPPETS_DIR . '/content/content' );
+						endif;
 
-                    endwhile;
+					endwhile;
 
-                    ?>
-                </main>
+					?>
+				</main>
 
-                <?php
+				<?php
 
-            else :
+			else :
 
-                get_template_part(SNIPPETS_DIR . '/content/content-none');
+				get_template_part( SNIPPETS_DIR . '/content/content-none' );
 
-            endif;
+			endif;
 
-            echo $pagination_wrapper_start;
-            
-            get_template_part(SNIPPETS_DIR . '/navigation/pagination');
-            
-            echo $pagination_wrapper_end;
+			echo $pagination_wrapper_start;
 
-            get_template_part(SNIPPETS_DIR . '/sidebars/twitter-content');
+						get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
 
-            ?>
+						echo $pagination_wrapper_end;
 
-        </div>
-            
-    </div>
+			get_template_part( SNIPPETS_DIR . '/sidebars/twitter-content' );
 
-    <?php
+			?>
+
+		</div>
+
+				</div>
+
+	<?php
 
 endif;
 
