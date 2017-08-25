@@ -35,10 +35,6 @@
     margin-top: @grid-gutter-width*2;
 }
 
-/*main-title {
-    .text-uppercase;
-}*/
-
 .post-list {
     text-align: right;
 }
@@ -141,6 +137,7 @@
 }
 
 .entry-title{
+    word-wrap: break-word;
     @media (max-width: @screen-sm-max){
         margin-top: @grid-gutter-width/2;
     }
@@ -331,4 +328,8 @@ hr{
 
 .highlight{
     color: @brand-success;
+}
+
+pre{
+    font-size: @font-size-small;
 }
