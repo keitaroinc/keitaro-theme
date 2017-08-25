@@ -17,7 +17,7 @@
 
 	if ( 'post' === get_post_type() ) :
 		echo '<div class="entry-meta">';
-		if ( is_single() || is_archive() || is_home() ) :
+		if ( is_singular() || is_archive() || is_home() || is_search() ) :
 			keitaro_posted_on();
 		endif;
 		echo '</div><!-- .entry-meta -->';
