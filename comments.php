@@ -28,10 +28,10 @@ if ( post_password_required() ) {
 						$comments_number,
 						'comments title',
 						'keitaro'
-					),
+                        )
+                    ),
 					number_format_i18n( $comments_number ),
 					get_the_title()
-                    )
                 );
 			}
 			?>
@@ -53,12 +53,11 @@ if ( post_password_required() ) {
 			'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>') );
 
 	endif;
-
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'keitaro' ); ?></p>
-	<?php
-	endif;
+    
+    // If comments are closed and there are comments, let's leave a little note, shall we?
+    if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+        printf( '<p class="no-comments">%s</p>', esc_html__( 'Comments are closed.', 'keitaro' ) );
+    endif;
 
 	comment_form();
 	?>
