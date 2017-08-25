@@ -20,7 +20,8 @@
         padding-left: @grid-gutter-width/6;
         .comment {
             margin-top: @grid-gutter-width - 20;
-            margin-left: @grid-gutter-width/4;
+            padding-left: @grid-gutter-width/2;
+            border-left: @comment-border;
         }
     }
 }
@@ -38,6 +39,9 @@
     a {
         color: @text-color;
     }
+    .comment-edit-link{
+        margin: 0 @grid-gutter-width/2;
+    }
 }
 
 .comment-content {
@@ -52,11 +56,20 @@
 
 #cancel-comment-reply-link,
 .comment-edit-link {
-    margin: 0 @grid-gutter-width/4;
     .btn;
     .btn-xs;
     .btn-default;
-    vertical-align: baseline;
+    vertical-align: top;
+}
+
+.pingback{
+    .url{
+        vertical-align: middle;
+        display: inline-block;
+        max-width: 50%;
+        overflow: hidden;
+        margin: 0 @grid-gutter-width/4;
+    }
 }
 
 .comment-reply-link{
