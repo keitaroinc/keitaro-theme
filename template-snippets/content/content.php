@@ -1,49 +1,53 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="row">
-		<?php if ( ! is_author() && ! is_single() ) : ?>
-			<div class="col-md-2 avatar-wrapper">
-				<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
-			</div>
-		<?php endif; ?>
-		<div class="col-md-8">
+    <div class="row">
+        <?php if ( !is_author() && !is_single() ) : ?>
+            <div class="col-md-2 avatar-wrapper">
+                <?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
+            </div>
+        <?php endif; ?>
+        <div class="col-md-8">
 
-			<?php
+            <?php
 
-			get_template_part( SNIPPETS_DIR . '/header/entry-header' );
+            get_template_part( SNIPPETS_DIR . '/header/entry-header' );
 
-			if ( is_archive() || is_home() || is_search() ) :
-				get_template_part( SNIPPETS_DIR . '/entry-excerpt' );
-			else :
-				get_template_part( SNIPPETS_DIR . '/entry-content' );
-			endif;
+            if ( '' !== get_the_post_thumbnail() && is_single() ) :
+                get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
+            endif;
 
-			comments_template();
+            if ( is_archive() || is_home() || is_search() ) :
+                get_template_part( SNIPPETS_DIR . '/entry-excerpt' );
+            else :
+                get_template_part( SNIPPETS_DIR . '/entry-content' );
+            endif;
 
-			if ( is_single() ) :
+            comments_template();
 
-				get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
+            if ( is_single() ) :
 
-			endif;
+                get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
 
-			?>
-		</div> 
-		<?php if ( is_single() ) : ?>
-			<div class="col-md-4">
-				<?php
+            endif;
 
-				if ( ! is_search() ) :
-					keitaro_child_pages_list( get_the_ID() );
+            ?>
+        </div> 
+        <?php if ( is_single() ) : ?>
+            <div class="col-md-4">
+                <?php
 
-					foreach ( get_children( get_ancestors( get_the_ID() ) ) as $page ) :
-						get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' );
-					endforeach;
-				endif;
+                if ( !is_search() ) :
+                    keitaro_child_pages_list( get_the_ID() );
 
-				get_template_part( SNIPPETS_DIR . '/entry-footer' );
+                    foreach ( get_children( get_ancestors( get_the_ID() ) ) as $page ) :
+                        get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' );
+                    endforeach;
+                endif;
 
-				?>
-			</div>
-		<?php endif; ?>
-	</div>
+                get_template_part( SNIPPETS_DIR . '/entry-footer' );
+
+                ?>
+            </div>
+        <?php endif; ?>
+    </div>
 
 </article>
