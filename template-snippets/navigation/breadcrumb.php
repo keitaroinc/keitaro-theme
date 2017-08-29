@@ -25,9 +25,8 @@ endif;
 if ( ! function_exists( 'is_paginated_url' ) ) {
 
 	function is_paginated_url() {
-		global $paged;
 
-		if ( $paged > 1 ) :
+		if ( get_query_var( 'paged' ) > 1 ) :
 			$url = get_term_link( get_queried_object()->term_id, get_queried_object()->taxonomy );
 		else :
 			$url = false;
@@ -61,12 +60,12 @@ if ( ! is_front_page() ) {
 
 	if ( is_home() ) {
 
-		global $paged;
-
-		if ( $paged > 1 ) :
+		if ( get_query_var( 'paged' ) > 1 ) :
 			breadcrumb_item( get_page_link( get_queried_object()->ID ), get_queried_object()->post_title );
 		else :
-			breadcrumb_item( false, get_queried_object()->post_title, 'span' );
+                        if( get_queried_object() ):
+                            breadcrumb_item( false, get_queried_object()->post_title, 'span' );
+                        endif;
 		endif;
 	} elseif ( is_post_type_archive() ) {
 		breadcrumb_item( false, post_type_archive_title( false ), 'span' );
@@ -86,12 +85,15 @@ if ( ! is_front_page() ) {
 
 		// If post is a custom post type
 		$post_type = get_post_type();
-
+                
 		// If it is a custom post type display name and link
 		if ( $post_type != 'post' ) {
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name, 'span' );
 		} else {
-			breadcrumb_item( get_post_type_archive_link( 'post' ), get_the_title( get_option( 'page_for_posts' ) ) );
+                        // tuka e problemot
+                        if( get_option( 'page_for_posts' ) ):
+                            breadcrumb_item( get_post_type_archive_link( $post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
+                        endif;
 		}
 
 		// Get post category info
@@ -195,13 +197,10 @@ if ( ! is_front_page() ) {
 		breadcrumb_item( false, $year_display, 'span' );
 	} elseif ( is_author() ) {
 
-		// Author Archive
-		global $paged;
-
 		// Display author name
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
-		if ( $paged > 1 ) :
+		if ( get_query_var( 'paged' ) > 1 ) :
 			printf( '<li>%s</li>', get_the_author_posts_link() );
 		else :
 			breadcrumb_item( false, get_the_author_meta( 'display_name' ), 'span' );
