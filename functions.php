@@ -187,11 +187,10 @@ function keitaro_theme_scripts() {
     // Bootstrap JS modules
     wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js' );
 
-    // Custom JS
-    // SWITCH TO A MINIFIED FILE SOON!
+    // Custom JS minified
     wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js' );
 
-    // JS for testing layout issues via JS
+    // JS for testing layout issues
     // wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/assets/js/layout-test.js');
 
 }
