@@ -30,7 +30,7 @@ $read_more_content = new WP_Query(
 		)
 );
 
-if ( ! empty( $read_more_content ) ) :
+if ( $read_more_content->have_posts() ) :
 
 	?>
 	<section class="read-next">
@@ -39,8 +39,6 @@ if ( ! empty( $read_more_content ) ) :
 
 				<h3 class="read-next-title"><?php _e( 'Read next', 'keitaro' ); ?></h3>
 				<?php
-
-				if ( $read_more_content->have_posts() ) :
 
 					while ( $read_more_content->have_posts() ) :
 
@@ -60,11 +58,6 @@ if ( ! empty( $read_more_content ) ) :
 
 					endwhile;
 
-				endif;
-
-				// Reset query data to go back to the default WordPress loop
-				wp_reset_query();
-
 				?>
 			</div>
 		</div>
@@ -72,3 +65,6 @@ if ( ! empty( $read_more_content ) ) :
 	<?php
 
 endif;
+
+// Reset query data to go back to the default WordPress loop
+wp_reset_query();
