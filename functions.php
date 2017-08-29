@@ -252,6 +252,14 @@ require_once SNIPPETS_DIR . '/widgets/class-wp-widget-tweets.php';
 function keitaro_widgets_init() {
 
     register_sidebar( array(
+        'name' => __( 'Default Sidebar', 'keitaro' ),
+        'description' => __( 'Reserved for any predefined default WordPress content. This sidebar is actually not shown anywhere, just used to collect any default widgets transfered on activation.', 'keitaro' ),
+        'id' => 'sidebar-1',
+        'before_widget' => '<div class="sidebar-default">',
+        'after_widget' => '</div>'
+    ) );
+
+    register_sidebar( array(
         'name' => __( 'Services', 'keitaro' ),
         'description' => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
         'id' => 'keitaro_services',
