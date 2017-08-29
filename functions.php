@@ -99,6 +99,9 @@ function keitaro_theme_setup() {
         'flex-width' => true,
     ) );
 
+    // $starter_content = array();
+    // add_theme_support( 'starter-content', $starter_content );
+
 }
 
 add_action( 'after_setup_theme', 'keitaro_theme_setup' );
