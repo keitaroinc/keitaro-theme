@@ -2,9 +2,12 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
+var pump = require('pump');
+var rename = require('gulp-rename');
 
 // The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'bootstrap-js', 'less', 'watch']);
+gulp.task('default', ['bootstrap-fonts', 'bootstrap-js', 'custom-js-minify', 'less', 'watch']);
 
 // Rebuild CSS from LESS
 gulp.task('less', function () {
@@ -28,6 +31,13 @@ gulp.task('bootstrap-js', function () {
 gulp.task('bootstrap-fonts', function () {
     return gulp.src('node_modules/bootstrap/dist/fonts/*')
             .pipe(gulp.dest('assets/fonts/'));
+});
+
+gulp.task('custom-js-minify', function (cb) {
+    gulp.src('assets/js/custom.js')
+            .pipe(uglify())
+            .pipe(rename({suffix: '.min'}))
+            .pipe(gulp.dest('assets/js/'));
 });
 
 // Watch for LESS and JS file changes
