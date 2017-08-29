@@ -52,7 +52,7 @@
             display: block;
             padding: @grid-gutter-width/6 @grid-gutter-width/6;
         }
-        
+
         &:last-child{
             padding-right: 0;
         }
@@ -188,12 +188,16 @@
 }
 
 .breadcrumb{
-
     margin-bottom: 0;
     white-space: nowrap;
     overflow: hidden;
 
-    > li {
+    li {
+        @media (min-width: @screen-sm-min){
+            max-width: 50%;            
+        }
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         + li{
             &:before{
