@@ -3,7 +3,6 @@ var less = require('gulp-less');
 var cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var pump = require('pump');
 var rename = require('gulp-rename');
 
 // The default Gulp.js task
