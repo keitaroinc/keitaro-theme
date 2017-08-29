@@ -4,9 +4,15 @@
     padding-bottom: @grid-gutter-width/2;
 
     @media(min-width: @screen-sm-min) {
-        .row {
-            display: flex;
-            align-items: center;
+        display: flex;
+        align-items: center;
+        
+        .pull-left{
+            flex-basis: @grid-gutter-width*5;
+        }
+        
+        .pull-right{
+            flex-grow: 5;
         }
     }
 
