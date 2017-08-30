@@ -179,7 +179,7 @@ function google_search_console_tags() {
     $gsc_verification_id = get_option( 'keitaro_settings' )[ 'gsc_verification_id' ];
 
     if ( $gsc_verification_id ):
-        printf('<meta name="google-site-verification" content="%s" />', $gsc_verification_id);
+        printf( '<meta name="google-site-verification" content="%s" />', $gsc_verification_id );
     endif;
 
 }
@@ -463,7 +463,7 @@ function keitaro_child_pages_list($parent_page_id) {
         <div class="service-list">
             <?php foreach ( $child_pages as $page ) : ?>
                 <h4 class="service-list-item"><a href="<?php the_permalink( $page->ID ); ?>"><?php echo $page->post_title; ?></a></h4>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
         <?php
 
@@ -481,7 +481,7 @@ function keitaro_author_box($author = false, $display = true) {
     $author_stats = sprintf( '<p class="author-stats"><small>' . __( 'Contributed', 'keitaro' ) . ' <strong>' . _n( '%s post', '%s posts', $author_posts_number, 'keitaro' ) . '</strong> ' . __( 'and', 'keitaro' ) . ' <strong>' . _n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' . __( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number );
 
     $print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div></div>', __( 'Author', 'keitaro' ), sprintf(
-                    __( '%s', 'keitaro' ), '<div class="author-avatar"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( $author, (is_single() ? 96 : 112 ) ) . '</a></div>' ), $author_title, $author_description, $author_stats
+                    __( '%s', 'keitaro' ), '<div class="author-avatar"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) . '</a></div>' ), $author_title, $author_description, $author_stats
     );
 
     if ( $display == true ) {
@@ -496,7 +496,17 @@ function keitaro_author_avatar($author = false, $size = 112, $display = true) {
 
     $print = '';
 
-    $print .= sprintf( '<a title="%s" class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( $author, $size ) . '</a>', get_the_author_meta( 'display_name' ) );
+    $default_avatar = get_avatar( '' );
+    $custom_avatar_url = get_the_author_meta( 'user_meta_image', $author );
+    $default_avatar_url = get_avatar_url( '' );
+
+    if ( $custom_avatar_url != $default_avatar_url ):
+        $avatar = sprintf( '<img alt="" src="%s" class="avatar avatar-96 photo avatar-default" height="%s" width="%s">', $custom_avatar_url, $size, $size );
+    else:
+        $avatar = get_avatar( $author, $size );
+    endif;
+
+    $print .= sprintf( '<a title="%s" class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $avatar . '</a>', get_the_author_meta( 'display_name' ) );
 
     if ( $display == true ) {
         echo $print;
@@ -507,7 +517,6 @@ function keitaro_author_avatar($author = false, $size = 112, $display = true) {
 }
 
 function keitaro_posted_on() {
-
     the_date( '', '<p>', '</p>' );
 
 }
@@ -534,3 +543,67 @@ function keitaro_continue_to_second_blog_posts_page_button($text, $link) {
     printf( '<div class="call-to-action-secondary text-center"><a class="btn btn-success" href="%2$s">%1$s</a></div>', $text, $link );
 
 }
+
+/* Support custom profile pictures in case avatars
+ * are not available through Gravatar */
+
+function keitaro_custom_profile_picture($user) {
+
+    wp_enqueue_media();
+    wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
+
+    $current_profile_picture = get_the_author_meta( 'user_meta_image', $user->ID );
+
+    if ( empty( $current_profile_picture ) ):
+        $current_profile_picture = get_avatar_url( '' );
+    endif;
+
+    ?>
+
+    <h3><?php _e( 'Additional Options', 'keitaro' ); ?></h3>
+
+    <table class="form-table">
+
+        <tr>
+            <th><label for="user_meta_image"><?php _e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
+            <td>
+                <a href="javascript:;" class="custom-profile-picture">
+                    <img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96"><br />
+                </a>
+                <p class="description"><?php _e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
+                <p>
+                    <button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture ) ? __( 'Upload Image', 'keitaro' ) : __( 'Replace Image', 'keitaro' )); ?></button>
+                    <?php if ( $current_profile_picture ): ?>
+                        <button type="button" class="button custom-profile-picture-remove"><?php _e( 'Reset Image', 'keitaro' ); ?></button>
+                    <?php endif; ?>
+                </p>
+                <input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url_raw( $current_profile_picture ); ?>" class="regular-text" />
+            </td>
+        </tr>
+
+    </table><!-- end form-table -->
+    <?php
+
+}
+
+// additional_user_fields
+
+add_action( 'show_user_profile', 'keitaro_custom_profile_picture' );
+add_action( 'edit_user_profile', 'keitaro_custom_profile_picture' );
+
+/**
+ * Saves additional user fields to the database
+ */
+function keitaro_save_custom_profile_picture($user_id) {
+
+    // only saves if the current user can edit user profiles
+    if ( !current_user_can( 'edit_user', $user_id ) ):
+        return false;
+    endif;
+
+    update_user_meta( $user_id, 'user_meta_image', $_POST[ 'user_meta_image' ] );
+
+}
+
+add_action( 'personal_options_update', 'keitaro_save_custom_profile_picture' );
+add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
