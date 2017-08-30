@@ -20,7 +20,8 @@ function keitaro_theme_setup() {
         ),
     ) );
 
-    // require_once dirname(__FILE__) . '/inc/theme-settings.php';
+    require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/theme-settings.php';
+
     // Load text domain for localization
     load_theme_textdomain( 'keitaro' );
 
@@ -171,6 +172,19 @@ function open_graph_tags() {
 }
 
 add_action( 'wp_head', 'open_graph_tags' );
+
+/* Set custom meta tag for Google Search Console */
+
+function google_search_console_tags() {
+    $gsc_verification_id = get_option( 'keitaro_settings' )[ 'gsc_verification_id' ];
+
+    if ( $gsc_verification_id ):
+        printf('<meta name="google-site-verification" content="%s" />', $gsc_verification_id);
+    endif;
+
+}
+
+add_action( 'wp_head', 'google_search_console_tags' );
 
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
