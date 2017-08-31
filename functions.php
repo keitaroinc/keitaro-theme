@@ -601,7 +601,7 @@ add_action( 'edit_user_profile', 'keitaro_custom_profile_picture' );
 function keitaro_save_custom_profile_picture($user_id) {
 
     // only saves if the current user can edit user profiles
-    if ( !current_user_can( 'edit_user', $user_id ) ):
+    if ( !current_user_can( 'upload_files', $user_id ) ):
         return false;
     endif;
 
