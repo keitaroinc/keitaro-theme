@@ -496,20 +496,20 @@ function keitaro_author_avatar($author = false, $size = 112, $display = true) {
 
     $print = '';
 
-    $custom_avatar_url = get_the_author_meta( 'user_meta_image', $author );
+    $custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
     $default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
     $custom_avatar = sprintf( '<img alt="" src="%s" class="avatar avatar-96 photo avatar-default" height="%s" width="%s">', $custom_avatar_url, $size, $size );
 
     if ( $custom_avatar_url ):
         $avatar = $custom_avatar;
-    elseif ($custom_avatar_url == $default_avatar_url):
+    elseif ( $custom_avatar_url == $default_avatar_url ):
         $avatar = $custom_avatar;
     else:
         $avatar = get_avatar( $author, $size );
     endif;
 
     $print .= $avatar;
-    
+
     if ( $display == true ) {
         echo $print;
     } else {
@@ -554,7 +554,8 @@ function keitaro_custom_profile_picture($user) {
     wp_enqueue_media();
     wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
 
-    $current_profile_picture = get_the_author_meta( 'user_meta_image', $user->ID );
+    // Get thumbnail version of the current attachment
+    $current_profile_picture = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $user->ID ) );
 
     if ( empty( $current_profile_picture ) ):
         $current_profile_picture = get_avatar_url( '' );
