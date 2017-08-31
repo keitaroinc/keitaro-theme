@@ -581,7 +581,7 @@ function keitaro_custom_profile_picture($user) {
                         <button type="button" class="button custom-profile-picture-remove"><?php _e( 'Reset Image', 'keitaro' ); ?></button>
                     <?php endif; ?>
                 </p>
-                <input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url_raw( $current_profile_picture_id ); ?>" class="regular-text" />
+                <input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_attr( $current_profile_picture_id ); ?>" class="regular-text" />
             </td>
         </tr>
 
