@@ -508,8 +508,8 @@ function keitaro_author_avatar($author = false, $size = 112, $display = true) {
         $avatar = get_avatar( $author, $size );
     endif;
 
-    $print .= sprintf( '<a title="%s" class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $avatar . '</a>', get_the_author_meta( 'display_name' ) );
-
+    $print .= $avatar;
+    
     if ( $display == true ) {
         echo $print;
     } else {
