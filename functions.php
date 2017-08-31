@@ -555,9 +555,10 @@ function keitaro_custom_profile_picture($user) {
     wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
 
     // Get thumbnail version of the current attachment
-    $current_profile_picture = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $user->ID ) );
+    $current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
+    $current_profile_picture = wp_get_attachment_image_url( $current_profile_picture_id );
 
-    if ( empty( $current_profile_picture ) ):
+    if ( empty( $current_profile_picture_id ) ):
         $current_profile_picture = get_avatar_url( '' );
     endif;
 
@@ -575,12 +576,12 @@ function keitaro_custom_profile_picture($user) {
                 </a>
                 <p class="description"><?php _e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
                 <p>
-                    <button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture ) ? __( 'Upload Image', 'keitaro' ) : __( 'Replace Image', 'keitaro' )); ?></button>
-                    <?php if ( $current_profile_picture ): ?>
+                    <button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? __( 'Upload Image', 'keitaro' ) : __( 'Replace Image', 'keitaro' )); ?></button>
+                    <?php if ( $current_profile_picture_id ): ?>
                         <button type="button" class="button custom-profile-picture-remove"><?php _e( 'Reset Image', 'keitaro' ); ?></button>
                     <?php endif; ?>
                 </p>
-                <input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url_raw( $current_profile_picture ); ?>" class="regular-text" />
+                <input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url_raw( $current_profile_picture_id ); ?>" class="regular-text" />
             </td>
         </tr>
 
