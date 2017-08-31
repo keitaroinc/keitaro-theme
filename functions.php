@@ -496,12 +496,14 @@ function keitaro_author_avatar($author = false, $size = 112, $display = true) {
 
     $print = '';
 
-    $default_avatar = get_avatar( '' );
     $custom_avatar_url = get_the_author_meta( 'user_meta_image', $author );
-    $default_avatar_url = get_avatar_url( '' );
+    $default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
+    $custom_avatar = sprintf( '<img alt="" src="%s" class="avatar avatar-96 photo avatar-default" height="%s" width="%s">', $custom_avatar_url, $size, $size );
 
-    if ( $custom_avatar_url != $default_avatar_url ):
-        $avatar = sprintf( '<img alt="" src="%s" class="avatar avatar-96 photo avatar-default" height="%s" width="%s">', $custom_avatar_url, $size, $size );
+    if ( $custom_avatar_url ):
+        $avatar = $custom_avatar;
+    elseif ($custom_avatar_url == $default_avatar_url):
+        $avatar = $custom_avatar;
     else:
         $avatar = get_avatar( $author, $size );
     endif;
