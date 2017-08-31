@@ -35,7 +35,8 @@ jQuery(document).ready(function ($) {
             attachment = file_frame.state().get('selection').first().toJSON();
 
             // Do something with attachment.id and/or attachment.url here
-            $('#user_meta_image').val(attachment.url);
+            
+            $('#user_meta_image').val(attachment.id);
             $('.current-profile-picture').attr('src', attachment.url);
         });
 
