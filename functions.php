@@ -215,8 +215,8 @@ add_action( 'wp_enqueue_scripts', 'keitaro_theme_scripts' );
 function keitaro_theme_favicons() {
 
     ?>
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png' ?>">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png' ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png'; ?>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png'; ?>">
     <?php
 
 }
@@ -247,22 +247,22 @@ function keitaro_theme_login_logo() {
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
 // Require Keitaro Service widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-service.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-service.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-call-to-action.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-call-to-action.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-icon-block.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-icon-block.php';
 
 // Require Keitaro Location widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-location.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-location.php';
 
 // Require Contact Form widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-contact-form.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-contact-form.php';
 
 // Require Twitter Grid widget
-require_once SNIPPETS_DIR . '/widgets/class-wp-widget-tweets.php';
+require_once SNIPPETS_DIR . '/widgets/class-widget-tweets.php';
 
 // Register Widget areas
 function keitaro_widgets_init() {
@@ -594,6 +594,32 @@ function keitaro_custom_profile_picture($user) {
 
 add_action( 'show_user_profile', 'keitaro_custom_profile_picture' );
 add_action( 'edit_user_profile', 'keitaro_custom_profile_picture' );
+
+function keitaro_custom_image_placeholder($attachment_id, $display = true, $print = '') {
+
+    if ( $attachment_id ):
+        $btn_label_add = __( 'Replace Image', 'keitaro' );
+        $btn_label_remove = __( 'Remove Image', 'keitaro' );
+        $custom_image_url = esc_url( wp_get_attachment_image_url( $attachment_id ) );
+    else:
+        $btn_label_add = __( 'Upload Image', 'keitaro' );
+        $custom_image_url = get_avatar_url( '' );
+    endif;
+
+
+    if ( $display ) :
+        $print .= sprintf( '<div><a data-media-widget-title="%1$s" href="#" class="custom-image"><img class="current-custom-image" src="%2$s" width="96"></a></div>', $btn_label_add, $custom_image_url );
+        $print .= sprintf( '<button data-media-widget-title="%1$s" type="button" class="button custom-image">%1$s</button>&nbsp;', $btn_label_add );
+        if ( $attachment_id ):
+            $print .= sprintf( '<button data-media-widget-title="%1$s" type="button" class="button custom-image-remove">%1$s</button>', $btn_label_remove );
+        endif;
+
+        echo $print;
+    else:
+        return $custom_image_url;
+    endif;
+
+}
 
 /**
  * Saves additional user fields to the database
