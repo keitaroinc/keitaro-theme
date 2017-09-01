@@ -37,7 +37,7 @@ class KeitaroThemeSettings {
 
 		?>
 		<div class="wrap">
-			<h1><?php _e( 'Keitaro Settings', 'keitaro' ) ?></h1>
+			<h1><?php esc_html_e( 'Keitaro Settings', 'keitaro' ) ?></h1>
 			<form method="post" action="options.php">
 				<?php
 
@@ -111,7 +111,7 @@ class KeitaroThemeSettings {
 	 * Print the Section text
 	 */
 	public function section_description() {
-		 printf( '<p>%s</p>', __( 'A list of customizable theme-specific settings', 'keitaro' ) );
+		 printf( '<p>%s</p>', esc_html__( 'A list of customizable theme-specific settings', 'keitaro' ) );
 
 	}
 

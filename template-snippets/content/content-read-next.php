@@ -37,7 +37,7 @@ if ( $read_more_content->have_posts() ) :
 		<div class="row">
 			<div class="col-md-10">
 
-				<h3 class="read-next-title"><?php _e( 'Read next', 'keitaro' ); ?></h3>
+				<h3 class="read-next-title"><?php esc_html_e( 'Read next', 'keitaro' ); ?></h3>
 				<?php
 
 					while ( $read_more_content->have_posts() ) :

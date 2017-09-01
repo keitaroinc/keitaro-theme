@@ -9,11 +9,11 @@ if ( is_single() ) :
 
 // Display a list of post categories
 	if ( get_the_category() ) {
-		printf( '<h4>%s</h4>', __( 'Categories', 'keitaro' ) );
+		printf( '<h4>%s</h4>', esc_html__( 'Categories', 'keitaro' ) );
 	}
 	the_category();
 
 // Display a list of post tags
-	the_tags( sprintf( '<h4>%s</h4>', __( 'Tags', 'keitaro' ) ) . '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' );
+	the_tags( sprintf( '<h4>%s</h4>', esc_html__( 'Tags', 'keitaro' ) ) . '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' );
 
 	endif;

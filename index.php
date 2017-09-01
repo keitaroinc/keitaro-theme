@@ -1,15 +1,5 @@
 <?php
 
-$pagination_wrapper_start = '<div class="row"><div class="col-md-8 col-md-offset-2">';
-$pagination_wrapper_end = '</div></div>';
-
-if ( is_author() || is_404() ) :
-
-	$pagination_wrapper_start = '';
-	$pagination_wrapper_end = '';
-
-endif;
-
 get_header();
 
 if ( ! is_front_page() ) :
@@ -48,11 +38,19 @@ if ( ! is_front_page() ) :
 
 			endif;
 
-			echo $pagination_wrapper_start;
+			if ( ! is_author() && ! is_404() ) :
 
-			get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
+				?>
 
-			echo $pagination_wrapper_end;
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<?php get_template_part( SNIPPETS_DIR . '/navigation/pagination' ); ?>
+					</div>
+				</div>
+
+				<?php
+
+			endif;
 
 			get_template_part( SNIPPETS_DIR . '/sidebars/twitter-content' );
 

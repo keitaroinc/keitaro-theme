@@ -5,7 +5,7 @@
             <?php $site_icon_url = get_site_icon_url( 128 ); ?>
 			<?php if ( $site_icon_url ) : ?>
 				<div class="text-center">
-					<a href="<?php echo home_url(); ?>"><img class="keitaro-symbol" src="<?php echo $site_icon_url ?>" alt="Keitaro"></a>
+					<a href="<?php echo esc_url( home_url() ); ?>"><img class="keitaro-symbol" src="<?php echo esc_url( $site_icon_url ); ?>" alt="Keitaro"></a>
 				</div>
 			<?php endif; ?>
 			<div class="row">
@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-md-6">
 					<footer class="copyright">
-						<p>&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>" class="text-uppercase"><?php bloginfo( 'name' ); ?></a>. <?php _e( 'Some rights reserved.', 'keitaro' ) ?></p>
+											<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>" class="text-uppercase"><?php bloginfo( 'name' ); ?></a>. <?php esc_html_e( 'Some rights reserved.', 'keitaro' ) ?></p>
 					</footer>
 				</div>
 			</div>

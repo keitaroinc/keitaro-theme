@@ -20,7 +20,7 @@ function keitaro_theme_setup() {
 		),
 	) );
 
-	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/theme-settings.php';
+	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
 
 	// Load text domain for localization
 	load_theme_textdomain( 'keitaro' );
@@ -247,22 +247,22 @@ function keitaro_theme_login_logo() {
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
 // Require Keitaro Service widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-service.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-service.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-call-to-action.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-call-to-action.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-icon-block.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-icon-block.php';
 
 // Require Keitaro Location widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-location.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-location.php';
 
 // Require Contact Form widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-contact-form.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
 
 // Require Twitter Grid widget
-require_once SNIPPETS_DIR . '/widgets/class-widget-tweets.php';
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 
 // Register Widget areas
 function keitaro_widgets_init() {

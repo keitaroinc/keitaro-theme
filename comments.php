@@ -30,7 +30,7 @@ if ( post_password_required() ) {
 						'keitaro'
                         )
                     ),
-					number_format_i18n( $comments_number ),
+                                        esc_html( number_format_i18n( $comments_number ) ),
 					get_the_title()
                 );
 			}
