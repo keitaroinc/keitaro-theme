@@ -143,7 +143,7 @@ function custom_meta_descriptions() {
 	endif;
 
 	?>
-	<meta name="description" content="<?php echo $meta_description; ?>">
+	<meta name="description" content="<?php echo esc_html( $meta_description ); ?>">
 	<?php
 
 }
@@ -164,7 +164,7 @@ function open_graph_tags() {
 		?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url(); ?>" />
 	<?php else : ?>
-		<meta property="og:image" content="<?php echo DEFAULT_OG_IMAGE_URL; ?>" />
+		<meta property="og:image" content="<?php echo esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
 	<?php
 
 	endif;
@@ -179,7 +179,7 @@ function google_search_console_tags() {
 	$gsc_verification_id = get_option( 'keitaro_settings' )['gsc_verification_id'];
 
 	if ( $gsc_verification_id ) :
-		printf( '<meta name="google-site-verification" content="%s" />', $gsc_verification_id );
+		printf( '<meta name="google-site-verification" content="%s" />', esc_html( $gsc_verification_id ) );
 	endif;
 
 }
@@ -215,8 +215,8 @@ add_action( 'wp_enqueue_scripts', 'keitaro_theme_scripts' );
 function keitaro_theme_favicons() {
 
 	?>
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png'; ?>">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png'; ?>">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png' ); ?>">
+	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png' ); ?>">
 	<?php
 
 }
@@ -232,9 +232,9 @@ function keitaro_theme_login_logo() {
 	?>
 	<style type="text/css">
 		#login h1 a, .login h1 a {
-			background-image: url(<?php echo $image[0]; ?>);
-			width:225px;
-			height:auto;
+			background-image: url(<?php echo esc_url( $image[0] ); ?>);
+			width: 225px;
+			height: auto;
 			background-size: 225px auto;
 			background-repeat: no-repeat;
 			padding-bottom: 30px;
@@ -379,10 +379,9 @@ add_shortcode( 'keitaro-hero-title', 'keitaro_hero_title_shortcode' );
 
 function keitaro_hero_title_shortcode() {
 
-	$title = get_bloginfo( 'description' );
-	$formatted_title = explode( ' ', $title );
-	$formatted_title[2] = $formatted_title[2] . '<span class="hero-subtitle">';
-	printf( '<h2 class="hero-title">%s</h2>', implode( ' ', $formatted_title ) );
+	$formatted_title = explode( ' ', get_bloginfo( 'description' ) );
+	$formatted_title[2] = esc_html( $formatted_title[2] ) . '<span class="hero-subtitle">';
+	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', $formatted_title ) );
 
 }
 
@@ -401,12 +400,12 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 		?>
 		<nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>">
 			<?php if ( $collapse ) : ?>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo $menu_id ?>" aria-expanded="false">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
 			<?php endif; ?>
-			<div id="<?php echo $menu_id ?>" class="<?php echo ($collapse) ? 'collapse navbar-collapse' : ''; ?>">
+			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo ($collapse) ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
 				wp_nav_menu( array(
@@ -462,7 +461,7 @@ function keitaro_child_pages_list( $parent_page_id ) {
 		?>
 		<div class="service-list">
 			<?php foreach ( $child_pages as $page ) : ?>
-				<h4 class="service-list-item"><a href="<?php the_permalink( $page->ID ); ?>"><?php echo $page->post_title; ?></a></h4>
+				<h4 class="service-list-item"><a href="<?php the_permalink( $page->ID ); ?>"><?php echo esc_html( $page->post_title ); ?></a></h4>
 			<?php endforeach; ?>
 		</div>
 		<?php
@@ -478,17 +477,28 @@ function keitaro_author_box( $author = false, $display = true ) {
 	$author_description = get_the_author_meta( 'description' );
 	$author_posts_number = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
-	$author_stats = sprintf( '<p class="author-stats"><small>' . __( 'Contributed', 'keitaro' ) . ' <strong>' . _n( '%s post', '%s posts', $author_posts_number, 'keitaro' ) . '</strong> ' . __( 'and', 'keitaro' ) . ' <strong>' . _n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' . __( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number );
+	$author_stats = sprintf( '<p class="author-stats"><small>' . 
+                // translators: Authors Stats: sentence
+                __( 'Contributed', 'keitaro' ) . ' <strong>' .
+                // translators: Authors Stats: number of author posts
+                _n( '%s post', '%s posts', $author_posts_number, 'keitaro' ) . '</strong> ' . __( 'and', 'keitaro' ) . ' <strong>' .
+                // translators: Authors Stats: number of author comments
+                _n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' .
+                // translators: Authors Stats: connector
+                __( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number );
 
-	$print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div></div>', __( 'Author', 'keitaro' ), sprintf(
-					__( '%s', 'keitaro' ), '<div class="author-avatar"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) . '</a></div>' ), $author_title, $author_description, $author_stats
+	$print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div></div>',
+                // translators: Authors Stats: title
+                __( 'Author', 'keitaro' ), sprintf(
+                // translators: Authors Stats: author name
+                '<div class="author-avatar"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) . '</a></div>' ), $author_title, $author_description, $author_stats
 	);
 
-	if ( $display == true ) {
+	if ( isset( $display ) ):
 		echo $print;
-	} else {
+            else: 
 		return $print;
-	}
+        endif;
 
 }
 
@@ -510,11 +520,11 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print .= $avatar;
 
-	if ( $display == true ) {
+	if ( isset( $display ) ) :
 		echo $print;
-	} else {
+            else:
 		return $print;
-	}
+        endif;
 
 }
 
@@ -524,7 +534,7 @@ function keitaro_posted_on() {
 }
 
 function keitaro_read_more( $class = 'btn-default' ) {
-	printf( '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', get_permalink(), sprintf( __( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), __( 'Read more', 'keitaro' ), $class
+	printf( '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
 	);
 
 }
@@ -536,13 +546,13 @@ function highlight( $text ) {
 }
 
 function keitaro_go_to_top_link( $link_title ) {
-	printf( '<a class="btn btn-go-to-top btn-info"><span class="glyphicon glyphicon-triangle-top"></span></a>', $link_title );
+	printf( '<a class="btn btn-go-to-top btn-info"><span class="glyphicon glyphicon-triangle-top"></span></a>', esc_html( $link_title ) );
 
 }
 
 function keitaro_continue_to_second_blog_posts_page_button( $text, $link ) {
 	$link = get_post_type_archive_link( 'post' ) . 'page/2/';
-	printf( '<div class="call-to-action-secondary text-center"><a class="btn btn-success" href="%2$s">%1$s</a></div>', $text, $link );
+	printf( '<div class="call-to-action-secondary text-center"><a class="btn btn-success" href="%2$s">%1$s</a></div>', esc_html( $text ), esc_url( $link ) );
 
 }
 
@@ -564,21 +574,21 @@ function keitaro_custom_profile_picture( $user ) {
 
 	?>
 
-	<h3><?php _e( 'Additional Options', 'keitaro' ); ?></h3>
+	<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
 
 	<table class="form-table">
 
 		<tr>
-			<th><label for="user_meta_image"><?php _e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
+			<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
 			<td>
 				<a href="javascript:;" class="custom-profile-picture">
 					<img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96"><br />
 				</a>
-				<p class="description"><?php _e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
 				<p>
-					<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? __( 'Upload Image', 'keitaro' ) : __( 'Replace Image', 'keitaro' )); ?></button>
+					<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' )); ?></button>
 					<?php if ( $current_profile_picture_id ) : ?>
-						<button type="button" class="button custom-profile-picture-remove"><?php _e( 'Reset Image', 'keitaro' ); ?></button>
+						<button type="button" class="button custom-profile-picture-remove"><?php esc_html_e( 'Reset Image', 'keitaro' ); ?></button>
 					<?php endif; ?>
 				</p>
 				<input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_attr( $current_profile_picture_id ); ?>" class="regular-text" />
@@ -598,6 +608,7 @@ add_action( 'edit_user_profile', 'keitaro_custom_profile_picture' );
 function keitaro_custom_image_placeholder( $attachment_id, $display = true, $print = '' ) {
 
 	if ( $attachment_id ) :
+            
 		$btn_label_add = __( 'Replace Image', 'keitaro' );
 		$btn_label_remove = __( 'Remove Image', 'keitaro' );
 		$custom_image_url = esc_url( wp_get_attachment_image_url( $attachment_id ) );

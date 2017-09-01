@@ -1,6 +1,6 @@
 <?php
 
-class KeitaroThemeSettings {
+class Keitaro_Theme_Settings {
 
 	/**
 	 * Holds the values to be used in the fields callbacks
@@ -138,5 +138,5 @@ class KeitaroThemeSettings {
 }
 
 if ( is_admin() ) {
-	$keitaro_settings = new KeitaroThemeSettings();
+	$keitaro_settings = new Keitaro_Theme_Settings();
 }
