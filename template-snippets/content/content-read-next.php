@@ -42,19 +42,19 @@ if ( $read_more_content->have_posts() ) :
 
 					while ( $read_more_content->have_posts() ) :
 
-						$read_more_content->the_post();
+					$read_more_content->the_post();
 
-						?>
-						<div class="media">
-							<div class="media-left">
-								<?php keitaro_author_avatar( get_the_author_meta( 'ID' ), 48 ); ?>
-							</div>
-							<div class="media-body">
-								<?php the_title( '<h4 class="read-more-item-title media-heading"><a href="' . get_permalink() . '">', '</a></h4>' ); ?>
-							</div>
-						</div>
+					?>
+					<div class="media">
+					<div class="media-left">
+					<?php keitaro_author_avatar( get_the_author_meta( 'ID' ), 48 ); ?>
+					</div>
+					<div class="media-body">
+					<?php the_title( '<h4 class="read-more-item-title media-heading"><a href="' . get_permalink() . '">', '</a></h4>' ); ?>
+					</div>
+					</div>
 
-						<?php
+					<?php
 
 					endwhile;
 

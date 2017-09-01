@@ -63,9 +63,9 @@ if ( ! is_front_page() ) {
 		if ( get_query_var( 'paged' ) > 1 ) :
 			breadcrumb_item( get_page_link( get_queried_object()->ID ), get_queried_object()->post_title );
 		else :
-                        if( get_queried_object() ):
-                            breadcrumb_item( false, get_queried_object()->post_title, 'span' );
-                        endif;
+						if ( get_queried_object() ) :
+				breadcrumb_item( false, get_queried_object()->post_title, 'span' );
+						endif;
 		endif;
 	} elseif ( is_post_type_archive() ) {
 		breadcrumb_item( false, post_type_archive_title( false ), 'span' );
@@ -85,15 +85,15 @@ if ( ! is_front_page() ) {
 
 		// If post is a custom post type
 		$post_type = get_post_type();
-                
-		// If it is a custom post type display name and link
+
+						// If it is a custom post type display name and link
 		if ( $post_type != 'post' ) {
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name, 'span' );
 		} else {
-                        // tuka e problemot
-                        if( get_option( 'page_for_posts' ) ):
-                            breadcrumb_item( get_post_type_archive_link( $post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
-                        endif;
+						// tuka e problemot
+						if ( get_option( 'page_for_posts' ) ) :
+				breadcrumb_item( get_post_type_archive_link( $post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
+						endif;
 		}
 
 		// Get post category info
