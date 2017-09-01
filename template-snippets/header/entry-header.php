@@ -2,7 +2,7 @@
     <?php
 
 	if ( is_sticky() && ! is_single() ) :
-		printf( '<p class="sticky-title-sm">%s</p>', __( 'Must read', 'keitaro' ) );
+		printf( '<p class="sticky-title-sm">%s</p>', esc_html__( 'Must read', 'keitaro' ) );
 	endif;
 
 	if ( is_singular() ) :

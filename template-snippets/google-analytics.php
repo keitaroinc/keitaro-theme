@@ -20,7 +20,7 @@ if ( $ga_tracking_code ) :
 			m.parentNode.insertBefore(a, m)
 		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-		ga('create', '<?php echo $ga_tracking_code; ?>', 'auto');
+		ga('create', '<?php echo esc_js( $ga_tracking_code ); ?>', 'auto');
 		ga('send', 'pageview');
 
 	</script>
