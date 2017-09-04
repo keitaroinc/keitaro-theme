@@ -381,7 +381,7 @@ function keitaro_hero_title_shortcode() {
 
 	$formatted_title = explode( ' ', get_bloginfo( 'description' ) );
 	$formatted_title[2] = esc_html( $formatted_title[2] ) . '<span class="hero-subtitle">';
-	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', $formatted_title ) );
+	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', wp_kses_post( $formatted_title ) ) );
 
 }
 
@@ -493,10 +493,10 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats
 	);
 
-		if ( true == $display ) :
-		echo $print;
+        if ( true == $display ) :
+		echo wp_kses_post( $print );
 	else :
-		return $print;
+		return wp_kses_post( $print );
 	endif;
 
 }
@@ -519,10 +519,10 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print .= $avatar;
 
-		if ( true == $display ) :
-		echo $print;
+        if ( true == $display ) :
+		echo wp_kses_post( $print );
 	else :
-		return $print;
+		return wp_kses_post( $print );
 	endif;
 
 }
@@ -623,9 +623,9 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 			$print .= sprintf( '<button data-media-widget-title="%1$s" type="button" class="button custom-image-remove">%1$s</button>', $btn_label_remove );
 		endif;
 
-		echo $print;
+		echo wp_kses_post( $print );
 	else :
-		return $custom_image_url;
+		return esc_url( $custom_image_url );
 	endif;
 
 }
@@ -640,7 +640,7 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', $_POST['user_meta_image'] );
+	update_user_meta( $user_id, 'user_meta_image', esc_sql( $_POST['user_meta_image'] ) );
 
 }
 
