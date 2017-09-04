@@ -26,29 +26,22 @@ class Keitaro_Tweets extends WP_Widget {
 
 		$timeline = 'timeline';
 
-		echo $args['before_widget'];
+		echo wp_kses_post( $args['before_widget'] );
 
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 
 		if ( ! empty( $instance['tweets_url'] ) ) {
 
-			if ( $instance['tweets_type'] == $timeline ) :
-
-			endif;
-
 			?>
-			<a class="twitter-<?php echo ( ! empty( $instance['tweets_type'] ) ? esc_attr( $instance['tweets_type'] ) : ''); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo $instance['tweets_limit']; ?>" href="<?php echo esc_url( $instance['tweets_url'] ); ?>"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></a>
-			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-			<?php
+			<a class="twitter-<?php echo ( ! empty( esc_attr( $instance['tweets_type'] ) ) ? esc_attr( $instance['tweets_type'] ) : ''); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo esc_attr( $instance['tweets_limit'] ); ?>" href="<?php echo esc_url( $instance['tweets_url'] ); ?>"><?php echo wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ); ?></a>
+						<?php
+						wp_enqueue_script( 'twitter-widget', '//platform.twitter.com/widgets.js', array(), false, true );
 
-			if ( $instance['tweets_type'] == $timeline ) :
-
-			endif;
 		}
 
-		echo $args['after_widget'];
+		echo wp_kses_post( $args['after_widget'] );
 
 	}
 
@@ -61,10 +54,10 @@ class Keitaro_Tweets extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$tweets_url = ! empty( $instance['tweets_url'] ) ? $instance['tweets_url'] : '';
-		$tweets_limit = ! empty( $instance['tweets_limit'] ) ? $instance['tweets_limit'] : 10;
-		$tweets_type = ! empty( $instance['tweets_type'] ) ? $instance['tweets_type'] : '';
+		$title = ! empty( $instance['title'] ) ? wp_kses_post( $instance['title'] ) : '';
+		$tweets_url = ! empty( $instance['tweets_url'] ) ? esc_url( $instance['tweets_url'] ) : '';
+		$tweets_limit = ! empty( $instance['tweets_limit'] ) ? esc_attr( $instance['tweets_limit'] ) : 10;
+		$tweets_type = ! empty( $instance['tweets_type'] ) ? esc_attr( $instance['tweets_type'] ) : '';
 		$visualization_type = array(
 			'grid' => __( 'Used with timeline URLs', 'keitaro' ),
 			'timeline' => __( 'Used with profile URLs', 'keitaro' ),
@@ -84,11 +77,11 @@ class Keitaro_Tweets extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'tweets_limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tweets_limit' ) ); ?>" type="number" value="<?php echo esc_attr( $tweets_limit ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'tweets_type' ) ?>"><?php esc_attr_e( 'Show as:', 'keitaro' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'tweets_type' ) ); ?>"><?php esc_attr_e( 'Show as:', 'keitaro' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'tweets_type' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'tweets_type' ) ); ?>" class="widefat">
-				<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+				<option value="0"><?php esc_html_e( '&mdash; Select &mdash;' ); ?></option>
 				<?php foreach ( $visualization_type as $key => $value ) : ?>
-					<option <?php selected( $tweets_type, $key ); ?> value="<?php echo $key; ?>"><?php echo ucfirst( $key ) . ' &ndash; ' . $value; ?></option>
+					<option <?php selected( $tweets_type, $key ); ?> value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( ucfirst( $key ) ) . ' &ndash; ' . esc_html( $value ); ?></option>
 			<?php endforeach; ?>
 			</select>
 		<p>

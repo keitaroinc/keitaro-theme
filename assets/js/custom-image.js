@@ -9,9 +9,13 @@
         /* Uploading files */
         var file_frame;
 
+
+// KONTROLIRAJ GI FUNKCIONALNOSTITE PO PARENT, NE ZA SITE ELEMENTI
+// MOZNO E DA TREBA DA SETIRASH I ID-A
+
         customImageBtnRemove.on('click', function (event) {
-            $('.custom-image-value').val('');
-            customImageBtnRemove.parent().parent().find('input[name*="savewidget"]').click();
+            customImageBtnRemove$('.custom-image-value').val('');
+            customImageBtnRemove.parent().parent().closest('input[name*="savewidget"]')[0].click();
         });
 
         customImageBtnAdd.on('click', function (event) {
@@ -39,9 +43,9 @@
                 attachment = file_frame.state().get('selection').first().toJSON();
 
                 // Do something with attachment.id and/or attachment.url here
-                $('.current-custom-image').attr('src', attachment.url);
-                $('.custom-image-value').val(attachment.id);
-                customImageBtnAdd.parent().parent().find('input[name*="savewidget"]').click();
+                customImageBtnAdd.parent().find('.current-custom-image').attr('src', attachment.url);
+                customImageBtnAdd.parent().find('.custom-image-value').val(attachment.id);
+                customImageBtnAdd.parent().parent().closest('input[name*="savewidget"]')[0].click();
             });
 
             //If the uploader object has already been created, reopen the dialog

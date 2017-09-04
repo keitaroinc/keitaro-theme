@@ -23,10 +23,10 @@ if ( ! empty( $page_title ) ) :
 		<div class="row">
 			<div class="col-md-8">
 				<?php if ( $page_title ) : ?>
-							<h1 class="page-title"><?php echo esc_html( $page_title ); ?></h1>
+							<h1 class="page-title"><?php echo wp_kses_post( $page_title ); ?></h1>
 				<?php endif; ?>
 				<?php if ( $page_subtitle ) : ?>
-					<p class="lead"><?php echo esc_html( $page_subtitle ); ?></p>
+					<p class="lead"><?php echo wp_kses_post( $page_subtitle ); ?></p>
 					<?php
 
 				endif;

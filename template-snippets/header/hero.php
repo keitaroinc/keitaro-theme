@@ -11,7 +11,7 @@ else :
 endif;
 
 ?>
-<div class="hero <?php echo esc_attr( $hero_class ); ?>" <?php echo (esc_url ($header_image ) ? wp_kses( $header_image_style, array( 'style' ) ) : ''); ?>>
+<div class="hero <?php echo esc_attr( $hero_class ); ?>" <?php echo (esc_url( $header_image ) ? wp_kses( $header_image_style, array( 'style' ) ) : ''); ?>>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-lg-7">

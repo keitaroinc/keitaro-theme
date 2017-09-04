@@ -16,7 +16,7 @@ global $post, $wp_query;
 if ( ! function_exists( 'breadcrumb_item' ) ) :
 
 	function breadcrumb_item( $url, $title = '', $wrapper = 'a' ) {
-		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ($url ? 'href="' . $url . '"' : ''), $title, $wrapper );
+		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : ''), wp_kses_post( $title ), esc_attr( $wrapper ) );
 
 	}
 
@@ -53,7 +53,7 @@ if ( ! is_front_page() ) {
 	<?php
 
 	// Build the breadcrums
-	echo '<ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
+	echo '<ol id="' . esc_attr( $breadcrums_id ) . '" class="' . esc_attr( $breadcrums_class ) . '">';
 
 	// Home page
 	breadcrumb_item( get_home_url(), __( 'Home', 'keitaro' ) );
@@ -75,7 +75,7 @@ if ( ! is_front_page() ) {
 		$post_type = get_post_type();
 
 		// If it is a custom post type display name and link
-		if ( $post_type != 'post' ) {
+		if ( 'post' != $post_type ) {
 
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
 		}
@@ -87,7 +87,7 @@ if ( ! is_front_page() ) {
 		$post_type = get_post_type();
 
 						// If it is a custom post type display name and link
-		if ( $post_type != 'post' ) {
+		if ( 'post' != $post_type ) {
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name, 'span' );
 		} else {
 						// tuka e problemot
@@ -129,7 +129,7 @@ if ( ! is_front_page() ) {
 
 		// Check if the post is in a category
 		if ( ! empty( $last_category ) && ! is_singular() ) {
-			echo $cat_display;
+			echo wp_kses_post( $cat_display );
 
 			breadcrumb_item( false, get_the_title(), 'span' );
 
@@ -201,7 +201,7 @@ if ( ! is_front_page() ) {
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
 		if ( get_query_var( 'paged' ) > 1 ) :
-			printf( '<li>%s</li>', get_the_author_posts_link() );
+			printf( '<li>%s</li>', esc_url( get_the_author_posts_link() ) );
 		else :
 			breadcrumb_item( false, get_the_author_meta( 'display_name' ), 'span' );
 			$url = false;
@@ -213,7 +213,7 @@ if ( ! is_front_page() ) {
 	} elseif ( is_404() ) {
 
 		// 404 page
-		echo '<li>' . __( 'Error 404', 'keitaro' ) . '</li>';
+		echo '<li>' . esc_html__( 'Error 404', 'keitaro' ) . '</li>';
 	}// End if().
 
 	if ( get_query_var( 'paged' ) ) {
