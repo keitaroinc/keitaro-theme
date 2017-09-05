@@ -2,20 +2,20 @@
     &:before {
         content: @content;
         display: inline-block;
-        margin-right: @grid-gutter-width/6;
+        margin-right: @grid-gutter-width / 6;
         color: @keitaro-green-dark;
         font-weight: 500;
     }
 }
 
-.unselectable{
+.unselectable {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-.shape-outside(@shape){
+.shape-outside(@shape) {
     -moz-shape-outside: @shape;
     -webkit-shape-outside: @shape;
     shape-outside: @shape;

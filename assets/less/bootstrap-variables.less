@@ -50,14 +50,14 @@
 
 @font-size-base:          18px;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-small:         ceil((@font-size-base * .85)); // ~12px
 
 @font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
 @font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
 @font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
 @font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+@font-size-h6:            ceil((@font-size-base * .85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
@@ -104,7 +104,7 @@
 
 @border-radius-base:        1px;
 @border-radius-large:       1px;
-@border-radius-small:       0px;
+@border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -206,11 +206,11 @@
 @input-color-placeholder:        #999;
 
 //** Default `.form-control` height
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 1.2) + 2);
+@input-height-base:              @line-height-computed + (@padding-base-vertical * 1.2) + 2px;
 //** Large `.form-control` height
-@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 1.2) + 2);
+@input-height-large:             ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 1.2) + 2px;
 //** Small `.form-control` height
-@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 1.2) + 2);
+@input-height-small:             floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 1.2) + 2px;
 
 //** `.form-group` margin
 @form-group-margin-bottom:       15px;
@@ -234,7 +234,7 @@
 //** Background for the dropdown menu.
 @dropdown-bg:                    #fff;
 //** Dropdown menu `border-color`.
-@dropdown-border:                rgba(0,0,0,.15);
+@dropdown-border:                rgba(0, 0, 0, .15);
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       #ccc;
 //** Divider color for between dropdown items.
@@ -312,9 +312,9 @@
 @screen-lg-desktop:          @screen-lg-min;
 
 // So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
-@screen-sm-max:              (@screen-md-min - 1);
-@screen-md-max:              (@screen-lg-min - 1);
+@screen-xs-max:              (@screen-sm-min - 1px);
+@screen-sm-max:              (@screen-md-min - 1px);
+@screen-md-max:              (@screen-lg-min - 1px);
 
 
 //== Grid system
@@ -329,7 +329,7 @@
 //** Point at which the navbar becomes uncollapsed.
 @grid-float-breakpoint:     @screen-md-min;
 //** Point at which the navbar begins collapsing.
-@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1px);
 
 
 //== Container sizes
@@ -540,7 +540,7 @@
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
-@popover-border-color:                rgba(0,0,0,.2);
+@popover-border-color:                rgba(0, 0, 0, .2);
 //** Popover fallback border color
 @popover-fallback-border-color:       #ccc;
 
@@ -553,7 +553,7 @@
 @popover-arrow-color:                 @popover-bg;
 
 //** Popover outer arrow width
-@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-width:           (@popover-arrow-width + 1px);
 //** Popover outer arrow color
 @popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
 //** Popover outer arrow fallback color
@@ -598,7 +598,7 @@
 //** Background color of modal content area
 @modal-content-bg:                             #fff;
 //** Modal content border color
-@modal-content-border-color:                   rgba(0,0,0,.2);
+@modal-content-border-color:                   rgba(0, 0, 0, .2);
 //** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
@@ -787,7 +787,7 @@
 //
 //##
 
-@breadcrumb-padding-vertical:   @grid-gutter-width/4;
+@breadcrumb-padding-vertical:   @grid-gutter-width / 4;
 @breadcrumb-padding-horizontal: 0;
 //** Breadcrumb background color
 @breadcrumb-bg:                 @body-bg;
@@ -803,7 +803,7 @@
 //
 //##
 
-@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
+@carousel-text-shadow:                        0 1px 2px rgba(0, 0, 0, .6);
 
 @carousel-control-color:                      #fff;
 @carousel-control-width:                      15%;

@@ -1,4 +1,4 @@
-.comments-title{
+.comments-title {
     font-weight: 300;    
 }
 
@@ -7,8 +7,8 @@
     list-style: none;
     >.comment {
         border: @comment-border;
-        margin-bottom: @grid-gutter-width/2;
-        padding: @grid-gutter-width/2;
+        margin-bottom: @grid-gutter-width / 2;
+        padding: @grid-gutter-width / 2;
     }
     .avatar {
         max-width: @grid-gutter-width;
@@ -17,17 +17,17 @@
     }
     .children {
         list-style: none;
-        padding-left: @grid-gutter-width/6;
+        padding-left: @grid-gutter-width / 6;
         .comment {
-            margin-top: @grid-gutter-width - 20;
-            padding-left: @grid-gutter-width/2;
+            margin-top: @grid-gutter-width - 20px;
+            padding-left: @grid-gutter-width / 2;
             border-left: @comment-border;
         }
     }
 }
 
-.comment-author{
-    img{
+.comment-author {
+    img {
         float: left;
         margin-right: @padding-base-horizontal;
     }
@@ -39,16 +39,16 @@
     a {
         color: @text-color;
     }
-    .comment-edit-link{
-        margin: 0 @grid-gutter-width/2;
+    .comment-edit-link {
+        margin: 0 @grid-gutter-width / 2;
     }
 }
 
 .comment-content {
-    margin: @grid-gutter-width/4 0 0;
+    margin: @grid-gutter-width / 4 0 0;
 
-    p{
-        &:last-child{
+    p {
+        &:last-child {
             margin-bottom: 0;
         }
     }
@@ -62,25 +62,25 @@
     vertical-align: top;
 }
 
-.pingback{
-    .url{
+.pingback {
+    .url {
         vertical-align: middle;
         display: inline-block;
         max-width: 50%;
         overflow: hidden;
-        margin: 0 @grid-gutter-width/4;
+        margin: 0 @grid-gutter-width / 4;
     }
 }
 
-.comment-reply-link{
-    margin-top: @grid-gutter-width/4;
+.comment-reply-link {
+    margin-top: @grid-gutter-width / 4;
     .btn;
     .btn-sm;
     .btn-default;
 }
 
 .comment-respond {
-    label{
+    label {
         font-weight: 500;
     }
     .submit {
@@ -90,35 +90,35 @@
     }
 }
 
-.comment-form-comment{
-    textarea{
+.comment-form-comment {
+    textarea {
         .form-control;
-        min-height: @grid-gutter-width*5;
+        min-height: @grid-gutter-width * 5;
     }
 }
 
 .comment-form-author,
 .comment-form-email,
-.comment-form-url{
-    input{
+.comment-form-url {
+    input {
         .form-control;
     }
 }
 
-.form-submit{
-    margin-top: @grid-gutter-width/2;
+.form-submit {
+    margin-top: @grid-gutter-width / 2;
 }
 
-.pingback{
+.pingback {
     margin-bottom: @padding-base-vertical;
     font-size: @font-size-small;
 
-    & + .comment{
-        margin-top: @grid-gutter-width/2;
+    & + .comment {
+        margin-top: @grid-gutter-width / 2;
     }
 }
 
-.no-comments{
+.no-comments {
     .well;
     box-shadow: none;
 }
