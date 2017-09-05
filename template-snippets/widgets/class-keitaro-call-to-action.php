@@ -117,7 +117,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 		?>
 			 >
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Call to Action title:', 'keitaro' ) ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Call to Action title:', 'keitaro' ); ?></label>
 				<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
 			</p>
 			<p>
@@ -141,7 +141,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 				?>
 				   ">
-					<button type="button" class="button"><?php esc_html_e( 'Edit Menu' ) ?></button>
+					<button type="button" class="button"><?php esc_html_e( 'Edit Menu' ); ?></button>
 				</p>
 			<?php endif; ?>
 		</div>

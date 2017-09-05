@@ -106,11 +106,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'show_on_page' ) ); ?>"><?php esc_attr_e( 'Show on page:', 'keitaro' ); ?></label>
 			<?php
 
-			$wp_pages = get_posts( array(
-				'post_type' => 'page',
-				'nopaging' => 1,
-				'order' => 'ASC',
-				'orderby' => 'title',
+			$wp_pages = get_posts(
+					array(
+						'post_type' => 'page',
+						'nopaging' => 1,
+						'order' => 'ASC',
+						'orderby' => 'title',
 					) );
 
 			if ( $wp_pages ) :

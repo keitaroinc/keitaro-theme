@@ -79,13 +79,13 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 					$body_autoreply = join( '<br>', array(
 						__( 'Hello,', 'keitaro' ) . '<br>',
-						// translators: %s stands for get_bloginfo('name')
-						sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
-						__( 'Kind Regards,', 'keitaro' ),
-						get_bloginfo( 'name' ) . '<br>',
-						esc_url( get_home_url() ),
-						$send_to,
-							) );
+										// translators: %s stands for get_bloginfo('name')
+										sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+										__( 'Kind Regards,', 'keitaro' ),
+										get_bloginfo( 'name' ) . '<br>',
+										esc_url( get_home_url() ),
+										$send_to,
+												) );
 
 					try {
 
@@ -160,7 +160,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 						<?php if ( ! empty( $instance['name_label'] ) ) : ?>            
 							<div class="form-group">
-								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '') ?>">
+								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : ''); ?>">
 								<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
 							</div>
 							<?php
@@ -171,7 +171,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 	?>
 	<div class="form-group">
-<input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : '') ?>">
+<input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : ''); ?>">
 <label for="sender-email"><?php echo esc_html( $instance['email_label'] ); ?></label>
 	</div>
 	<?php
@@ -189,7 +189,8 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 			<select name="intent" id="intent" class="form-control">
 				<?php foreach ( $intent_options as $key => $value ) : ?>
-											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>"><?php echo esc_attr( trim( $value ) ); ?></option>
+											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
+																							<?php echo esc_attr( trim( $value ) ); ?></option>
 										<?php endforeach;
 
 				?>
@@ -204,7 +205,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 	?>
 	<div class="form-group">
-<textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : '') ?></textarea>
+<textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : ''); ?></textarea>
 <label for="message"><?php echo esc_html( $instance['message_label'] ); ?></label>
 	</div>
 	<?php
