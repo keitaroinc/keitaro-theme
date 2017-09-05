@@ -7,10 +7,10 @@ endif;
 
 $child_pages = new WP_Query(
 		array(
-	'post_parent' => get_the_ID(),
-	'post_type' => 'page',
-	'order' => 'ASC',
-	'orderby' => 'menu_order',
+			'post_parent' => get_the_ID(),
+			'post_type' => 'page',
+			'order' => 'ASC',
+			'orderby' => 'menu_order',
 		)
 );
 

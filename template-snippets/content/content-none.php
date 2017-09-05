@@ -4,11 +4,20 @@
             <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
 		</header>
 		<div class="page-content">
-			<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+			<?php
 
-				<p><?php
-								// translators: Shown when no posts have been published yet and linked to the page for creating a new post
-								printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'keitaro' ), esc_url( admin_url( 'post-new.php' ) ) ), array( 'a' => array( 'href' => array() ) ) ); ?></p>
+			if ( is_home() && current_user_can( 'publish_posts' ) ) :
+
+				?>
+
+				<p>
+					<?php
+
+					// translators: Shown when no posts have been published yet and linked to the page for creating a new post
+					printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'keitaro' ), esc_url( admin_url( 'post-new.php' ) ) ), array( 'a' => array( 'href' => array() ) ) );
+
+					?>
+				</p>
 
 			<?php else : ?>
 

@@ -13,5 +13,11 @@ $thumbnail_caption = esc_html( get_the_post_thumbnail_caption() );
 	<a href="<?php (is_single() ? the_post_thumbnail_url() : the_permalink() ); ?>">
 		<?php the_post_thumbnail( $thumbnail_size ); ?>
 	</a>
-	<?php if ( $thumbnail_caption ) : printf( '<figcaption>%s</figcaption>', wp_kses_post( $thumbnail_caption ) ); endif ?>
+	<?php
+
+	if ( $thumbnail_caption ) :
+		printf( '<figcaption>%s</figcaption>', wp_kses_post( $thumbnail_caption ) );
+	endif
+
+	?>
 </figure>

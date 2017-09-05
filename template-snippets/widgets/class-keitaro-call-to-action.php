@@ -11,6 +11,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 				esc_html__( 'Call to Action', 'keitaro' ), // Name
 				array( 'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons.', 'keitaro' ) ) // Args
 		);
+
 	}
 
 	/**
@@ -37,8 +38,8 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] );
-						echo esc_html( $instance['title'] );
-						echo wp_kses_post( $args['after_title'] );
+			echo esc_html( $instance['title'] );
+			echo wp_kses_post( $args['after_title'] );
 		}
 
 		$nav_menu_args = array(
@@ -66,7 +67,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 		echo wp_kses_post( $args['after_widget'] );
 
-					}
+	}
 
 	/**
 	 * Back-end widget form.
@@ -82,28 +83,39 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 		// Get menus
 		$menus = wp_get_nav_menus();
+
 		?>
-		<p class="nav-menu-widget-no-menus-message" <?php
+		<p class="nav-menu-widget-no-menus-message"
+		<?php
+
 		if ( ! empty( $menus ) ) {
 			echo ' style="display:none" ';
 		}
-		?>>
+
+		?>
+		   >
 			   <?php
+
 			   if ( $wp_customize instanceof WP_Customize_Manager ) {
 					$url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
 			   } else {
 					$url = admin_url( 'nav-menus.php' );
 			   }
+
+			   // translators: The no-menus-have-been-created notice within the Call to Action widget
+			   echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'keitaro' ), esc_attr( $url ) );
+
 			   ?>
-			   <?php
-								// translators: The no-menus-have-been-created notice within the Call to Action widget
-								echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'keitaro' ), esc_attr( $url ) ); ?>
 		</p>
-		<div class="nav-menu-widget-form-controls" <?php
+		<div class="nav-menu-widget-form-controls"
+		<?php
+
 		if ( empty( $menus ) ) {
 			echo ' style="display:none" ';
 		}
-		?>>
+
+		?>
+			 >
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Call to Action title:', 'keitaro' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
@@ -120,16 +132,21 @@ class Keitaro_Call_To_Action extends WP_Widget {
 				</select>
 			</p>
 			<?php if ( $wp_customize instanceof WP_Customize_Manager ) : ?>
-				<p class="edit-selected-nav-menu" style="<?php
+				<p class="edit-selected-nav-menu" style="
+				<?php
+
 				if ( ! $nav_menu ) {
 					echo 'display: none;';
 				}
-				?>">
+
+				?>
+				   ">
 					<button type="button" class="button"><?php esc_html_e( 'Edit Menu' ) ?></button>
 				</p>
 			<?php endif; ?>
 		</div>
 		<?php
+
 	}
 
 	/**
@@ -153,6 +170,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 			$instance['nav_menu'] = (int) $new_instance['nav_menu'];
 		}
 		return $instance;
+
 	}
 
 }

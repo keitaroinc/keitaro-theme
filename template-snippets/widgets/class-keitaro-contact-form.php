@@ -50,7 +50,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 				if ( ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
 
-									$email_sent = false;
+					$email_sent = false;
 					$autoreply_sent = false;
 
 					$send_to = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
@@ -102,8 +102,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 						else :
 							throw new Exception( __( "Something's wrong. The auto respond email message was not sent to sender.", 'keitaro' ) );
 						endif;
-
-											} catch ( Exception $e ) {
+					} catch ( Exception $e ) {
 
 						echo 'Caught exception: ', wp_kses_post( $e->getMessage() ), "\n";
 					}
@@ -157,7 +156,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 					// Show contact form when nothing has been submitted
 
 					?>
-				<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
+					<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
 						<?php if ( ! empty( $instance['name_label'] ) ) : ?>            
 							<div class="form-group">
@@ -208,9 +207,11 @@ class Keitaro_Contact_Form extends WP_Widget {
 <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : '') ?></textarea>
 <label for="message"><?php echo esc_html( $instance['message_label'] ); ?></label>
 	</div>
-<?php endif;
+	<?php
 
-													wp_nonce_field( 'contact-form-widget' );
+						endif;
+
+						wp_nonce_field( 'contact-form-widget' );
 
 						?>
 						<input type="hidden" name="submit" id="submit" value="1">

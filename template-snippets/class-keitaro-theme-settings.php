@@ -37,7 +37,7 @@ class Keitaro_Theme_Settings {
 
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Keitaro Settings', 'keitaro' ) ?></h1>
+			<h1><?php esc_html_e( 'Keitaro Settings', 'keitaro' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 
