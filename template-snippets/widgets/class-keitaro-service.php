@@ -24,11 +24,11 @@ class Keitaro_Service extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo $args['before_widget'];
+		echo wp_kses_post( $args['before_widget'] );
 
 						echo '<a class="service-item" href="' . (isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#') . '">';
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 		if ( ! empty( $instance['service_desc'] ) ) {
 			printf( '<span class="service-description">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
@@ -36,7 +36,7 @@ class Keitaro_Service extends WP_Widget {
 		echo '<span class="btn-discover">&gt;_</span>';
 		echo '</a>';
 
-						echo $args['after_widget'];
+				echo wp_kses_post( $args['after_widget'] );
 
 	}
 

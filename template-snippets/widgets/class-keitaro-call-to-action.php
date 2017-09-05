@@ -33,12 +33,12 @@ class Keitaro_Call_To_Action extends WP_Widget {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		echo $args['before_widget'];
+		echo wp_kses_post( $args['before_widget'] );
 
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'];
+			echo wp_kses_post( $args['before_title'] );
 						echo esc_html( $instance['title'] );
-						echo $args['after_title'];
+						echo wp_kses_post( $args['after_title'] );
 		}
 
 		$nav_menu_args = array(
@@ -64,7 +64,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 		 */
 		wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );
 
-		echo $args['after_widget'];
+		echo wp_kses_post( $args['after_widget'] );
 
 					}
 

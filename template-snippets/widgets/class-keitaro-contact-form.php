@@ -24,7 +24,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo $args['before_widget'];
+		echo wp_kses_post( $args['before_widget'] );
 
 		?>
 
@@ -48,8 +48,9 @@ class Keitaro_Contact_Form extends WP_Widget {
 					get_template_part( SNIPPETS_DIR . '/entry-content' );
 				endif;
 
-				if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) :
-					$email_sent = false;
+				if ( ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
+
+									$email_sent = false;
 					$autoreply_sent = false;
 
 					$send_to = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
@@ -62,25 +63,29 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 					$headers = array(
 						'Content-Type: text/html; charset=UTF-8',
-						'From: Keitaro Inc. <info@keitaro.com>',
+						'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
 					);
-					$body = join('<br>', array(
+					$body = join( '<br>', array(
 						__( 'Hello,', 'keitaro' ) . '<br>',
-						sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
+						// translators: Who submitted a message from where, in the auto send admin email
+						sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
 						$submitted_message . '<br>',
+						// translators: What was the intent for sending an email
 						sprintf( __( 'The intent is: %s', 'keitaro' ), str_replace( '-', ' ', ucwords( $intent ) ) ) . '<br>',
 						__( 'Regards,', 'keitaro' ),
-						__( 'WordPress @ Keitaro Inc.', 'keitaro' ),
-					));
+						// translators: %s stands for get_bloginfo('name')
+						sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
+							) );
 
-					$body_autoreply = join('<br>', array(
+					$body_autoreply = join( '<br>', array(
 						__( 'Hello,', 'keitaro' ) . '<br>',
-						__( 'Thank you for contacting us at Keitaro Inc. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ) . '<br>',
+						// translators: %s stands for get_bloginfo('name')
+						sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
 						__( 'Kind Regards,', 'keitaro' ),
-						__( 'Keitaro Inc.', 'keitaro' ) . '<br>',
+						get_bloginfo( 'name' ) . '<br>',
 						esc_url( get_home_url() ),
 						$send_to,
-					));
+							) );
 
 					try {
 
@@ -88,7 +93,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 						if ( wp_mail( $send_to, $subject, $body, $headers ) ) :
 							$email_sent = true;
 						else :
-							throw new Exception( __( "Something's wrong. The email message was not sent to Keitaro Inc.", 'keitaro' ) );
+							throw new Exception( __( "Something's wrong. The email message was not sent to sender.", 'keitaro' ) );
 						endif;
 
 						// Send autoreply to sender
@@ -97,31 +102,32 @@ class Keitaro_Contact_Form extends WP_Widget {
 						else :
 							throw new Exception( __( "Something's wrong. The auto respond email message was not sent to sender.", 'keitaro' ) );
 						endif;
-					} catch ( Exception $e ) {
 
-						echo 'Caught exception: ', $e->getMessage(), "\n";
+											} catch ( Exception $e ) {
+
+						echo 'Caught exception: ', wp_kses_post( $e->getMessage() ), "\n";
 					}
 
 					if ( $email_sent && $autoreply_sent ) :
-						echo $args['before_title'] . apply_filters( 'widget_title￼', __( 'Message sent', 'keitaro' ) ) . $args['after_title'];
+						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title￼', __( 'Message sent', 'keitaro' ) ) ) . wp_kses_post( $args['after_title'] );
 
 						?>
 						<div class="entry-content">
-							<?php echo (isset( $instance['thank_you'] ) ? apply_filters( 'the_content', $instance['thank_you'] ) : ''); ?>
+							<?php echo wp_kses_post( isset( $instance['thank_you'] ) ? apply_filters( 'the_content', $instance['thank_you'] ) : '' ); ?>
 						</div>
 						<?php
 
 					endif;
 				else :
 					if ( ! empty( $instance['title'] ) ) {
-						echo $args['before_title'] . apply_filters( 'widget_title￼', $instance['title'] ) . $args['after_title'];
+						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title￼', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 					}
 
 					if ( ! empty( $instance['description'] ) ) {
 
 						?>
 						<div class="entry-content">
-							<?php echo apply_filters( 'the_content', $instance['description'] ); ?>
+							<?php echo wp_kses_post( apply_filters( 'the_content', $instance['description'] ) ); ?>
 						</div>
 						<?php
 
@@ -136,7 +142,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 				<?php
 
 				// Don't show Locations sidebar when contact form data is successfully submitted
-				if ( ! isset( $_POST['submit'] ) ) :
+				if ( false == isset( $_POST['submit'] ) ) :
 					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
 				endif;
 
@@ -146,28 +152,28 @@ class Keitaro_Contact_Form extends WP_Widget {
 				<?php
 
 				// Check submitted data and send message
-				if ( ! isset( $_POST['submit'] ) ) :
+				if ( false == isset( $_POST['submit'] ) ) :
 
 					// Show contact form when nothing has been submitted
 
 					?>
-					<form method="POST" class="contact-form" action="<?php esc_url( get_the_permalink() ); ?>">
+				<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
 						<?php if ( ! empty( $instance['name_label'] ) ) : ?>            
 							<div class="form-group">
 								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '') ?>">
-								<label for="sender-name"><?php echo $instance['name_label']; ?></label>
+								<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
 							</div>
 							<?php
 
 						endif;
 
-						if ( ! empty( $instance['email_label'] ) ) :
+						if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
 
 	?>
 	<div class="form-group">
 <input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : '') ?>">
-<label for="sender-email"><?php echo $instance['email_label']; ?></label>
+<label for="sender-email"><?php echo esc_html( $instance['email_label'] ); ?></label>
 	</div>
 	<?php
 
@@ -184,7 +190,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 			<select name="intent" id="intent" class="form-control">
 				<?php foreach ( $intent_options as $key => $value ) : ?>
-											<option value="<?php echo str_replace( ' ', '-', strtolower( $value ) ); ?>"><?php echo trim( $value ); ?></option>
+											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>"><?php echo esc_attr( trim( $value ) ); ?></option>
 										<?php endforeach;
 
 				?>
@@ -200,21 +206,23 @@ class Keitaro_Contact_Form extends WP_Widget {
 	?>
 	<div class="form-group">
 <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : '') ?></textarea>
-<label for="message"><?php echo $instance['message_label']; ?></label>
+<label for="message"><?php echo esc_html( $instance['message_label'] ); ?></label>
 	</div>
 <?php endif;
+
+													wp_nonce_field( 'contact-form-widget' );
 
 						?>
 						<input type="hidden" name="submit" id="submit" value="1">
 						<?php if ( ! empty( $instance['submit_label'] ) ) : ?>
-							<button type="submit" class="btn btn-primary btn-submit"><?php echo $instance['submit_label']; ?></button>
+							<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html( $instance['submit_label'] ); ?></button>
 						<?php endif; ?>
 					</form>
 					<?php
 
 				endif;
 
-				echo $args['after_widget'];
+				echo wp_kses_post( $args['after_widget'] );
 
 				?>
 			</div>
@@ -303,7 +311,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 		$instance['email_label'] = ( ! empty( $new_instance['email_label'] ) ) ? strip_tags( $new_instance['email_label'] ) : '';
 		$instance['intent_list'] = ( ! empty( $new_instance['intent_list'] ) ) ? strip_tags( $new_instance['intent_list'] ) : '';
 		$instance['message_label'] = ( ! empty( $new_instance['message_label'] ) ) ? strip_tags( $new_instance['message_label'] ) : '';
-		$instance['sent_to'] = ( ! empty( $new_instance['sent_to'] ) ) ? strip_tags( $new_instance['sent_to'] ) : '';
+		$instance['sent_to'] = ( ! empty( $new_instance['sent_to'] ) ) ? strip_tags( $new_instance['sent_to'] ) : get_option( 'admin_email' );
 		$instance['submit_label'] = ( ! empty( $new_instance['submit_label'] ) ) ? strip_tags( $new_instance['submit_label'] ) : '';
 		$instance['thank_you'] = ( ! empty( $new_instance['thank_you'] ) ) ? strip_tags( $new_instance['thank_you'] ) : '';
 

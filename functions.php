@@ -493,7 +493,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats
 	);
 
-        if ( true == $display ) :
+		if ( true == $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );
@@ -519,7 +519,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print .= $avatar;
 
-        if ( true == $display ) :
+		if ( true == $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );
@@ -636,11 +636,11 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 function keitaro_save_custom_profile_picture( $user_id ) {
 
 	// only saves if the current user can edit user profiles
-	if ( ! current_user_can( 'upload_files', $user_id ) ) :
+	if ( ! current_user_can( 'upload_files', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', esc_sql( $_POST['user_meta_image'] ) );
+	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
 
 }
 

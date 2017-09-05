@@ -24,9 +24,10 @@ class Keitaro_Location extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo $args['before_widget'];
-		if ( ! empty( $instance['location'] ) ) {
-			echo $args['before_title'] . sprintf( '<span class="location-title-prefix">%s</span>: ', get_bloginfo( 'name' ) ) . apply_filters( 'widget_title', $instance['location'] ) . $args['after_title'];
+		echo wp_kses_post( $args['before_widget'] );
+
+						if ( ! empty( $instance['location'] ) ) {
+			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( sprintf( '<span class="location-title-prefix">%s</span>: ', get_bloginfo( 'name' ) ) . apply_filters( 'widget_title', $instance['location'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 
 		if ( ! empty( $instance['location_address'] ) ) {
@@ -39,20 +40,22 @@ class Keitaro_Location extends WP_Widget {
 			</div>
 			<?php
 
-			printf( '<address class="location-address">%s</address>', apply_filters( 'widget_text', $instance['location_address'] ) );
+			printf( '<address class="location-address">%s</address>', esc_html( apply_filters( 'widget_text', $instance['location_address'] ) ) );
 		}
 
 		echo '<div class="location-details">';
 		if ( ! empty( $instance['location_phone'] ) ) {
-			printf( '<a href="tel:%1$s" title="' . __( 'Call %1$s now', 'keitaro' ) . '">%1$s</a>, ', $instance['location_phone'] );
+						// translators: %1$s stands for the location phone number set in the widget
+			printf( '<a href="tel:%1$s" title="%2$s">%1$s</a>, ', esc_html( $instance['location_phone'] ), esc_attr__( 'Call %1$s now', 'keitaro' ) );
 		}
 
 		if ( ! empty( $instance['location_email'] ) ) {
-			printf( '<a href="mailto:%1$s" title="' . __( 'Email %1$s now', 'keitaro' ) . '">%1$s</a>', antispambot( $instance['location_email'] ) );
+						// translators: %1$s stands for the location email address set in the widget
+			printf( '<a href="mailto:%1$s" title="%2$s">%1$s</a>', esc_html( antispambot( $instance['location_email'] ) ), esc_attr__( 'Email %1$s now', 'keitaro' ) );
 		}
 		echo '</div>';
 
-		echo $args['after_widget'];
+		echo wp_kses_post( $args['after_widget'] );
 
 	}
 

@@ -28,7 +28,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 		if ( isset( $instance['show_on_page'] ) && $instance['show_on_page'] == $post->ID ) :
 
-			echo $args['before_widget'];
+			echo wp_kses_post( $args['before_widget'] );
 
 			?>
 
@@ -36,18 +36,18 @@ class Keitaro_Icon_Block extends WP_Widget {
 				<div class="panel-heading">
 					<div class="clearfix">
 						<?php if ( isset( $instance['icon'] ) ) : ?>
-							<img class="panel-title-icon" src="<?php echo keitaro_custom_image_placeholder( $instance['icon'], false ); ?>" alt="icon">
+							<img class="panel-title-icon" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
 						<?php endif ?>
-						<h4 class="panel-title"><?php echo ( ! empty( $instance['title'] )) ? apply_filters( 'widget_text', $instance['title'] ) : ''; ?></h4>
+						<h4 class="panel-title"><?php echo ( ! empty( $instance['title'] )) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] )) ? apply_filters( 'widget_text', $instance['subtitle'] ) : ''; ?></span>
+							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] )) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
 						</div>
 						<div class="col-lg-6 text-right">
-							<span class="panel-value-xl panel-value-important"><?php echo ( ! empty( $instance['amount'] )) ? apply_filters( 'widget_text', $instance['amount'] ) : ''; ?></span>
+							<span class="panel-value-xl panel-value-important"><?php echo ( ! empty( $instance['amount'] )) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 			<?php
 
-			echo $args['after_widget'];
+			echo wp_kses_post( $args['after_widget'] );
 
 		endif;
 
@@ -103,7 +103,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'show_on_page' ) ?>"><?php esc_attr_e( 'Show on page:', 'keitaro' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_on_page' ) ); ?>"><?php esc_attr_e( 'Show on page:', 'keitaro' ); ?></label>
 			<?php
 
 			$wp_pages = get_posts( array(
@@ -117,7 +117,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 				?>
 				<select name="<?php echo esc_attr( $this->get_field_name( 'show_on_page' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_on_page' ) ); ?>" class="widefat">
-					<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+					<option value="0"><?php esc_html_e( '&mdash; Select &mdash;' ); ?></option>
 					<?php foreach ( $wp_pages as $page ) : ?>
 						<option value="<?php echo esc_attr( $page->ID ); ?>" <?php selected( $show_on_page, $page->ID ); ?>>
 							<?php echo esc_html( $page->post_title ); ?>
