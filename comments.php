@@ -51,7 +51,7 @@ if ( post_password_required() ) {
 		the_comments_pagination( array(
 			'prev_text' => '<span class="screen-reader-text">' . __( 'Previous', 'keitaro' ) . '</span>',
 			'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>',
-) );
+		) );
 
 	endif;
 
