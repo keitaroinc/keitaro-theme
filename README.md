@@ -1,6 +1,10 @@
 # Keitaro Inc. - WordPress Theme
 
-The official WordPress theme of Keitaro Inc.
+The official WordPress theme of [Keitaro Inc.](http://www.keitaro.com/)
+
+Keitaro offers reliable managed services based on open-source technologies. Our passion for Linux and open-source defines us.
+
+Our mission is continuous improvement and enrichment of our knowledge and expertise by creating unique customer experience and delivering top-notch open-source and Linux-based solutions.
 
 ## Requirements
 
