@@ -12,7 +12,7 @@ Our mission is continuous improvement and enrichment of our knowledge and expert
 * Node.js
 * LESS
 
-## Install
+## Installing required Node.js modules
 
 Run `npm install` to install all required Node.js modules
 
@@ -20,6 +20,8 @@ Run `npm install` to install all required Node.js modules
 
 Run `gulp` to (re)build all static CSS and JS assets.
 
-## TO DO
+## Testing
 
-Write better README.md content.
+Execute `run_tests.sh` to validate the codebase with the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).
+
+Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve coding errors.
