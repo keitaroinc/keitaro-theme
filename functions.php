@@ -476,6 +476,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	$author_description = get_the_author_meta( 'description' );
 	$author_posts_number = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
+        $author_work_position = get_the_author_meta( 'user_work_position' );
 	$author_stats = sprintf( '<p class="author-stats"><small>' .
 			// translators: Authors Stats: sentence
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
@@ -486,11 +487,11 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: connector
 			__( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number );
 
-	$print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%4$s</p>%5$s</div></div>',
+	$print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ), sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats
+					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, (!empty($author_work_position) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf('%s %s', __('at', 'keitaro'), get_bloginfo('title') ) . '.</p>' : '')
 	);
 
 		if ( true == $display ) :
@@ -504,10 +505,10 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 function keitaro_author_avatar( $author = false, $size = 112, $display = true ) {
 
 	$print = '';
-
+        
 	$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
-	$custom_avatar = sprintf( '<a class="url fn n" href="%3$s"><img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s"></a>', $custom_avatar_url, $size, esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) );
+	$custom_avatar = sprintf( '<a title="%4$s" class="url fn n" href="%3$s"><img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s"></a>', $custom_avatar_url, $size, esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), get_the_author_meta('display_name', $author) );
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
@@ -558,7 +559,7 @@ function keitaro_continue_to_second_blog_posts_page_button( $text, $link ) {
 /* Support custom profile pictures in case avatars
  * are not available through Gravatar */
 
-function keitaro_custom_profile_picture( $user ) {
+function keitaro_custom_profile_data( $user ) {
 
 	wp_enqueue_media();
 	wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
@@ -570,6 +571,8 @@ function keitaro_custom_profile_picture( $user ) {
 	if ( empty( $current_profile_picture_id ) ) :
 		$current_profile_picture = get_avatar_url( '' );
 	endif;
+        
+        $current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 
 	?>
 
@@ -577,6 +580,12 @@ function keitaro_custom_profile_picture( $user ) {
 
 	<table class="form-table">
 
+                <tr>
+                    <th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
+                    <td>
+                        <input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
+                    </td>
+                </tr>
 		<tr>
 			<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
 			<td>
@@ -601,8 +610,8 @@ function keitaro_custom_profile_picture( $user ) {
 
 // additional_user_fields
 
-add_action( 'show_user_profile', 'keitaro_custom_profile_picture' );
-add_action( 'edit_user_profile', 'keitaro_custom_profile_picture' );
+add_action( 'show_user_profile', 'keitaro_custom_profile_data' );
+add_action( 'edit_user_profile', 'keitaro_custom_profile_data' );
 
 function keitaro_custom_image_placeholder( $attachment_id, $display = true, $print = '' ) {
 
@@ -640,6 +649,7 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
+	update_user_meta( $user_id, 'user_work_position', esc_attr( $_POST['user_work_position'] ) );
 	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
 
 }
