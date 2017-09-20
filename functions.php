@@ -508,7 +508,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 			$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
-	$custom_avatar = sprintf( '<a title="%4$s" class="url fn n" href="%3$s"><img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s"></a>', $custom_avatar_url, $size, esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), get_the_author_meta( 'display_name', $author ) );
+	$custom_avatar = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s">', $custom_avatar_url, $size );
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
@@ -518,7 +518,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 		$avatar = get_avatar( $author, $size );
 	endif;
 
-	$print .= $avatar;
+	$print .= sprintf( '<a title="%1$s" class="url fn n" href="%2$s">%3$s</a>', get_the_author_meta( 'display_name', $author ), esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), $avatar );
 
 		if ( true == $display ) :
 		echo wp_kses_post( $print );
