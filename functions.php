@@ -476,7 +476,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	$author_description = get_the_author_meta( 'description' );
 	$author_posts_number = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
-        $author_work_position = get_the_author_meta( 'user_work_position' );
+		$author_work_position = get_the_author_meta( 'user_work_position' );
 	$author_stats = sprintf( '<p class="author-stats"><small>' .
 			// translators: Authors Stats: sentence
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
@@ -491,7 +491,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ), sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, (!empty($author_work_position) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf('%s %s', __('at', 'keitaro'), get_bloginfo('title') ) . '.</p>' : '')
+					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '')
 	);
 
 		if ( true == $display ) :
@@ -505,10 +505,10 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 function keitaro_author_avatar( $author = false, $size = 112, $display = true ) {
 
 	$print = '';
-        
-	$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
+
+			$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
-	$custom_avatar = sprintf( '<a title="%4$s" class="url fn n" href="%3$s"><img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s"></a>', $custom_avatar_url, $size, esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), get_the_author_meta('display_name', $author) );
+	$custom_avatar = sprintf( '<a title="%4$s" class="url fn n" href="%3$s"><img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s"></a>', $custom_avatar_url, $size, esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), get_the_author_meta( 'display_name', $author ) );
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
@@ -571,8 +571,8 @@ function keitaro_custom_profile_data( $user ) {
 	if ( empty( $current_profile_picture_id ) ) :
 		$current_profile_picture = get_avatar_url( '' );
 	endif;
-        
-        $current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
+
+				$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 
 	?>
 
@@ -580,12 +580,12 @@ function keitaro_custom_profile_data( $user ) {
 
 	<table class="form-table">
 
-                <tr>
-                    <th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
-                    <td>
-                        <input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
-                    </td>
-                </tr>
+				<tr>
+					<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
+					<td>
+						<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
+					</td>
+				</tr>
 		<tr>
 			<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
 			<td>
