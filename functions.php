@@ -369,7 +369,7 @@ function keitaro_widgets_init() {
 		register_widget( 'Keitaro_Contact_Form' );
 	endif;
 
-}
+		}
 
 add_action( 'widgets_init', 'keitaro_widgets_init' );
 
@@ -384,6 +384,78 @@ function keitaro_hero_title_shortcode() {
 	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', wp_kses_post( $formatted_title ) ) );
 
 }
+
+/* Add support for hyperlinks to default WordPress Image widget */
+function keitaro_add_media_image_url( $widget, $return, $instance ) {
+
+		// Are we dealing with a media_image widget?
+	if ( 'media_image' == $widget->id_base ) {
+
+				$handle = 'image_anchor_href';
+
+		// Get already set hyperlink value or empty string
+		$hyperlink = isset( $instance[ $handle ] ) ? $instance[ $handle ] : '';
+
+				?>
+			<p>
+				<label for="<?php echo $widget->get_field_id( $handle ); ?>">
+					<?php _e( 'Hyperlink:', 'keitaro' ); ?>
+				</label>
+				<input class="widefat title" type="url" id="<?php echo $widget->get_field_id( $handle ); ?>" name="<?php echo $widget->get_field_name( $handle ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
+			</p>
+		<?php
+	}
+
+	}
+
+add_filter( 'in_widget_form', 'keitaro_add_media_image_url', 10, 3 );
+
+/* Save hyperlink value for WordPress Image widget */
+function keitaro_save_media_image_url( $instance, $new_instance ) {
+
+		$handle = 'image_anchor_href';
+
+	// Is the instance a nav menu and are descriptions enabled?
+	if ( isset( $new_instance['media_image'] ) && ! empty( $new_instance[ $handle ] ) ) {
+		$new_instance[ $handle ] = $instance;
+	}
+
+	return $new_instance;
+}
+
+add_filter( 'widget_update_callback', 'keitaro_save_media_image_url', 10, 2 );
+
+function keitaro_wrap_media_image_width_anchor( $params ) {
+
+	$handle = 'image_anchor_href';
+
+		// Get sidebar and widget information
+	$widget_id = $params[0]['widget_id'];
+	$widget_id_number_strip = explode( '-', $widget_id );
+	$widget_id_number = end( $widget_id_number_strip );
+
+		// Get widget data for all widget_media_image widgets
+	$media_image_widgets = get_option( 'widget_media_image' );
+
+		if ( isset( $media_image_widgets[ $widget_id_number ][ $handle ] ) ) :
+
+		// Get hyperlink value for this specific widget
+		$widget_hyperlink = $media_image_widgets[ $widget_id_number ][ $handle ];
+
+		// Get title value for this specific widget
+		$widget_title = $media_image_widgets[ $widget_id_number ]['title'];
+
+		// Override widget parameters
+		$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s">', $widget_hyperlink, $widget_title );
+		$params[0]['after_widget'] = '</a></li>';
+
+			endif;
+
+		return $params;
+
+	}
+
+add_filter( 'dynamic_sidebar_params', 'keitaro_wrap_media_image_width_anchor' );
 
 /*
  * Generate navigation menu for a predefined/registered menu location
