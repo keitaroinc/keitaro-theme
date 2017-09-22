@@ -430,6 +430,7 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 	$handle = 'image_anchor_href';
 
 		// Get sidebar and widget information
+		$sidebar_id = $params[0]['id'];
 	$widget_id = $params[0]['widget_id'];
 	$widget_id_number_strip = explode( '-', $widget_id );
 	$widget_id_number = end( $widget_id_number_strip );
@@ -437,7 +438,8 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 		// Get widget data for all widget_media_image widgets
 	$media_image_widgets = get_option( 'widget_media_image' );
 
-		if ( isset( $media_image_widgets[ $widget_id_number ][ $handle ] ) ) :
+				// Currently applied only for widgets in the keitaro_service_icons sidebar
+		if ( 'keitaro_service_icons' == $sidebar_id ) :
 
 		// Get hyperlink value for this specific widget
 		$widget_hyperlink = $media_image_widgets[ $widget_id_number ][ $handle ];
