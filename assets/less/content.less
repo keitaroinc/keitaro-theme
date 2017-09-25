@@ -179,7 +179,8 @@ hr {
     }
 
     .menu-item {
-        margin-top: @grid-gutter-width/2;
+        margin-top: @grid-gutter-width/2;       
+
         &:first-child {
             a {
                 .btn;
@@ -221,8 +222,11 @@ hr {
 .list-wide {
     letter-spacing: @letter-spacing-large;
     li {
-        &:not(:first-child) {
-            margin-left: @grid-gutter-width / 3;
+        &:not(:first-child){
+            margin-left: @grid-gutter-width / 6;
+        }
+        &:not(:last-child){
+            margin-right: @grid-gutter-width / 6;
         }
     }
 }
