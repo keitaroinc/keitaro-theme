@@ -62,6 +62,7 @@ if ( $read_more_content->have_posts() ) :
 			</div>
 		</div>
 	</section>
+		<hr class="visible-xs visible-sm">
 	<?php
 
 endif;
