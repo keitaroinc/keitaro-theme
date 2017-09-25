@@ -398,10 +398,10 @@ function keitaro_add_media_image_url( $widget, $return, $instance ) {
 
 				?>
 			<p>
-				<label for="<?php echo $widget->get_field_id( $handle ); ?>">
-					<?php _e( 'Hyperlink:', 'keitaro' ); ?>
+				<label for="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>">
+					<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
 				</label>
-				<input class="widefat title" type="url" id="<?php echo $widget->get_field_id( $handle ); ?>" name="<?php echo $widget->get_field_name( $handle ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
+				<input class="widefat title" type="url" id="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $handle ) ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
 			</p>
 		<?php
 	}
@@ -448,10 +448,15 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 		$widget_title = $media_image_widgets[ $widget_id_number ]['title'];
 
 		// Override widget parameters
-		$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s">', $widget_hyperlink, $widget_title );
+
+		if ( ! empty( $widget_hyperlink ) ) :
+
+			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s">', $widget_hyperlink, $widget_title );
 		$params[0]['after_widget'] = '</a></li>';
 
 			endif;
+
+								endif;
 
 		return $params;
 
