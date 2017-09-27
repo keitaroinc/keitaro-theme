@@ -11,6 +11,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-menu' ); ?>
+                                    <hr class="visible-xs visible-sm">
 				</div>
 				<div class="col-md-6">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/social-menu' ); ?>
