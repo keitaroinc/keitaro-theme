@@ -23,7 +23,7 @@ if ( $child_pages->have_posts() ) :
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="row">
-				<div class="col-md-8 pull-right">
+				<div class="col-md-8">
 
 					<header class="entry-header">
 						<?php
