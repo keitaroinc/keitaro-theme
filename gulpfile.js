@@ -16,7 +16,7 @@ gulp.task('less', function () {
             .pipe(cleanCSS({
                 compatibility: 'ie8'
             }))
-            .pipe(sourcemaps.write())
+            // .pipe(sourcemaps.write()) - Uncoment when developing
             .pipe(gulp.dest('assets/css'));
 });
 
