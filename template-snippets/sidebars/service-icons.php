@@ -5,13 +5,15 @@ $sidebar_id = 'keitaro_service_icons';
 if ( is_active_sidebar( $sidebar_id ) ) :
 
 	?>
-	<ul class="list-inline list-service-icons list-wide">
-		<?php
+	<div class="container">
+		<ul class="list-service-icons">
+			<?php
 
-		dynamic_sidebar( $sidebar_id );
+			dynamic_sidebar( $sidebar_id );
 
-		?>
-	</ul>
+			?>
+		</ul>
+	</div>
 	<?php
 
 endif;
