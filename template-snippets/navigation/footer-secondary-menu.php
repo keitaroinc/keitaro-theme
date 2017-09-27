@@ -1,3 +1,3 @@
 <?php
 
-keitaro_menu( 'footer-secondary', 'footer-navigation' );
+keitaro_menu( 'footer-secondary', 'footer-navigation list-wide' );
