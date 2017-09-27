@@ -109,6 +109,9 @@
 .entry-content {
     margin-top: @grid-gutter-width / 2;
     margin-bottom: @grid-gutter-width / 2;
+    @media (max-width: @screen-sm-max){
+        margin-bottom: @grid-gutter-width;
+    }
     p {
         &:last-child {
             margin-bottom: 0;
@@ -119,6 +122,21 @@
 .entry-group {
     .hentry {
         margin: @grid-gutter-width / 3 0;
+    }
+}
+
+.page-template-parent{
+    .hentry{
+        @media (min-width: @screen-md-min) {
+            .col-md-8 {
+                float: right;
+            }
+        }
+        @media (max-width: @screen-sm-max) {
+            .col-md-4 {
+                clear: both;
+            }
+        }
     }
 }
 
