@@ -122,7 +122,11 @@
     &.social-navigation {
         li {
             margin-left: @grid-gutter-width / 6;
-            margin-right: 0;
+            margin-right: @grid-gutter-width / 6;
+            
+            @media (min-width: @screen-md-min){
+                margin-right: 0;
+            }
         }
     }
 }
