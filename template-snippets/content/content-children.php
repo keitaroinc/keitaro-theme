@@ -23,20 +23,7 @@ if ( $child_pages->have_posts() ) :
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="row">
-
-				<div class="col-md-4">
-					<?php
-
-					if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
-						get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
-					endif;
-
-					keitaro_child_pages_list( get_the_ID() );
-
-					?>
-					<?php get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' ); ?>
-				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 pull-right">
 
 					<header class="entry-header">
 						<?php
@@ -54,6 +41,18 @@ if ( $child_pages->have_posts() ) :
 
 					<?php get_template_part( SNIPPETS_DIR . '/entry-content' ); ?>
 
+				</div>
+				<div class="col-md-4">
+					<?php
+
+					if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
+						get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
+					endif;
+
+					keitaro_child_pages_list( get_the_ID() );
+
+					?>
+					<?php get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' ); ?>
 				</div>
 			</div>
 		</article><!-- #post-## -->
