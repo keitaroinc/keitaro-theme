@@ -205,7 +205,7 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js' );
 
 	// JS for testing layout issues
-	// wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/assets/js/layout-test.js');
+		// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
 
 }
 
