@@ -50,6 +50,8 @@ if ( ! is_front_page() ) :
 
 				<?php
 
+                        else:
+                                get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
 			endif;
 
 			get_template_part( SNIPPETS_DIR . '/sidebars/twitter-content' );
