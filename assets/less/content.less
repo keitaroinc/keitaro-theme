@@ -18,6 +18,8 @@
 
 .list-service-icons {
     .list-inline;
+    .list-wide;
+    margin-left: 0;
     font-size: 0; // Removes any text elements before the icons
     margin-top: @grid-gutter-width;
     margin-bottom: @grid-gutter-width;
@@ -222,12 +224,7 @@ hr {
 .list-wide {
     letter-spacing: @letter-spacing-large;
     li {
-        &:not(:first-child) {
-            margin-left: @grid-gutter-width / 6;
-        }
-        &:not(:last-child) {
-            margin-right: @grid-gutter-width / 6;
-        }
+        margin-right: @grid-gutter-width / 3;
     }
 }
 
