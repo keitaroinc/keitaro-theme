@@ -201,7 +201,7 @@ if ( ! is_front_page() ) {
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
 		if ( get_query_var( 'paged' ) > 1 ) :
-			printf( '<li>%s</li>', esc_url( get_the_author_posts_link() ) );
+			printf( '<li>%s</li>', wp_kses_post( get_the_author_posts_link() ) );
 		else :
 			breadcrumb_item( false, get_the_author_meta( 'display_name' ), 'span' );
 			$url = false;
