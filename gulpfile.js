@@ -17,7 +17,7 @@ gulp.task('less', function () {
                 compatibility: 'ie8'
             }))
             // .pipe(sourcemaps.write()) - Uncoment when developing
-            .pipe(gulp.dest('assets/css'));
+            .pipe(gulp.dest('.'));
 });
 
 // Copy Bootstrap js assets in assets/js
