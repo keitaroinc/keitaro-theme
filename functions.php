@@ -735,3 +735,12 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 
 add_action( 'personal_options_update', 'keitaro_save_custom_profile_picture' );
 add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
+
+/**
+ * Remove Jetpack CSS assets
+ */
+function themeprefix_remove_jetpack_css() {
+        wp_deregister_style( 'grunion.css' ); // Grunion contact form
+}
+
+add_action('wp_enqueue_scripts ', 'themeprefix_remove_jetpack_css' );
