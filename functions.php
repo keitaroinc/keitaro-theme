@@ -742,8 +742,8 @@ add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
 
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
-function themeprefix_remove_jetpack_css() {
+function keitaro_remove_jetpack_css() {
         wp_deregister_style( 'grunion.css' ); // Grunion contact form
 }
 
-add_action('wp_enqueue_scripts ', 'themeprefix_remove_jetpack_css' );
+add_action('wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
