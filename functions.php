@@ -479,7 +479,7 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 		?>
 		<nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>">
 			<?php if ( $collapse ) : ?>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
+				<button type="button" class="pull-right navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
@@ -743,7 +743,7 @@ add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
 function keitaro_remove_jetpack_css() {
-        wp_deregister_style( 'grunion.css' ); // Grunion contact form
+		wp_deregister_style( 'grunion.css' ); // Grunion contact form
 }
 
-add_action('wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
+add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
