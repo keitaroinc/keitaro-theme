@@ -27,9 +27,7 @@
 			<div class="<?php echo esc_html( $container_class ); ?>">
 				<header class="main-navbar content-block">
 						<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
-					<div class="pull-right">
 						<?php get_template_part( SNIPPETS_DIR . '/navigation/main-menu' ); ?>
-					</div>
 				</header>
 			</div>
 		</div>
