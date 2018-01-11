@@ -205,7 +205,7 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js' );
 
 	// JS for testing layout issues
-		// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
+	// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
 
 }
 
@@ -369,7 +369,7 @@ function keitaro_widgets_init() {
 		register_widget( 'Keitaro_Contact_Form' );
 	endif;
 
-		}
+}
 
 add_action( 'widgets_init', 'keitaro_widgets_init' );
 
@@ -386,34 +386,37 @@ function keitaro_hero_title_shortcode() {
 }
 
 /* Add support for hyperlinks to default WordPress Image widget */
+
 function keitaro_add_media_image_url( $widget, $return, $instance ) {
 
-		// Are we dealing with a media_image widget?
+	// Are we dealing with a media_image widget?
 	if ( 'media_image' == $widget->id_base ) {
 
-				$handle = 'image_anchor_href';
+		$handle = 'image_anchor_href';
 
 		// Get already set hyperlink value or empty string
 		$hyperlink = isset( $instance[ $handle ] ) ? $instance[ $handle ] : '';
 
-				?>
-			<p>
-				<label for="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>">
-					<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
-				</label>
-				<input class="widefat title" type="url" id="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $handle ) ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
-			</p>
+		?>
+		<p>
+			<label for="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>">
+				<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
+			</label>
+			<input class="widefat title" type="url" id="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $handle ) ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
+		</p>
 		<?php
-	}
 
 	}
+
+}
 
 add_filter( 'in_widget_form', 'keitaro_add_media_image_url', 10, 3 );
 
 /* Save hyperlink value for WordPress Image widget */
+
 function keitaro_save_media_image_url( $instance, $new_instance ) {
 
-		$handle = 'image_anchor_href';
+	$handle = 'image_anchor_href';
 
 	// Is the instance a nav menu and are descriptions enabled?
 	if ( isset( $new_instance['media_image'] ) && ! empty( $new_instance[ $handle ] ) ) {
@@ -421,6 +424,7 @@ function keitaro_save_media_image_url( $instance, $new_instance ) {
 	}
 
 	return $new_instance;
+
 }
 
 add_filter( 'widget_update_callback', 'keitaro_save_media_image_url', 10, 2 );
@@ -429,17 +433,17 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 
 	$handle = 'image_anchor_href';
 
-		// Get sidebar and widget information
-		$sidebar_id = $params[0]['id'];
+	// Get sidebar and widget information
+	$sidebar_id = $params[0]['id'];
 	$widget_id = $params[0]['widget_id'];
 	$widget_id_number_strip = explode( '-', $widget_id );
 	$widget_id_number = end( $widget_id_number_strip );
 
-		// Get widget data for all widget_media_image widgets
+	// Get widget data for all widget_media_image widgets
 	$media_image_widgets = get_option( 'widget_media_image' );
 
-				// Currently applied only for widgets in the keitaro_service_icons sidebar
-		if ( 'keitaro_service_icons' == $sidebar_id ) :
+	// Currently applied only for widgets in the keitaro_service_icons sidebar
+	if ( 'keitaro_service_icons' == $sidebar_id ) :
 
 		// Get hyperlink value for this specific widget
 		$widget_hyperlink = $media_image_widgets[ $widget_id_number ][ $handle ];
@@ -452,15 +456,15 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 		if ( ! empty( $widget_hyperlink ) ) :
 
 			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s">', $widget_hyperlink, $widget_title );
-		$params[0]['after_widget'] = '</a></li>';
+			$params[0]['after_widget'] = '</a></li>';
 
-			endif;
+		endif;
 
-								endif;
+	endif;
 
-		return $params;
+	return $params;
 
-	}
+}
 
 add_filter( 'dynamic_sidebar_params', 'keitaro_wrap_media_image_width_anchor' );
 
@@ -555,7 +559,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	$author_description = get_the_author_meta( 'description' );
 	$author_posts_number = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
-		$author_work_position = get_the_author_meta( 'user_work_position' );
+	$author_work_position = get_the_author_meta( 'user_work_position' );
 	$author_stats = sprintf( '<p class="author-stats"><small>' .
 			// translators: Authors Stats: sentence
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
@@ -570,10 +574,10 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ), sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '')
+					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
 
-		if ( true == $display ) :
+	if ( true == $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );
@@ -585,7 +589,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print = '';
 
-			$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
+	$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
 	$custom_avatar = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s">', $custom_avatar_url, $size );
 
@@ -599,7 +603,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print .= sprintf( '<a title="%1$s" class="url fn n" href="%2$s">%3$s</a>', get_the_author_meta( 'display_name', $author ), esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), $avatar );
 
-		if ( true == $display ) :
+	if ( true == $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );
@@ -651,7 +655,7 @@ function keitaro_custom_profile_data( $user ) {
 		$current_profile_picture = get_avatar_url( '' );
 	endif;
 
-				$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
+	$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 
 	?>
 
@@ -659,12 +663,12 @@ function keitaro_custom_profile_data( $user ) {
 
 	<table class="form-table">
 
-				<tr>
-					<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
-					<td>
-						<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
-					</td>
-				</tr>
+		<tr>
+			<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
+			<td>
+				<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
+			</td>
+		</tr>
 		<tr>
 			<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
 			<td>
@@ -743,7 +747,22 @@ add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
 function keitaro_remove_jetpack_css() {
-		wp_deregister_style( 'grunion.css' ); // Grunion contact form
+	wp_deregister_style( 'grunion.css' ); // Grunion contact form
+
 }
 
 add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
+
+
+/*
+ * Allow file uploads by users with Contributor role
+ */
+if ( current_user_can( 'contributor' ) && ! current_user_can( 'upload_files' ) ) {
+	add_action( 'admin_init', 'keitaro_allow_contributor_uploads' );
+}
+
+function keitaro_allow_contributor_uploads() {
+	$contributor = get_role( 'contributor' );
+	$contributor->add_cap( 'upload_files' );
+
+}
