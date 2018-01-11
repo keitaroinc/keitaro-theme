@@ -724,7 +724,7 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 function keitaro_save_custom_profile_picture( $user_id ) {
 
 	// only saves if the current user can edit user profiles
-	if ( ! current_user_can( 'edit_posts', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
+	if ( ! current_user_can( 'upload_files', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
