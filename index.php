@@ -38,7 +38,7 @@ if ( ! is_front_page() ) :
 
 			endif;
 
-			if ( ! is_author() && ! is_404() ) :
+			if ( $paged && ( ! is_author() && ! is_404() ) ) :
 
 				?>
 
@@ -50,8 +50,8 @@ if ( ! is_front_page() ) :
 
 				<?php
 
-						else :
-								get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
+			else :
+				get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
 			endif;
 
 			get_template_part( SNIPPETS_DIR . '/sidebars/twitter-content' );
