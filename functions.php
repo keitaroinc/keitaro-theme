@@ -644,50 +644,56 @@ function keitaro_continue_to_second_blog_posts_page_button( $text, $link ) {
 
 function keitaro_custom_profile_data( $user ) {
 
-	wp_enqueue_media();
-	wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
+	if ( current_user_can( 'upload_files', $user->ID ) ) :
+		wp_enqueue_media();
+		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
 
-	// Get thumbnail version of the current attachment
-	$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
-	$current_profile_picture = wp_get_attachment_image_url( $current_profile_picture_id );
+		// Get thumbnail version of the current attachment
+		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
+		$current_profile_picture = wp_get_attachment_image_url( $current_profile_picture_id );
 
-	if ( empty( $current_profile_picture_id ) ) :
-		$current_profile_picture = get_avatar_url( '' );
+		if ( empty( $current_profile_picture_id ) ) :
+			$current_profile_picture = get_avatar_url( '' );
+		endif;
 	endif;
 
-	$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
+	if ( current_user_can( 'edit_posts', $user->ID ) ) :
+		$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
+	endif;
 
 	?>
 
-	<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
+	<?php if ( current_user_can( 'edit_posts', $user->ID ) ) : ?>
+		<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
 
-	<table class="form-table">
-
-		<tr>
-			<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
-			<td>
-				<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
-			</td>
-		</tr>
-		<tr>
-			<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
-			<td>
-				<a href="javascript:;" class="custom-profile-picture">
-					<img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96"><br />
-				</a>
-				<p class="description"><?php esc_html_e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
-				<p>
-					<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' )); ?></button>
-					<?php if ( $current_profile_picture_id ) : ?>
-						<button type="button" class="button custom-profile-picture-remove"><?php esc_html_e( 'Reset Image', 'keitaro' ); ?></button>
-					<?php endif; ?>
-				</p>
-				<input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_attr( $current_profile_picture_id ); ?>" class="regular-text" />
-			</td>
-		</tr>
-
-	</table><!-- end form-table -->
-	<?php
+		<table class="form-table">
+			<tr>
+				<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
+				<td>
+					<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
+				</td>
+			</tr>
+			<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
+				<tr>
+					<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
+					<td>
+						<a href="javascript:;" class="custom-profile-picture">
+							<img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96"><br />
+						</a>
+						<p class="description"><?php esc_html_e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
+						<p>
+							<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' )); ?></button>
+							<?php if ( $current_profile_picture_id ) : ?>
+								<button type="button" class="button custom-profile-picture-remove"><?php esc_html_e( 'Reset Image', 'keitaro' ); ?></button>
+							<?php endif; ?>
+						</p>
+						<input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_attr( $current_profile_picture_id ); ?>" class="regular-text" />
+					</td>
+				</tr>
+			<?php endif; ?>
+		</table><!-- end form-table -->
+		<?php
+	endif;
 
 }
 
@@ -725,6 +731,23 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 /**
  * Saves additional user fields to the database
  */
+function keitaro_save_work_position( $user_id ) {
+
+	// only saves if the current user can edit user profiles
+	if ( ! current_user_can( 'edit_posts', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
+		return false;
+	endif;
+
+	update_user_meta( $user_id, 'user_work_position', esc_attr( $_POST['user_work_position'] ) );
+
+}
+
+add_action( 'personal_options_update', 'keitaro_save_work_position' );
+add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
+
+/**
+ * Saves additional user fields to the database
+ */
 function keitaro_save_custom_profile_picture( $user_id ) {
 
 	// only saves if the current user can edit user profiles
@@ -732,7 +755,6 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_work_position', esc_attr( $_POST['user_work_position'] ) );
 	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
 
 }
