@@ -200,11 +200,10 @@ if ( ! is_front_page() ) {
 		// Display author name
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
-		if ( get_query_var( 'paged' ) > 1 ) :
+		if ( get_the_author_posts_link() ) :
 			printf( '<li>%s</li>', wp_kses_post( get_the_author_posts_link() ) );
 		else :
-			breadcrumb_item( false, get_the_author_meta( 'display_name' ), 'span' );
-			$url = false;
+			breadcrumb_item( get_author_posts_url(get_queried_object_id()), get_the_author_meta( 'display_name', get_queried_object_id() ), 'a' );
 		endif;
 	} elseif ( is_search() ) {
 
