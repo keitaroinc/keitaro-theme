@@ -455,7 +455,7 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 
 		if ( ! empty( $widget_hyperlink ) ) :
 
-			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s">', $widget_hyperlink, $widget_title );
+			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s" target="_blank">', $widget_hyperlink, $widget_title );
 			$params[0]['after_widget'] = '</a></li>';
 
 		endif;
