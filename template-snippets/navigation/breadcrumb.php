@@ -203,7 +203,7 @@ if ( ! is_front_page() ) {
 		if ( get_the_author_posts_link() ) :
 			printf( '<li>%s</li>', wp_kses_post( get_the_author_posts_link() ) );
 		else :
-			breadcrumb_item( get_author_posts_url(get_queried_object_id()), get_the_author_meta( 'display_name', get_queried_object_id() ), 'a' );
+			breadcrumb_item( get_author_posts_url( get_queried_object_id() ), get_the_author_meta( 'display_name', get_queried_object_id() ), 'a' );
 		endif;
 	} elseif ( is_search() ) {
 
