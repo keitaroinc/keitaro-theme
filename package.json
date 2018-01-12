@@ -29,6 +29,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "jquery": "^2.2.4",
     "less": "^2.7.2"
   }
 }
