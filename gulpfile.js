@@ -6,7 +6,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 // The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'bootstrap-js', 'custom-js-minify', 'less', 'watch']);
+gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'custom-js-minify', 'less', 'watch']);
 
 // Rebuild CSS from LESS
 gulp.task('less', function () {
@@ -32,6 +32,13 @@ gulp.task('bootstrap-fonts', function () {
             .pipe(gulp.dest('assets/fonts/'));
 });
 
+// jQuery assets
+gulp.task('jquery', function () {
+    return gulp.src('node_modules/jquery/dist/jquery.min.js')
+        .pipe(gulp.dest('assets/js'));
+});
+
+// JS minify
 gulp.task('custom-js-minify', function (cb) {
     gulp.src('assets/js/custom.js')
             .pipe(uglify())
