@@ -211,14 +211,12 @@ function keitaro_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'keitaro_theme_scripts' );
 
-add_action( 'init', 'keitaro_jquery_deregister' );
+add_action( 'wp_enqueue_scripts', 'keitaro_jquery_deregister' );
 
 function keitaro_jquery_deregister() {
-	if ( ! is_admin() ) {
 		$jquery_path = '/assets/js/jquery.min.js';
 		wp_deregister_script( 'jquery' );
 		wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null );
-	}
 
 }
 
