@@ -8,16 +8,17 @@
     align-items: flex-start;
 }
 
-.service-wrapper {
+/*.service-wrapper {
     display: grid;
-}
+}*/
 
 .service-item {
     @media (min-width: @screen-lg-min){
         min-height: @service-item-min-height;
     }
 
-    transition: .3s background-color ;
+    display: block; // Required for browsers that do not support CSS Grid
+    transition: .3s background-color;
     background-color: @body-bg;
     border-top: @service-item-top-border;
     padding: 0 @grid-gutter-width / 2 @grid-gutter-width / 6;

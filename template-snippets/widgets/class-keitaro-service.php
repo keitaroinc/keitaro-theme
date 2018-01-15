@@ -24,9 +24,9 @@ class Keitaro_Service extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo wp_kses_post( $args['before_widget'] );
+		// echo wp_kses_post( $args['before_widget'] );
 
-						echo '<a class="service-item" href="' . (isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#') . '">';
+		echo '<a class="service-item" href="' . (isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#') . '">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
@@ -36,7 +36,7 @@ class Keitaro_Service extends WP_Widget {
 		echo '<span class="btn-discover">&gt;_</span>';
 		echo '</a>';
 
-				echo wp_kses_post( $args['after_widget'] );
+		// echo wp_kses_post( $args['after_widget'] );
 
 	}
 
@@ -66,29 +66,29 @@ class Keitaro_Service extends WP_Widget {
 			<label for="<?php echo esc_url( $this->get_field_id( 'service_link' ) ); ?>"><?php esc_attr_e( 'Linked page:', 'keitaro' ); ?></label>
 			<?php
 
-			$wp_pages = get_posts(array(
+			$wp_pages = get_posts( array(
 				'post_type' => 'page',
 				'nopaging' => 1,
 				'order' => 'ASC',
 				'orderby' => 'title',
-			));
+					) );
 
 			if ( $wp_pages ) :
 
 				?>
 				<select name="<?php echo esc_attr( $this->get_field_name( 'service_link' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'service_link' ) ); ?>" class="widefat">
 					<option value="0"><?php esc_html_e( '&mdash; Select &mdash;' ); ?></option>
-				<?php foreach ( $wp_pages as $page ) : ?>
+					<?php foreach ( $wp_pages as $page ) : ?>
 						<option value="<?php echo esc_attr( $page->ID ); ?>" <?php selected( $service_link, $page->ID ); ?>>
-					<?php echo esc_html( $page->post_title ); ?>
+							<?php echo esc_html( $page->post_title ); ?>
 						</option>
-			<?php endforeach; ?>
+					<?php endforeach; ?>
 				</select>
-			<?php
+				<?php
 
-		endif;
+			endif;
 
-		?>
+			?>
 		</p>
 		<?php
 
