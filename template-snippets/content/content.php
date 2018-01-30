@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
 		<?php if ( ! is_author() && ! is_single() ) : ?>
-			<div class="col-md-2 avatar-wrapper">
+			<div class="col-md-2">
 				<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 			</div>
 		<?php endif; ?>
