@@ -190,7 +190,7 @@ add_action( 'wp_head', 'google_search_console_tags' );
 function keitaro_theme_scripts() {
 
 	// Futura PT font from Typekit
-	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.js', null, null );
+	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, null );
 
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
