@@ -2,19 +2,9 @@
 
     $(document).ready(function () {
 
-        var iframeWrap = $('.location-map-iframe-wrap');
-        var activateClass = 'activate-map';
         var btnGoToTop = $('.btn-go-to-top');
         var btnGoToTopToggleClass = 'btn-go-to-top-visible';
         var scrollTopOffset = 250;
-
-        iframeWrap.on('click', function () {
-            $(this).addClass(activateClass);
-        });
-
-        iframeWrap.on('mouseout', function () {
-            $(this).removeClass(activateClass);
-        });
 
         // Go to top when .btn-scroll-top is clicked
         btnGoToTop.click(function () {
