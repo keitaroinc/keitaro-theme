@@ -610,7 +610,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 		$avatar = get_avatar( $author, $size );
 	endif;
 
-	$print .= sprintf( '<a title="%1$s" class="url fn n" href="%2$s">%3$s</a>', get_the_author_meta( 'display_name', $author ), esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), $avatar );
+	$print .= sprintf( '<a title="%1$s" class="avatar-url url fn n" href="%2$s">%3$s</a>', get_the_author_meta( 'display_name', $author ), esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), $avatar );
 
 	if ( true == $display ) :
 		echo wp_kses_post( $print );
