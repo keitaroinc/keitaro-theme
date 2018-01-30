@@ -1,17 +1,17 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var cleanCSS = require('gulp-clean-css');
-var sourcemaps = require('gulp-sourcemaps');
+//var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 // The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'custom-js-minify', 'less', 'watch']);
+gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'js-minify', 'less', 'watch']);
 
 // Rebuild CSS from LESS
 gulp.task('less', function () {
     return gulp.src('assets/less/**/style.less')
-            .pipe(sourcemaps.init())
+//            .pipe(sourcemaps.init())
             .pipe(less())
             .pipe(cleanCSS({
                 compatibility: 'ie8'
@@ -35,12 +35,12 @@ gulp.task('bootstrap-fonts', function () {
 // jQuery assets
 gulp.task('jquery', function () {
     return gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest('assets/js'));
+            .pipe(gulp.dest('assets/js'));
 });
 
 // JS minify
-gulp.task('custom-js-minify', function (cb) {
-    gulp.src('assets/js/custom.js')
+gulp.task('js-minify', function (cb) {
+    gulp.src(['assets/js/*.js', '!assets/js/*.min.js'])
             .pipe(uglify())
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('assets/js/'));
@@ -49,5 +49,5 @@ gulp.task('custom-js-minify', function (cb) {
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
     gulp.watch(['assets/**/*.less'], ['less']);
-    // gulp.watch(['assets/js/*.js'], ['js']);
+    gulp.watch(['assets/js/*.js'], ['js-minify']);
 });
