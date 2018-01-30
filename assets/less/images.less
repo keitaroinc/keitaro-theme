@@ -64,12 +64,17 @@
     }
 }
 
-.avatar {
-    border-radius: 50%;
+.avatar{
+    position: relative;
+    z-index: 1;
 }
 
-.avatar-wrapper {
+.avatar-url {
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    .glyphicon('\e046');
     @media (min-width: @screen-md-min){
-        text-align: right;
+        float: right;
     }
 }
