@@ -14,28 +14,12 @@
 
 .location-map-container {
     position: relative;
-    .glyphicon('\e062');
-}
-
-.location-map-iframe-wrap {
-    position: relative;
     z-index: 1;
+    .glyphicon('\e062');
 
-    &:before {
-        content: '';
-        display: block;
-        background: transparent;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
-    &.activate-map {
-        &:before {
-            display: none;
-        }
+    iframe{
+        position: relative;
+        z-index: 2;
     }
 }
 
