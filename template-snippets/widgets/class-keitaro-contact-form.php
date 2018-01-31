@@ -185,7 +185,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 	if ( $intent_options ) :
 
 		?>
-		<div class="form-group">
+		<div class="form-group form-select">
 
 			<select name="intent" id="intent" class="form-control">
 				<?php foreach ( $intent_options as $key => $value ) : ?>
