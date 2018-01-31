@@ -4,6 +4,7 @@ var cleanCSS = require('gulp-clean-css');
 //var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var autoprefixer = require('gulp-autoprefixer');
 
 // The default Gulp.js task
 gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'js-minify', 'less', 'watch']);
@@ -13,6 +14,9 @@ gulp.task('less', function () {
     return gulp.src('assets/less/**/style.less')
 //            .pipe(sourcemaps.init())
             .pipe(less())
+            .pipe(autoprefixer({
+                browsers: 'last 3 versions'
+            }))
             .pipe(cleanCSS({
                 compatibility: 'ie8'
             }))
