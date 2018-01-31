@@ -55,7 +55,9 @@ gulp.task('js', function () {
 // Minify images
 gulp.task('img', function () {
     return gulp.src(['assets/img/**/*'])
-            .pipe(imagemin())
+            .pipe(imagemin(
+                    imagemin.optipng({optimizationLevel: 9})
+                    ))
             .pipe(gulp.dest('assets/img/'));
 });
 
