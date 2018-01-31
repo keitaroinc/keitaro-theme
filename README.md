@@ -18,7 +18,7 @@ Run `npm install` to install all required Node.js modules
 
 ## Build
 
-Run `gulp` to (re)build all static CSS and JS assets.
+Run `gulp` to (re)build and minify all static CSS and JS assets.
 
 ## Test
 
