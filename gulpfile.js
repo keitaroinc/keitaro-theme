@@ -56,12 +56,11 @@ gulp.task('js', function () {
 gulp.task('img', function () {
     return gulp.src(['assets/img/**/*'])
             .pipe(imagemin())
-            .pipe(gulp.dest('assets/images/'));
+            .pipe(gulp.dest('assets/img/'));
 });
 
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
     gulp.watch(['assets/less/**/*.less'], ['less']);
     gulp.watch(['assets/js/**/*.js'], ['js']);
-    gulp.watch(['assets/img/**/*'], ['img']);
 });
