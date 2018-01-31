@@ -3,10 +3,6 @@
     select {
         color: @keitaro-green-gray-l-10;
         cursor: pointer;
-        &.form-control {
-            padding: @grid-gutter-width / 3 0;
-            height: inherit;
-        }
         font-weight: 500;
         .text-uppercase;
     }
@@ -24,17 +20,23 @@
         cursor: pointer;
         position: absolute;
         width: 100%;
-        top: @grid-gutter-width / 3;
+        top: -@grid-gutter-width / 2;
         left: 0;
         display: block;
     }
     .form-group {
         position: relative;
+        margin: @grid-gutter-width/2 0 @grid-gutter-width;
+        &.form-select{
+            margin-top: -@grid-gutter-width/2;
+        }
     }
     .form-control {
-        background: transparent;
+        height: auto;
+        background: @keitaro-gray-lightest;
+        line-height: 1.5;
         border: transparent;
-        padding: @grid-gutter-width 0 @grid-gutter-width / 3;
+        margin: @grid-gutter-width*0.75 0 0;
         border-bottom: 2px solid @keitaro-green-gray;
         box-shadow: none;
         &:focus {
@@ -43,7 +45,7 @@
                 border-bottom-color: @keitaro-green-dark;
             }
             ~label {
-                top: @grid-gutter-width / 4;
+                top: -@grid-gutter-width / 1.75;
                 color: @brand-primary;
             }
         }
@@ -57,19 +59,27 @@
 .form-select {
     .glyphicon('\e252');
     position: relative;
-    background: transparent;
+    background: @keitaro-gray-lightest;
     &:hover {
         &:before {
             color: @keitaro-green-dark;
         }
     }
+    &:active,
+    &:focus{
+        background: @keitaro-green-gray-l-35;
+    }
     &:before {
         left: auto;
-        right: 0;
-        font-size: inherit;
+        right: @grid-gutter-width / 4;
+        font-size: @font-size-small - 4;
         color: @keitaro-green-gray;
     }
     select {
+        &::-ms-expand{
+            display: none;
+        }
+        line-height: 3;
         background: transparent;
         border: none;
         appearance: none;
