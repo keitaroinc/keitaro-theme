@@ -214,9 +214,9 @@ add_action( 'wp_enqueue_scripts', 'keitaro_theme_scripts' );
 add_action( 'wp_enqueue_scripts', 'keitaro_jquery_deregister' );
 
 function keitaro_jquery_deregister() {
-		$jquery_path = '/assets/js/jquery.min.js';
-		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null );
+	$jquery_path = '/assets/js/jquery.min.js';
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null );
 
 }
 
@@ -409,7 +409,7 @@ function keitaro_add_media_image_url( $widget, $return, $instance ) {
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>">
-		<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
+				<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
 			</label>
 			<input class="widefat title" type="url" id="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $handle ) ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
 		</p>
@@ -491,12 +491,12 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 
 		?>
 		<nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>">
-		<?php if ( $collapse ) : ?>
+			<?php if ( $collapse ) : ?>
 				<button type="button" class="pull-right navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
-				<?php endif; ?>
+			<?php endif; ?>
 			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo ($collapse) ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
@@ -554,7 +554,7 @@ function keitaro_child_pages_list( $parent_page_id ) {
 		<div class="service-list">
 			<?php foreach ( $child_pages as $page ) : ?>
 				<h4 class="service-list-item"><a href="<?php the_permalink( $page->ID ); ?>"><?php echo esc_html( $page->post_title ); ?></a></h4>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 		<?php
 
@@ -682,7 +682,7 @@ function keitaro_custom_profile_data( $user ) {
 					<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
 				</td>
 			</tr>
-		<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
+			<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
 				<tr>
 					<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
 					<td>
@@ -694,12 +694,12 @@ function keitaro_custom_profile_data( $user ) {
 							<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' )); ?></button>
 							<?php if ( $current_profile_picture_id ) : ?>
 								<button type="button" class="button custom-profile-picture-remove"><?php esc_html_e( 'Reset Image', 'keitaro' ); ?></button>
-			<?php endif; ?>
+							<?php endif; ?>
 						</p>
 						<input type="hidden" name="user_meta_image" id="user_meta_image" value="<?php echo esc_attr( $current_profile_picture_id ); ?>" class="regular-text" />
 					</td>
 				</tr>
-		<?php endif; ?>
+			<?php endif; ?>
 		</table><!-- end form-table -->
 		<?php
 
@@ -798,3 +798,10 @@ function keitaro_allow_contributor_uploads() {
 	$contributor->add_cap( 'upload_files' );
 
 }
+
+// Remove emoji prefetch links and inline scripts from <head>
+add_filter( 'emoji_svg_url', '__return_false' );
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
