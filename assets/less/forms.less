@@ -53,3 +53,25 @@
 .animate-position {
     transition: 100ms top ease-in-out;
 }
+
+.form-select{
+    .glyphicon('\e252');
+    position: relative;
+    background: transparent;
+    &:hover{
+        &:before{
+            color: @keitaro-green-dark;
+        }
+    }
+    &:before{
+        left: auto;
+        right: 0;
+        font-size: inherit;
+        color: @keitaro-green-gray;
+    }
+    select{
+        background: transparent;
+        border: none;
+        appearance: none;
+    }
+}
