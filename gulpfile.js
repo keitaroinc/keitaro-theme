@@ -7,7 +7,7 @@ var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 
 // The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'js-minify', 'less', 'watch']);
+gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'js', 'less', 'watch']);
 
 // Rebuild CSS from LESS
 gulp.task('less', function () {
@@ -43,8 +43,8 @@ gulp.task('jquery', function () {
 });
 
 // JS minify
-gulp.task('js-minify', function (cb) {
-    gulp.src(['assets/js/*.js', '!assets/js/*.min.js'])
+gulp.task('js', function (cb) {
+    return gulp.src(['!assets/js/*.min.js', 'assets/js/*.js'])
             .pipe(uglify())
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest('assets/js/'));
@@ -52,6 +52,6 @@ gulp.task('js-minify', function (cb) {
 
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
-    gulp.watch(['assets/**/*.less'], ['less']);
-    gulp.watch(['assets/js/*.js'], ['js-minify']);
+    gulp.watch(['assets/less/**/*.less'], ['less']);
+    gulp.watch(['assets/js/**/*.js'], ['js']);
 });
