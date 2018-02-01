@@ -1,5 +1,10 @@
 .content-area {
-    padding-top: @content-area-padding;
+    @media (max-width: @screen-xs-max) {
+        padding-top: @content-area-padding / 2;
+    }
+    @media (min-width: @screen-sm-min) {
+        padding-top: @content-area-padding;
+    }
     padding-bottom: @content-area-padding;
 
     .post-thumbnail {
