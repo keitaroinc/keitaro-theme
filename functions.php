@@ -190,7 +190,7 @@ add_action( 'wp_head', 'google_search_console_tags' );
 function keitaro_theme_scripts() {
 
 	// Futura PT font from Typekit
-	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, null );
+	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, null, true );
 
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
@@ -199,10 +199,10 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'jquery' );
 
 	// Bootstrap JS modules
-	wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', null, null );
+	wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', null, null, true );
 
 	// Custom JS minified
-	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null );
+	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
 	// JS for testing layout issues
 	// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
@@ -216,7 +216,7 @@ add_action( 'wp_enqueue_scripts', 'keitaro_jquery_deregister' );
 function keitaro_jquery_deregister() {
 	$jquery_path = '/assets/js/jquery.min.js';
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null );
+	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null, true );
 
 }
 
