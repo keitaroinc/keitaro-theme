@@ -145,7 +145,8 @@
     li {
         + li {
             &:before {
-                padding: 0 (@grid-gutter-width / 4 - 5) 0 (@grid-gutter-width / 4 + 5);
+                content: "@{breadcrumb-separator}";
+                padding: 0 (@grid-gutter-width / 4) 0 (@grid-gutter-width / 4 + 2);
             }
         }
         &:last-child {
