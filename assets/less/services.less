@@ -1,9 +1,6 @@
 .services {
     display: grid;
     grid-gap: @grid-gutter-width / 2;
-    @media (min-width: @screen-lg-min){
-        grid-template-columns: repeat(3, 1fr);
-    }
     text-align: left;
     align-items: flex-start;
 }
@@ -13,10 +10,6 @@
 }*/
 
 .service-item {
-    @media (min-width: @screen-lg-min){
-        min-height: @service-item-min-height;
-    }
-
     display: block; // Required for browsers that do not support CSS Grid
     transition: .3s background-color;
     background-color: @body-bg;
@@ -57,9 +50,6 @@
     text-align: justify;
     font-size: @font-size-base;
     hyphens: auto; // Currently not fully-supported in Google Chrome
-    @media (min-width: @screen-lg-min){
-        min-height: @grid-gutter-width * 3;
-    }
     margin-bottom: @grid-gutter-width / 2;
 }
 

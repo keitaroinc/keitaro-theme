@@ -18,9 +18,6 @@
     justify-content: flex-end;
     flex-direction: column;
     position: relative;
-    @media (max-width: @screen-xs-max) {
-        min-height: 45vh;
-    }
     .text-center;
     .hero-background;
     .content-block {
@@ -33,10 +30,6 @@
     background-position: 90% top, 90% bottom;
     background-repeat: no-repeat, repeat-y;
     background-size: 35%;
-    
-    @media (max-width: @screen-sm-max){
-        background-image: none !important;
-    }
 }
 
 .hero-title {
@@ -45,17 +38,6 @@
     font-size: 3em;
     color: @keitaro-green-dark;
     text-align: left;
-    @media (max-width: @screen-xs-max) {
-        font-size: @font-size-h1;
-        margin: @grid-gutter-width auto;
-    }
-    @media (min-width: @screen-sm-min) {
-        margin: @grid-gutter-width*2 auto;        
-        font-size: @font-size-h3*1.5;
-    }
-    @media (min-width: @screen-lg-min) {
-        margin: @grid-gutter-width*3 auto;        
-    }
 }
 
 .hero-subtitle {

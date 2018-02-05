@@ -2,28 +2,8 @@
     overflow: auto;
     padding-top: @grid-gutter-width / 2;
     padding-bottom: @grid-gutter-width / 2;
-
-    @media(min-width: @screen-sm-min) {
-        display: flex;
-        align-items: center;
-
-        .site-branding {
-            flex-basis: @grid-gutter-width * 5;
-        }
-
-        .navigation {
-            flex-grow: 5;
-        }
-    }
     .navbar-collapse {
         clear: both;
-        @media(max-width: @screen-sm-max) {
-            li {
-                margin: @grid-gutter-width / 6 0;
-                text-align: right;
-                display: block;
-            }
-        }
     }
     .navbar-toggle {
         margin-top: @main-navigation-top-margin;
@@ -44,9 +24,6 @@
 .main-navigation {
     margin-bottom: 0;
     letter-spacing: @letter-spacing-large;
-    @media(min-width: @screen-sm-min) {
-        .text-right;
-    }
     .list-inline {
         margin-top: @main-navigation-top-margin;
         margin-bottom: 0;
@@ -76,25 +53,8 @@
             > .sub-menu {
                 left: 0;
             }
-        }
 
-        > .sub-menu {
-            @media (min-width: @screen-md-min) {
-                position: absolute;
-                top: 100%;
-                left: -@padding-base-horizontal;
-                z-index: 99;
-                border: @container-bg-border;
-                background-color: @body-bg;
-                padding: @padding-base-vertical @padding-large-horizontal;
-            }
-        }
-
-        &:last-child {
             > a {
-                @media (min-width: @screen-md-min) {
-                    margin-left: @grid-gutter-width / 4;
-                }
                 .btn;
                 .btn-success;
 
@@ -110,10 +70,6 @@
 .footer-navigation {
     margin: 0;
 
-    @media (max-width: @screen-sm-max) {
-        text-align: center;
-    }
-
     .menu-item {
         margin-top: @grid-gutter-width / 6;
         margin-bottom: @grid-gutter-width / 6;
@@ -123,25 +79,12 @@
         li {
             margin-left: @grid-gutter-width / 6;
             margin-right: @grid-gutter-width / 6;
-
-            @media (min-width: @screen-md-min){
-                margin-right: 0;
-            }
         }
     }
 }
 
 .menu-item {
     position: relative;
-
-    &:hover {
-        @media (min-width: @screen-md-min) {
-            .sub-menu {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-    }
 }
 
 .current-menu-item {
@@ -152,16 +95,6 @@
 
 .sub-menu {
     list-style: outside none;
-
-    @media (min-width: @screen-md-min) {
-        opacity: 0;
-        visibility: hidden;
-        transition: 150ms opacity ease-in-out 20ms;
-        min-width: 100%;
-        text-align: left;
-        padding: 0 0 0 @padding-small-vertical;
-        margin: 0;
-    }
 
     .sub-menu {
         position: relative;
@@ -175,9 +108,6 @@
 
         > a {
             display: block;
-            @media (min-width: @screen-md-min) {
-                padding: @padding-base-vertical 0;
-            }
         }
     }
 }

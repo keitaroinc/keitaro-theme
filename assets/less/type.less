@@ -98,10 +98,6 @@ p {
     font-size: floor((@font-size-base * 1.15));
     font-weight: 300;
     line-height: 1.4;
-
-    @media (min-width: @screen-sm-min) {
-        font-size: (@font-size-base * 1.5);
-    }
 }
 
 
@@ -259,19 +255,6 @@ dd {
 .dl-horizontal {
     dd {
         &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
-    }
-
-    @media (min-width: @dl-horizontal-breakpoint) {
-        dt {
-            float: left;
-            width: (@dl-horizontal-offset - 20px);
-            clear: left;
-            text-align: right;
-            .text-overflow();
-        }
-        dd {
-            margin-left: @dl-horizontal-offset;
-        }
     }
 }
 
