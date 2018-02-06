@@ -20,6 +20,12 @@ Run `npm install` to install all required Node.js modules
 
 Run `gulp` to (re)build and minify all static CSS and JS assets.
 
+## Syntax highlighting
+
+Syntax highlighting is available thanks to [Prism](http://prismjs.com/). To enable it, wrap the relevant code with `<pre><code class="language-xxxx"> ... </code></pre>` in a (custom) post or page and set the language class of `<code>`. Please find the list of [languages that Prism supports](http://prismjs.com/#languages-list) on the official website.
+
+Syntactically highlighted code blocks are rendered with the Okaidia theme.
+
 ## Test
 
 Execute `run_tests.sh` to validate the codebase with the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).
