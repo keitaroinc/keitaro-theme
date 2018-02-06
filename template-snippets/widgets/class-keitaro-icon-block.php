@@ -47,7 +47,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] )) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
 						</div>
 						<div class="col-lg-6 text-right">
-							<span class="panel-value-xl panel-value-important"><?php echo ( ! empty( $instance['amount'] )) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
+							<span class="panel-value-xl panel-value-important <?php echo ( ! empty( $instance['description'] )) ? 'panel-value-with-description' : ''; ?>"><?php echo ( ! empty( $instance['amount'] )) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
+							<?php if ( $instance['description'] ) : ?>
+								<div class="panel-value-description" aria-hidden="true">
+									<?php echo esc_html( apply_filters( 'widget_text', $instance['description'] ) ); ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -75,6 +80,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$subtitle = ! empty( $instance['subtitle'] ) ? $instance['subtitle'] : '';
 		$amount = ! empty( $instance['amount'] ) ? $instance['amount'] : '';
+		$description = ! empty( $instance['description'] ) ? $instance['description'] : '';
 		$show_on_page = ! empty( $instance['show_on_page'] ) ? $instance['show_on_page'] : '';
 		$icon = ! empty( $instance['icon'] ) ? $instance['icon'] : ''
 
@@ -93,7 +99,10 @@ class Keitaro_Icon_Block extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'amount' ) ); ?>"><?php esc_attr_e( 'Amount:', 'keitaro' ); ?></label>
 			<input type="number" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'amount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'amount' ) ); ?>" type="text" value="<?php echo esc_attr( $amount ); ?>">
 		</p>
-
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
+			<textarea rows="10" id="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'description' ) ); ?>" class="widefat"><?php echo esc_html( $description ); ?></textarea>
+		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_attr_e( 'Icon:', 'keitaro' ); ?></label>
 			<input type="number" class="hidden custom-image-value widefat" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>">
@@ -152,6 +161,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['subtitle'] = ( ! empty( $new_instance['subtitle'] ) ) ? strip_tags( $new_instance['subtitle'] ) : '';
 		$instance['amount'] = ( ! empty( $new_instance['amount'] ) ) ? strip_tags( $new_instance['amount'] ) : '';
+		$instance['description'] = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
 		$instance['show_on_page'] = ( ! empty( $new_instance['show_on_page'] ) ) ? strip_tags( $new_instance['show_on_page'] ) : '';
 		$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
 

@@ -17,8 +17,17 @@
     .service-description {
         min-height: @grid-gutter-width * 3;
     }
+    .panel-value-with-description{
+        &:hover{
+            border-bottom: 5px dashed @keitaro-green-light;
+            ~ .panel-value-description{
+                opacity: 1;
+                animation: 300ms icon-block-appear ease-in-out 50ms;
+            }
+        }
+    }
 }
 
 @media (max-width: @screen-lg-min) {
-    
+
 }
