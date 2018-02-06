@@ -204,6 +204,13 @@ function keitaro_theme_scripts() {
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
+	// Prism.js - load only for pages, posts and custom post types
+	if ( is_singular() ) :
+		// Main keitaro_theme stylesheet
+		wp_enqueue_style( 'prism-css', get_stylesheet_directory_uri() . '/assets/css/prism-okaidia.css', null, null );
+		wp_enqueue_script( 'prism-js', get_stylesheet_directory_uri() . '/assets/js/prism.min.js', null, null, true );
+	endif;
+
 	// JS for testing layout issues
 	// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
 

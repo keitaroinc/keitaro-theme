@@ -9,7 +9,7 @@ var imagemin = require('gulp-imagemin');
 
 
 // The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'img', 'js', 'less', 'watch']);
+gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'prism-js', 'prism-css', 'img', 'js', 'less', 'watch']);
 
 // Rebuild CSS from LESS
 gulp.task('less', function () {
@@ -24,6 +24,18 @@ gulp.task('less', function () {
             }))
             // .pipe(sourcemaps.write()) - Uncoment when developing
             .pipe(gulp.dest('.'));
+});
+
+// Copy Prism js assets in assets/js
+gulp.task('prism-js', function () {
+    return gulp.src('node_modules/prismjs/prism.js')
+            .pipe(gulp.dest('assets/js'));
+});
+
+// Copy Prism js assets in assets/js
+gulp.task('prism-css', function () {
+    return gulp.src('node_modules/prismjs/themes/prism-okaidia.css')
+            .pipe(gulp.dest('assets/css'));
 });
 
 // Copy Bootstrap js assets in assets/js
