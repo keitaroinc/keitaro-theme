@@ -208,7 +208,11 @@ function keitaro_theme_scripts() {
 	if ( is_singular() ) :
 		// Main keitaro_theme stylesheet
 		wp_enqueue_style( 'prism-css', get_stylesheet_directory_uri() . '/assets/css/prism-okaidia.css', null, null );
+		wp_enqueue_style( 'prism-toolbar-css', get_stylesheet_directory_uri() . '/assets/css/prism-toolbar.css', null, null );
+		wp_enqueue_script( 'clipboard-js', get_stylesheet_directory_uri() . '/assets/js/clipboard.min.js', null, null, true );
 		wp_enqueue_script( 'prism-js', get_stylesheet_directory_uri() . '/assets/js/prism.min.js', null, null, true );
+		wp_enqueue_script( 'prism-toolbar-js', get_stylesheet_directory_uri() . '/assets/js/prism-toolbar.min.js', null, null, true );
+		wp_enqueue_script( 'prism-clipboard-js', get_stylesheet_directory_uri() . '/assets/js/prism-copy-to-clipboard.min.js', null, null, true );
 	endif;
 
 	// JS for testing layout issues

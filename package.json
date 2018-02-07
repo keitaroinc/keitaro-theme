@@ -21,6 +21,7 @@
   "license": "ISC",
   "homepage": "",
   "devDependencies": {
+    "clipboard": "^1.7.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
