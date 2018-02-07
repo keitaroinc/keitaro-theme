@@ -3,8 +3,6 @@
 
 	the_excerpt();
 
-	keitaro_read_more( 'btn-success' );
-
 	wp_link_pages( array(
 		'before' => '<div class="page-links">' . sprintf( '<h3>%s</h3>', __( 'Page', 'keitaro' ) ),
 		'after' => '</div>',
@@ -14,3 +12,6 @@
 
 	?>
 </div><!-- .entry-content -->
+<?php
+
+keitaro_read_more( 'btn-success' );
