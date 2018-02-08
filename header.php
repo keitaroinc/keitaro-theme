@@ -38,7 +38,7 @@
 				<div class="col-md-8 col-lg-9">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/breadcrumb' ); ?>
 				</div>
-				<?php if ( ! is_404() && ! is_page() ) : ?>
+				<?php if ( have_posts() && ! is_page() ) : ?>
 					<div class="col-md-4 col-lg-3">
 						<?php get_search_form(); ?>
 					</div>
