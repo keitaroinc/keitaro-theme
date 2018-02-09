@@ -17,13 +17,19 @@
     .service-description {
         min-height: @grid-gutter-width * 3;
     }
-    .panel-value-with-description{
-        &:hover{
-            border-bottom: 5px dashed @keitaro-green-light;
-            ~ .panel-value-description{
-                visibility: visible;
-                opacity: 1;
-                animation: 300ms icon-block-appear ease-in-out 50ms;
+    .page-parent{
+        .icon-block-wrapper{
+            overflow: visible;
+        }
+        .panel-value-with-description{
+            cursor: help;
+            &:hover{
+                border-bottom: 5px dashed @keitaro-green-light;
+                ~ .panel-value-description{
+                    visibility: visible;
+                    opacity: 1;
+                    animation: 300ms icon-block-appear ease-in-out 50ms;
+                }
             }
         }
     }
