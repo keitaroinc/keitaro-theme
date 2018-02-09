@@ -1,8 +1,19 @@
+<?php
+/**
+ * Template snippet for empty content
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <div class="container">
-    <div class="content-area">
-        <section class="no-results not-found">
-            <header class="page-header">
-                <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
+	<div class="content-area">
+		<section class="no-results not-found">
+			<header class="page-header">
+				<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
 			</header>
 			<div class="page-content">
 				<?php

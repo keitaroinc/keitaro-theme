@@ -7,9 +7,11 @@ class Keitaro_Location extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'widget_keitaro_location', // Base ID
-				esc_html__( 'Location', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Keitaro location widget with interactive map and address. The map is rendered automatically from the location address.', 'keitaro' ) ) // Args
+			'widget_keitaro_location', // Base ID
+			esc_html__( 'Location', 'keitaro' ), // Name
+			array(
+				'description' => esc_html__( 'Keitaro location widget with interactive map and address. The map is rendered automatically from the location address.', 'keitaro' ),
+			) // Args
 		);
 
 	}
@@ -26,7 +28,7 @@ class Keitaro_Location extends WP_Widget {
 
 		echo wp_kses_post( $args['before_widget'] );
 
-						if ( ! empty( $instance['location'] ) ) {
+		if ( ! empty( $instance['location'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( sprintf( '<span class="location-title-prefix">%s</span>: ', get_bloginfo( 'name' ) ) . apply_filters( 'widget_title', $instance['location'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 

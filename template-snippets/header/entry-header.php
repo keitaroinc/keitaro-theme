@@ -1,5 +1,16 @@
+<?php
+/**
+ * Template snippet for the header of each post
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <header class="entry-header">
-    <?php
+	<?php
 
 	if ( is_sticky() && ! is_single() ) :
 		printf( '<p class="sticky-title-sm">%s</p>', esc_html__( 'Must read', 'keitaro' ) );

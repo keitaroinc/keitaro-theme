@@ -1,4 +1,12 @@
 <?php
+/**
+ * Sidebar snippet for keitaro_service_icons
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 $sidebar_id = 'keitaro_service_icons';
 

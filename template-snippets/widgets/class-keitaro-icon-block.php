@@ -7,9 +7,11 @@ class Keitaro_Icon_Block extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'widget_keitaro_icon_block', // Base ID
-				esc_html__( 'Icon Block', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Keitaro icon block item for pages.', 'keitaro' ) ) // Args
+			'widget_keitaro_icon_block', // Base ID
+			esc_html__( 'Icon Block', 'keitaro' ), // Name
+			array(
+				'description' => esc_html__( 'Keitaro icon block item for pages.', 'keitaro' ),
+			) // Args
 		);
 
 	}
@@ -50,7 +52,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 							<span class="panel-value-xl panel-value-important <?php echo ( ! empty( $instance['description'] )) ? 'panel-value-with-description' : ''; ?>"><?php echo ( ! empty( $instance['amount'] )) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
 							<?php if ( $instance['description'] ) : ?>
 								<div class="panel-value-description" aria-hidden="true">
-									<?php echo wp_kses( $instance['description'], array( 'strong' => array(), 'em' => array(), 'b' => array(), 'i' => array() ) ); ?>
+									<?php echo wp_kses( $instance['description'], array(
+										'strong' => array(),
+										'em' => array(),
+										'b' => array(),
+										'i' => array(),
+									) ); ?>
 								</div>
 							<?php endif; ?>
 						</div>
@@ -116,12 +123,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 			<?php
 
 			$wp_pages = get_posts(
-					array(
+				array(
 						'post_type' => 'page',
 						'nopaging' => 1,
 						'order' => 'ASC',
 						'orderby' => 'title',
-					) );
+			) );
 
 			if ( $wp_pages ) :
 

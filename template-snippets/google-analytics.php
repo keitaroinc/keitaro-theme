@@ -1,6 +1,12 @@
 <?php
-
-// Get Google Analytics tracking code and add it in the script
+/**
+ * Template snippet for Google Analytics' tracking code
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 $ga_tracking_code = get_option( 'keitaro_settings' )['ga_tracking_id'];
 

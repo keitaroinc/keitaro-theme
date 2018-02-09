@@ -1,5 +1,16 @@
+<?php
+/**
+ * Template snippet for the excerpt of each post
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <div class="entry-content">
-    <?php
+	<?php
 
 	the_excerpt();
 

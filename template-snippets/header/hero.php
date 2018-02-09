@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template snippet for .hero
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 $hero_class = '';
 $header_image = get_header_image();

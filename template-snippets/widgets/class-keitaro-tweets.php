@@ -7,9 +7,11 @@ class Keitaro_Tweets extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'widget_keitaro_twitter_grid', // Base ID
-				esc_html__( 'Tweets', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Timeline or grid content from Twitter.', 'keitaro' ) ) // Args
+			'widget_keitaro_twitter_grid', // Base ID
+			esc_html__( 'Tweets', 'keitaro' ), // Name
+			array(
+					'description' => esc_html__( 'Timeline or grid content from Twitter.', 'keitaro' ),
+				) // Args
 		);
 
 	}
@@ -87,7 +89,7 @@ class Keitaro_Tweets extends WP_Widget {
 		<p>
 			<?php
 
-		}
+	}
 
 		/**
 		 * Sanitize widget form values as they are saved.
@@ -99,7 +101,7 @@ class Keitaro_Tweets extends WP_Widget {
 		 *
 		 * @return array Updated safe values to be saved.
 		 */
-		public function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
 
@@ -110,7 +112,7 @@ class Keitaro_Tweets extends WP_Widget {
 
 		return $instance;
 
-		}
-
 	}
+
+}
 

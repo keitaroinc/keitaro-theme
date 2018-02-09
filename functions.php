@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template snippet for custom theme functions
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 define( 'SNIPPETS_DIR', 'template-snippets' );
 define( 'DEFAULT_HEADER_IMAGE', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png' );
@@ -639,12 +647,12 @@ function keitaro_posted_on() {
 function keitaro_read_more( $class = 'btn-default' ) {
 	wp_kses( printf( '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
 			), array(
-							'a' => array(
-								'class' => array(),
-								'href' => array(),
-								'title' => array(),
-),
-) );
+		'a' => array(
+			'class' => array(),
+			'href' => array(),
+			'title' => array(),
+		),
+	) );
 
 }
 

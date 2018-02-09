@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template snippet for .page-header
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 $page_title = '';
 $page_subtitle = '';
@@ -31,7 +39,7 @@ if ( ! empty( $page_title ) ) :
 
 				endif;
 
-				if ( is_author() ) :
+if ( is_author() ) :
 	keitaro_author_box( get_the_author_meta( 'ID' ) );
 				endif;
 

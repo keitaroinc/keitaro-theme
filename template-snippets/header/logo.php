@@ -1,17 +1,18 @@
 <?php
 /**
- * Displays header site branding
+ * Template snippet for .site-branding
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ * @subpackage Keitaro
  */
+
 ?>
 <div class="site-branding pull-left">
 
 	<?php if ( get_custom_logo() ) : ?>
-	  <?php the_custom_logo(); ?>
+		<?php the_custom_logo(); ?>
 	<?php else : ?>
 	  <div class="site-branding-text">
 		<?php if ( is_front_page() ) : ?>
@@ -24,7 +25,7 @@
 		$description = get_bloginfo( 'description', 'display' );
 
 		if ( $description || is_customize_preview() ) :
-		  ?>
+			?>
 				  <p class="site-description"><?php echo esc_html( $description ); ?></p>
 		<?php endif; ?>
 	  </div><!-- .site-branding-text -->

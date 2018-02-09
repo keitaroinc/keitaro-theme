@@ -22,7 +22,7 @@ endif;
 
 // Get posts that have any of the tags and categories of the current post
 $read_more_content = new WP_Query(
-		array(
+	array(
 			'post__not_in' => array( get_the_ID() ),
 			'posts_per_page' => 3,
 			'tags__in' => $post_tags,

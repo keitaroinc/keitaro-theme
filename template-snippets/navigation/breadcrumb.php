@@ -1,8 +1,18 @@
 <?php
+/**
+ * Template snippet for breadcrumb navigation
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
-// Based on an example provided on The Web Taylor
-// https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
-// Settings
+/*
+ * Based on an example provided on The Web Taylor
+ * https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
+ * Settings
+ */
 $breadcrums_id = 'breadcrumb';
 $breadcrums_class = $breadcrums_id;
 $home_title = __( 'Home', 'keitaro' );
@@ -63,7 +73,7 @@ if ( ! is_front_page() ) {
 		if ( get_query_var( 'paged' ) > 1 ) :
 			breadcrumb_item( get_page_link( get_queried_object()->ID ), get_queried_object()->post_title );
 		else :
-						if ( get_queried_object() ) :
+			if ( get_queried_object() ) :
 				breadcrumb_item( false, get_queried_object()->post_title, 'span' );
 						endif;
 		endif;
@@ -91,7 +101,7 @@ if ( ! is_front_page() ) {
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name, 'span' );
 		} else {
 						// tuka e problemot
-						if ( get_option( 'page_for_posts' ) ) :
+			if ( get_option( 'page_for_posts' ) ) :
 				breadcrumb_item( get_post_type_archive_link( $post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
 						endif;
 		}

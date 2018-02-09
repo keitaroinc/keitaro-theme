@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template snippet for the content of each child page
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 // Don't render anything if the template does not match
 if ( ! is_page_template( 'parent.php' ) ) :
@@ -6,7 +14,7 @@ if ( ! is_page_template( 'parent.php' ) ) :
 endif;
 
 $child_pages = new WP_Query(
-		array(
+	array(
 			'post_parent' => get_the_ID(),
 			'post_type' => 'page',
 			'order' => 'ASC',

@@ -7,9 +7,11 @@ class Keitaro_Contact_Form extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'widget_keitaro_contact_form', // Base ID
-				esc_html__( 'Contact Form', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Configurable Contact form widget', 'keitaro' ) ) // Args
+			'widget_keitaro_contact_form', // Base ID
+			esc_html__( 'Contact Form', 'keitaro' ), // Name
+			array(
+				'description' => esc_html__( 'Configurable Contact form widget', 'keitaro' ),
+			) // Args
 		);
 
 	}
@@ -75,7 +77,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 						__( 'Regards,', 'keitaro' ),
 						// translators: %s stands for get_bloginfo('name')
 						sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
-							) );
+					) );
 
 					$body_autoreply = join( '<br>', array(
 						__( 'Hello,', 'keitaro' ) . '<br>',
@@ -85,7 +87,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 										get_bloginfo( 'name' ) . '<br>',
 										esc_url( get_home_url() ),
 										$send_to,
-												) );
+					) );
 
 					try {
 
@@ -154,7 +156,6 @@ class Keitaro_Contact_Form extends WP_Widget {
 				if ( false === isset( $_POST['submit'] ) ) :
 
 					// Show contact form when nothing has been submitted
-
 					?>
 					<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
@@ -167,7 +168,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 						endif;
 
-						if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
+if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
 
 	?>
 	<div class="form-group">
@@ -178,7 +179,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 						endif;
 
-						if ( ! empty( $instance['intent_list'] ) ) :
+if ( ! empty( $instance['intent_list'] ) ) :
 
 	$intent_options = explode( "\n", $instance['intent_list'] );
 
@@ -201,7 +202,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 	endif;
 						endif;
 
-						if ( ! empty( $instance['message_label'] ) ) :
+if ( ! empty( $instance['message_label'] ) ) :
 
 	?>
 	<div class="form-group">

@@ -7,9 +7,11 @@ class Keitaro_Call_To_Action extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-				'widget_keitaro_call_to_action', // Base ID
-				esc_html__( 'Call to Action', 'keitaro' ), // Name
-				array( 'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons.', 'keitaro' ) ) // Args
+			'widget_keitaro_call_to_action', // Base ID
+			esc_html__( 'Call to Action', 'keitaro' ), // Name
+			array(
+				'description' => esc_html__( 'Keitaro call-to-action block with a title and buttons.', 'keitaro' ),
+			) // Args
 		);
 
 	}
@@ -94,18 +96,18 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 		?>
 		   >
-			   <?php
+				<?php
 
-			   if ( $wp_customize instanceof WP_Customize_Manager ) {
+				if ( $wp_customize instanceof WP_Customize_Manager ) {
 					$url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
-			   } else {
+				} else {
 					$url = admin_url( 'nav-menus.php' );
-			   }
+				}
 
-			   // translators: The no-menus-have-been-created notice within the Call to Action widget
-			   echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'keitaro' ), esc_attr( $url ) );
+				// translators: The no-menus-have-been-created notice within the Call to Action widget
+				echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'keitaro' ), esc_attr( $url ) );
 
-			   ?>
+				?>
 		</p>
 		<div class="nav-menu-widget-form-controls"
 		<?php

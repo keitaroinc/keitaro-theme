@@ -1,3 +1,14 @@
+<?php
+/**
+ * Template snippet for the content of each page
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
 		<div class="col-md-8">

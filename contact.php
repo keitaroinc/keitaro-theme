@@ -1,8 +1,13 @@
 <?php
-
-/*
+/**
  * Template Name: Contact Page
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
  */
+
 get_header();
 
 ?>

@@ -1,3 +1,14 @@
+<?php
+/**
+ * General template snippet for content
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
 		<?php if ( ! is_author() && ! is_single() ) : ?>

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template snippet for the thumbnail of each post
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 if ( is_single() ) :
 	$thumbnail_size = 'large';

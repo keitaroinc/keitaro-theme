@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template for parent pages
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 /*
  * Template Name: Parent Page

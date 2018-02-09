@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template for loading sidebar content
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 // Show Service Icons widget section on the front page
 if ( is_front_page() ) :

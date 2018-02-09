@@ -1,7 +1,12 @@
 <?php
-
-/* This is the default template for rendering comments.
- * It reuses code from the WordPress twentyseventeen theme.
+/**
+ * Default template for rendering comments. It reuses code from the WordPress twentyseventeen theme.
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ *
  */
 
 if ( post_password_required() ) {

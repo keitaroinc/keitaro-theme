@@ -1,8 +1,19 @@
-<div class="footer-bg">
-    <div class="container">
-        <div class="content main-footer">
+<?php
+/**
+ * Template for displaying the footer
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
-            <?php $site_icon_url = get_site_icon_url( 128 ); ?>
+?>
+<div class="footer-bg">
+	<div class="container">
+		<div class="content main-footer">
+
+			<?php $site_icon_url = get_site_icon_url( 128 ); ?>
 			<?php if ( $site_icon_url ) : ?>
 				<div class="text-center">
 					<a href="<?php echo esc_url( home_url() ); ?>"><img class="keitaro-symbol" src="<?php echo esc_url( $site_icon_url ); ?>" alt="Keitaro"></a>

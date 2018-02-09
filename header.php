@@ -1,3 +1,14 @@
+<?php
+/**
+ * Template for displaying the header
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js no-svg">
 	<head>
@@ -49,6 +60,6 @@
 		endif;
 
 		/* Show Hero section only on the front page */
-		if ( is_front_page() ) :
+if ( is_front_page() ) :
 	get_template_part( SNIPPETS_DIR . '/header/hero' );
 		endif;

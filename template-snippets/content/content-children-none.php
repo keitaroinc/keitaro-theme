@@ -1,6 +1,17 @@
+<?php
+/**
+ * Template snippet for empty content of each child page
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
+
+?>
 <section class="no-results not-found">
-    <header class="page-header">
-        <h1 class="page-title"><?php esc_html_e( 'No child pages assigned', 'keitaro' ); ?></h1>
+	<header class="page-header">
+		<h1 class="page-title"><?php esc_html_e( 'No child pages assigned', 'keitaro' ); ?></h1>
 	</header>
 	<div class="page-content">
 		<p>
