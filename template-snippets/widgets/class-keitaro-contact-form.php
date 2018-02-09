@@ -1,11 +1,19 @@
 <?php
+/**
+ * Template for Keitaro_Contact_Form widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Contact_Form extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_contact_form', // Base ID
 			esc_html__( 'Contact Form', 'keitaro' ), // Name
@@ -52,42 +60,46 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 				if ( ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
 
-					$email_sent = false;
+					$email_sent     = false;
 					$autoreply_sent = false;
 
-					$send_to = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
-					$subject = __( 'New message from Keitaro.com', 'keitaro' );
+					$send_to           = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
+					$subject           = __( 'New message from Keitaro.com', 'keitaro' );
 					$subject_autoreply = __( 'Thank you for contacting Keitaro Inc.', 'keitaro' );
-					$sender = (isset( $_POST['sender-name'] )) ? trim( esc_html( $_POST['sender-name'] ) ) : '';
-					$sender_email = (isset( $_POST['sender-email'] )) ? trim( esc_html( $_POST['sender-email'] ) ) : '';
-					$intent = (isset( $_POST['intent'] )) ? trim( esc_html( $_POST['intent'] ) ) : '';
-					$submitted_message = (isset( $_POST['message'] )) ? str_replace( "\r\n", '<br>', trim( esc_html( $_POST['message'] ) ) ) : '';
+					$sender            = ( isset( $_POST['sender-name'] ) ) ? trim( esc_html( $_POST['sender-name'] ) ) : '';
+					$sender_email      = ( isset( $_POST['sender-email'] ) ) ? trim( esc_html( $_POST['sender-email'] ) ) : '';
+					$intent            = ( isset( $_POST['intent'] ) ) ? trim( esc_html( $_POST['intent'] ) ) : '';
+					$submitted_message = ( isset( $_POST['message'] ) ) ? str_replace( "\r\n", '<br>', trim( esc_html( $_POST['message'] ) ) ) : '';
 
 					$headers = array(
 						'Content-Type: text/html; charset=UTF-8',
 						'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
 					);
-					$body = join( '<br>', array(
-						__( 'Hello,', 'keitaro' ) . '<br>',
-						// translators: Who submitted a message from where, in the auto send admin email
-						sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
-						$submitted_message . '<br>',
-						// translators: What was the intent for sending an email
-						sprintf( __( 'The intent is: %s', 'keitaro' ), str_replace( '-', ' ', ucwords( $intent ) ) ) . '<br>',
-						__( 'Regards,', 'keitaro' ),
-						// translators: %s stands for get_bloginfo('name')
-						sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
-					) );
+					$body    = join(
+						 '<br>', array(
+							 __( 'Hello,', 'keitaro' ) . '<br>',
+							 // translators: Who submitted a message from where, in the auto send admin email
+							 sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
+							 $submitted_message . '<br>',
+							 // translators: What was the intent for sending an email
+							 sprintf( __( 'The intent is: %s', 'keitaro' ), str_replace( '-', ' ', ucwords( $intent ) ) ) . '<br>',
+							 __( 'Regards,', 'keitaro' ),
+							 // translators: %s stands for get_bloginfo('name')
+							 sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
+						 )
+						);
 
-					$body_autoreply = join( '<br>', array(
-						__( 'Hello,', 'keitaro' ) . '<br>',
-										// translators: %s stands for get_bloginfo('name')
-										sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
-										__( 'Kind Regards,', 'keitaro' ),
-										get_bloginfo( 'name' ) . '<br>',
-										esc_url( get_home_url() ),
-										$send_to,
-					) );
+					$body_autoreply = join(
+						 '<br>', array(
+							 __( 'Hello,', 'keitaro' ) . '<br>',
+							 // translators: %s stands for get_bloginfo('name')
+							 sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+							 __( 'Kind Regards,', 'keitaro' ),
+							 get_bloginfo( 'name' ) . '<br>',
+							 esc_url( get_home_url() ),
+							 $send_to,
+						 )
+						);
 
 					try {
 
@@ -161,7 +173,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 						<?php if ( ! empty( $instance['name_label'] ) ) : ?>            
 							<div class="form-group">
-								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo (isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : ''); ?>">
+								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo ( isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '' ); ?>">
 								<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
 							</div>
 							<?php
@@ -172,7 +184,7 @@ if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
 
 	?>
 	<div class="form-group">
-<input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo (isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : ''); ?>">
+<input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo ( isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : '' ); ?>">
 <label for="sender-email"><?php echo esc_html( $instance['email_label'] ); ?></label>
 	</div>
 	<?php
@@ -192,7 +204,8 @@ if ( ! empty( $instance['intent_list'] ) ) :
 				<?php foreach ( $intent_options as $key => $value ) : ?>
 											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
 																							<?php echo esc_attr( trim( $value ) ); ?></option>
-										<?php endforeach;
+										<?php
+										endforeach;
 
 				?>
 			</select>
@@ -206,7 +219,7 @@ if ( ! empty( $instance['message_label'] ) ) :
 
 	?>
 	<div class="form-group">
-<textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo (isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : ''); ?></textarea>
+<textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo ( isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : '' ); ?></textarea>
 <label for="message"><?php echo esc_html( $instance['message_label'] ); ?></label>
 	</div>
 	<?php
@@ -243,15 +256,15 @@ if ( ! empty( $instance['message_label'] ) ) :
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$description = ! empty( $instance['description'] ) ? $instance['description'] : '';
-		$name_label = ! empty( $instance['name_label'] ) ? $instance['name_label'] : __( 'Company name', 'keitaro' );
-		$email_label = ! empty( $instance['email_label'] ) ? $instance['email_label'] : __( 'Business email', 'keitaro' );
-		$intent_list = ! empty( $instance['intent_list'] ) ? $instance['intent_list'] : __( 'Intent...', 'keitaro' );
+		$title         = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$description   = ! empty( $instance['description'] ) ? $instance['description'] : '';
+		$name_label    = ! empty( $instance['name_label'] ) ? $instance['name_label'] : __( 'Company name', 'keitaro' );
+		$email_label   = ! empty( $instance['email_label'] ) ? $instance['email_label'] : __( 'Business email', 'keitaro' );
+		$intent_list   = ! empty( $instance['intent_list'] ) ? $instance['intent_list'] : __( 'Intent...', 'keitaro' );
 		$message_label = ! empty( $instance['message_label'] ) ? $instance['message_label'] : __( 'How may we help you...', 'keitaro' );
-		$send_to = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
-		$submit_label = ! empty( $instance['submit_label'] ) ? $instance['submit_label'] : __( 'Contact us', 'keitaro' );
-		$thank_you = ! empty( $instance['thank_you'] ) ? $instance['thank_you'] : __( "Thank you for contacting us. You'll hear from us shortly.", 'keitaro' );
+		$send_to       = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
+		$submit_label  = ! empty( $instance['submit_label'] ) ? $instance['submit_label'] : __( 'Contact us', 'keitaro' );
+		$thank_you     = ! empty( $instance['thank_you'] ) ? $instance['thank_you'] : __( "Thank you for contacting us. You'll hear from us shortly.", 'keitaro' );
 
 		?>
 		<p>
@@ -308,15 +321,15 @@ if ( ! empty( $instance['message_label'] ) ) :
 
 		$instance = $old_instance;
 
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['description'] = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
-		$instance['name_label'] = ( ! empty( $new_instance['name_label'] ) ) ? strip_tags( $new_instance['name_label'] ) : '';
-		$instance['email_label'] = ( ! empty( $new_instance['email_label'] ) ) ? strip_tags( $new_instance['email_label'] ) : '';
-		$instance['intent_list'] = ( ! empty( $new_instance['intent_list'] ) ) ? strip_tags( $new_instance['intent_list'] ) : '';
+		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['description']   = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+		$instance['name_label']    = ( ! empty( $new_instance['name_label'] ) ) ? strip_tags( $new_instance['name_label'] ) : '';
+		$instance['email_label']   = ( ! empty( $new_instance['email_label'] ) ) ? strip_tags( $new_instance['email_label'] ) : '';
+		$instance['intent_list']   = ( ! empty( $new_instance['intent_list'] ) ) ? strip_tags( $new_instance['intent_list'] ) : '';
 		$instance['message_label'] = ( ! empty( $new_instance['message_label'] ) ) ? strip_tags( $new_instance['message_label'] ) : '';
-		$instance['sent_to'] = ( ! empty( $new_instance['sent_to'] ) ) ? strip_tags( $new_instance['sent_to'] ) : get_option( 'admin_email' );
-		$instance['submit_label'] = ( ! empty( $new_instance['submit_label'] ) ) ? strip_tags( $new_instance['submit_label'] ) : '';
-		$instance['thank_you'] = ( ! empty( $new_instance['thank_you'] ) ) ? strip_tags( $new_instance['thank_you'] ) : '';
+		$instance['sent_to']       = ( ! empty( $new_instance['sent_to'] ) ) ? strip_tags( $new_instance['sent_to'] ) : get_option( 'admin_email' );
+		$instance['submit_label']  = ( ! empty( $new_instance['submit_label'] ) ) ? strip_tags( $new_instance['submit_label'] ) : '';
+		$instance['thank_you']     = ( ! empty( $new_instance['thank_you'] ) ) ? strip_tags( $new_instance['thank_you'] ) : '';
 
 		return $instance;
 

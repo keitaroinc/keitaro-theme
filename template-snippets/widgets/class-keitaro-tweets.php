@@ -1,17 +1,25 @@
 <?php
+/**
+ * Template for Keitaro_Tweets widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Tweets extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_twitter_grid', // Base ID
 			esc_html__( 'Tweets', 'keitaro' ), // Name
 			array(
-					'description' => esc_html__( 'Timeline or grid content from Twitter.', 'keitaro' ),
-				) // Args
+				'description' => esc_html__( 'Timeline or grid content from Twitter.', 'keitaro' ),
+			) // Args
 		);
 
 	}
@@ -56,12 +64,12 @@ class Keitaro_Tweets extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? wp_kses_post( $instance['title'] ) : '';
-		$tweets_url = ! empty( $instance['tweets_url'] ) ? esc_url( $instance['tweets_url'] ) : '';
-		$tweets_limit = ! empty( $instance['tweets_limit'] ) ? esc_attr( $instance['tweets_limit'] ) : 10;
-		$tweets_type = ! empty( $instance['tweets_type'] ) ? esc_attr( $instance['tweets_type'] ) : '';
+		$title              = ! empty( $instance['title'] ) ? wp_kses_post( $instance['title'] ) : '';
+		$tweets_url         = ! empty( $instance['tweets_url'] ) ? esc_url( $instance['tweets_url'] ) : '';
+		$tweets_limit       = ! empty( $instance['tweets_limit'] ) ? esc_attr( $instance['tweets_limit'] ) : 10;
+		$tweets_type        = ! empty( $instance['tweets_type'] ) ? esc_attr( $instance['tweets_type'] ) : '';
 		$visualization_type = array(
-			'grid' => __( 'Used with timeline URLs', 'keitaro' ),
+			'grid'     => __( 'Used with timeline URLs', 'keitaro' ),
 			'timeline' => __( 'Used with profile URLs', 'keitaro' ),
 		);
 
@@ -105,10 +113,10 @@ class Keitaro_Tweets extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['tweets_limit'] = ( ! empty( $new_instance['tweets_limit'] ) ) ? strip_tags( $new_instance['tweets_limit'] ) : '';
-		$instance['tweets_url'] = ( ! empty( $new_instance['tweets_url'] ) ) ? strip_tags( $new_instance['tweets_url'] ) : '';
-		$instance['tweets_type'] = ( ! empty( $new_instance['tweets_type'] ) ) ? strip_tags( $new_instance['tweets_type'] ) : '';
+		$instance['tweets_url']   = ( ! empty( $new_instance['tweets_url'] ) ) ? strip_tags( $new_instance['tweets_url'] ) : '';
+		$instance['tweets_type']  = ( ! empty( $new_instance['tweets_type'] ) ) ? strip_tags( $new_instance['tweets_type'] ) : '';
 
 		return $instance;
 

@@ -1,11 +1,19 @@
 <?php
+/**
+ * Template for Keitaro_Icon_Block widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Icon_Block extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_icon_block', // Base ID
 			esc_html__( 'Icon Block', 'keitaro' ), // Name
@@ -40,24 +48,28 @@ class Keitaro_Icon_Block extends WP_Widget {
 						<?php if ( isset( $instance['icon'] ) ) : ?>
 							<img class="panel-title-icon" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
 						<?php endif ?>
-						<h4 class="panel-title"><?php echo ( ! empty( $instance['title'] )) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
+						<h4 class="panel-title"><?php echo ( ! empty( $instance['title'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] )) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
+							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
 						</div>
 						<div class="col-lg-6 text-right">
-							<span class="panel-value-xl panel-value-important <?php echo ( ! empty( $instance['description'] )) ? 'panel-value-with-description' : ''; ?>"><?php echo ( ! empty( $instance['amount'] )) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
+							<span class="panel-value-xl panel-value-important <?php echo ( ! empty( $instance['description'] ) ) ? 'panel-value-with-description' : ''; ?>"><?php echo ( ! empty( $instance['amount'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
 							<?php if ( $instance['description'] ) : ?>
 								<div class="panel-value-description" aria-hidden="true">
-									<?php echo wp_kses( $instance['description'], array(
-										'strong' => array(),
-										'em' => array(),
-										'b' => array(),
-										'i' => array(),
-									) ); ?>
+									<?php
+									echo wp_kses(
+										 $instance['description'], array(
+											 'strong' => array(),
+											 'em'     => array(),
+											 'b'      => array(),
+											 'i'      => array(),
+										 )
+										);
+									?>
 								</div>
 							<?php endif; ?>
 						</div>
@@ -84,12 +96,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 		wp_enqueue_script( 'keitaro-custom-image', get_stylesheet_directory_uri() . '/assets/js/custom-image.js' );
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$subtitle = ! empty( $instance['subtitle'] ) ? $instance['subtitle'] : '';
-		$amount = ! empty( $instance['amount'] ) ? $instance['amount'] : '';
-		$description = ! empty( $instance['description'] ) ? $instance['description'] : '';
+		$title        = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$subtitle     = ! empty( $instance['subtitle'] ) ? $instance['subtitle'] : '';
+		$amount       = ! empty( $instance['amount'] ) ? $instance['amount'] : '';
+		$description  = ! empty( $instance['description'] ) ? $instance['description'] : '';
 		$show_on_page = ! empty( $instance['show_on_page'] ) ? $instance['show_on_page'] : '';
-		$icon = ! empty( $instance['icon'] ) ? $instance['icon'] : ''
+		$icon         = ! empty( $instance['icon'] ) ? $instance['icon'] : ''
 
 		?>
 
@@ -124,11 +136,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 			$wp_pages = get_posts(
 				array(
-						'post_type' => 'page',
-						'nopaging' => 1,
-						'order' => 'ASC',
-						'orderby' => 'title',
-			) );
+					'post_type' => 'page',
+					'nopaging'  => 1,
+					'order'     => 'ASC',
+					'orderby'   => 'title',
+				)
+				);
 
 			if ( $wp_pages ) :
 
@@ -165,12 +178,12 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['subtitle'] = ( ! empty( $new_instance['subtitle'] ) ) ? strip_tags( $new_instance['subtitle'] ) : '';
-		$instance['amount'] = ( ! empty( $new_instance['amount'] ) ) ? strip_tags( $new_instance['amount'] ) : '';
-		$instance['description'] = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['subtitle']     = ( ! empty( $new_instance['subtitle'] ) ) ? strip_tags( $new_instance['subtitle'] ) : '';
+		$instance['amount']       = ( ! empty( $new_instance['amount'] ) ) ? strip_tags( $new_instance['amount'] ) : '';
+		$instance['description']  = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
 		$instance['show_on_page'] = ( ! empty( $new_instance['show_on_page'] ) ) ? strip_tags( $new_instance['show_on_page'] ) : '';
-		$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
+		$instance['icon']         = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
 
 		return $instance;
 

@@ -8,7 +8,7 @@
  * @subpackage Keitaro
  */
 
-$page_title = '';
+$page_title    = '';
 $page_subtitle = '';
 
 if ( is_author() ) :
@@ -16,7 +16,7 @@ if ( is_author() ) :
 
 elseif ( is_search() ) :
 	global $wp_query;
-	$page_title = __( 'Search results:', 'keitaro' ) . ' ' . highlight( get_search_query() );
+	$page_title    = __( 'Search results:', 'keitaro' ) . ' ' . highlight( get_search_query() );
 	$page_subtitle = __( 'Found', 'keitaro' ) . ' ' . highlight( $wp_query->found_posts ) . ' ' . __( 'search results', 'keitaro' );
 
 elseif ( is_archive() ) :

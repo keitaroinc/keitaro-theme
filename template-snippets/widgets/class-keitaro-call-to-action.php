@@ -1,11 +1,19 @@
 <?php
+/**
+ * Template for Keitaro_Call_To_Action widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Call_To_Action extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_call_to_action', // Base ID
 			esc_html__( 'Call to Action', 'keitaro' ), // Name
@@ -46,7 +54,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 
 		$nav_menu_args = array(
 			'fallback_cb' => '',
-			'menu' => $nav_menu,
+			'menu'        => $nav_menu,
 		);
 
 		/**
@@ -80,7 +88,7 @@ class Keitaro_Call_To_Action extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		global $wp_customize;
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$title    = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
 
 		// Get menus

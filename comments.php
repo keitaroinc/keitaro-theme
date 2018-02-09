@@ -28,7 +28,9 @@ if ( post_password_required() ) {
 			} else {
 				printf(
 						/* translators: 1: number of comments, 2: post title */
-						esc_html( _nx(
+						esc_html(
+														/* translators: Single and plural forms */
+							 _nx(
 										'%1$s Reply to &ldquo;%2$s&rdquo;', '%1$s Replies to &ldquo;%2$s&rdquo;', $comments_number, 'comments title', 'keitaro'
 								)
 						), esc_html( number_format_i18n( $comments_number ) ), get_the_title()
@@ -41,22 +43,26 @@ if ( post_password_required() ) {
 		<ol class="comment-list">
 			<?php
 
-			wp_list_comments( array(
-				'avatar_size' => 100,
-				'style' => 'ol',
-				'short_ping' => true,
-				'reply_text' => __( 'Reply', 'keitaro' ),
-			) );
+			wp_list_comments(
+				 array(
+					 'avatar_size' => 100,
+					 'style'       => 'ol',
+					 'short_ping'  => true,
+					 'reply_text'  => __( 'Reply', 'keitaro' ),
+				 )
+				);
 
 			?>
 		</ol>
 
 		<?php
 
-		the_comments_pagination( array(
-			'prev_text' => '<span class="screen-reader-text">' . __( 'Previous', 'keitaro' ) . '</span>',
-			'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>',
-		) );
+		the_comments_pagination(
+			 array(
+				 'prev_text' => '<span class="screen-reader-text">' . __( 'Previous', 'keitaro' ) . '</span>',
+				 'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>',
+			 )
+			);
 
 	endif;
 

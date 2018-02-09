@@ -13,9 +13,9 @@
  * https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
  * Settings
  */
-$breadcrums_id = 'breadcrumb';
+$breadcrums_id    = 'breadcrumb';
 $breadcrums_class = $breadcrums_id;
-$home_title = __( 'Home', 'keitaro' );
+$home_title       = __( 'Home', 'keitaro' );
 
 // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
 $custom_taxonomy = '';
@@ -26,7 +26,7 @@ global $post, $wp_query;
 if ( ! function_exists( 'breadcrumb_item' ) ) :
 
 	function breadcrumb_item( $url, $title = '', $wrapper = 'a' ) {
-		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : ''), wp_kses_post( $title ), esc_attr( $wrapper ) );
+		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : '' ), wp_kses_post( $title ), esc_attr( $wrapper ) );
 
 	}
 
@@ -52,10 +52,10 @@ if ( ! is_front_page() ) {
 
 	// Set default variables for date archive pages
 	if ( is_date() ) :
-		$day_display = get_the_time( 'j' );
+		$day_display   = get_the_time( 'j' );
 		$month_numeric = get_the_time( 'm' );
 		$month_display = get_the_time( 'F' );
-		$year_display = get_the_time( 'Y' );
+		$year_display  = get_the_time( 'Y' );
 	endif;
 
 	?>
@@ -118,7 +118,7 @@ if ( ! is_front_page() ) {
 
 			// Get parent any categories and create array
 			$get_cat_parents = rtrim( get_category_parents( $last_category->term_id, true, ',' ), ',' );
-			$cat_parents = explode( ',', $get_cat_parents );
+			$cat_parents     = explode( ',', $get_cat_parents );
 
 			// Loop through parent categories and store in variable $cat_display
 			$cat_display = '';
@@ -131,10 +131,10 @@ if ( ! is_front_page() ) {
 		if ( empty( $last_category ) && ! empty( $custom_taxonomy ) && $taxonomy_exists ) {
 
 			$taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
-			$cat_id = $taxonomy_terms[0]->term_id;
-			$cat_nicename = $taxonomy_terms[0]->slug;
-			$cat_link = get_term_link( $taxonomy_terms[0]->term_id, $custom_taxonomy );
-			$cat_name = $taxonomy_terms[0]->name;
+			$cat_id         = $taxonomy_terms[0]->term_id;
+			$cat_nicename   = $taxonomy_terms[0]->slug;
+			$cat_link       = get_term_link( $taxonomy_terms[0]->term_id, $custom_taxonomy );
+			$cat_name       = $taxonomy_terms[0]->name;
 		}
 
 		// Check if the post is in a category
@@ -154,7 +154,7 @@ if ( ! is_front_page() ) {
 	} elseif ( is_category() ) {
 
 		// Category page
-		breadcrumb_item( is_paginated_url(), single_cat_title( '', false ), (is_paginated_url() ? 'a' : 'span') );
+		breadcrumb_item( is_paginated_url(), single_cat_title( '', false ), ( is_paginated_url() ? 'a' : 'span' ) );
 	} elseif ( is_page() ) {
 
 		// Standard page
@@ -182,7 +182,7 @@ if ( ! is_front_page() ) {
 
 		// Tag page
 		// Display the tag name
-		breadcrumb_item( is_paginated_url(), get_queried_object()->name, (is_paginated_url() ? 'a' : 'span') );
+		breadcrumb_item( is_paginated_url(), get_queried_object()->name, ( is_paginated_url() ? 'a' : 'span' ) );
 	} elseif ( is_day() ) {
 
 		// Day archive

@@ -20,13 +20,15 @@ function keitaro_theme_setup() {
 	add_filter( 'the_generator', '__return_false' );
 
 	// Register Custom Headers
-	register_default_headers( array(
-		'keitaro' => array(
-			'url' => DEFAULT_HEADER_IMAGE,
-			'thumbnail_url' => DEFAULT_HEADER_IMAGE,
-			'description' => __( 'The default hero image of Keitaro Inc.', 'keitaro' ),
-		),
-	) );
+	register_default_headers(
+		 array(
+			 'keitaro' => array(
+				 'url'           => DEFAULT_HEADER_IMAGE,
+				 'thumbnail_url' => DEFAULT_HEADER_IMAGE,
+				 'description'   => __( 'The default hero image of Keitaro Inc.', 'keitaro' ),
+			 ),
+		 )
+		);
 
 	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
 
@@ -58,55 +60,65 @@ function keitaro_theme_setup() {
 	$GLOBALS['content_width'] = 960;
 
 	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
-		'main' => __( 'Main Menu', 'keitaro' ),
-		'footer' => __( 'Footer Menu' ),
-		'social' => __( 'Social Links', 'keitaro' ),
-		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-	) );
+	register_nav_menus(
+		 array(
+			 'main'             => __( 'Main Menu', 'keitaro' ),
+			 'footer'           => __( 'Footer Menu' ),
+			 'social'           => __( 'Social Links', 'keitaro' ),
+			 'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
+		 )
+		);
 
 	/*
      * Switch default core markup for search form, comment form, and comments
      * to output valid HTML5.
      */
-	add_theme_support( 'html5', array(
-		'comment-form',
-		'comment-list',
-		'search-form',
-		'gallery',
-		'caption',
-	) );
+	add_theme_support(
+		 'html5', array(
+			 'comment-form',
+			 'comment-list',
+			 'search-form',
+			 'gallery',
+			 'caption',
+		 )
+		);
 
 	/*
      * Enable support for Post Formats.
      *
      * See: https://codex.wordpress.org/Post_Formats
      */
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
-		'gallery',
-		'audio',
-	) );
+	add_theme_support(
+		 'post-formats', array(
+			 'aside',
+			 'image',
+			 'video',
+			 'quote',
+			 'link',
+			 'gallery',
+			 'audio',
+		 )
+		);
 
 	// Add theme support for Custom Logo.
-	add_theme_support( 'custom-logo', array(
-		'flex-width' => true,
-		'height' => 100,
-	) );
+	add_theme_support(
+		 'custom-logo', array(
+			 'flex-width' => true,
+			 'height'     => 100,
+		 )
+		);
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	// Add theme support for custom headers
-	add_theme_support( 'custom-header', array(
-		'default-image' => DEFAULT_HEADER_IMAGE,
-		'flex-height' => true,
-		'flex-width' => true,
-	) );
+	add_theme_support(
+		 'custom-header', array(
+			 'default-image' => DEFAULT_HEADER_IMAGE,
+			 'flex-height'   => true,
+			 'flex-width'    => true,
+		 )
+		);
 
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
@@ -255,7 +267,7 @@ add_action( 'wp_head', 'keitaro_theme_favicons' );
 function keitaro_theme_login_logo() {
 
 	$custom_logo_id = get_theme_mod( 'custom_logo' );
-	$image = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+	$image          = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 
 	?>
 	<style type="text/css">
@@ -295,83 +307,99 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 // Register Widget areas
 function keitaro_widgets_init() {
 
-	register_sidebar( array(
-		'name' => __( 'Default Sidebar', 'keitaro' ),
-		'description' => __( 'Reserved for any predefined default WordPress content. This sidebar is actually not shown anywhere, just used to collect any default widgets transfered on activation.', 'keitaro' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<div class="sidebar-default">',
-		'after_widget' => '</div>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Default Sidebar', 'keitaro' ),
+			 'description'   => __( 'Reserved for any predefined default WordPress content. This sidebar is actually not shown anywhere, just used to collect any default widgets transfered on activation.', 'keitaro' ),
+			 'id'            => 'sidebar-1',
+			 'before_widget' => '<div class="sidebar-default">',
+			 'after_widget'  => '</div>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Services', 'keitaro' ),
-		'description' => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
-		'id' => 'keitaro_services',
-		'before_widget' => '<div class="service-wrapper">',
-		'after_widget' => '</div>',
-		'before_title' => '<span class="service-title">',
-		'after_title' => '</span>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Services', 'keitaro' ),
+			 'description'   => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
+			 'id'            => 'keitaro_services',
+			 'before_widget' => '<div class="service-wrapper">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<span class="service-title">',
+			 'after_title'   => '</span>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Service Icons', 'keitaro' ),
-		'description' => __( 'Reserved for Image widgets and rendered below the Hero section on the home page.', 'keitaro' ),
-		'id' => 'keitaro_service_icons',
-		'before_widget' => '<li>',
-		'after_widget' => '</li>',
-		'before_title' => '',
-		'after_title' => '',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Service Icons', 'keitaro' ),
+			 'description'   => __( 'Reserved for Image widgets and rendered below the Hero section on the home page.', 'keitaro' ),
+			 'id'            => 'keitaro_service_icons',
+			 'before_widget' => '<li>',
+			 'after_widget'  => '</li>',
+			 'before_title'  => '',
+			 'after_title'   => '',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Call to Action', 'keitaro' ),
-		'description' => __( 'Reserved for Keitaro Call to Action widgets and rendered above the footer section on static pages and the front page.', 'keitaro' ),
-		'id' => 'keitaro_call_to_action',
-		'before_widget' => '<div class="call-to-action-wrapper">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="call-to-action-title">',
-		'after_title' => '</h3>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Call to Action', 'keitaro' ),
+			 'description'   => __( 'Reserved for Keitaro Call to Action widgets and rendered above the footer section on static pages and the front page.', 'keitaro' ),
+			 'id'            => 'keitaro_call_to_action',
+			 'before_widget' => '<div class="call-to-action-wrapper">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<h3 class="call-to-action-title">',
+			 'after_title'   => '</h3>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Icon Blocks', 'keitaro' ),
-		'description' => __( 'Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro' ),
-		'id' => 'keitaro_icon_blocks',
-		'before_widget' => '<div class="icon-block-wrapper">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="page-icon-blocks-title">',
-		'after_title' => '</h3>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Icon Blocks', 'keitaro' ),
+			 'description'   => __( 'Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro' ),
+			 'id'            => 'keitaro_icon_blocks',
+			 'before_widget' => '<div class="icon-block-wrapper">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<h3 class="page-icon-blocks-title">',
+			 'after_title'   => '</h3>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Locations', 'keitaro' ),
-		'description' => __( 'Reserved for Keitaro Location widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-		'id' => 'keitaro_locations',
-		'before_widget' => '<div class="location">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="location-title">',
-		'after_title' => '</h4>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Locations', 'keitaro' ),
+			 'description'   => __( 'Reserved for Keitaro Location widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+			 'id'            => 'keitaro_locations',
+			 'before_widget' => '<div class="location">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<h4 class="location-title">',
+			 'after_title'   => '</h4>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Contact', 'keitaro' ),
-		'description' => __( 'Reserved for Contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-		'id' => 'keitaro_contact',
-		'before_widget' => '<div class="widget-contact">',
-		'after_widget' => '</div>',
-		'before_title' => '<header class="entry-header"><h2 class="entry-title">',
-		'after_title' => '</h2></header>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Contact', 'keitaro' ),
+			 'description'   => __( 'Reserved for Contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+			 'id'            => 'keitaro_contact',
+			 'before_widget' => '<div class="widget-contact">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+			 'after_title'   => '</h2></header>',
+		 )
+		);
 
-	register_sidebar( array(
-		'name' => __( 'Twitter', 'keitaro' ),
-		'description' => __( 'Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro' ),
-		'id' => 'keitaro_twitter',
-		'before_widget' => '<div class="twitter-content-widget">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2 class="twitter-content-widget-title text-center">',
-		'after_title' => '</h2>',
-	) );
+	register_sidebar(
+		 array(
+			 'name'          => __( 'Twitter', 'keitaro' ),
+			 'description'   => __( 'Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro' ),
+			 'id'            => 'keitaro_twitter',
+			 'before_widget' => '<div class="twitter-content-widget">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<h2 class="twitter-content-widget-title text-center">',
+			 'after_title'   => '</h2>',
+		 )
+		);
 
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );
@@ -407,7 +435,7 @@ add_shortcode( 'keitaro-hero-title', 'keitaro_hero_title_shortcode' );
 
 function keitaro_hero_title_shortcode() {
 
-	$formatted_title = explode( ' ', get_bloginfo( 'description' ) );
+	$formatted_title    = explode( ' ', get_bloginfo( 'description' ) );
 	$formatted_title[2] = esc_html( $formatted_title[2] ) . '<span class="hero-subtitle">';
 	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', wp_kses_post( $formatted_title ) ) );
 
@@ -462,10 +490,10 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 	$handle = 'image_anchor_href';
 
 	// Get sidebar and widget information
-	$sidebar_id = $params[0]['id'];
-	$widget_id = $params[0]['widget_id'];
+	$sidebar_id             = $params[0]['id'];
+	$widget_id              = $params[0]['widget_id'];
 	$widget_id_number_strip = explode( '-', $widget_id );
-	$widget_id_number = end( $widget_id_number_strip );
+	$widget_id_number       = end( $widget_id_number_strip );
 
 	// Get widget data for all widget_media_image widgets
 	$media_image_widgets = get_option( 'widget_media_image' );
@@ -484,7 +512,7 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 		if ( ! empty( $widget_hyperlink ) ) :
 
 			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s" target="_blank">', $widget_hyperlink, $widget_title );
-			$params[0]['after_widget'] = '</a></li>';
+			$params[0]['after_widget']  = '</a></li>';
 
 		endif;
 
@@ -519,12 +547,14 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo $collapse ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
-				wp_nav_menu( array(
-					'theme_location' => $menu_location,
-					'container' => 'ul',
-					'menu_id' => $menu_location . '-menu',
-					'menu_class' => $menu_location . '-navigation list-inline ' . $menu_class,
-				) );
+				wp_nav_menu(
+					 array(
+						 'theme_location' => $menu_location,
+						 'container'      => 'ul',
+						 'menu_id'        => $menu_location . '-menu',
+						 'menu_class'     => $menu_location . '-navigation list-inline ' . $menu_class,
+					 )
+					);
 
 				?>
 			</div>
@@ -561,9 +591,9 @@ function keitaro_child_pages_list( $parent_page_id ) {
 	$child_pages = get_children(
 			array(
 				'post_parent' => $parent_page_id,
-				'post_type' => 'page',
-				'order' => 'ASC',
-				'orderby' => 'menu_order',
+				'post_type'   => 'page',
+				'order'       => 'ASC',
+				'orderby'     => 'menu_order',
 			)
 	);
 
@@ -583,12 +613,13 @@ function keitaro_child_pages_list( $parent_page_id ) {
 
 function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
-	$author_title = get_the_author_posts_link( $author );
-	$author_description = get_the_author_meta( 'description' );
-	$author_posts_number = get_the_author_posts( $author );
+	$author_title           = get_the_author_posts_link( $author );
+	$author_description     = get_the_author_meta( 'description' );
+	$author_posts_number    = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
-	$author_work_position = get_the_author_meta( 'user_work_position' );
-	$author_stats = sprintf( '<p class="author-stats"><small>' .
+	$author_work_position   = get_the_author_meta( 'user_work_position' );
+	$author_stats           = sprintf(
+		 '<p class="author-stats"><small>' .
 			// translators: Authors Stats: sentence
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
 			// translators: Authors Stats: number of author posts
@@ -596,13 +627,16 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: number of author comments
 			_n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' .
 			// translators: Authors Stats: connector
-			__( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number );
+			__( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number
+		);
 
-	$print .= sprintf( '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
+	$print .= sprintf(
+		 '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ), sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
+					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
+				), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
 
 	if ( true === $display ) :
@@ -617,9 +651,9 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print = '';
 
-	$custom_avatar_url = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
+	$custom_avatar_url  = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
-	$custom_avatar = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s">', $custom_avatar_url, $size );
+	$custom_avatar      = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s">', $custom_avatar_url, $size );
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
@@ -645,14 +679,17 @@ function keitaro_posted_on() {
 }
 
 function keitaro_read_more( $class = 'btn-default' ) {
-	wp_kses( printf( '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
+	wp_kses(
+		 printf(
+		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
 			), array(
-		'a' => array(
-			'class' => array(),
-			'href' => array(),
-			'title' => array(),
-		),
-	) );
+				'a' => array(
+					'class' => array(),
+					'href'  => array(),
+					'title' => array(),
+				),
+			)
+		);
 
 }
 
@@ -684,7 +721,7 @@ function keitaro_custom_profile_data( $user ) {
 
 		// Get thumbnail version of the current attachment
 		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
-		$current_profile_picture = wp_get_attachment_image_url( $current_profile_picture_id );
+		$current_profile_picture    = wp_get_attachment_image_url( $current_profile_picture_id );
 
 		if ( empty( $current_profile_picture_id ) ) :
 			$current_profile_picture = get_avatar_url( '' );
@@ -716,7 +753,7 @@ function keitaro_custom_profile_data( $user ) {
 						</a>
 						<p class="description"><?php esc_html_e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
 						<p>
-							<button type='button' class="button custom-profile-picture"><?php echo (empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' )); ?></button>
+							<button type='button' class="button custom-profile-picture"><?php echo ( empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' ) ); ?></button>
 							<?php if ( $current_profile_picture_id ) : ?>
 								<button type="button" class="button custom-profile-picture-remove"><?php esc_html_e( 'Reset Image', 'keitaro' ); ?></button>
 							<?php endif; ?>
@@ -741,11 +778,11 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 
 	if ( $attachment_id ) :
 
-		$btn_label_add = __( 'Replace Image', 'keitaro' );
+		$btn_label_add    = __( 'Replace Image', 'keitaro' );
 		$btn_label_remove = __( 'Remove Image', 'keitaro' );
 		$custom_image_url = esc_url( wp_get_attachment_image_url( $attachment_id ) );
 	else :
-		$btn_label_add = __( 'Upload Image', 'keitaro' );
+		$btn_label_add    = __( 'Upload Image', 'keitaro' );
 		$custom_image_url = get_avatar_url( '' );
 	endif;
 

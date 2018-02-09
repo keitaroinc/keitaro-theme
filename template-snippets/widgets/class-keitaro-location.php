@@ -1,11 +1,19 @@
 <?php
+/**
+ * Template for Keitaro_Location widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Location extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_location', // Base ID
 			esc_html__( 'Location', 'keitaro' ), // Name
@@ -68,10 +76,10 @@ class Keitaro_Location extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$location = ! empty( $instance['location'] ) ? $instance['location'] : '';
+		$location         = ! empty( $instance['location'] ) ? $instance['location'] : '';
 		$location_address = ! empty( $instance['location_address'] ) ? $instance['location_address'] : '';
-		$location_phone = ! empty( $instance['location_phone'] ) ? $instance['location_phone'] : '';
-		$location_email = ! empty( $instance['location_email'] ) ? $instance['location_email'] : '';
+		$location_phone   = ! empty( $instance['location_phone'] ) ? $instance['location_phone'] : '';
+		$location_email   = ! empty( $instance['location_email'] ) ? $instance['location_email'] : '';
 
 		?>
 		<p>
@@ -108,10 +116,10 @@ class Keitaro_Location extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['location'] = ( ! empty( $new_instance['location'] ) ) ? strip_tags( $new_instance['location'] ) : '';
+		$instance['location']         = ( ! empty( $new_instance['location'] ) ) ? strip_tags( $new_instance['location'] ) : '';
 		$instance['location_address'] = ( ! empty( $new_instance['location_address'] ) ) ? strip_tags( $new_instance['location_address'] ) : '';
-		$instance['location_phone'] = ( ! empty( $new_instance['location_phone'] ) ) ? strip_tags( $new_instance['location_phone'] ) : '';
-		$instance['location_email'] = ( ! empty( $new_instance['location_email'] ) ) ? strip_tags( $new_instance['location_email'] ) : '';
+		$instance['location_phone']   = ( ! empty( $new_instance['location_phone'] ) ) ? strip_tags( $new_instance['location_phone'] ) : '';
+		$instance['location_email']   = ( ! empty( $new_instance['location_email'] ) ) ? strip_tags( $new_instance['location_email'] ) : '';
 
 		return $instance;
 

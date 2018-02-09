@@ -1,11 +1,19 @@
 <?php
+/**
+ * Template for Keitaro_Service widget
+ *
+ * @link https://github.com/keitaroinc/keitaro-theme
+ *
+ * @package WordPress
+ * @subpackage Keitaro
+ */
 
 class Keitaro_Service extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
 			'widget_keitaro_service', // Base ID
 			esc_html__( 'Service', 'keitaro' ), // Name
@@ -27,7 +35,7 @@ class Keitaro_Service extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		// echo wp_kses_post( $args['before_widget'] );
-		echo '<a class="service-item" href="' . (isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#') . '">';
+		echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
@@ -49,7 +57,7 @@ class Keitaro_Service extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$title        = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$service_desc = ! empty( $instance['service_desc'] ) ? $instance['service_desc'] : '';
 		$service_link = ! empty( $instance['service_link'] ) ? $instance['service_link'] : '';
 
@@ -66,12 +74,14 @@ class Keitaro_Service extends WP_Widget {
 			<label for="<?php echo esc_url( $this->get_field_id( 'service_link' ) ); ?>"><?php esc_attr_e( 'Linked page:', 'keitaro' ); ?></label>
 			<?php
 
-			$wp_pages = get_posts( array(
-				'post_type' => 'page',
-				'nopaging' => 1,
-				'order' => 'ASC',
-				'orderby' => 'title',
-			) );
+			$wp_pages = get_posts(
+				 array(
+					 'post_type' => 'page',
+					 'nopaging'  => 1,
+					 'order'     => 'ASC',
+					 'orderby'   => 'title',
+				 )
+				);
 
 			if ( $wp_pages ) :
 
@@ -108,7 +118,7 @@ class Keitaro_Service extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['service_desc'] = ( ! empty( $new_instance['service_desc'] ) ) ? strip_tags( $new_instance['service_desc'] ) : '';
 		$instance['service_link'] = ( ! empty( $new_instance['service_link'] ) ) ? strip_tags( $new_instance['service_link'] ) : '';
 
