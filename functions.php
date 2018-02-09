@@ -410,7 +410,7 @@ function keitaro_hero_title_shortcode() {
 function keitaro_add_media_image_url( $widget, $return, $instance ) {
 
 	// Are we dealing with a media_image widget?
-	if ( 'media_image' == $widget->id_base ) {
+	if ( 'media_image' === $widget->id_base ) {
 
 		$handle = 'image_anchor_href';
 
@@ -463,7 +463,7 @@ function keitaro_wrap_media_image_width_anchor( $params ) {
 	$media_image_widgets = get_option( 'widget_media_image' );
 
 	// Currently applied only for widgets in the keitaro_service_icons sidebar
-	if ( 'keitaro_service_icons' == $sidebar_id ) :
+	if ( 'keitaro_service_icons' === $sidebar_id ) :
 
 		// Get hyperlink value for this specific widget
 		$widget_hyperlink = $media_image_widgets[ $widget_id_number ][ $handle ];
@@ -597,7 +597,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
 
-	if ( true == $display ) :
+	if ( true === $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );
@@ -615,7 +615,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
-	elseif ( $custom_avatar_url == $default_avatar_url ) :
+	elseif ( $custom_avatar_url === $default_avatar_url ) :
 		$avatar = $custom_avatar;
 	else :
 		$avatar = get_avatar( $author, $size );
@@ -623,7 +623,7 @@ function keitaro_author_avatar( $author = false, $size = 112, $display = true ) 
 
 	$print .= sprintf( '<a title="%1$s" class="avatar-url url fn n" href="%2$s">%3$s</a>', get_the_author_meta( 'display_name', $author ), esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), $avatar );
 
-	if ( true == $display ) :
+	if ( true === $display ) :
 		echo wp_kses_post( $print );
 	else :
 		return wp_kses_post( $print );

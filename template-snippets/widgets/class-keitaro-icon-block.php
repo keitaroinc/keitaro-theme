@@ -26,7 +26,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 		global $post;
 
-		if ( isset( $instance['show_on_page'] ) && $instance['show_on_page'] == $post->ID ) :
+		if ( isset( $instance['show_on_page'] ) && $instance['show_on_page'] === (string) $post->ID ) :
 
 			echo wp_kses_post( $args['before_widget'] );
 

@@ -75,7 +75,7 @@ if ( ! is_front_page() ) {
 		$post_type = get_post_type();
 
 		// If it is a custom post type display name and link
-		if ( 'post' != $post_type ) {
+		if ( 'post' !== $post_type ) {
 
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
 		}
@@ -87,7 +87,7 @@ if ( ! is_front_page() ) {
 		$post_type = get_post_type();
 
 						// If it is a custom post type display name and link
-		if ( 'post' != $post_type ) {
+		if ( 'post' !== $post_type ) {
 			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name, 'span' );
 		} else {
 						// tuka e problemot

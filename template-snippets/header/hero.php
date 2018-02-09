@@ -3,7 +3,7 @@
 $hero_class = '';
 $header_image = get_header_image();
 
-if ( DEFAULT_HEADER_IMAGE == $header_image ) :
+if ( DEFAULT_HEADER_IMAGE === $header_image ) :
 	$header_image_style = 'style="background-image: url(' . esc_attr( $header_image ) . '), url(' . DEFAULT_HEADER_IMAGE_EXTEND . ')"';
 else :
 	$hero_class = 'hero-non-default';

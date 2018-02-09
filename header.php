@@ -16,7 +16,7 @@
 			$container_class = 'container-fluid';
 		endif;
 
-		if ( get_header_image() == DEFAULT_HEADER_IMAGE ) :
+		if ( get_header_image() === DEFAULT_HEADER_IMAGE ) :
 			$container_wrapper_class = 'container-bottom-border';
 		else :
 			$container_wrapper_class = '';

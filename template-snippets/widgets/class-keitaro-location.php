@@ -34,7 +34,7 @@ class Keitaro_Location extends WP_Widget {
 
 			?>
 			<div class="location-map-container">
-									<iframe class="location-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo urlencode( $instance['location_address'] ); ?>&amp;output=embed"></iframe>
+									<iframe class="location-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo rawurlencode( $instance['location_address'] ); ?>&amp;output=embed"></iframe>
 			</div>
 			<?php
 

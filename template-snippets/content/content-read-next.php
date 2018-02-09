@@ -68,4 +68,4 @@ if ( $read_more_content->have_posts() ) :
 endif;
 
 // Reset query data to go back to the default WordPress loop
-wp_reset_query();
+wp_reset_postdata();

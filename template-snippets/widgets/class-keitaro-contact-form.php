@@ -48,7 +48,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 					get_template_part( SNIPPETS_DIR . '/entry-content' );
 				endif;
 
-				if ( ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
+				if ( ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
 
 					$email_sent = false;
 					$autoreply_sent = false;
@@ -108,7 +108,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 					}
 
 					if ( $email_sent && $autoreply_sent ) :
-						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title￼', __( 'Message sent', 'keitaro' ) ) ) . wp_kses_post( $args['after_title'] );
+						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', __( 'Message sent', 'keitaro' ) ) ) . wp_kses_post( $args['after_title'] );
 
 						?>
 						<div class="entry-content">
@@ -119,7 +119,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 					endif;
 				else :
 					if ( ! empty( $instance['title'] ) ) {
-						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title￼', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
+						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 					}
 
 					if ( ! empty( $instance['description'] ) ) {
@@ -141,7 +141,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 				<?php
 
 				// Don't show Locations sidebar when contact form data is successfully submitted
-				if ( false == isset( $_POST['submit'] ) ) :
+				if ( false === isset( $_POST['submit'] ) ) :
 					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
 				endif;
 
@@ -151,7 +151,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 				<?php
 
 				// Check submitted data and send message
-				if ( false == isset( $_POST['submit'] ) ) :
+				if ( false === isset( $_POST['submit'] ) ) :
 
 					// Show contact form when nothing has been submitted
 
