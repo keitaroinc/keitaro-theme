@@ -35,7 +35,7 @@ class Keitaro_Tweets extends WP_Widget {
 		if ( ! empty( $instance['tweets_url'] ) ) {
 
 			?>
-			<a class="twitter-<?php echo ( ! empty( esc_attr( $instance['tweets_type'] ) ) ? esc_attr( $instance['tweets_type'] ) : ''); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo esc_attr( $instance['tweets_limit'] ); ?>" href="<?php echo esc_url( $instance['tweets_url'] ); ?>"><?php echo wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ); ?></a>
+			<a class="twitter-<?php echo ( ! empty( esc_attr( $instance['tweets_type'] ) ) ? esc_attr( $instance['tweets_type'] ) : '' ); ?>" data-lang="en" data-dnt="true" data-tweet-limit="<?php echo esc_attr( $instance['tweets_limit'] ); ?>" href="<?php echo esc_url( $instance['tweets_url'] ); ?>"><?php echo wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ); ?></a>
 						<?php
 						wp_enqueue_script( 'twitter-widget', '//platform.twitter.com/widgets.js', array(), false, true );
 

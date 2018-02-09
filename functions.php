@@ -508,7 +508,7 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
 			<?php endif; ?>
-			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo ($collapse) ? 'collapse navbar-collapse' : ''; ?>">
+			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo $collapse ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
 				wp_nav_menu( array(
@@ -594,7 +594,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ), sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, (is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
+					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false ) ), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
 
 	if ( true === $display ) :
@@ -638,7 +638,13 @@ function keitaro_posted_on() {
 
 function keitaro_read_more( $class = 'btn-default' ) {
 	wp_kses( printf( '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
-			), array( 'a' => array( 'class' => array(), 'href' => array(), 'title' => array() ) ) );
+			), array(
+							'a' => array(
+								'class' => array(),
+								'href' => array(),
+								'title' => array(),
+),
+) );
 
 }
 
