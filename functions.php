@@ -466,64 +466,6 @@ function keitaro_add_media_image_url( $widget, $return, $instance ) {
 
 }
 
-add_filter( 'in_widget_form', 'keitaro_add_media_image_url', 10, 3 );
-
-/* Save hyperlink value for WordPress Image widget */
-
-function keitaro_save_media_image_url( $instance, $new_instance ) {
-
-	$handle = 'image_anchor_href';
-
-	// Is the instance a nav menu and are descriptions enabled?
-	if ( isset( $new_instance['media_image'] ) && ! empty( $new_instance[ $handle ] ) ) {
-		$new_instance[ $handle ] = $instance;
-	}
-
-	return $new_instance;
-
-}
-
-add_filter( 'widget_update_callback', 'keitaro_save_media_image_url', 10, 2 );
-
-function keitaro_wrap_media_image_width_anchor( $params ) {
-
-	$handle = 'image_anchor_href';
-
-	// Get sidebar and widget information
-	$sidebar_id             = $params[0]['id'];
-	$widget_id              = $params[0]['widget_id'];
-	$widget_id_number_strip = explode( '-', $widget_id );
-	$widget_id_number       = end( $widget_id_number_strip );
-
-	// Get widget data for all widget_media_image widgets
-	$media_image_widgets = get_option( 'widget_media_image' );
-
-	// Currently applied only for widgets in the keitaro_service_icons sidebar
-	if ( 'keitaro_service_icons' === $sidebar_id ) :
-
-		// Get hyperlink value for this specific widget
-		$widget_hyperlink = $media_image_widgets[ $widget_id_number ][ $handle ];
-
-		// Get title value for this specific widget
-		$widget_title = $media_image_widgets[ $widget_id_number ]['title'];
-
-		// Override widget parameters
-
-		if ( ! empty( $widget_hyperlink ) ) :
-
-			$params[0]['before_widget'] = sprintf( '<li><a href="%s" title="%s" target="_blank">', $widget_hyperlink, $widget_title );
-			$params[0]['after_widget']  = '</a></li>';
-
-		endif;
-
-	endif;
-
-	return $params;
-
-}
-
-add_filter( 'dynamic_sidebar_params', 'keitaro_wrap_media_image_width_anchor' );
-
 /*
  * Generate navigation menu for a predefined/registered menu location
  */
