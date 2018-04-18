@@ -58,7 +58,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 						</div>
 						<div class="col-lg-6 text-right">
 							<span class="panel-value-xl panel-value-important <?php echo ( ! empty( $instance['description'] ) ) ? 'panel-value-with-description' : ''; ?>"><?php echo ( ! empty( $instance['amount'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['amount'] ) ) : ''; ?></span>
-							<?php if ( ! empty ( $instance['description'] ) ) : ?>
+							<?php if ( ! empty( $instance['description'] ) ) : ?>
 								<div class="panel-value-description" aria-hidden="true">
 									<?php
 									echo wp_kses(
