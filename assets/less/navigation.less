@@ -149,7 +149,8 @@
                 padding: 0 (@grid-gutter-width / 4 - 2) 0 (@grid-gutter-width / 4 + 2);
             }
         }
-        &:last-child {
+        // Trim last two breadcrumb items
+        &:nth-last-child(-n + 2) {
             overflow: hidden;
             text-overflow: ellipsis;
         }
