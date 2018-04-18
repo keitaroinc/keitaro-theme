@@ -1,20 +1,21 @@
 .services {
-    display: grid;
-    grid-gap: @grid-gutter-width / 2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     text-align: left;
-    align-items: flex-start;
 }
-
-/*.service-wrapper {
-    display: grid;
-}*/
 
 .service-item {
     display: block; // Required for browsers that do not support CSS Grid
+    display: flex;
+    flex-basis: 48.5%;
+    max-width: 48.5%; // Because IE.
+    flex-direction: column;
     transition: .3s background-color;
     background-color: @body-bg;
     border-top: @service-item-top-border;
     padding: 0 @grid-gutter-width / 2 @grid-gutter-width / 6;
+    margin-top: @grid-gutter-width / 2;
 
     &:hover {
         text-decoration: none;
@@ -31,7 +32,7 @@
         text-decoration: none;
     }
     .btn-discover {
-        margin-bottom: @grid-gutter-width / 6;
+        margin: auto 0 @grid-gutter-width / 6 auto;
     }
 }
 

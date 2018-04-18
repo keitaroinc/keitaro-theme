@@ -1,6 +1,6 @@
 @media (min-width: @screen-lg-min) {
     .hero-title{
-        margin: @grid-gutter-width*3 auto;        
+        margin: @grid-gutter-width*3 auto @grid-gutter-width*3 - @grid-gutter-width / 2;        
     }
     .connect-action-icon {
         text-align: right;
@@ -8,14 +8,9 @@
             max-width: 70%;
         }
     }
-    .services {
-        grid-template-columns: repeat(3, 1fr);
-    }
     .service-item {
-        min-height: @service-item-min-height;
-    }
-    .service-description {
-        min-height: @grid-gutter-width * 3;
+        flex-basis: 31.5%;
+        max-width: 31.5%; // Because IE.
     }
     .page-parent{
         .icon-block-wrapper{
