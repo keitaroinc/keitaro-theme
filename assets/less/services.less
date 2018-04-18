@@ -5,17 +5,21 @@
     text-align: left;
 }
 
-.service-item {
-    display: block; // Required for browsers that do not support CSS Grid
+.service-wrapper{
     display: flex;
     flex-basis: 48.5%;
     max-width: 48.5%; // Because IE.
+    margin-top: @grid-gutter-width / 2;
+}
+
+.service-item {
+    display: block; // Required for browsers that do not support CSS Grid
+    display: flex;
     flex-direction: column;
     transition: .3s background-color;
     background-color: @body-bg;
     border-top: @service-item-top-border;
-    padding: 0 @grid-gutter-width / 2 @grid-gutter-width / 6;
-    margin-top: @grid-gutter-width / 2;
+    padding: 0 @grid-gutter-width / 2 @grid-gutter-width / 6;    
 
     &:hover {
         text-decoration: none;
