@@ -56,6 +56,8 @@ if ( $child_pages->have_posts() ) :
 					if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
 						get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
 					endif;
+                                        
+                                        get_template_part( SNIPPETS_DIR . '/sidebars/page-widgets' );
 
 					keitaro_child_pages_list( get_the_ID() );
 
