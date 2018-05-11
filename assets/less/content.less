@@ -323,5 +323,25 @@ pre {
 }
 
 .sharedaddy{
-    margin: @grid-gutter-width 0 @grid-gutter-width/2;
+    margin: @grid-gutter-width 0 @grid-gutter-width / 2;
+}
+
+.widgettitle{
+    font-size: @font-size-h4;
+    font-weight: @headings-font-weight;
+    color: @brand-primary;
+    margin-bottom: @grid-gutter-width / 4;
+}
+
+.widget-wrapper{
+    &:first-child{
+        .widgettitle{
+            margin-top: 0;
+        }
+    }
+    & + .widget-wrapper{
+        .widgettitle{
+            margin-top: @grid-gutter-width / 4 + @grid-gutter-width / 6;
+        }
+    }
 }

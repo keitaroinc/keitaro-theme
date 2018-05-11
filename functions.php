@@ -304,6 +304,9 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
 // Require Twitter Grid widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 
+// Require Keitaro Page Text widget
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-page-text.php';
+
 // Register Widget areas
 function keitaro_widgets_init() {
 
@@ -318,6 +321,16 @@ function keitaro_widgets_init() {
 		);
 
 	register_sidebar(
+		 array(
+			 'name'          => __( 'Page Widgets Sidebar', 'keitaro' ),
+			 'description'   => __( 'Reserved for widgets shown on all pages', 'keitaro' ),
+			 'id'            => 'keitaro_page_widgets',
+			 'before_widget' => '<div class="widget-wrapper">',
+			 'after_widget'  => '</div>',
+		 )
+		);
+
+			register_sidebar(
 		 array(
 			 'name'          => __( 'Services', 'keitaro' ),
 			 'description'   => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
@@ -423,6 +436,10 @@ function keitaro_widgets_init() {
 
 	if ( class_exists( 'Keitaro_Contact_Form' ) ) :
 		register_widget( 'Keitaro_Contact_Form' );
+	endif;
+
+			if ( class_exists( 'Keitaro_Page_Text' ) ) :
+		register_widget( 'Keitaro_Page_Text' );
 	endif;
 
 }
