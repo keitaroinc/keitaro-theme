@@ -35,8 +35,8 @@ class Keitaro_Service extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		echo wp_kses_post( $args['before_widget'] );
-                
-		echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
+
+						echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
