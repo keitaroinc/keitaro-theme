@@ -1,12 +1,11 @@
 .content-area {
     padding-bottom: @content-area-padding;
-
     .post-thumbnail {
         &:not(:first-child) {
-            margin-top: @grid-gutter-width / 2;            
+            margin-top: @grid-gutter-width / 2;
         }
         &:not(:last-child) {
-            margin-bottom: @grid-gutter-width / 2;            
+            margin-bottom: @grid-gutter-width / 2;
         }
     }
 }
@@ -111,7 +110,7 @@
             margin-bottom: 0;
         }
     }
-    a{
+    a {
         font-weight: 600;
     }
 }
@@ -149,33 +148,26 @@ hr {
     color: @body-bg;
     background-color: @keitaro-green-light;
     padding: @grid-gutter-width - 10px;
-
     .list-wide {
         margin-bottom: 0;
     }
-
     .menu {
         .list-inline;
-
-        li{
+        li {
             padding: 0;
         }
-
         a {
             color: inherit;
         }
     }
-
     .menu-item {
         margin-top: @grid-gutter-width / 2;
-
         &:first-child {
             a {
                 .btn;
                 .btn-primary;
             }
         }
-
         &:not(first-child) {
             a {
                 .btn;
@@ -183,7 +175,6 @@ hr {
             }
         }
     }
-
     .textwidget {
         * :last-child {
             margin-bottom: 0;
@@ -224,11 +215,9 @@ hr {
     &:not(:last-child) {
         margin-bottom: @grid-gutter-width;
     }
-
 }
 
 .featured-post {
-
     &:not(.sticky) {
         &.hentry {
             &:first-child {
@@ -238,23 +227,19 @@ hr {
         &:not(:last-child) {
             margin-bottom: @content-area-padding;
         }
-
     }
 }
 
 .post-meta-list {
     .list-inline;
     margin-top: @padding-large-vertical * 2;
-
     li {
         margin-bottom: @padding-large-vertical;
     }
 }
 
 .post-categories {
-
     .post-meta-list;
-
     a {
         .btn;
         .btn-default;
@@ -262,9 +247,7 @@ hr {
 }
 
 .post-tags {
-
     .post-meta-list;
-
     a {
         .btn;
         .btn-sm;
@@ -299,7 +282,7 @@ hr {
 .no-results {
     margin-bottom: @grid-gutter-width;
     .page-header {
-        padding-bottom: 0;   
+        padding-bottom: 0;
     }
 }
 
@@ -322,26 +305,35 @@ pre {
     font-size: @font-size-small;
 }
 
-.sharedaddy{
+.sharedaddy {
     margin: @grid-gutter-width 0 @grid-gutter-width / 2;
 }
 
-.widgettitle{
+.widgettitle {
     font-size: @font-size-h4;
     font-weight: @headings-font-weight;
     color: @brand-primary;
     margin-bottom: @grid-gutter-width / 4;
 }
 
-.widget-wrapper{
-    &:first-child{
-        .widgettitle{
+.widget-wrapper {
+    &:first-child {
+        .widgettitle {
             margin-top: 0;
         }
     }
-    & + .widget-wrapper{
-        .widgettitle{
+    &+.widget-wrapper {
+        .widgettitle {
             margin-top: @grid-gutter-width / 4 + @grid-gutter-width / 6;
         }
+    }
+}
+
+.widget_widget_keitaro_page_text {
+    .widgettitle {
+        font-size: @font-size-base + 2;
+        padding-bottom: (@grid-gutter-width / 3) + 5;
+        border-bottom: 2px solid @table-border-color;
+        color: darken(@keitaro-green-light, 10%);
     }
 }
