@@ -820,7 +820,6 @@ function keitaro_search_posts_only( $query ) {
 }
 add_filter( 'pre_get_posts', 'keitaro_search_posts_only' );
 
-
 /*
  * Allow file uploads by users with Contributor role
  */
