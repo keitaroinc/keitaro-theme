@@ -33,10 +33,10 @@
 
 				<?php else : ?>
 
-					<p><?php esc_html_e( "It seems we can't find what you&rsquo;re looking for. Perhaps searching can help.", 'keitaro' ); ?></p>
+					<p><?php esc_html_e( "It seems we can't find what you&rsquo;re looking for. Perhaps (re)searching can help.", 'keitaro' ); ?></p>
 					<?php
 
-					if ( ! is_search() ) :
+					if ( ! is_search() || ( is_search() && ! have_posts() ) ) :
 						get_search_form();
 					endif;
 
