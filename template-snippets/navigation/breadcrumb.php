@@ -207,6 +207,10 @@ if ( ! is_front_page() ) {
 		breadcrumb_item( false, $year_display, 'span' );
 	} elseif ( is_author() ) {
 
+		// Display Blog page link in breadcrumbs
+		if ( is_archive() ) {
+			breadcrumb_item( get_permalink( get_option( 'page_for_posts' ) ), get_the_title( get_option( 'page_for_posts' ) ) );
+		}
 		// Display author name
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
