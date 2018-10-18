@@ -39,18 +39,18 @@ function keitaro_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	/*
-     * Let WordPress manage the document title.
-     * By adding theme support, we declare that this theme does not use a
-     * hard-coded <title> tag in the document head, and expect WordPress to
-     * provide it for us.
-     */
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
 	add_theme_support( 'title-tag' );
 
 	/*
-     * Enable support for Post Thumbnails on posts and pages.
-     *
-     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-     */
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size( 'keitaro-featured-image', 2000, 1200, true );
@@ -70,9 +70,9 @@ function keitaro_theme_setup() {
 		);
 
 	/*
-     * Switch default core markup for search form, comment form, and comments
-     * to output valid HTML5.
-     */
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
 	add_theme_support(
 		 'html5', array(
 			 'comment-form',
@@ -84,10 +84,10 @@ function keitaro_theme_setup() {
 		);
 
 	/*
-     * Enable support for Post Formats.
-     *
-     * See: https://codex.wordpress.org/Post_Formats
-     */
+	 * Enable support for Post Formats.
+	 *
+	 * See: https://codex.wordpress.org/Post_Formats
+	 */
 	add_theme_support(
 		 'post-formats', array(
 			 'aside',
@@ -175,10 +175,10 @@ add_action( 'wp_head', 'custom_meta_descriptions' );
 function open_graph_tags() {
 
 	/* We are not adding explicit tags for title and description as these
-     * can be reused from the existing meta tags */
+	 * can be reused from the existing meta tags */
 
 	/* Featured images will only be set for posts and
-     * the default image will be displayed for pages */
+	 * the default image will be displayed for pages */
 	if ( get_the_post_thumbnail() ) :
 
 		?>
@@ -805,6 +805,20 @@ function keitaro_remove_jetpack_css() {
 }
 
 add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
+
+/**
+ * Show search results only within posts
+ *
+ * @param object $query
+ * @return $query
+ */
+function keitaro_search_posts_only( $query ) {
+	if ( $query->is_main_query() && is_search() ) {
+		$query->set( 'post_type', 'post' );
+	}
+	return $query;
+}
+add_filter( 'pre_get_posts', 'keitaro_search_posts_only' );
 
 
 /*
