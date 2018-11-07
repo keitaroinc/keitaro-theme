@@ -10,7 +10,6 @@
 
 define( 'SNIPPETS_DIR', 'template-snippets' );
 define( 'DEFAULT_HEADER_IMAGE', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png' );
-define( 'DEFAULT_HEADER_IMAGE_EXTEND', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg-extend.png' );
 define( 'DEFAULT_OG_IMAGE_URL', get_stylesheet_directory_uri() . '/assets/img/keitaro-default-og-photo-1200x630.png' );
 
 // Initialize theme
@@ -736,7 +735,6 @@ add_action( 'edit_user_profile', 'keitaro_custom_profile_data' );
 function keitaro_custom_image_placeholder( $attachment_id, $display = true, $print = '' ) {
 
 	if ( $attachment_id ) :
-
 		$btn_label_add    = __( 'Replace Image', 'keitaro' );
 		$btn_label_remove = __( 'Remove Image', 'keitaro' );
 		$custom_image_url = esc_url( wp_get_attachment_image_url( $attachment_id ) );
