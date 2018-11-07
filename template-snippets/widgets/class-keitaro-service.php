@@ -34,16 +34,25 @@ class Keitaro_Service extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+		$service_icon = get_the_post_thumbnail( $instance['service_link'] );
 		echo wp_kses_post( $args['before_widget'] );
 
-						echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
+		echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
+		echo '<span class="service-header-wrap">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 		if ( ! empty( $instance['service_desc'] ) ) {
 			printf( '<span class="service-description">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
 		}
-		echo '<span class="btn-discover">&gt;_</span>';
+		echo '</span>';
+
+		if ( $service_icon ) :
+			echo '<span class="service-icon">';
+			echo get_the_post_thumbnail( $instance['service_link'] );
+			echo '</span>';
+		endif;
+		// echo '<span class="btn-discover">&gt;_</span>';
 		echo '</a>';
 
 		echo wp_kses_post( $args['after_widget'] );
@@ -63,21 +72,25 @@ class Keitaro_Service extends WP_Widget {
 		$service_link = ! empty( $instance['service_link'] ) ? $instance['service_link'] : '';
 
 		?>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Name:', 'keitaro' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
-			<textarea id="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'service_desc' ) ); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $service_desc ); ?></textarea>
-		</p>
-		<p>
-			<label for="<?php echo esc_url( $this->get_field_id( 'service_link' ) ); ?>"><?php esc_attr_e( 'Linked page:', 'keitaro' ); ?></label>
-			<?php
+<p>
+	<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Name:', 'keitaro' ); ?></label>
+	<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+	 name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+	 type="text" value="<?php echo esc_attr( $title ); ?>">
+</p>
+<p>
+	<label for="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
+	<textarea id="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"
+	 name="<?php echo esc_attr( $this->get_field_name( 'service_desc' ) ); ?>"
+	 class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $service_desc ); ?></textarea>
+</p>
+<p>
+	<label for="<?php echo esc_url( $this->get_field_id( 'service_link' ) ); ?>"><?php esc_attr_e( 'Linked page:', 'keitaro' ); ?></label>
+	<?php
 
 			$wp_pages = get_posts(
 				 array(
-					 'post_type' => 'page',
+					 'post_type' => array( 'post', 'page' ),
 					 'nopaging'  => 1,
 					 'order'     => 'ASC',
 					 'orderby'   => 'title',
@@ -87,21 +100,24 @@ class Keitaro_Service extends WP_Widget {
 			if ( $wp_pages ) :
 
 				?>
-				<select name="<?php echo esc_attr( $this->get_field_name( 'service_link' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'service_link' ) ); ?>" class="widefat">
-					<option value="0"><?php esc_html_e( '&mdash; Select &mdash;' ); ?></option>
-					<?php foreach ( $wp_pages as $page ) : ?>
-						<option value="<?php echo esc_attr( $page->ID ); ?>" <?php selected( $service_link, $page->ID ); ?>>
-							<?php echo esc_html( $page->post_title ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-				<?php
+	<select name="<?php echo esc_attr( $this->get_field_name( 'service_link' ) ); ?>"
+	 id="<?php echo esc_attr( $this->get_field_id( 'service_link' ) ); ?>"
+	 class="widefat">
+		<option value="0"><?php esc_html_e( '&mdash; Select &mdash;' ); ?>
+		</option>
+		<?php foreach ( $wp_pages as $page ) : ?>
+		<option value="<?php echo esc_attr( $page->ID ); ?>" <?php selected( $service_link, $page->ID ); ?>>
+			<?php echo esc_html( $page->post_title ); ?>
+		</option>
+		<?php endforeach; ?>
+	</select>
+	<?php
 
 			endif;
 
 			?>
-		</p>
-		<?php
+</p>
+<?php
 
 	}
 
