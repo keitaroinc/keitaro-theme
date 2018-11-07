@@ -213,7 +213,7 @@ hr {
 
 .hentry {
     &:not(:last-child) {
-        margin-bottom: @grid-gutter-width;
+        margin-bottom: @grid-gutter-width * 2;
     }
 }
 
@@ -340,8 +340,9 @@ pre {
 		font-weight: 600;
         font-size: @font-size-small;
         padding-bottom: (@grid-gutter-width / 3);
-        color: darken(@keitaro-green-light, 10%);
-		border-bottom: 2px solid @table-border-color;
+        color: darken(@keitaro-green-light, 2%);
+		border-bottom: 1px solid @table-border-color;
+		letter-spacing: @letter-spacing-base;
 	}
 	&:last-child{
 		.widgettitle{
