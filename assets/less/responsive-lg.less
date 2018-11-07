@@ -1,6 +1,12 @@
 @media (min-width: @screen-lg-min) {
-    .hero-title{
-        margin: @grid-gutter-width*3 auto @grid-gutter-width*3 - @grid-gutter-width / 2;        
+    .hero {
+        display: flex;
+		align-items: center;
+		background-position: right bottom;
+        background-size: 38% auto;
+    }
+    .hero-subtitle {
+        display: block;
     }
     .connect-action-icon {
         text-align: right;
@@ -9,18 +15,19 @@
         }
     }
     .service-wrapper {
-        flex-basis: 31.5%;
-        max-width: 31.5%; // Because IE.
+        flex-grow: 2;
+        flex-shrink: 0;
+        flex-basis: calc(100%/3); //max-width: 31.5%; // Because IE.
     }
-    .page-parent{
-        .icon-block-wrapper{
+    .page-parent {
+        .icon-block-wrapper {
             overflow: visible;
         }
-        .panel-value-with-description{
+        .panel-value-with-description {
             cursor: help;
-            &:hover{
+            &:hover {
                 border-bottom: 5px dashed @keitaro-green-light;
-                ~ .panel-value-description{
+                ~.panel-value-description {
                     visibility: visible;
                     opacity: 1;
                     animation: 300ms icon-block-appear ease-in-out 50ms;
@@ -31,5 +38,7 @@
 }
 
 @media (max-width: @screen-lg-min) {
-
+    .hero-title {
+        padding-top: @grid-gutter-width;
+    }
 }

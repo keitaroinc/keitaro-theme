@@ -4,10 +4,12 @@
     }
     .content-area{
         padding-top: @content-area-padding;
-    }
+	}
+	.hero{
+		background-position: center 180%;
+	}
     .hero-title{
-        margin: @grid-gutter-width*2 auto;        
-        font-size: @font-size-h3*1.5;
+		font-size: @font-size-h1*1.2;
     }
     .main-navbar {
         display: flex;
@@ -29,7 +31,7 @@
 @media (max-width: @screen-sm-max) {
     .service-wrapper {
         flex-basis: 100%;
-        max-width: 100%; // Because IE.
+		max-width: 100%; // Because IE.
     }
     .contact-form{
         margin: @grid-gutter-width*2 0 @grid-gutter-width;
@@ -44,7 +46,7 @@
         .hentry {
             .col-md-4 {
                 clear: both;
-            }   
+            }
         }
     }
     .navbar-collapse {
@@ -56,9 +58,6 @@
     }
     .entry-title {
         margin-top: @grid-gutter-width / 2;
-    }
-    .hero-background {
-        background-image: none !important;
     }
     .footer-navigation {
         text-align: center;
