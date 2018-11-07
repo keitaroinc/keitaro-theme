@@ -24,4 +24,5 @@ endif;
 		<?php do_shortcode( '[keitaro-hero-title]' ); ?>
 	</div>
 </div>
-<?php get_template_part( SNIPPETS_DIR . '/sidebars/services' );
+<?php
+get_template_part( SNIPPETS_DIR . '/sidebars/services' );

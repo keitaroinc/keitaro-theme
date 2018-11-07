@@ -22,7 +22,7 @@
 		<?php
 
 		$container_wrapper_class = 'container-fluid';
-		$container_bg_class = '';
+		$container_bg_class      = '';
 
 		if ( ! is_front_page() ) :
 			$container_bg_class = 'container-bg';
