@@ -1,7 +1,7 @@
 @media (min-width: @screen-lg-min) {
     .hero {
-        .flex;
-		.flex-align-items-center;
+		display: table; // Because IE
+		width: 100%; // Because IE
 		background-position: right bottom;
         background-size: 38% auto;
     }
