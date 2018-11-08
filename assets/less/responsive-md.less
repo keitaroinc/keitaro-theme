@@ -20,7 +20,7 @@
         padding: 0 0 0 @padding-small-vertical;
         margin: 0;
         li {
-            > a {
+            >a {
                 padding: @padding-base-vertical 0;
             }
         }
@@ -34,13 +34,13 @@
         }
     }
     .main-navigation {
-        > li {
+        >li {
             &:last-child {
-                > a {
+                >a {
                     margin-left: @grid-gutter-width / 4;
                 }
             }
-            > .sub-menu {
+            >.sub-menu {
                 position: absolute;
                 top: 100%;
                 left: -@padding-base-horizontal;
@@ -78,10 +78,10 @@
     .avatar-url {
         float: right;
     }
-    .location{
+    .location {
         text-align: right;
     }
-    .copyright{
+    .copyright {
         text-align: right;
     }
 }
@@ -91,5 +91,11 @@
         img {
             max-width: 30%;
         }
+    }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .service-item {
+        .flex-wrap;
     }
 }
