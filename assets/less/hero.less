@@ -14,8 +14,8 @@
 
 .hero {
 	background-color: @hero-bg;
-	background-position: center 150%;
-	background-size: 60% auto;
+	background-position: right bottom;
+	background-size: auto 50%;
 	background-repeat: no-repeat;
 	min-height: 600px;
 	padding: 0 12.33333333%;
@@ -27,19 +27,17 @@
 	font-weight: 600;
     letter-spacing: @letter-spacing-base;
 	color: @keitaro-white;
-	// background-color: fade(@hero-bg, 90%);
 	text-transform: capitalize;
 	flex-basis: 100%;
-	// padding: @grid-gutter-width/2 0;
+	padding: @grid-gutter-width 0;
 	margin: auto;
-	// height: 100%;
 }
 
 .hero-subtitle {
     font-weight: 200;
-    // letter-spacing: @letter-spacing-large;
 	font-size: .7em;
 	text-transform: initial;
+	line-height: @headings-line-height;
 }
 
 .hero-non-default {
