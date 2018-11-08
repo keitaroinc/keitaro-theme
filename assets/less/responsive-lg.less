@@ -1,9 +1,12 @@
 @media (min-width: @screen-lg-min) {
     .hero {
-		display: table; // Because IE
-		width: 100%; // Because IE
-		background-position: right bottom;
-        background-size: 38% auto;
+        display: table; // Because IE
+        width: 100%; // Because IE
+        background-size: auto 90%;
+        background-position: right bottom;
+    }
+    .hero-title {
+        padding-right: 30vw;
     }
     .hero-subtitle {
         display: block;
@@ -37,8 +40,4 @@
     }
 }
 
-@media (max-width: @screen-lg-min) {
-    .hero-title {
-        padding-top: @grid-gutter-width;
-    }
-}
+@media (max-width: @screen-lg-min) {}
