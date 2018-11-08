@@ -1,50 +1,50 @@
 .services {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-align: left;
+    .flex;
+    .flex-wrap;
+    .flex-justify-between;
 }
 
 .service-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    .flex;
+    .flex-wrap;
     flex: 2 1 calc(100%/3);
     margin-top: @grid-gutter-width/3;
 }
 
 .service-icon {
-    display: flex;
+	.flex;
     flex-shrink: 0;
     align-self: flex-end;
     border-radius: 50%;
-    overflow: hidden;
-    width: 96px;
-    height: 96px;
-	background: @keitaro-white;
-	margin-bottom: @grid-gutter-width/6;
-	padding: @grid-gutter-width/3;
+	overflow: hidden;
+	flex-basis: @service-icon-size;
+    width: @service-icon-size;
+    height: @service-icon-size;
+    background: @keitaro-white;
+    margin: @grid-gutter-width/3 auto @grid-gutter-width/6;
+    padding: @grid-gutter-width/3;
     .wp-post-image {
         object-fit: scale-down;
     }
 }
 
 .service-item {
+	.flex;
+	.flex-wrap;
+	.flex-justify-between;
     overflow: hidden;
     position: relative;
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
+    flex-basis: 100%;
     transition: .3s background-color;
     background-color: @keitaro-green-gray-l-35;
     margin-right: @grid-gutter-width/6;
     margin-left: @grid-gutter-width/6;
-    // border: @service-item-border;
     padding: @grid-gutter-width/3 @grid-gutter-width/2;
     &:hover {
         border-color: @keitaro-green-light;
         text-decoration: none;
         background-color: @keitaro-green-light;
-		color: @keitaro-white;
+        color: @keitaro-white;
         .service-title,
         .btn-discover,
         .service-description {
@@ -60,10 +60,15 @@
     }
 }
 
+.service-header-wrap{
+	flex-grow: 1;
+	flex-basis: 75%;
+}
+
 .service-title {
-	line-height: @headings-line-height;
-	font-size: @font-size-h3 - 3;
-	font-weight: 500;
+    line-height: @headings-line-height;
+    font-size: @font-size-h3 - 3;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: @grid-gutter-width/6;
     display: block;
@@ -73,10 +78,11 @@
 
 .service-description {
     display: block;
-    color: @text-color;
+	color: @text-color;
     @supports (hyphens: auto) {
+		// Currently not fully-supported in Google Chrome
         text-align: justify;
-        hyphens: auto; // Currently not fully-supported in Google Chrome
+        hyphens: auto;
     }
     font-size: @font-size-base;
     flex-shrink: 2;
