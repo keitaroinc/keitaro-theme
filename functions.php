@@ -300,6 +300,9 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-location.php';
 // Require Contact Form widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
 
+// Require Contact Form widget
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-job-application-form.php';
+
 // Require Twitter Grid widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 
@@ -402,6 +405,18 @@ function keitaro_widgets_init() {
 		);
 
 	register_sidebar(
+		array(
+			'name'          => __( 'Job Application', 'keitaro' ),
+			'description'   => __( 'Reserved for Job Application Form widgets and rendered within static pages with the Job Application page template.', 'keitaro' ),
+			'id'            => 'keitaro_job_application',
+			'before_widget' => '<div class="widget-contact %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+			'after_title'   => '</h2></header>',
+		)
+		);
+
+	register_sidebar(
 		 array(
 			 'name'          => __( 'Twitter', 'keitaro' ),
 			 'description'   => __( 'Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro' ),
@@ -437,7 +452,11 @@ function keitaro_widgets_init() {
 		register_widget( 'Keitaro_Contact_Form' );
 	endif;
 
-			if ( class_exists( 'Keitaro_Page_Text' ) ) :
+	if ( class_exists( 'Keitaro_Job_Application_Form' ) ) :
+		register_widget( 'Keitaro_Job_Application_Form' );
+	endif;
+
+	if ( class_exists( 'Keitaro_Page_Text' ) ) :
 		register_widget( 'Keitaro_Page_Text' );
 	endif;
 
