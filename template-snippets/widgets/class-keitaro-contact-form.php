@@ -39,7 +39,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 		?>
 
 		<div class="row">
-			<div class="col-md-4 col-lg-4">
+			<div class="col-md-12 col-lg-offset-1 col-lg-2">
 				<?php
 
 				if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
@@ -50,7 +50,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 
 				?>
 			</div>
-			<div class="col-md-7 col-lg-6">
+			<div class="col-md-12 col-lg-4">
 				<?php
 
 				if ( get_the_content() ) :
@@ -107,14 +107,14 @@ class Keitaro_Contact_Form extends WP_Widget {
 						if ( wp_mail( $send_to, $subject, $body, $headers ) ) :
 							$email_sent = true;
 						else :
-							throw new Exception( __( "Something's wrong. The email message was not sent to sender.", 'keitaro' ) );
+							throw new Exception( __( "Something's wrong. The email message was not delivered to sender.", 'keitaro' ) );
 						endif;
 
 						// Send autoreply to sender
 						if ( wp_mail( $sender_email, $subject_autoreply, $body_autoreply, $headers ) ) :
 							$autoreply_sent = true;
 						else :
-							throw new Exception( __( "Something's wrong. The auto respond email message was not sent to sender.", 'keitaro' ) );
+							throw new Exception( __( "Something's wrong. The auto respond email message was not delivered to sender.", 'keitaro' ) );
 						endif;
 					} catch ( Exception $e ) {
 
@@ -151,17 +151,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-lg-4">
-				<?php
-
-				// Don't show Locations sidebar when contact form data is successfully submitted
-				if ( false === isset( $_POST['submit'] ) ) :
-					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
-				endif;
-
-				?>
-			</div>
-			<div class="col-md-7 col-lg-6">
+			<div class="col-md-8 col-lg-offset-3 col-lg-4">
 				<?php
 
 				// Check submitted data and send message
@@ -171,7 +161,7 @@ class Keitaro_Contact_Form extends WP_Widget {
 					?>
 					<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
-						<?php if ( ! empty( $instance['name_label'] ) ) : ?>            
+						<?php if ( ! empty( $instance['name_label'] ) ) : ?>
 							<div class="form-group">
 								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo ( isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '' ); ?>">
 								<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
@@ -241,6 +231,16 @@ if ( ! empty( $instance['message_label'] ) ) :
 				echo wp_kses_post( $args['after_widget'] );
 
 				?>
+			<div class="col-md-4 col-lg-3">
+				<?php
+
+				// Don't show Locations sidebar when contact form data is successfully submitted
+				if ( false === isset( $_POST['submit'] ) ) :
+					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
+				endif;
+
+				?>
+			</div>
 			</div>
 		</div>
 		<?php
