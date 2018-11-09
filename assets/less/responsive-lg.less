@@ -22,6 +22,14 @@
         flex-shrink: 0;
         flex-basis: calc(100%/3); //max-width: 31.5%; // Because IE.
     }
+	.page-template-contact,
+	.page-template-job-application {
+        &:not(.page-child) {
+            .post-thumbnail {
+                text-align: right;
+            }
+		}
+    }
     .page-parent {
         .icon-block-wrapper {
             overflow: visible;
