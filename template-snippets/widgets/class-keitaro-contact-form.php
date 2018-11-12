@@ -150,100 +150,96 @@ class Keitaro_Contact_Form extends WP_Widget {
 				endif;
 
 				?>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8 col-lg-offset-3 col-lg-4">
 				<?php
 
-				// Check submitted data and send message
-				if ( false === isset( $_POST['submit'] ) ) :
+// Check submitted data and send message
+if ( false === isset( $_POST['submit'] ) ) :
 
-					// Show contact form when nothing has been submitted
-					?>
-					<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
+	// Show contact form when nothing has been submitted
+	?>
+	<form method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
-						<?php if ( ! empty( $instance['name_label'] ) ) : ?>
-							<div class="form-group">
-								<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo ( isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '' ); ?>">
-								<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
-							</div>
-							<?php
+		<?php if ( ! empty( $instance['name_label'] ) ) : ?>
+			<div class="form-group">
+				<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo ( isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '' ); ?>">
+				<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
+			</div>
+			<?php
 
-						endif;
+		endif;
 
 if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
 
-	?>
-	<div class="form-group">
+?>
+<div class="form-group">
 <input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo ( isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : '' ); ?>">
 <label for="sender-email"><?php echo esc_html( $instance['email_label'] ); ?></label>
-	</div>
-	<?php
+</div>
+<?php
 
-						endif;
+		endif;
 
 if ( ! empty( $instance['intent_list'] ) ) :
 
-	$intent_options = explode( "\n", $instance['intent_list'] );
+$intent_options = explode( "\n", $instance['intent_list'] );
 
-	if ( $intent_options ) :
+if ( $intent_options ) :
 
-		?>
-		<div class="form-group form-select">
+?>
+<div class="form-group form-select">
 
-			<select name="intent" id="intent" class="form-control">
-				<?php foreach ( $intent_options as $key => $value ) : ?>
-											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
-																							<?php echo esc_attr( trim( $value ) ); ?></option>
-										<?php
-										endforeach;
+<select name="intent" id="intent" class="form-control">
+<?php foreach ( $intent_options as $key => $value ) : ?>
+							<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
+																			<?php echo esc_attr( trim( $value ) ); ?></option>
+						<?php
+						endforeach;
 
-				?>
-			</select>
-		</div>
-		<?php
+?>
+</select>
+</div>
+<?php
 
-	endif;
-						endif;
+endif;
+		endif;
 
 if ( ! empty( $instance['message_label'] ) ) :
 
-	?>
-	<div class="form-group">
+?>
+<div class="form-group">
 <textarea name="message" id="message" class="form-control" rows="8" required="required"><?php echo ( isset( $_POST['message'] ) ? esc_textarea( $_POST['message'] ) : '' ); ?></textarea>
 <label for="message"><?php echo esc_html( $instance['message_label'] ); ?></label>
-	</div>
+</div>
+<?php
+
+		endif;
+
+		wp_nonce_field( 'contact-form-widget' );
+
+		?>
+		<input type="hidden" name="submit" id="submit" value="1">
+		<?php if ( ! empty( $instance['submit_label'] ) ) : ?>
+			<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html( $instance['submit_label'] ); ?></button>
+		<?php endif; ?>
+	</form>
 	<?php
 
-						endif;
+endif;
 
-						wp_nonce_field( 'contact-form-widget' );
+echo wp_kses_post( $args['after_widget'] );
 
-						?>
-						<input type="hidden" name="submit" id="submit" value="1">
-						<?php if ( ! empty( $instance['submit_label'] ) ) : ?>
-							<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html( $instance['submit_label'] ); ?></button>
-						<?php endif; ?>
-					</form>
-					<?php
-
-				endif;
-
-				echo wp_kses_post( $args['after_widget'] );
-
-				?>
-			<div class="col-md-4 col-lg-3">
+?>
+			<div class="col-md-12 col-lg-3">
 				<?php
 
-				// Don't show Locations sidebar when contact form data is successfully submitted
-				if ( false === isset( $_POST['submit'] ) ) :
-					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
-				endif;
+// Don't show Locations sidebar when contact form data is successfully submitted
+if ( false === isset( $_POST['submit'] ) ) :
+	get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
+endif;
 
-				?>
+?>
 			</div>
-			</div>
+		</div>
 		</div>
 		<?php
 
