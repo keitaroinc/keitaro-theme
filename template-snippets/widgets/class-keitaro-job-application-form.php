@@ -306,9 +306,10 @@ endif;
 
 		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['description']   = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+		$instance['introduction_label']   = ( ! empty( $new_instance['introduction_label'] ) ) ? strip_tags( $new_instance['introduction_label'] ) : '';
+		$instance['attachment_label']   = ( ! empty( $new_instance['attachment_label'] ) ) ? strip_tags( $new_instance['attachment_label'] ) : '';
 		$instance['name_label']    = ( ! empty( $new_instance['name_label'] ) ) ? strip_tags( $new_instance['name_label'] ) : '';
 		$instance['email_label']   = ( ! empty( $new_instance['email_label'] ) ) ? strip_tags( $new_instance['email_label'] ) : '';
-		$instance['intent_list']   = ( ! empty( $new_instance['intent_list'] ) ) ? strip_tags( $new_instance['intent_list'] ) : '';
 		$instance['message_label'] = ( ! empty( $new_instance['message_label'] ) ) ? strip_tags( $new_instance['message_label'] ) : '';
 		$instance['sent_to']       = ( ! empty( $new_instance['sent_to'] ) ) ? strip_tags( $new_instance['sent_to'] ) : get_option( 'admin_email' );
 		$instance['submit_label']  = ( ! empty( $new_instance['submit_label'] ) ) ? strip_tags( $new_instance['submit_label'] ) : '';
