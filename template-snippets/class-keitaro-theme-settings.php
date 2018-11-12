@@ -33,7 +33,11 @@ class Keitaro_Theme_Settings {
 	public function add_plugin_page() {
 		// Theme settings page will be added under "Settings".
 		add_options_page(
-			get_bloginfo( 'name' ), get_bloginfo( 'name' ), 'manage_options', 'keitaro-settings', array( $this, 'keitaro_settings_page' )
+			get_bloginfo( 'name' ),
+			get_bloginfo( 'name' ),
+			'manage_options',
+			'keitaro-settings',
+			array( $this, 'keitaro_settings_page' )
 		);
 
 	}
@@ -131,7 +135,8 @@ class Keitaro_Theme_Settings {
 	 */
 	public function google_analytics_tracking_id_callback() {
 		printf(
-			'<input type="text" id="ga_tracking_id" name="keitaro_settings[ga_tracking_id]" value="%s" />', isset( $this->options['ga_tracking_id'] ) ? esc_attr( $this->options['ga_tracking_id'] ) : ''
+			'<input type="text" id="ga_tracking_id" name="keitaro_settings[ga_tracking_id]" value="%s" />',
+			isset( $this->options['ga_tracking_id'] ) ? esc_attr( $this->options['ga_tracking_id'] ) : ''
 		);
 
 	}
@@ -141,7 +146,8 @@ class Keitaro_Theme_Settings {
 	 */
 	public function google_search_console_verification_id_callback() {
 		printf(
-			'<input type="text" id="gsc_verification_id" name="keitaro_settings[gsc_verification_id]" value="%s" />', isset( $this->options['gsc_verification_id'] ) ? esc_attr( $this->options['gsc_verification_id'] ) : ''
+			'<input type="text" id="gsc_verification_id" name="keitaro_settings[gsc_verification_id]" value="%s" />',
+			isset( $this->options['gsc_verification_id'] ) ? esc_attr( $this->options['gsc_verification_id'] ) : ''
 		);
 
 	}

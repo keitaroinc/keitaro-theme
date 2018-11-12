@@ -73,13 +73,14 @@ function keitaro_theme_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support(
-		 'html5', array(
-			 'comment-form',
-			 'comment-list',
-			 'search-form',
-			 'gallery',
-			 'caption',
-		 )
+		 'html5',
+		array(
+			'comment-form',
+			'comment-list',
+			'search-form',
+			'gallery',
+			'caption',
+		)
 		);
 
 	/*
@@ -88,23 +89,25 @@ function keitaro_theme_setup() {
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support(
-		 'post-formats', array(
-			 'aside',
-			 'image',
-			 'video',
-			 'quote',
-			 'link',
-			 'gallery',
-			 'audio',
-		 )
+		 'post-formats',
+		array(
+			'aside',
+			'image',
+			'video',
+			'quote',
+			'link',
+			'gallery',
+			'audio',
+		)
 		);
 
 	// Add theme support for Custom Logo.
 	add_theme_support(
-		 'custom-logo', array(
-			 'flex-width' => true,
-			 'height'     => 100,
-		 )
+		 'custom-logo',
+		array(
+			'flex-width' => true,
+			'height'     => 100,
+		)
 		);
 
 	// Add theme support for selective refresh for widgets.
@@ -112,11 +115,12 @@ function keitaro_theme_setup() {
 
 	// Add theme support for custom headers
 	add_theme_support(
-		 'custom-header', array(
-			 'default-image' => DEFAULT_HEADER_IMAGE,
-			 'flex-height'   => true,
-			 'flex-width'    => true,
-		 )
+		 'custom-header',
+		array(
+			'default-image' => DEFAULT_HEADER_IMAGE,
+			'flex-height'   => true,
+			'flex-width'    => true,
+		)
 		);
 
 	// $starter_content = array();
@@ -604,16 +608,25 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 			// translators: Authors Stats: number of author comments
 			_n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' .
 			// translators: Authors Stats: connector
-			__( 'so far', 'keitaro' ) . '.</small></p>', $author_posts_number, $author_comments_number
+			__( 'so far', 'keitaro' ) . '.</small></p>',
+		$author_posts_number,
+		$author_comments_number
 		);
 
 	$print .= sprintf(
 		 '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
 			// translators: Authors Stats: title
-			__( 'Author', 'keitaro' ), sprintf(
+			__( 'Author', 'keitaro' ),
+		sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar">%2$s</div>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
-				), $author_title, $author_description, $author_stats, ( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
+					'<div class="author-avatar">%2$s</div>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
+				),
+		$author_title,
+		$author_description,
+		$author_stats,
+		( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
 
 	if ( true === $display ) :
@@ -658,14 +671,19 @@ function keitaro_posted_on() {
 function keitaro_read_more( $class = 'btn-default' ) {
 	wp_kses(
 		 printf(
-		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>', esc_url( get_permalink() ), sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ), esc_html__( 'Read more', 'keitaro' ), esc_html( $class )
-			), array(
-				'a' => array(
-					'class' => array(),
-					'href'  => array(),
-					'title' => array(),
-				),
-			)
+		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
+			 esc_url( get_permalink() ),
+			 sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ),
+			 esc_html__( 'Read more', 'keitaro' ),
+			 esc_html( $class )
+			),
+		array(
+			'a' => array(
+				'class' => array(),
+				'href'  => array(),
+				'title' => array(),
+			),
+		)
 		);
 
 }

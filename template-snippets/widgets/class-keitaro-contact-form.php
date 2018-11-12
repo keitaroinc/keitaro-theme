@@ -76,29 +76,31 @@ class Keitaro_Contact_Form extends WP_Widget {
 						'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
 					);
 					$body    = join(
-						 '<br>', array(
-							 __( 'Hello,', 'keitaro' ) . '<br>',
-							 // translators: Who submitted a message from where, in the auto send admin email
-							 sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
-							 $submitted_message . '<br>',
-							 // translators: What was the intent for sending an email
-							 sprintf( __( 'The intent is: %s', 'keitaro' ), str_replace( '-', ' ', ucwords( $intent ) ) ) . '<br>',
-							 __( 'Regards,', 'keitaro' ),
-							 // translators: %s stands for get_bloginfo('name')
-							 sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
-						 )
+						 '<br>',
+						array(
+							__( 'Hello,', 'keitaro' ) . '<br>',
+							// translators: Who submitted a message from where, in the auto send admin email
+							sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
+							$submitted_message . '<br>',
+							// translators: What was the intent for sending an email
+							sprintf( __( 'The intent is: %s', 'keitaro' ), str_replace( '-', ' ', ucwords( $intent ) ) ) . '<br>',
+							__( 'Regards,', 'keitaro' ),
+							// translators: %s stands for get_bloginfo('name')
+							sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
+						)
 						);
 
 					$body_autoreply = join(
-						 '<br>', array(
-							 __( 'Hello,', 'keitaro' ) . '<br>',
-							 // translators: %s stands for get_bloginfo('name')
-							 sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
-							 __( 'Kind Regards,', 'keitaro' ),
-							 get_bloginfo( 'name' ) . '<br>',
-							 esc_url( get_home_url() ),
-							 $send_to,
-						 )
+						 '<br>',
+						array(
+							__( 'Hello,', 'keitaro' ) . '<br>',
+							// translators: %s stands for get_bloginfo('name')
+							sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+							__( 'Kind Regards,', 'keitaro' ),
+							get_bloginfo( 'name' ) . '<br>',
+							esc_url( get_home_url() ),
+							$send_to,
+						)
 						);
 
 					try {

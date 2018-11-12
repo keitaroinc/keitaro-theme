@@ -62,12 +62,13 @@ class Keitaro_Icon_Block extends WP_Widget {
 								<div class="panel-value-description" aria-hidden="true">
 									<?php
 									echo wp_kses(
-										 $instance['description'], array(
-											 'strong' => array(),
-											 'em'     => array(),
-											 'b'      => array(),
-											 'i'      => array(),
-										 )
+										 $instance['description'],
+										array(
+											'strong' => array(),
+											'em'     => array(),
+											'b'      => array(),
+											'i'      => array(),
+										)
 										);
 									?>
 								</div>

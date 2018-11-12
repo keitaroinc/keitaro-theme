@@ -31,9 +31,15 @@ if ( post_password_required() ) {
 						esc_html(
 														/* translators: Single and plural forms */
 							 _nx(
-										'%1$s Reply to &ldquo;%2$s&rdquo;', '%1$s Replies to &ldquo;%2$s&rdquo;', $comments_number, 'comments title', 'keitaro'
+										'%1$s Reply to &ldquo;%2$s&rdquo;',
+								 '%1$s Replies to &ldquo;%2$s&rdquo;',
+								 $comments_number,
+								 'comments title',
+								 'keitaro'
 								)
-						), esc_html( number_format_i18n( $comments_number ) ), get_the_title()
+						),
+					esc_html( number_format_i18n( $comments_number ) ),
+					get_the_title()
 				);
 			}
 
