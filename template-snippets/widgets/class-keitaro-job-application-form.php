@@ -113,7 +113,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 						array(
 							__( 'Hello,', 'keitaro' ) . '<br>',
 							// translators: %s stands for get_bloginfo('name')
-							sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message and will respond as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+							sprintf( __( 'Thank you for your interest in joining us at %s. We are just reaching out to confirm that we received your message and will respond to it as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
 							__( 'Kind Regards,', 'keitaro' ),
 							get_bloginfo( 'name' ) . '<br>',
 							esc_url( get_home_url() ),
