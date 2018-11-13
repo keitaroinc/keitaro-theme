@@ -313,6 +313,9 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 // Require Keitaro Page Text widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-page-text.php';
 
+// Require Keitaro Button widget
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-button.php';
+
 // Register Widget areas
 function keitaro_widgets_init() {
 
@@ -458,6 +461,10 @@ function keitaro_widgets_init() {
 
 	if ( class_exists( 'Keitaro_Job_Application_Form' ) ) :
 		register_widget( 'Keitaro_Job_Application_Form' );
+	endif;
+
+	if ( class_exists( 'Keitaro_Button' ) ) :
+		register_widget( 'Keitaro_Button' );
 	endif;
 
 	if ( class_exists( 'Keitaro_Page_Text' ) ) :
