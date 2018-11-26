@@ -101,9 +101,9 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 							sprintf( __( '%1$s submitted the following job application from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
 							// translators: What introduction did the user give
 							sprintf( __( 'The user gave the following personal introduction:', 'keitaro' ) ) . '<br>',
-							sprintf( __( 'The user attached the following CV:', 'keitaro' ) ) . '<br>',
-							$attachments[0] . '<br>',
 							$intro . '<br>',
+							sprintf( __( 'The user attached the following CV:', 'keitaro' ) ),
+							$attachments[0] . '<br>',
 							__( 'Regards,', 'keitaro' ),
 							// translators: %s stands for get_bloginfo('name')
 							sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
