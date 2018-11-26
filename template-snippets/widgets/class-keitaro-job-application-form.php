@@ -87,7 +87,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 						echo esc_html( $movefile['error'] );
 					}
 
-					$attachments = array( $movefile['file'] );
+					$attachments = array( $movefile['url'] );
 
 					if( current_user_can('administrator') ) :
 						var_dump($attachments);
