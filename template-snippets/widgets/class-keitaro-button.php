@@ -74,7 +74,7 @@ class Keitaro_Button extends WP_Widget {
 
 			if ( $wp_pages ) :
 
-				?>
+		?>
 	<select name="<?php echo esc_attr( $this->get_field_name( 'button_link' ) ); ?>"
 	 id="<?php echo esc_attr( $this->get_field_id( 'button_link' ) ); ?>"
 	 class="widefat">
@@ -111,7 +111,7 @@ class Keitaro_Button extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['service_desc'] = ( ! empty( $new_instance['service_desc'] ) ) ? strip_tags( $new_instance['service_desc'] ) : '';
-		$instance['button_link'] = ( ! empty( $new_instance['button_link'] ) ) ? strip_tags( $new_instance['button_link'] ) : '';
+		$instance['button_link']  = ( ! empty( $new_instance['button_link'] ) ) ? strip_tags( $new_instance['button_link'] ) : '';
 
 		return $instance;
 
