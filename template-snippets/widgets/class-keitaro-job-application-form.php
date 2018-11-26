@@ -87,8 +87,6 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 						echo esc_html( $movefile['error'] );
 					} else {
 
-					$attachments = array( $movefile['url'] );
-
 					$headers = array(
 						'Content-Type: text/html; charset=UTF-8',
 						'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
@@ -103,7 +101,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 							sprintf( __( 'The user gave the following personal introduction:', 'keitaro' ) ) . '<br>',
 							$intro . '<br>',
 							sprintf( __( 'The user attached the following CV:', 'keitaro' ) ),
-							$attachments[0] . '<br>',
+							$movefile['url'] . '<br>',
 							__( 'Regards,', 'keitaro' ),
 							// translators: %s stands for get_bloginfo('name')
 							sprintf( __( 'WordPress @ %s', 'keitaro' ), get_bloginfo( 'name' ) ),
@@ -126,7 +124,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 					try {
 
 						// Send mail to Keitaro Inc.
-						if ( wp_mail( $send_to, $subject, $body, $headers, $attachments[0] ) ) :
+						if ( wp_mail( $send_to, $subject, $body, $headers, array( $movefile('file') ) ) ) :
 							$email_sent = true;
 						else :
 							throw new Exception( __( "Something's wrong. The email message was not delivered to sender.", 'keitaro' ) );
