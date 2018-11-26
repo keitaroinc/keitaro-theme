@@ -75,9 +75,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 
 					$uploadedfile = $_FILES['upload'];
 
-					$upload_overrides = array( 'test_form' => false );
-
-					$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+					$movefile = wp_handle_upload( $uploadedfile );
 
 					if ( ! $movefile && isset( $movefile['error'] ) ) {
 						/**
@@ -88,6 +86,10 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 					}
 
 					$attachments = array( $movefile['file'] );
+
+					if( current_user_can('administrator') ) :
+						var_dump($attachments);
+					endif;
 
 					$headers = array(
 						'Content-Type: text/html; charset=UTF-8',
