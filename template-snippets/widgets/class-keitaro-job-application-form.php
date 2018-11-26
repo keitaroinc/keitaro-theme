@@ -85,13 +85,9 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 						 * @see _wp_handle_upload() in wp-admin/includes/file.php
 						 */
 						echo esc_html( $movefile['error'] );
-					}
+					} else {
 
 					$attachments = array( $movefile['url'] );
-
-					if( current_user_can('administrator') ) :
-						var_dump($attachments);
-					endif;
 
 					$headers = array(
 						'Content-Type: text/html; charset=UTF-8',
@@ -105,6 +101,8 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 							sprintf( __( '%1$s submitted the following job application from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_permalink() ) . '<br>',
 							// translators: What introduction did the user give
 							sprintf( __( 'The user gave the following personal introduction:', 'keitaro' ) ) . '<br>',
+							sprintf( __( 'The user attached the following CV:', 'keitaro' ) ) . '<br>',
+							$attachments[0] . '<br>',
 							$intro . '<br>',
 							__( 'Regards,', 'keitaro' ),
 							// translators: %s stands for get_bloginfo('name')
@@ -128,7 +126,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 					try {
 
 						// Send mail to Keitaro Inc.
-						if ( wp_mail( $send_to, $subject, $body, $headers, $attachments ) ) :
+						if ( wp_mail( $send_to, $subject, $body, $headers ) ) :
 							$email_sent = true;
 						else :
 							throw new Exception( __( "Something's wrong. The email message was not delivered to sender.", 'keitaro' ) );
@@ -144,6 +142,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 
 						echo 'Caught exception: ', wp_kses_post( $e->getMessage() ), "\n";
 					}
+				}
 
 					if ( $email_sent && $autoreply_sent ) :
 						echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', __( 'Job application sent', 'keitaro' ) ) ) . wp_kses_post( $args['after_title'] );
