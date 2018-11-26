@@ -126,7 +126,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 					try {
 
 						// Send mail to Keitaro Inc.
-						if ( wp_mail( $send_to, $subject, $body, $headers ) ) :
+						if ( wp_mail( $send_to, $subject, $body, $headers, $attachments[0] ) ) :
 							$email_sent = true;
 						else :
 							throw new Exception( __( "Something's wrong. The email message was not delivered to sender.", 'keitaro' ) );
