@@ -7,34 +7,14 @@
  * @package WordPress
  * @subpackage Keitaro
  */
-
-// Don't render anything if the template does not match
-if ( ! is_page_template( 'parent.php' ) ) :
-	return;
-endif;
-
-$child_pages = new WP_Query(
-	array(
-		'post_parent' => get_the_ID(),
-		'post_type'   => 'page',
-		'order'       => 'ASC',
-		'orderby'     => 'menu_order',
-	)
-);
-
-
-if ( $child_pages->have_posts() ) :
-	while ( $child_pages->have_posts() ) :
-		$child_pages->the_post();
-
 		?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<div class="row">
-				<div class="col-md-8">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<div class="row">
+		<div class="col-md-8">
 
-					<header class="entry-header">
-						<?php
+			<header class="entry-header">
+				<?php
 
 						if ( is_single() ) {
 							the_title( '<h1 class="entry-title">', '</h1>' );
@@ -45,33 +25,24 @@ if ( $child_pages->have_posts() ) :
 						}
 
 						?>
-					</header><!-- .entry-header -->
+			</header><!-- .entry-header -->
 
-					<?php get_template_part( SNIPPETS_DIR . '/entry-content' ); ?>
+			<?php get_template_part( SNIPPETS_DIR . '/entry-content' ); ?>
 
-				</div>
-				<div class="col-md-4">
-					<?php
+		</div>
+		<div class="col-md-4">
+			<?php
 
 					if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
 						get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
 					endif;
 
-																				get_template_part( SNIPPETS_DIR . '/sidebars/page-widgets' );
+					get_template_part( SNIPPETS_DIR . '/sidebars/page-widgets' );
 
 					keitaro_child_pages_list( get_the_ID() );
 
 					?>
-					<?php get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' ); ?>
-				</div>
-			</div>
-		</article><!-- #post-## -->
-		<?php
-
-	endwhile;
-
-
-endif;
-
-// Reset query data to go back to the default WordPress loop
-wp_reset_postdata();
+			<?php get_template_part( SNIPPETS_DIR . '/sidebars/icon-blocks' ); ?>
+		</div>
+	</div>
+</article><!-- #post-## -->
