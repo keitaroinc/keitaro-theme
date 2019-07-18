@@ -677,7 +677,7 @@ function keitaro_posted_on() {
 
 function keitaro_read_more( $class = 'btn-default' ) {
 	wp_kses(
-		 printf(
+		printf(
 		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
 			 esc_url( get_permalink() ),
 			 sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ),

@@ -30,7 +30,7 @@ if ( post_password_required() ) {
 						/* translators: 1: number of comments, 2: post title */
 						esc_html(
 														/* translators: Single and plural forms */
-							 _nx(
+							_nx(
 										'%1$s Reply to &ldquo;%2$s&rdquo;',
 								 '%1$s Replies to &ldquo;%2$s&rdquo;',
 								 $comments_number,
