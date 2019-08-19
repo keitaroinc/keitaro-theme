@@ -108,8 +108,8 @@ class Keitaro_Contact_Form extends WP_Widget
 
 				try {
 
-					if ("" != $_POST['bot_check']) :
-						throw new Exception(__("Seems like you are trying to submit non-required form data. Sorry, that's not allowed.", 'keitaro'));
+					if (true === keitaro_akismet_check_spam($submitted_message)) :
+						throw new Exception(__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 					endif;
 
 					// Send mail to Keitaro Inc.
@@ -125,6 +125,7 @@ class Keitaro_Contact_Form extends WP_Widget
 					else :
 						throw new Exception(__("Something's wrong. The auto respond email message was not delivered to sender.", 'keitaro'));
 					endif;
+
 				} catch (Exception $e) {
 
 					echo 'Caught exception: ', wp_kses_post($e->getMessage()), "\n";
@@ -224,7 +225,6 @@ class Keitaro_Contact_Form extends WP_Widget
 					wp_nonce_field('contact-form-widget');
 
 					?>
-					<input type="hidden" name="bot_check" id="bot_check" value="">
 					<input type="hidden" name="submit" id="submit" value="1">
 					<?php if (!empty($instance['submit_label'])) : ?>
 						<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html($instance['submit_label']); ?></button>

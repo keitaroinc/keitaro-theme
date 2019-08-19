@@ -126,8 +126,8 @@ class Keitaro_Job_Application_Form extends WP_Widget
 
 					try {
 
-						if ("" != $_POST['bot_check']) :
-							throw new Exception(__("Seems like you are trying to submit non-required form data. Sorry, that's not allowed.", 'keitaro'));
+						if (true === keitaro_akismet_check_spam($body)) :
+							throw new Exception(__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 						endif;
 
 						// Send mail to Keitaro Inc.
@@ -230,7 +230,6 @@ class Keitaro_Job_Application_Form extends WP_Widget
 					wp_nonce_field('contact-form-widget');
 
 					?>
-					<input type="hidden" name="bot_check" id="bot_check" value="">
 					<input type="hidden" name="submit" id="submit" value="1">
 					<?php if (!empty($instance['submit_label'])) : ?>
 						<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html($instance['submit_label']); ?></button>
