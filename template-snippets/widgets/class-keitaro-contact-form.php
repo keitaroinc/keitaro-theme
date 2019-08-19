@@ -74,6 +74,11 @@ class Keitaro_Contact_Form extends WP_Widget
 				$intent            = (isset($_POST['intent'])) ? trim(esc_html($_POST['intent'])) : '';
 				$submitted_message = (isset($_POST['message'])) ? str_replace("\r\n", '<br>', trim(esc_html($_POST['message']))) : '';
 
+				$spam_check['comment_author'] = $sender;
+				$spam_check['comment_author_email'] = $sender_email;
+				$spam_check['comment_author_url'] = get_option('home');
+				$spam_check['comment_content'] = $submitted_message;
+
 				$headers = array(
 					'Content-Type: text/html; charset=UTF-8',
 					'From: ' . get_bloginfo('name') . ' <' . $send_to . '>',
@@ -108,7 +113,7 @@ class Keitaro_Contact_Form extends WP_Widget
 
 				try {
 
-					if (true === keitaro_akismet_check_spam($submitted_message)) :
+					if (true === keitaro_akismet_check_spam($spam_check)) :
 						throw new Exception(__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 					endif;
 

@@ -124,9 +124,14 @@ class Keitaro_Job_Application_Form extends WP_Widget
 						)
 					);
 
+					$spam_check['comment_author'] = $sender;
+					$spam_check['comment_author_email'] = $sender_email;
+					$spam_check['comment_author_url'] = get_option('home');
+					$spam_check['comment_content'] = $body;
+
 					try {
 
-						if (true === keitaro_akismet_check_spam($body)) :
+						if (true === keitaro_akismet_check_spam($spam_check)) :
 							throw new Exception(__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 						endif;
 
