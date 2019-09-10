@@ -525,13 +525,13 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 		endif;
 
 		?>
+		<?php if ( $collapse ) : ?>
+			<button type="button" class="pull-right navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="glyphicon glyphicon-menu-hamburger"></span>
+			</button>
+		<?php endif; ?>
 		<nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>">
-			<?php if ( $collapse ) : ?>
-				<button type="button" class="pull-right navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="glyphicon glyphicon-menu-hamburger"></span>
-				</button>
-			<?php endif; ?>
 			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo $collapse ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
