@@ -15,18 +15,12 @@
     }
     .main-navbar {
         .flex;
-        .flex-align-items-center;
+		.flex-align-items-center;
+		.flex-justify-between;
 
         .site-branding {
             flex-basis: @grid-gutter-width * 5;
-        }
-
-        .navigation {
-            flex-grow: 5;
-        }
-    }
-    .main-navigation {
-        .text-right;
+		}
     }
 }
 
@@ -44,11 +38,20 @@
                 clear: both;
             }
         }
-    }
+	}
+	.main-navigation{
+		margin-top: @grid-gutter-width / 3;
+	}
+	.main-navbar{
+		.flex-wrap;
+		overflow: auto;
+	}
+	.navigation{
+		flex-basis: 100%;
+	}
     .navbar-collapse {
         li {
             margin: @grid-gutter-width / 6 0;
-            text-align: right;
             display: block;
         }
     }

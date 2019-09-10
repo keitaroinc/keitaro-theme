@@ -8,7 +8,8 @@
     .navbar-toggle {
         margin-top: @main-navigation-top-margin;
         margin-bottom: 0;
-        margin-right: 0;
+		margin-right: 0;
+		margin-left: auto;
 
         &:hover,
             &:active {
@@ -94,7 +95,17 @@
 }
 
 .sub-menu {
-    list-style: outside none;
+	list-style: outside none;
+
+	.menu-item {
+		a {
+			&:before {
+				content: "\02212";
+				display: inline-block;
+				margin-right: @padding-small-horizontal;
+			}
+		}
+	}
 
     .sub-menu {
         position: relative;
@@ -184,4 +195,16 @@
         .btn-success;
         padding: @padding-base-vertical @padding-base-horizontal;
     }
+}
+
+.menu-item-has-children{
+	> a {
+		&:after {
+			color: @keitaro-gray-light;
+			content: "\025BE";
+			display: inline-block;
+			padding-left: @padding-base-horizontal;
+			text-decoration: none;
+		}
+	}
 }

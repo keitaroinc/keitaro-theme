@@ -21,7 +21,7 @@
         transition: 150ms opacity ease-in-out 20ms;
         min-width: 100%;
         text-align: left;
-        padding: 0 0 0 @padding-small-vertical;
+        padding: 0 0 0 @grid-gutter-width / 4;
         margin: 0;
         li {
             >a {
@@ -30,6 +30,7 @@
         }
     }
     .menu-item {
+		white-space: nowrap;
         &:hover {
             .sub-menu {
                 visibility: visible;
