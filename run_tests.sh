@@ -6,7 +6,7 @@ find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
 phpcs -p -s -v -n . --standard=./phpcs.xml --extensions=php
 
 # Run the theme JavaScript partials through ESLint
-#eslint -v -c ./.eslintrc.js ./assets/scripts/concat
+# eslint -v -c ./.eslintrc.js ./assets/scripts/concat
 
 # Run the theme LESS partials through LESS Lint.
-lesslint assets/less/*.less
+# lesslint assets/less/*.less
