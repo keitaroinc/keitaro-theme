@@ -23,9 +23,12 @@ matrix:
           env: SNIFF=1 # Most production environments are still running PHP 5.6
         - php: '7.0'
         - php: '7.1'
+        - php: '7.2'
+        - php: '7.3'
+        - php: '7.4'
 
     allow_failures:
-        - php: '7.1'
+        - php: '5.6'
 
 # Use this to prepare the system to install prerequisites or dependencies.
 # e.g. sudo apt-get update.
@@ -59,7 +62,7 @@ before_script:
     # @link https://www.npmjs.com/package/eslint-config-wordpress
     - if [[ "$SNIFF" == "1" ]]; then npm i -g eslint-config-wordpress; fi
     # Install Less Lint.
-    - if [[ "$SNIFF" == "1" ]]; then npm i -g lesslint; fi
+    # - if [[ "$SNIFF" == "1" ]]; then npm i -g lesslint; fi
 
 # Run test script commands.
 # Default is specific to project language.
@@ -80,7 +83,7 @@ script:
     # Run the theme JavaScript partials through ESLint.
     # - if [[ "$SNIFF" == "1" ]]; then eslint -v -c ./.eslintrc.js ./assets/scripts/concat; fi
     # Run the theme Less partials through Less Lint.
-    - if [[ "$SNIFF" == "1" ]]; then lesslint ./assets/less/*.less; fi
+    # - if [[ "$SNIFF" == "1" ]]; then lesslint ./assets/less/*.less; fi
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
