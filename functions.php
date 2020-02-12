@@ -483,7 +483,7 @@ function keitaro_hero_title_shortcode() {
 
 	$formatted_title    = explode( ' ', get_bloginfo( 'description' ) );
 	$formatted_title[2] = esc_html( $formatted_title[2] ) . '<span class="hero-subtitle">';
-	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', wp_kses_post( $formatted_title ) ) );
+	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', $formatted_title ) );
 
 }
 
