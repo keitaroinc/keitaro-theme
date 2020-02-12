@@ -895,11 +895,11 @@ function keitaro_akismet_check_spam( $content ) {
 
 	$content = (array) $content;
 
-	if (function_exists('akismet_init')) {
+	if ( function_exists( 'akismet_init' ) ) {
 
-		$wpcom_api_key = get_option('wordpress_api_key');
+		$wpcom_api_key = get_option( 'wordpress_api_key' );
 
-		if (!empty($wpcom_api_key)) {
+		if ( ! empty( $wpcom_api_key ) ) {
 
 			global $akismet_api_host, $akismet_api_port;
 
@@ -907,30 +907,28 @@ function keitaro_akismet_check_spam( $content ) {
 			$content['user_ip'] = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
 			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 			$content['referrer'] = $_SERVER['HTTP_REFERER'];
-			$content['blog'] = get_option('home');
+			$content['blog'] = get_option( 'home' );
 
-			if (empty($content['referrer'])) {
+			if ( empty( $content['referrer'] ) ) {
 				$content['referrer'] = get_permalink();
 			}
 
 			$queryString = '';
 
-			foreach ($content as $key => $data) {
-				if (!empty($data)) {
-					$queryString .= $key . '=' . urlencode(stripslashes($data)) . '&';
+			foreach ( $content as $key => $data ) {
+				if ( ! empty( $data ) ) {
+					$queryString .= $key . '=' . urlencode( stripslashes( $data ) ) . '&';
 				}
 			}
 
-			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
+			$response = akismet_http_post( $queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
 
-			if ($response[1] == 'true') {
+			if ( $response[1] == 'true' ) {
 				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
 				$isSpam = true;
 			}
-
-		}
-
-	}
+}
+}
 
 	return $isSpam;
 
