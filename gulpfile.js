@@ -7,10 +7,6 @@ var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 
-
-// The default Gulp.js task
-gulp.task('default', ['bootstrap-fonts', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'less', 'watch']);
-
 // Rebuild CSS from LESS
 gulp.task('less', function () {
     return gulp.src('assets/less/**/style.less')
@@ -81,6 +77,9 @@ gulp.task('img', function () {
 
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
-    gulp.watch(['assets/less/**/*.less'], ['less']);
-    gulp.watch(['assets/js/**/*.js'], ['js']);
+    gulp.watch(['assets/less/**/*.less'], gulp.parallel('less'));
+    gulp.watch(['assets/js/**/*.js'], gulp.parallel('js'));
 });
+
+// The default Gulp.js task
+gulp.task('default', gulp.parallel('bootstrap-fonts', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'less', 'watch'));
