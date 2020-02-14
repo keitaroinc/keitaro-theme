@@ -69,9 +69,13 @@ gulp.task('js', function () {
 // Minify images
 gulp.task('img', function () {
 	return gulp.src(['assets/img/**/*'])
-		.pipe(imagemin(
-			imagemin.optipng({ optimizationLevel: 7 })
-		))
+		.pipe(imagemin([
+			imagemin.optipng({ optimizationLevel: 7 }),
+			imagemin.svgo({
+				plugins: [
+					{ removeViewBox: true }				]
+			})
+		]))
 		.pipe(gulp.dest('assets/img/'));
 });
 
@@ -82,4 +86,4 @@ gulp.task('watch', function () {
 });
 
 // The default Gulp.js task
-gulp.task('default', gulp.parallel('bootstrap-fonts', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'less', 'watch'));
+gulp.task('default', gulp.series('bootstrap-fonts', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'less', 'watch'));
