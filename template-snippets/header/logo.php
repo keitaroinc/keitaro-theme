@@ -9,7 +9,7 @@
  */
 
 ?>
-<div class="site-branding pull-left">
+<div class="navbar-brand">
 
 	<?php if ( get_custom_logo() ) : ?>
 		<?php the_custom_logo(); ?>
