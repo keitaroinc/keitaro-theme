@@ -41,7 +41,7 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 		?>
 
 	<div class="row">
-		<div class="col-md-12 col-lg-offset-1 col-lg-2">
+		<div class="col-md-12 offset-lg-1 col-lg-2">
 			<?php
 
 			if ( '' !== get_the_post_thumbnail() && ! is_single() ) :

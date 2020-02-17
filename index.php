@@ -51,7 +51,7 @@ if ( ! is_front_page() ) :
 				?>
 
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-8 offset-md-2">
 						<?php get_template_part( SNIPPETS_DIR . '/navigation/pagination' ); ?>
 					</div>
 				</div>
