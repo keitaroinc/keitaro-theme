@@ -8,4 +8,4 @@
  * @subpackage Keitaro
  */
 
-keitaro_menu( 'main', '', 'navbar-main-navigation', true );
+keitaro_menu( 'main', 'navbar-nav ml-auto', 'navbar-main-navigation', true );
