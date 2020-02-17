@@ -526,12 +526,11 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 
 		?>
 		<?php if ( $collapse ) : ?>
-			<button type="button" class="pull-right navbar-toggle collapsed" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="glyphicon glyphicon-menu-hamburger"></span>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
+				<span class="navbar-toggler-icon"></span>
 			</button>
 		<?php endif; ?>
-		<nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>">
+		<!-- <nav class="navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'keitaro' ); ?>"> -->
 			<div id="<?php echo esc_attr( $menu_id ); ?>" class="<?php echo $collapse ? 'collapse navbar-collapse' : ''; ?>">
 				<?php
 
@@ -540,13 +539,13 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 						 'theme_location' => $menu_location,
 						 'container'      => 'ul',
 						 'menu_id'        => $menu_location . '-menu',
-						 'menu_class'     => $menu_location . '-navigation list-inline ' . $menu_class,
+						 'menu_class'     => $menu_location . '-navigation ' . $menu_class,
 					 )
 					);
 
 				?>
 			</div>
-		</nav>
+		<!-- </nav> -->
 		<?php
 
 	endif;
@@ -675,7 +674,7 @@ function keitaro_posted_on() {
 
 }
 
-function keitaro_read_more( $class = 'btn-default' ) {
+function keitaro_read_more( $class = 'btn-secondary' ) {
 	wp_kses(
 		printf(
 		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
