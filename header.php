@@ -31,11 +31,11 @@
 		?>
 		<div class="<?php echo esc_html( $container_bg_class ); ?> <?php echo esc_html( $container_wrapper_class ); ?>">
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
-					<header class="main-navbar content-block">
+			<div class="col-lg-10 offset-lg-1">
+					<nav class="navbar navbar-expand-lg navbar-light">
 						<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
 						<?php get_template_part( SNIPPETS_DIR . '/navigation/main-menu' ); ?>
-					</header>
+					</nav>
 				</div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 		<?php if ( ! is_front_page() ) : ?>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-8 col-lg-7 col-lg-offset-1">
+				<div class="col-md-8 col-lg-7 offset-lg-1">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/breadcrumb' ); ?>
 				</div>
 				<?php if ( have_posts() && ! is_page() ) : ?>
