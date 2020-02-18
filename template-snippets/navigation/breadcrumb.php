@@ -26,7 +26,7 @@ global $post, $wp_query;
 if ( ! function_exists( 'breadcrumb_item' ) ) :
 
 	function breadcrumb_item( $url, $title = '', $wrapper = 'a' ) {
-		printf( '<li><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : '' ), wp_kses_post( $title ), esc_attr( $wrapper ) );
+		printf( '<li class="breadcrumb-item"><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : '' ), wp_kses_post( $title ), esc_attr( $wrapper ) );
 
 	}
 
