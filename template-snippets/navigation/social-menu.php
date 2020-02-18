@@ -8,4 +8,4 @@
  * @subpackage Keitaro
  */
 
-keitaro_menu( 'social', 'list-wide text-right footer-navigation' );
+keitaro_menu( 'social', 'text-right footer-navigation nav' );

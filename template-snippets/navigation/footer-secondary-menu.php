@@ -8,4 +8,4 @@
  * @subpackage Keitaro
  */
 
-keitaro_menu( 'footer-secondary', 'footer-navigation list-wide' );
+keitaro_menu( 'footer-secondary', 'footer-navigation nav' );
