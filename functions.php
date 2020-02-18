@@ -368,7 +368,7 @@ function keitaro_widgets_init() {
 			 'name'          => __( 'Call to Action', 'keitaro' ),
 			 'description'   => __( 'Reserved for Keitaro Call to Action widgets and rendered above the footer section on static pages and the front page.', 'keitaro' ),
 			 'id'            => 'keitaro_call_to_action',
-			 'before_widget' => '<div class="call-to-action-wrapper %2$s">',
+			 'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
 			 'after_widget'  => '</div>',
 			 'before_title'  => '<h3 class="call-to-action-title">',
 			 'after_title'   => '</h3>',
