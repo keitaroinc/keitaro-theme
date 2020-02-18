@@ -15,13 +15,11 @@ if ( is_active_sidebar( $sidebar_id ) ) :
 	?>
 
 	<div class="call-to-action">
-		<ul class="list-inline list-wide">
-			<?php
+		<?php
 
-			dynamic_sidebar( $sidebar_id );
+		dynamic_sidebar( $sidebar_id );
 
-			?>
-		</ul>
+		?>
 	</div>
 
 	<?php
