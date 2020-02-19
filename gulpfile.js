@@ -52,8 +52,8 @@ gulp.task('bootstrap-js', function () {
 });
 
 // Copy Bootstrap font files in assets/fonts
-gulp.task('bootstrap-fonts', function () {
-	return gulp.src('node_modules/bootstrap/dist/fonts/*')
+gulp.task('font-awesome', function () {
+	return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/*')
 		.pipe(gulp.dest('assets/fonts'));
 });
 
@@ -91,4 +91,4 @@ gulp.task('watch', function () {
 });
 
 // The default Gulp.js task
-gulp.task('default', gulp.parallel('bootstrap-fonts', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'sass', 'watch'));
+gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'sass', 'watch'));
