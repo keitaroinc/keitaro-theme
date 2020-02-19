@@ -199,7 +199,7 @@ add_action( 'wp_head', 'open_graph_tags' );
 /* Set custom meta tag for Google Search Console */
 
 function google_search_console_tags() {
-	$gsc_verification_id = get_option( 'keitaro_settings' )['gsc_verification_id'];
+	$gsc_verification_id = get_option( 'keitaro_settings' )['gsc_verification_id'] ?? false;
 
 	if ( $gsc_verification_id ) :
 		printf( '<meta name="google-site-verification" content="%s" />', esc_html( $gsc_verification_id ) );

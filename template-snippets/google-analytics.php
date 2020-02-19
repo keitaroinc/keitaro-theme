@@ -8,7 +8,7 @@
  * @subpackage Keitaro
  */
 
-$ga_tracking_code = get_option( 'keitaro_settings' )['ga_tracking_id'];
+$ga_tracking_code = get_option( 'keitaro_settings' )['ga_tracking_id'] ?? false;
 
 if ( $ga_tracking_code ) :
 
