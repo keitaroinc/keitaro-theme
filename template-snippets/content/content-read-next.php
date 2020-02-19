@@ -3,20 +3,20 @@
 $get_cats = get_the_terms( get_the_ID(), 'category' );
 $get_tags = get_the_terms( get_the_ID(), 'post_tag' );
 
-$post_cats = '';
-$post_tags = '';
+$post_cats = [];
+$post_tags = [];
 
 // Get current post categories
 if ( $get_cats ) :
 	foreach ( $get_cats as $tag ) :
-		$post_cats[] = $tag->term_id;
+		array_push($post_cats, $tag->term_id);
 	endforeach;
 endif;
 
 // Get current post tags
 if ( $get_tags ) :
 	foreach ( get_the_terms( get_the_ID(), 'post_tag' ) as $tag ) :
-		$post_tags[] = $tag->term_id;
+		array_push($post_tags, $tag->term_id);
 	endforeach;
 endif;
 
