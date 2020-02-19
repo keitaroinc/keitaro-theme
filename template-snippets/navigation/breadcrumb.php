@@ -123,7 +123,7 @@ if ( ! is_front_page() ) {
 			// Loop through parent categories and store in variable $cat_display
 			$cat_display = '';
 			foreach ( $cat_parents as $parents ) {
-				$cat_display .= '<li class="item-cat">' . $parents . '</li>';
+				$cat_display .= '<li class="item-cat breadcrumb-item">' . $parents . '</li>';
 			}
 		}
 		// If it's a custom post type within a custom taxonomy
@@ -215,7 +215,7 @@ if ( ! is_front_page() ) {
 		breadcrumb_item( false, __( 'Author' ), 'span' );
 
 		if ( get_the_author_posts_link() ) :
-			printf( '<li>%s</li>', wp_kses_post( get_the_author_posts_link() ) );
+			printf( '<li class="breadcrumb-item">%s</li>', wp_kses_post( get_the_author_posts_link() ) );
 		else :
 			breadcrumb_item( get_author_posts_url( get_queried_object_id() ), get_the_author_meta( 'display_name', get_queried_object_id() ), 'a' );
 		endif;
@@ -226,7 +226,7 @@ if ( ! is_front_page() ) {
 	} elseif ( is_404() ) {
 
 		// 404 page
-		echo '<li>' . esc_html__( 'Error 404', 'keitaro' ) . '</li>';
+		echo '<li class="breadcrumb-item">' . esc_html__( 'Error 404', 'keitaro' ) . '</li>';
 	}// End if().
 
 	if ( get_query_var( 'paged' ) ) {
