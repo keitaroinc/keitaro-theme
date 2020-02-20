@@ -12,11 +12,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
 		<?php if ( ! is_author() && ! is_single() ) : ?>
-			<div class="col-md-2">
+			<div class="col-md-3 col-lg-2 d-flex align-items-start justify-content-md-center">
 				<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="col-md-8">
+		<div class="col-md-7 col-lg-8">
 
 			<?php
 
@@ -41,7 +41,7 @@
 			endif;
 
 			?>
-		</div> 
+		</div>
 		<?php if ( is_single() ) : ?>
 			<div class="col-md-4">
 				<?php
