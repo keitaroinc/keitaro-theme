@@ -52,7 +52,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 					</div>
 				</div>
 				<div class="panel-body">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col-lg-6">
 							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
 						</div>
@@ -126,7 +126,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_attr_e( 'Icon:', 'keitaro' ); ?></label>
 			<input type="number" class="hidden custom-image-value widefat" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>">
-		</p>        
+		</p>
 		<p>
 			<?php keitaro_custom_image_placeholder( $icon ); ?>
 		</p>
