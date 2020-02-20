@@ -620,7 +620,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 		);
 
 	$print .= sprintf(
-		 '<h3 class="sr-only">%1$s</h3><div class="author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
+		 '<h3 class="sr-only">%1$s</h3><div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ),
 		sprintf(
@@ -677,7 +677,7 @@ function keitaro_posted_on() {
 function keitaro_read_more( $class = 'btn-secondary' ) {
 	wp_kses(
 		printf(
-		 '<a class="%4$s btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
+		 '<a class="%4$s text-white btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
 			 esc_url( get_permalink() ),
 			 sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ),
 			 esc_html__( 'Read more', 'keitaro' ),
@@ -701,7 +701,7 @@ function highlight( $text ) {
 }
 
 function keitaro_go_to_top_link( $link_title ) {
-	printf( '<a class="btn btn-go-to-top btn-info"><span class="glyphicon glyphicon-triangle-top"></span></a>', esc_html( $link_title ) );
+	printf( '<a class="btn btn-go-to-top btn-info text-white"><span class="fa fa-fw fa-caret-up"></span></a>', esc_html( $link_title ) );
 
 }
 
