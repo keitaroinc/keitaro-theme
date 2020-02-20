@@ -42,7 +42,7 @@
 
 		<?php if ( ! is_front_page() ) : ?>
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row align-items-center">
 				<div class="col-md-8 col-lg-7 offset-lg-1">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/breadcrumb' ); ?>
 				</div>
