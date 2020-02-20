@@ -1,0 +1,101 @@
+.services {
+    @extend .flex;
+    @extend .flex-wrap;
+    @extend .flex-justify-between;
+}
+
+.service-wrapper {
+    @extend .flex;
+    @extend .flex-wrap;
+    flex: 2 1 calc(100%/3);
+    margin-top: $grid-gutter-width/3;
+}
+
+.service-icon {
+	@extend .flex;
+    flex-shrink: 0;
+    align-self: flex-end;
+    border-radius: 50%;
+	overflow: hidden;
+	flex-basis: $service-icon-size;
+	width: $service-icon-size;
+    height: $service-icon-size;
+	max-width: $service-icon-size; // Because IE
+    background: $keitaro-white;
+    margin: $grid-gutter-width/3 auto $grid-gutter-width/6;
+    padding: $grid-gutter-width/3;
+    .wp-post-image {
+        object-fit: scale-down;
+    }
+}
+
+.service-item {
+	@extend .flex;
+	@extend .flex-wrap;
+	@extend .flex-justify-between;
+    overflow: hidden;
+    position: relative;
+    flex-basis: 100%;
+    transition: .3s background-color;
+    background-color: $keitaro-green-gray-l-35;
+    margin-right: $grid-gutter-width/6;
+    margin-left: $grid-gutter-width/6;
+    padding: $grid-gutter-width/3 $grid-gutter-width/2;
+    &:hover {
+        border-color: $keitaro-green-light;
+        text-decoration: none;
+        background-color: $keitaro-green-light;
+        color: $keitaro-white;
+        .service-title,
+        .btn-discover,
+        .service-description {
+            color: inherit;
+        }
+    }
+    &:focus {
+        text-decoration: none;
+    }
+    .btn-discover {
+        margin-left: $grid-gutter-width / 2;
+        align-self: flex-end;
+    }
+}
+
+.service-header-wrap{
+	flex-grow: 1;
+	flex-basis: 75%;
+}
+
+.service-title {
+    line-height: $headings-line-height;
+    font-size: $h3-font-size - 3;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: $grid-gutter-width/6;
+    display: block;
+    color: $primary;
+    letter-spacing: $letter-spacing-small;
+}
+
+.service-description {
+    display: block;
+	color: $body-color;
+    @supports (hyphens: auto) {
+		// Currently not fully-supported in Google Chrome
+        text-align: justify;
+        hyphens: auto;
+    }
+    font-size: $font-size-base;
+    flex-shrink: 2;
+    margin-right: $grid-gutter-width/3;
+}
+
+.service-list-item {
+    font-size: $h5-font-size + 0.05;
+    margin: 0;
+    a {
+        display: block;
+        padding: $grid-gutter-width / 3 0;
+        border-bottom: 1px solid $table-border-color;
+    }
+}

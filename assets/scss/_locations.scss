@@ -1,0 +1,44 @@
+.location {
+	margin: $grid-gutter-width / 2 0;
+	font-size: $font-size-sm;
+
+	&:not(:last-child) {
+		border-bottom: $comment-border;
+		padding-bottom: $grid-gutter-width / 2;
+	}
+}
+
+.location-map {
+	width: 100%;
+	height: 110px;
+}
+
+.location-map-container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	@include fa-icon($fa-var-map-marker-alt);
+
+	iframe {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.location-address {
+	margin-top: $spacer/4;
+	margin-bottom: $spacer/4;
+}
+
+.location-title {
+	font-size: $h5-font-size;
+}
+
+.location-title-prefix {
+	@extend .text-uppercase;
+	font-weight: 300;
+}
+
+.location-details {
+	overflow: auto;
+}

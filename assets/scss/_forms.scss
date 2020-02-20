@@ -1,0 +1,70 @@
+.contact-form {
+
+	label,
+	select {
+		color: $keitaro-green-gray-l-10;
+		cursor: pointer;
+		font-weight: 500;
+		@extend .text-uppercase;
+	}
+
+	textarea {
+		max-width: 100%;
+	}
+
+	.alert {
+		display: none;
+		color: $danger;
+		padding: $grid-gutter-width / 6 0 0 0;
+	}
+
+	label {
+		@extend .unselectable;
+		@extend .animate-position;
+		cursor: pointer;
+		position: absolute;
+		width: 100%;
+		top: -$grid-gutter-width / 2;
+		left: 0;
+		display: block;
+	}
+
+	.form-group {
+		position: relative;
+		margin: $grid-gutter-width/2 0 $grid-gutter-width;
+
+		&.form-select {
+			.form-control {
+				line-height: 1.5;
+			}
+
+			margin-top: -$grid-gutter-width * 0.45;
+		}
+	}
+
+	.form-control {
+		height: auto;
+		background: $keitaro-gray-lightest;
+		border: transparent;
+		margin: $grid-gutter-width*0.75 0 0;
+		border-bottom: 2px solid $keitaro-green-gray;
+		box-shadow: none;
+
+		&:focus {
+
+			&,
+			&:valid {
+				border-bottom-color: $keitaro-green-dark;
+			}
+
+			~label {
+				top: -$grid-gutter-width / 1.75;
+				color: $primary;
+			}
+		}
+	}
+}
+
+.animate-position {
+	transition: 100ms top ease-in-out;
+}

@@ -1,0 +1,25 @@
+.read-next {
+	margin: $spacer*2 0;
+
+	.avatar-url {
+		margin-right: $spacer/2;
+	}
+
+	.media-body {
+		vertical-align: middle;
+	}
+
+	.media-heading {
+		margin: $spacer/2;
+	}
+}
+
+.read-next-title {
+	@extend .text-uppercase;
+	font-size: $h4-font-size;
+	margin: $spacer*2 0;
+}
+
+.read-more-item-title {
+	font-size: $h4-font-size - 3;
+}

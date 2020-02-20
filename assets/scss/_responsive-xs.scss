@@ -1,0 +1,16 @@
+@include media-breakpoint-up(xs) {
+
+}
+
+@include media-breakpoint-down(xs) {
+    .content-area{
+        padding-top: $content-area-padding / 2;
+    }
+    .hero {
+		background-image: none !important;
+        height: auto;
+    }
+    .hero-title {
+		font-size: $h1-font-size;
+    }
+}

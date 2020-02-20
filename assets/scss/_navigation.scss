@@ -1,0 +1,183 @@
+.main-navigation {
+	letter-spacing: $letter-spacing-large;
+
+	.menu-item {
+		@extend .nav-item;
+
+		a {
+			@extend .nav-link;
+		}
+	}
+
+	>li {
+
+		&:last-child {
+			&.current-menu-item {
+				>a {
+					@extend .btn-primary;
+				}
+			}
+
+			>.sub-menu {
+				left: 0;
+			}
+
+			>a {
+				@extend .btn;
+				@extend .btn-success;
+				@extend .text-white;
+			}
+		}
+	}
+
+}
+
+.footer-navigation {
+
+	.menu-item {
+		@extend .nav-item;
+
+		a {
+			@extend .nav-link;
+		}
+	}
+
+	&.social-navigation {
+		li {
+			margin-left: $grid-gutter-width / 6;
+			margin-right: $grid-gutter-width / 6;
+		}
+	}
+}
+
+.menu-item {
+	position: relative;
+
+	a {
+		color: inherit;
+	}
+}
+
+.current-menu-item {
+	>a {
+		color: $keitaro-green-dark;
+	}
+}
+
+.sub-menu {
+	list-style: outside none;
+
+	.menu-item {
+		a {
+			&:before {
+				color: $keitaro-gray-light;
+				content: $breadcrumb-divider;
+				display: inline-block;
+				margin-right: $spacer/2;
+			}
+		}
+	}
+
+	.sub-menu {
+		position: relative;
+	}
+
+	li {
+
+		&,
+		&:not(:last-child) {
+			padding: 0;
+		}
+
+		>a {
+			display: block;
+		}
+	}
+}
+
+.navbar-title {
+	color: $keitaro-green-light;
+	font-weight: 400;
+	margin: 0;
+}
+
+.container-bg {
+	background-color: $keitaro-gray-lightest;
+}
+
+.container-bottom-border {
+	border-bottom: $container-bg-border;
+}
+
+.main-panel-title {
+	letter-spacing: $letter-spacing-small;
+	color: $keitaro-green-dark;
+}
+
+.breadcrumb {
+	@extend .flex;
+	@extend .flex-nowrap;
+	white-space: nowrap;
+
+	li {
+
+		// Trim last two breadcrumb items
+		&:nth-last-child(-n + 2) {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
+.breadcrumb-item {
+	&+.breadcrumb-item {
+		&:before {
+			padding-right: $spacer - 0.25;
+		}
+	}
+}
+
+.page-links {
+	margin-top: $spacer;
+	margin-bottom: $spacer;
+
+	.page-number {
+		margin: $spacer/4 $spacer/2 $spacer/4 0;
+	}
+
+	>.page-number {
+		@extend .btn;
+		@extend .btn-sm;
+		@extend .btn-success;
+	}
+
+	a {
+		.page-number {
+			@extend .btn;
+			@extend .btn-sm;
+		}
+	}
+}
+
+.page-numbers {
+	@extend .pagination;
+	margin: $grid-gutter-width / 2 0;
+
+	.current {
+		@extend .btn;
+		@extend .btn-success;
+		padding: $padding-base-vertical $padding-base-horizontal;
+	}
+}
+
+.menu-item-has-children {
+	>a {
+		&:after {
+			color: $keitaro-gray-light;
+			content: "\025BE";
+			display: inline-block;
+			padding-left: $padding-base-horizontal;
+			text-decoration: none;
+		}
+	}
+}

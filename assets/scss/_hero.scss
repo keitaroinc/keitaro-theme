@@ -1,0 +1,47 @@
+.hero-padding {
+    padding-top: $grid-gutter-width*3;
+    padding-bottom: $grid-gutter-width*3;
+}
+
+.hero,
+.hero-sm {
+    background: $keitaro-gray-lightest;
+}
+
+.hero-sm {
+    border-bottom: $hero-block-border;
+}
+
+.hero {
+	background-color: $hero-bg;
+	background-position: right bottom;
+	background-size: auto 50%;
+	background-repeat: no-repeat;
+	height: 560px;
+	padding: 0 12.33333333%;
+}
+
+.hero-title {
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: 600;
+    letter-spacing: $letter-spacing-base;
+	color: $keitaro-white;
+	text-transform: capitalize;
+	flex-basis: 100%;
+	padding: $grid-gutter-width 0;
+	margin: auto;
+}
+
+.hero-subtitle {
+    font-weight: 200;
+	font-size: .7em;
+	text-transform: initial;
+	line-height: $headings-line-height;
+}
+
+.hero-non-default {
+    .hero-title {
+        color: $body-bg;
+    }
+}

@@ -1,0 +1,32 @@
+.custom-logo {
+	width: auto;
+	max-width: 100%;
+	max-height: 50px;
+	height: auto;
+}
+
+.site-title {
+	@extend .h2;
+	margin: $spacer/4 0;
+}
+
+.page-header {
+	border-bottom: transparent;
+	margin: 0;
+	padding-bottom: $grid-gutter-width;
+}
+
+.archive {
+
+	.author-title,
+	.entry-title {
+		font-size: $h3-font-size;
+	}
+
+}
+
+.page-title,
+.entry-title {
+	@extend .text-uppercase;
+	letter-spacing: $letter-spacing-small;
+}

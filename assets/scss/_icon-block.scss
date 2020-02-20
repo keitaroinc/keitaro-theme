@@ -1,0 +1,35 @@
+.icon-block-wrapper {
+	overflow: hidden;
+
+	.panel-value-with-description {
+		position: relative;
+		transition: 200ms background-color, color ease-in-out 50ms;
+	}
+
+	.panel-value-description {
+		visibility: hidden;
+		transform-origin: 0% 100%;
+		opacity: 0;
+		transition: 200ms opacity ease-in-out 50ms;
+		position: absolute;
+		overflow: auto;
+		bottom: 0%;
+		left: 95%;
+		text-align: left;
+		min-width: 200%;
+		background-color: $keitaro-gray-lightest;
+		padding: $grid-gutter-width*0.4 $grid-gutter-width*0.5;
+		border: 5px solid $keitaro-green-dark;
+		z-index: 2;
+	}
+}
+
+@keyframes icon-block-appear {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
