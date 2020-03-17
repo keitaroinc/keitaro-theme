@@ -86,7 +86,8 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+	"dark":       $dark,
+	"service":    $keitaro-green-gray-l-35
   ),
   $theme-colors
 );
