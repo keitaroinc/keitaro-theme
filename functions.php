@@ -344,10 +344,10 @@ function keitaro_widgets_init() {
 			 'name'          => __( 'Services', 'keitaro' ),
 			 'description'   => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
 			 'id'            => 'keitaro_services',
-			 'before_widget' => '<div class="service-wrapper %2$s">',
+			 'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
 			 'after_widget'  => '</div>',
-			 'before_title'  => '<span class="service-title">',
-			 'after_title'   => '</span>',
+			 'before_title'  => '<h3 class="service-title">',
+			 'after_title'   => '</h3>',
 		 )
 		);
 

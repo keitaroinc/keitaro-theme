@@ -14,9 +14,9 @@ if ( is_active_sidebar( $sidebar_id ) ) :
 
 	?>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-10 offset-md-1">
-			<div class="services">
+	<div class="row no-gutters">
+		<div class="col-lg-10 offset-lg-1">
+			<div class="services card-deck">
 				<?php dynamic_sidebar( $sidebar_id ); ?>
 			</div>
 		</div>

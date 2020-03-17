@@ -37,20 +37,20 @@ class Keitaro_Service extends WP_Widget {
 		$service_icon = get_the_post_thumbnail( $instance['service_link'] );
 		echo wp_kses_post( $args['before_widget'] );
 
-		echo '<a class="service-item" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
-		echo '<span class="service-header-wrap">';
+		echo '<a class="service-item d-flex flex-wrap card-body" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
+		echo '<div class="service-header-wrap">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 		if ( ! empty( $instance['service_desc'] ) ) {
 			printf( '<span class="service-description">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
 		}
-		echo '</span>';
+		echo '</div>';
 
 		if ( $service_icon ) :
-			echo '<span class="service-icon">';
+			echo '<div class="service-icon">';
 			echo get_the_post_thumbnail( $instance['service_link'] );
-			echo '</span>';
+			echo '</div>';
 		endif;
 		// echo '<span class="btn-discover">&gt;_</span>';
 		echo '</a>';
