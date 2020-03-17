@@ -1,9 +1,8 @@
 .services {
-	margin-top: $spacer;
+	margin: 0 $spacer;
 
 	.card {
-		margin-right: $spacer/2;
-		margin-left: $spacer/2;
+		margin: $spacer $spacer/2 0;
 	}
 
 	.card-body {
