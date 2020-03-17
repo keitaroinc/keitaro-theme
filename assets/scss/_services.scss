@@ -1,101 +1,101 @@
 .services {
-    @extend .flex;
-    @extend .flex-wrap;
-    @extend .flex-justify-between;
-}
+	margin-top: $spacer;
 
-.service-wrapper {
-    @extend .flex;
-    @extend .flex-wrap;
-    flex: 2 1 calc(100%/3);
-    margin-top: $grid-gutter-width/3;
+	.card {
+		margin-right: $spacer/2;
+		margin-left: $spacer/2;
+	}
+
+	.card-body {
+		padding-left: $spacer*2;
+		padding-right: $spacer*2;
+	}
 }
 
 .service-icon {
-	@extend .flex;
-    flex-shrink: 0;
-    align-self: flex-end;
-    border-radius: 50%;
+	flex-shrink: 0;
+	border-radius: 50%;
+	align-self: flex-end;
 	overflow: hidden;
 	flex-basis: $service-icon-size;
 	width: $service-icon-size;
-    height: $service-icon-size;
+	height: $service-icon-size;
 	max-width: $service-icon-size; // Because IE
-    background: $keitaro-white;
-    margin: $grid-gutter-width/3 auto $grid-gutter-width/6;
-    padding: $grid-gutter-width/3;
-    .wp-post-image {
-        object-fit: scale-down;
-    }
+	background: $keitaro-white;
+	margin: $spacer auto;
+
+	.wp-post-image {
+		padding: $spacer*1.25;
+		object-fit: contain;
+	}
 }
 
 .service-item {
-	@extend .flex;
-	@extend .flex-wrap;
-	@extend .flex-justify-between;
-    overflow: hidden;
-    position: relative;
-    flex-basis: 100%;
-    transition: .3s background-color;
-    background-color: $keitaro-green-gray-l-35;
-    margin-right: $grid-gutter-width/6;
-    margin-left: $grid-gutter-width/6;
-    padding: $grid-gutter-width/3 $grid-gutter-width/2;
-    &:hover {
-        border-color: $keitaro-green-light;
-        text-decoration: none;
-        background-color: $keitaro-green-light;
-        color: $keitaro-white;
-        .service-title,
-        .btn-discover,
-        .service-description {
-            color: inherit;
-        }
-    }
-    &:focus {
-        text-decoration: none;
-    }
-    .btn-discover {
-        margin-left: $grid-gutter-width / 2;
-        align-self: flex-end;
-    }
+	transition: .3s background-color;
+	background-color: $keitaro-green-gray-l-35;
+	justify-content: space-between;
+
+	&:hover {
+		text-decoration: none;
+		background-color: $success;
+		color: $keitaro-white;
+
+		.service-title,
+		.service-description {
+			color: inherit;
+		}
+	}
+
+	&:focus {
+		text-decoration: none;
+		color: lighten($success, 35%);
+		background-color: darken($success, 10%);
+
+		.service-title,
+		.service-description {
+			color: inherit;
+		}
+	}
 }
 
-.service-header-wrap{
+.service-header-wrap {
 	flex-grow: 1;
-	flex-basis: 75%;
+	flex-basis: 70%;
+	margin-right: $spacer;
 }
 
 .service-title {
-    line-height: $headings-line-height;
-    font-size: $h3-font-size - 3;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: $grid-gutter-width/6;
-    display: block;
-    color: $primary;
-    letter-spacing: $letter-spacing-small;
+	line-height: $headings-line-height;
+	font-size: $h3-font-size*0.9;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: $spacer/2;
+	color: $primary;
+	letter-spacing: $letter-spacing-small;
 }
 
 .service-description {
-    display: block;
+	display: block;
 	color: $body-color;
-    @supports (hyphens: auto) {
+
+	@supports (hyphens: auto) {
 		// Currently not fully-supported in Google Chrome
-        text-align: justify;
-        hyphens: auto;
-    }
-    font-size: $font-size-base;
-    flex-shrink: 2;
-    margin-right: $grid-gutter-width/3;
+		text-align: justify;
+		hyphens: auto;
+	}
+
+	font-size: $font-size-base;
+	flex-shrink: 2;
+	margin-right: $grid-gutter-width/3;
 }
 
 .service-list-item {
-    font-size: $h5-font-size + 0.05;
-    margin: 0;
-    a {
-        display: block;
-        padding: $grid-gutter-width / 3 0;
-        border-bottom: 1px solid $table-border-color;
-    }
+	font-size: $h5-font-size + 0.05;
+	margin: 0;
+
+	a {
+		display: block;
+		padding: $grid-gutter-width / 3 0;
+		border-bottom: 1px solid $table-border-color;
+	}
 }
