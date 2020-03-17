@@ -20,8 +20,10 @@
 
 @include media-breakpoint-down(sm) {
 	.service-wrapper {
-		flex-basis: 100%;
-		max-width: 100%; // Because IE.
+		&.card{
+			flex-basis: 100%;
+			max-width: 100%; // Because IE.
+		}
 	}
 
 	.author-box {
