@@ -57,7 +57,8 @@
 #cancel-comment-reply-link,
 .comment-edit-link {
     @extend .btn;
-    @extend .btn-sm;
+	@extend .btn-sm;
+	@extend .btn-outline-secondary;
     vertical-align: top;
 }
 
@@ -74,7 +75,8 @@
 .comment-reply-link {
     margin-top: $grid-gutter-width / 4;
     @extend .btn;
-    @extend .btn-sm;
+	@extend .btn-sm;
+	@extend .btn-outline-secondary;
 }
 
 .comment-respond {
@@ -84,7 +86,8 @@
     .submit {
         @extend .btn;
         @extend .btn-sm;
-        @extend .btn-success;
+		@extend .btn-success;
+		@extend .text-light;
     }
 }
 
