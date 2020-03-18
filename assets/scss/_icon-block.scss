@@ -1,5 +1,17 @@
 .icon-block-wrapper {
-	overflow: hidden;
+
+	.card-header {
+		background: initial;
+	}
+
+	.card-heading {
+		margin: auto $spacer/2;
+	}
+
+	.card-body{
+		padding-top: $spacer/4;
+		padding-bottom: $spacer/4;
+	}
 
 	.panel-value-with-description {
 		position: relative;
