@@ -50,7 +50,7 @@ class Keitaro_Icon_Block extends WP_Widget {
 					<h4 class="card-heading"><?php echo ( ! empty( $instance['title'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
 				</div>
 				<div class="card-body">
-					<div class="row align-items-center">
+					<div class="row no-gutters align-items-center">
 						<div class="col-lg-6">
 							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
 						</div>
