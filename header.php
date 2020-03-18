@@ -30,7 +30,7 @@
 
 		?>
 		<div class="<?php echo esc_html( $container_bg_class ); ?> <?php echo esc_html( $container_wrapper_class ); ?>">
-		<div class="row">
+		<div class="row no-gutters">
 			<div class="col-lg-10 offset-lg-1">
 					<nav class="navbar navbar-expand-lg navbar-light">
 						<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
