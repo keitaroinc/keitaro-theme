@@ -42,16 +42,14 @@ class Keitaro_Icon_Block extends WP_Widget {
 
 			?>
 
-			<div class="panel panel-default panel-transparent">
-				<div class="panel-heading">
-					<div class="clearfix">
-						<?php if ( isset( $instance['icon'] ) ) : ?>
-							<img class="panel-title-icon" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
-						<?php endif ?>
-						<h4 class="panel-title"><?php echo ( ! empty( $instance['title'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
-					</div>
+			<div class="card border-0">
+				<div class="card-header d-flex align-items-center">
+					<?php if ( isset( $instance['icon'] ) ) : ?>
+						<img class="panel-title-icon" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
+					<?php endif ?>
+					<h4 class="card-heading"><?php echo ( ! empty( $instance['title'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['title'] ) ) : ''; ?></h4>
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 					<div class="row align-items-center">
 						<div class="col-lg-6">
 							<span class="panel-value-xs"><?php echo ( ! empty( $instance['subtitle'] ) ) ? esc_html( apply_filters( 'widget_text', $instance['subtitle'] ) ) : ''; ?></span>
