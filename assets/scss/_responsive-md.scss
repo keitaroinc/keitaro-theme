@@ -72,7 +72,7 @@
 	.page-template-parent {
 		.hentry {
 			.col-md-8 {
-				float: right;
+				order: 1;
 			}
 		}
 	}
@@ -110,11 +110,5 @@
 
 	.contact-form {
 		margin: $grid-gutter-width 0;
-	}
-}
-
-@include media-breakpoint-only(md) {
-	.service-item {
-		// @extend .flex-wrap;
 	}
 }
