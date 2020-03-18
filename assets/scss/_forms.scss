@@ -24,21 +24,21 @@
 		cursor: pointer;
 		position: absolute;
 		width: 100%;
-		top: -$grid-gutter-width / 2;
-		left: 0;
+		top: -$spacer*2;
+		left: $spacer;
 		display: block;
 	}
 
 	.form-group {
 		position: relative;
-		margin: $grid-gutter-width/2 0 $grid-gutter-width;
+		margin: $spacer*3 0;
 
 		&.form-select {
 			.form-control {
 				line-height: 1.5;
 			}
 
-			margin-top: -$grid-gutter-width * 0.45;
+			margin-top: -$spacer;
 		}
 	}
 
@@ -58,7 +58,7 @@
 			}
 
 			~label {
-				top: -$grid-gutter-width / 1.75;
+				top: -$spacer*2.125;
 				color: $primary;
 			}
 		}
