@@ -227,7 +227,7 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:                12 !default;
-$grid-gutter-width:           30px !default;
+$grid-gutter-width:           60px !default;
 $grid-row-columns:            6 !default;
 
 
@@ -721,7 +721,7 @@ $nav-divider-margin-y:              $spacer / 2 !default;
 // Navbar
 
 $navbar-padding-y:                  $spacer*1.5 !default;
-$navbar-padding-x:                  $spacer !default;
+$navbar-padding-x:                  0 !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
 
@@ -843,7 +843,7 @@ $card-bg:                           $white !default;
 
 $card-img-overlay-padding:          1.25rem !default;
 
-$card-group-margin:                 $grid-gutter-width / 2 !default;
+$card-group-margin:                 $spacer / 2 !default;
 $card-deck-margin:                  $card-group-margin !default;
 
 $card-columns-count:                3 !default;
@@ -1057,7 +1057,7 @@ $figure-caption-color:              $gray-600 !default;
 $breadcrumb-font-size:              null !default;
 
 $breadcrumb-padding-y:              .75rem !default;
-$breadcrumb-padding-x:              1rem !default;
+$breadcrumb-padding-x:              0 !default;
 $breadcrumb-item-padding:           1rem !default;
 
 $breadcrumb-margin-bottom:          0 !default;
