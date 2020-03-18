@@ -12,7 +12,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-lg-8">
 			<?php
 
 			get_template_part( SNIPPETS_DIR . '/header/entry-header' );
@@ -21,7 +21,7 @@
 
 			?>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<?php
 
 			if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
