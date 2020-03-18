@@ -8,7 +8,6 @@ var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
-var imagemin = require('gulp-imagemin');
 
 var jsAssets = ['assets/js/*.js', '!assets/js/*.min.js'];
 
@@ -17,9 +16,6 @@ gulp.task('sass', function () {
 	return gulp.src('assets/scss/**/style.scss')
 		// .pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer({
-			browsers: 'last 3 versions'
-		}))
 		.pipe(cleanCSS({
 			compatibility: 'ie8'
 		}))
@@ -71,19 +67,6 @@ gulp.task('js', function () {
 		.pipe(gulp.dest('assets/js'));
 });
 
-// Minify images
-gulp.task('img', function () {
-	return gulp.src(['assets/img/**/*'])
-		.pipe(imagemin([
-			imagemin.optipng({ optimizationLevel: 7 }),
-			imagemin.svgo({
-				plugins: [
-					{ removeViewBox: true }]
-			})
-		]))
-		.pipe(gulp.dest('assets/img/'));
-});
-
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
 	gulp.watch(['assets/scss/**/*.scss'], gulp.parallel('sass'));
@@ -91,4 +74,4 @@ gulp.task('watch', function () {
 });
 
 // The default Gulp.js task
-gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'img', 'js', 'sass', 'watch'));
+gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'js', 'sass', 'watch'));
