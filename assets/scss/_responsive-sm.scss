@@ -30,21 +30,8 @@
 		margin-top: $grid-gutter-width;
 	}
 
-	.page-template-parent {
-		.hentry {
-			.col-md-4 {
-				clear: both;
-			}
-		}
-	}
-
 	.main-navigation {
 		margin-top: $grid-gutter-width / 3;
-	}
-
-	.main-navbar {
-		// @extend .flex-wrap;
-		overflow: auto;
 	}
 
 	.navigation {
