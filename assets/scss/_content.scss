@@ -15,7 +15,9 @@
 .list-service-icons {
 	@extend .d-flex;
 	@extend .justify-content-center;
+	@extend .flex-wrap;
 	@extend .my-5;
+	padding-left: 0;
 	font-size: 0; // Removes any text elements before the icons
 	text-align: center;
 
@@ -153,6 +155,7 @@ hr {
 
 	.menu-item {
 		@extend .nav-item;
+		margin: $spacer $spacer auto;
 
 		a {
 			@extend .nav-link;
