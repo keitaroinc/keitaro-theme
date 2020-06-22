@@ -444,12 +444,16 @@ function keitaro_widgets_init() {
 				'name'          => __( 'Social', 'keitaro' ),
 				'description'   => __( 'Reserved for footer menu social media.', 'keitaro' ),
 				'id'            => 'keitaro_social',
-				'before_widget' => '<div class="twitter-content-widget %2$s">',
+				'before_widget' => '<div class="social-list">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h2 class="twitter-content-widget-title text-center">',
+				'before_title'  => '<h2 class="">',
 				'after_title'   => '</h2>',
 			)
 		 );
+
+	if ( class_exists( 'Keitaro_Social' ) ) :
+		register_widget( 'Keitaro_Social' );
+	endif;	 
 
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );
