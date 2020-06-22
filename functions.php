@@ -59,14 +59,17 @@ function keitaro_theme_setup() {
 	$GLOBALS['content_width'] = 960;
 
 	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus(
-		 array(
-			 'main'             => __( 'Main Menu', 'keitaro' ),
-			 'footer'           => __( 'Footer Menu' ),
-			 'social'           => __( 'Social Links', 'keitaro' ),
-			 'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-		 )
-		);
+	
+register_nav_menus(
+	array(
+		'main'             => __( 'Main Menu', 'keitaro' ),
+		'footer'           => __( 'Footer Menu' ),
+		'social'           => __( 'Social Links', 'keitaro' ),
+		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
+		'footer-services'	=> __( 'Services Menu', 'keitaro' ),
+		'footer-products'	=> __( 'Products Menu', 'keitaro' ),
+	)
+ );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
