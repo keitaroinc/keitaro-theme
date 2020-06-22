@@ -68,6 +68,7 @@ register_nav_menus(
 		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
 		'footer-services'	=> __( 'Services Menu', 'keitaro' ),
 		'footer-products'	=> __( 'Products Menu', 'keitaro' ),
+		'footer-offices'	=> __( 'Offices Menu', 'keitaro' ),
 	)
  );
 
@@ -437,6 +438,18 @@ function keitaro_widgets_init() {
 			 'after_title'   => '</h2>',
 		 )
 		);
+
+		register_sidebar(
+			array(
+				'name'          => __( 'Social', 'keitaro' ),
+				'description'   => __( 'Reserved for footer menu social media.', 'keitaro' ),
+				'id'            => 'keitaro_social',
+				'before_widget' => '<div class="twitter-content-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="twitter-content-widget-title text-center">',
+				'after_title'   => '</h2>',
+			)
+		 );
 
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );

@@ -45,6 +45,11 @@
 					<h3>- <?php echo wp_get_nav_menu_name('footer-products') ?> </h3>
 				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-products' ); ?>
 				</div>
+				<hr class="d-none d-xs-block d-sm-block">
+				<div class="footer-list mb-3">
+					<h3>- <?php echo wp_get_nav_menu_name('footer-offices') ?> </h3>
+				<?php get_template_part( SNIPPETS_DIR . '/navigation/offices-menu' ); ?>
+				</div>
 			</div>
 			<hr>
 			<div class="row no-gutters justify-content-between">
