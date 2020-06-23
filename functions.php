@@ -59,14 +59,18 @@ function keitaro_theme_setup() {
 	$GLOBALS['content_width'] = 960;
 
 	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus(
-		 array(
-			 'main'             => __( 'Main Menu', 'keitaro' ),
-			 'footer'           => __( 'Footer Menu' ),
-			 'social'           => __( 'Social Links', 'keitaro' ),
-			 'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-		 )
-		);
+	
+register_nav_menus(
+	array(
+		'main'             => __( 'Main Menu', 'keitaro' ),
+		'footer'           => __( 'Footer Menu' ),
+		'social'           => __( 'Social Links', 'keitaro' ),
+		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
+		'footer-services'	=> __( 'Services Menu', 'keitaro' ),
+		'footer-products'	=> __( 'Products Menu', 'keitaro' ),
+		'footer-offices'	=> __( 'Offices Menu', 'keitaro' ),
+	)
+ );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -434,6 +438,22 @@ function keitaro_widgets_init() {
 			 'after_title'   => '</h2>',
 		 )
 		);
+
+		register_sidebar(
+			array(
+				'name'          => __( 'Social', 'keitaro' ),
+				'description'   => __( 'Reserved for footer menu social media.', 'keitaro' ),
+				'id'            => 'keitaro_social',
+				'before_widget' => '<div class="social-list">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="">',
+				'after_title'   => '</h2>',
+			)
+		 );
+
+	if ( class_exists( 'Keitaro_Social' ) ) :
+		register_widget( 'Keitaro_Social' );
+	endif;	 
 
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );

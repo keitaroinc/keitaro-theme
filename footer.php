@@ -12,17 +12,31 @@
 <div class="footer-bg">
 	<div class="container">
 		<div class="content main-footer">
-
-			<?php $site_icon_url = get_site_icon_url( 128 ); ?>
-			<?php if ( $site_icon_url ) : ?>
-				<div class="text-center">
-					<a href="<?php echo esc_url( home_url() ); ?>"><img class="keitaro-symbol" src="<?php echo esc_url( $site_icon_url ); ?>" alt="Keitaro"></a>
+			<hr>
+			<div class="row no-gutters justify-content-between mt-5">
+				<div class="mb-4">
+				<?php get_template_part( SNIPPETS_DIR . '/sidebars/social' ); ?>
 				</div>
-			<?php endif; ?>
-			<div class="row no-gutters justify-content-between">
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-menu' ); ?>
+			<hr class="d-none d-xs-block d-sm-block">
+				<div class="footer-list mb-3">
+					<h3>- <?php echo wp_get_nav_menu_name('footer-services') ?> </h3>
+				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-services' ); ?>
+				</div>
 				<hr class="d-none d-xs-block d-sm-block">
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/social-menu' ); ?>
+				<div class="footer-list mb-3">
+					<h3>- <?php echo wp_get_nav_menu_name('footer') ?> </h3> 
+				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-menu' ); ?>
+				</div>
+				<hr class="d-none d-xs-block d-sm-block">
+				<div class="footer-list mb-3">
+					<h3>- <?php echo wp_get_nav_menu_name('footer-products') ?> </h3>
+				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-products' ); ?>
+				</div>
+				<hr class="d-none d-xs-block d-sm-block">
+				<div class="footer-list mb-3">
+					<h3>- <?php echo wp_get_nav_menu_name('footer-offices') ?> </h3>
+				<?php get_template_part( SNIPPETS_DIR . '/navigation/offices-menu' ); ?>
+				</div>
 			</div>
 			<hr>
 			<div class="row no-gutters justify-content-between">
