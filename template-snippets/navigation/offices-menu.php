@@ -1,6 +1,6 @@
 <?php
 /**
- * Template snippet for Social Media footer menu
+ * Template snippet for offices footer menu
  *
  * @link https://github.com/keitaroinc/keitaro-theme
  *

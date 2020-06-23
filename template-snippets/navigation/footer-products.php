@@ -1,6 +1,6 @@
 <?php
 /**
- * Template snippet for Footer One
+ * Template snippet for footer products
  *
  * @link https://github.com/keitaroinc/keitaro-theme
  *
