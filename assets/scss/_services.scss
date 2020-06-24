@@ -10,27 +10,14 @@
 	}
 }
 
-.carousel-control-next,
-.carousel-control-prev {
-	filter: invert(100%);
-}
-
-.carousel {
-	padding: 17px 140px;
-}
-
 .partners-carousel {
-	background: $keitaro-green-dark;
 	display: none;
-
-	h2 {
-		color: $keitaro-white;
-	}
 }
 
 .services-section {
 	//background: $keitaro-gray-lightest;
-	background: linear-gradient(to bottom, $keitaro-green-dark 10%, $keitaro-gray-lightest 90%);
+	background: $keitaro-green-dark;
+	padding-bottom: 30px;
 
 	h1 {
 		color: $keitaro-white;
