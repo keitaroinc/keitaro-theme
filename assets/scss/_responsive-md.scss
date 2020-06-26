@@ -16,6 +16,38 @@
 		align-items: start;
 	}
 
+	.carousel-control-next,
+	.carousel-control-prev {
+		filter: invert(100%);
+	}
+
+	.carousel {
+		padding: 17px 140px;
+	}
+
+	.partners-carousel {
+		text-align: center;
+		background: $keitaro-green-dark;
+		display: block;
+		position: relative;
+
+		p {
+			color: $keitaro-white;
+			font-size: 40px;
+			display: inline-block;
+			position: absolute;
+			margin: -100px;
+		}
+	}
+
+	.services-section {
+		background: linear-gradient(to bottom, $keitaro-green-dark 70%, $keitaro-gray-lightest 30%);
+
+		h1 {
+			color: $keitaro-white;
+		}
+	}
+
 	.dl-horizontal {
 		dt {
 			float: left;

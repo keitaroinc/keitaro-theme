@@ -9,7 +9,7 @@
  */
 
 ?>
-<div class="footer-bg">
+<div class="footer-bg bg-white">
 	<div class="container">
 		<div class="content main-footer">
 			<hr>

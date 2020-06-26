@@ -22,5 +22,7 @@ endif;
 <div class="hero <?php echo esc_attr( $hero_class ); ?>" <?php echo ( esc_url( $header_image ) ? wp_kses( $header_image_style, array( 'style' ) ) : '' ); ?>>
 	<?php do_shortcode( '[keitaro-hero-title]' ); ?>
 </div>
+
 <?php
+get_template_part(SNIPPETS_DIR . '/header/slider-partners');
 get_template_part( SNIPPETS_DIR . '/sidebars/services' );

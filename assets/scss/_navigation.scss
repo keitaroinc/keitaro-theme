@@ -130,6 +130,7 @@
 }
 
 .breadcrumb {
+	background-color: $keitaro-gray-lightest;
 	@extend .flex;
 	@extend .flex-nowrap;
 	white-space: nowrap;
