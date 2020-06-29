@@ -359,3 +359,22 @@ pre {
 		display: block;
 	}
 }
+
+.frontpage-content {
+	h1 {
+		color: $keitaro-green-dark;
+	}
+
+	h1 a {
+		text-decoration: none;
+	}
+
+	h1:after {
+		content: '';
+		display: block;
+		height: 0.2em;
+		width: 35px;
+		margin: 7px auto;
+		border-bottom: solid;
+	}
+}

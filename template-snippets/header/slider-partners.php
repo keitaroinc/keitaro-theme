@@ -9,7 +9,7 @@
  */
 ?>
 
-<div class="partners-carousel">
+<div class="partners-carousel bg-white">
 <div class="container" >
 	<p >Trusted by</p>
 			<div id="carouselExampleControls" class="carousel slide bg-white"  data-ride="carousel">
