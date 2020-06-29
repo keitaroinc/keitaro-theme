@@ -69,11 +69,12 @@
 	overflow: hidden;
 	border-radius: 50%;
 	z-index: 1;
+	display: block;
 }
 
 .avatar-url {
-    overflow: hidden;
-    border-radius: 50%;
-    display: inline-block;
-    @include fa-icon($fa-var-camera);
+	overflow: hidden;
+	border-radius: 50%;
+	display: inline-block;
+	@include fa-icon($fa-var-camera);
 }
