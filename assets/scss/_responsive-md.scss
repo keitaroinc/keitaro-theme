@@ -48,6 +48,14 @@
 		}
 	}
 
+	.core-section {
+		background: linear-gradient(to bottom, $keitaro-gray-lightest 70%, $keitaro-white 30%);
+
+		h1 {
+			color: $keitaro-green-dark;
+		}
+	}
+
 	.dl-horizontal {
 		dt {
 			float: left;
