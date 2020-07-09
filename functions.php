@@ -489,6 +489,17 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h2>',
 			)
 		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Connect', 'keitaro' ),
+				'description'   => __( 'Reserved for the pages with contact button area.', 'keitaro' ),
+				'id'            => 'keitaro_connect',
+				'before_widget' => '<div class="text-center">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h1>',
+				'after_title'   => '</h1>',
+			)
+		 );
 
 	if ( class_exists( 'Keitaro_Team' ) ) :
 		register_widget( 'Keitaro_Team' );

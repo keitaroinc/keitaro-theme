@@ -73,6 +73,7 @@ get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
   </div>
 </div>
 <?php
+get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-connect' );
 get_sidebar();
 
 get_footer();
