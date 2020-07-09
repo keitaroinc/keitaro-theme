@@ -38,7 +38,7 @@ class Keitaro_Button extends WP_Widget {
 
 			echo wp_kses_post( $args['before_widget'] );
 
-			echo '<a class="btn btn-outline-secondary" href="' . ( isset( $instance['button_link'] ) ? esc_url( get_permalink( $instance['button_link'] ) ) : '#' ) . '">';
+			echo '<a class="btn btn-outline-primary mt-5" href="' . ( isset( $instance['button_link'] ) ? esc_url( get_permalink( $instance['button_link'] ) ) : '#' ) . '">';
 			echo esc_html( get_the_title( $instance['button_link'] ) );
 			echo '</a>';
 

@@ -231,6 +231,8 @@ function keitaro_theme_scripts() {
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
+	// Locations JS minified
+	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.min.js', null, null, true );
 	// Prism.js - load only for pages, posts and custom post types
 	if ( is_singular() && ! is_page() ) :
 		// Main keitaro_theme stylesheet
@@ -293,6 +295,8 @@ function keitaro_theme_login_logo() {
 
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-team.php';
+
 // Require Keitaro Service widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-service.php';
 
@@ -354,6 +358,30 @@ function keitaro_widgets_init() {
 			 'after_title'   => '</h3>',
 		 )
 		);
+
+		register_sidebar(
+			array(
+				'name'          => __( 'Business Development', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Business Development widgets and rendered within the About page.', 'keitaro' ),
+				'id'            => 'keitaro_business',
+				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="service-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+
+		 register_sidebar(
+			array(
+				'name'          => __( 'Core Team', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Core Team widgets and rendered within the About page.', 'keitaro' ),
+				'id'            => 'keitaro_core_team',
+				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="service-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
 
 	register_sidebar(
 		 array(
@@ -450,11 +478,36 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h2>',
 			)
 		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Map', 'keitaro' ),
+				'description'   => __( 'Reserved for the Keitaro map.', 'keitaro' ),
+				'id'            => 'keitaro_map',
+				'before_widget' => '<div>',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Connect', 'keitaro' ),
+				'description'   => __( 'Reserved for the pages with contact button area.', 'keitaro' ),
+				'id'            => 'keitaro_connect',
+				'before_widget' => '<div class="text-center">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h1>',
+				'after_title'   => '</h1>',
+			)
+		 );
+
+	if ( class_exists( 'Keitaro_Team' ) ) :
+		register_widget( 'Keitaro_Team' );
+	endif;	 
 
 	if ( class_exists( 'Keitaro_Social' ) ) :
 		register_widget( 'Keitaro_Social' );
-	endif;	 
-
+	endif;
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );
 	endif;
