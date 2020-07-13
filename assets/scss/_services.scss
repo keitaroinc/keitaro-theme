@@ -31,6 +31,24 @@
 
 }
 
+.worldide-map {
+	h2 {
+		color: $keitaro-gray-dark;
+		font-weight: 900;
+	}
+
+	h2:after {
+		content: '';
+		display: block;
+		height: 0.2em;
+		width: 5%;
+		margin: 7px auto;
+		border-bottom: solid;
+		color: $keitaro-green-dark;
+	}
+}
+
+
 .team-wrapper {
 	box-shadow: 0 0 15px 0 #0000002c;
 }
@@ -103,7 +121,6 @@
 
 .service-header-wrap {
 	flex-grow: 1;
-	flex-basis: 70%;
 	margin-right: $spacer;
 }
 

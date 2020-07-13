@@ -28,7 +28,6 @@ get_header();
 			else :
 				get_template_part( SNIPPETS_DIR . '/content/content-none' );
 			endif;
-
 			?>
 		</main>
 	</div>
@@ -36,6 +35,34 @@ get_header();
 <?php
 get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-map' );
 get_template_part( SNIPPETS_DIR . '/sidebars/business-development' );
+?>
+<div class="container my-5 pt-5">
+<?php
+$child_pages = new WP_Query(
+  array(
+    'post_parent' => get_the_ID(),
+    'post_type'   => 'page',
+    'order'       => 'ASC',
+    'orderby'     => 'menu_order',
+    'posts_per_page' => 1,
+  )
+);
+
+// Loop for the child pages
+if ( $child_pages->have_posts() ) :
+  while ( $child_pages->have_posts() ) :
+
+    $child_pages->the_post();
+    get_template_part( SNIPPETS_DIR . '/content/content-children-no-thumbnail' );
+    
+  endwhile;
+endif;
+
+// Reset query data to go back to the default WordPress loop
+wp_reset_postdata();
+?>
+</div>
+<?php
 get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
 ?>
 <div class='bg-white py-5'>
@@ -47,6 +74,7 @@ get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
           'post_type'   => 'page',
           'order'       => 'ASC',
           'orderby'     => 'menu_order',
+          'offset' => 1,
         )
       );
 
@@ -55,13 +83,6 @@ get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
         while ( $child_pages->have_posts() ) :
 
           $child_pages->the_post();
-          $show_widget = false;
-
-          foreach ( $icon_blocks as $item ) :
-            if ( is_array( $item ) && in_array( get_the_ID(), $item ) ) :
-              $show_widget = true;
-            endif;
-          endforeach;
           get_template_part( SNIPPETS_DIR . '/content/content-children-no-thumbnail' );
           
         endwhile;

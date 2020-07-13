@@ -12,7 +12,7 @@ $sidebar_id = 'keitaro_map';
 if ( is_active_sidebar( $sidebar_id ) ) :
 	?>
   
-<div class="text-center mt-5">
+<div class="text-center mt-5 worldide-map">
       <?php dynamic_sidebar( $sidebar_id ); ?>
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
