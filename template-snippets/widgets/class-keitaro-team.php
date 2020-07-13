@@ -50,7 +50,7 @@ class Keitaro_Team extends WP_Widget {
 			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
 		}
 		echo '</div>';
-		echo '<div class="d-flex w-50 row mt-5 justify-content-between" ><a href="#"><i class="fa fa-phone"></i></a> <a href="#" ><i class="fa fa-envelope"></i>
+		echo '<div class="d-flex w-50 row mt-5 justify-content-between" ><a href="#"><i class="fa fa-phone fa-lg"></i></a> <a href="#" ><i class="fa fa-envelope fa-lg"></i>
 		</a></div>';
 		echo '</div>';
 

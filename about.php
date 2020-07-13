@@ -83,6 +83,13 @@ get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
         while ( $child_pages->have_posts() ) :
 
           $child_pages->the_post();
+          ?>
+          <div class='d-flex justify-content-center my-5'>
+          <?php
+          the_post_thumbnail();
+          ?>
+          </div>
+          <?php
           get_template_part( SNIPPETS_DIR . '/content/content-children-no-thumbnail' );
           
         endwhile;

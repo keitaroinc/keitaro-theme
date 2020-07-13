@@ -19,7 +19,7 @@ if ( ! is_front_page() ) :
 			<div id="primary" class="content-area">
 				<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
 				<main id="main" class="site-main" role="main">
-					<div class="container">
+					<div class="container px-0">
 						<div class="row">
 					<?php
 
@@ -37,7 +37,7 @@ if ( ! is_front_page() ) :
 
 										<div class="row d-flex align-items-start">
 
-											<div class="col-md-12 col-lg-9 order-md-last order-lg-first" style="display:inline-block">
+											<div class="col-md-12 col-lg-9 order-2" style="display:inline-block">
 												<?php the_post_thumbnail(); ?> 
 											
 
@@ -46,7 +46,7 @@ if ( ! is_front_page() ) :
 											<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 											<p>By <?php the_author(); ?></p>
 											</div>
-											<div class="col-md-12 col-lg-3 order-md-first order-lg-last mb-5" >	
+											<div class="col-md-12 col-lg-3 order-1 order-md-12 mb-5" >	
 												<?php 
 													wp_list_categories('orderby=name&title_li=&show_count=1'); 
 												?>
@@ -56,7 +56,7 @@ if ( ! is_front_page() ) :
 								<?php
 							else:
 									?>
-											<div class="col-md-4 col-12 ">
+											<div class="col-md-4 col-12 my-5">
 											<?php the_post_thumbnail(); ?>
 												<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 												<div>
@@ -98,7 +98,15 @@ if ( ! is_front_page() ) :
 				<?php
 
 			else :
+				?>
+				<div class="row">
+					<div class="col-md-8 offset-md-2">
+				<?php
 				get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
+				?>
+					</div>
+				</div>
+				<?php
 			endif;
 
 			get_template_part( SNIPPETS_DIR . '/sidebars/twitter-content' );
