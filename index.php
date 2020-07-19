@@ -19,7 +19,7 @@ if ( ! is_front_page() ) :
 			<div id="primary" class="content-area">
 				<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
 				<main id="main" class="site-main" role="main">
-					<div class="container px-0">
+					<div class="px-0">
 						<div class="row">
 					<?php
 
