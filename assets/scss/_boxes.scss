@@ -29,3 +29,49 @@
   height: 5rem;
   width: 5rem;
 }
+
+///
+
+.main-box {
+  margin-top: 8rem !important;
+}
+
+.left-box-image {
+  bottom: 0;
+}
+
+.left-box-filler {
+  visibility: hidden;
+}
+
+.right-box {
+  height: auto;
+  text-align: center;
+}
+
+.right-box-image {
+  width: 100px;
+  margin: 30px;
+}
+
+.right-box-text {
+  position: relative;
+  background: $keitaro-white;
+}
+
+.right-box-text::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 10px solid $keitaro-green-dark;
+  border-right: 10px solid $keitaro-green-dark;
+  height: 5rem;
+  width: 5rem;
+}
+
+.right-text {
+  padding: 20px;
+  font-size: 20px;
+  color: $keitaro-gray-dark;
+}

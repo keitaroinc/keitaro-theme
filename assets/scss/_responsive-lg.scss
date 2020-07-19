@@ -59,6 +59,33 @@
 			}
 		}
 	}
+
+	.left-box-filler {
+		visibility: visible;
+		position: absolute;
+		width: 80%;
+		height: 4rem;
+		bottom: 0;
+		right: 0;
+		background-color: $keitaro-white;
+	}
+
+	.right-box {
+		height: 50%;
+		text-emphasis: center;
+	}
+
+	.right-box-image {
+		width: 130px;
+		margin: 0 !important;
+	}
+
+	.left-box-image {
+		position: relative !important;
+		bottom: 4rem !important;
+		margin: 0 !important;
+		max-width: 100% !important;
+	}
 }
 
 @include media-breakpoint-down(lg) {}

@@ -15,7 +15,7 @@ get_header();
 
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid pl-0">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<?php

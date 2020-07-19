@@ -147,6 +147,11 @@
 	.locations {
 		padding-left: $grid-gutter-width / 3;
 	}
+
+	// .right-box-image {
+	// 	width: 130px;
+	// 	margin: 0 !important;
+	// }
 }
 
 @include media-breakpoint-down(md) {
