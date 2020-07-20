@@ -197,3 +197,13 @@
 		}
 	}
 }
+
+.page-numbers {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	li {
+		padding: 10px;
+	}
+}

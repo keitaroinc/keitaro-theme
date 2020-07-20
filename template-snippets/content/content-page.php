@@ -11,8 +11,8 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="row">
-		<div class="col-lg-8">
+	<div class="">
+		<div class="col-lg-12">
 			<?php
 
 			get_template_part( SNIPPETS_DIR . '/header/entry-header' );

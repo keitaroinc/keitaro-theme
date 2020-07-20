@@ -38,7 +38,7 @@ class Keitaro_Team extends WP_Widget {
 		echo wp_kses_post( $args['before_widget'] );
 
 		echo '<div class="service-item team-wrapper d-flex flex-column flex-wrap card-body align-items-center text-center" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">';
-    echo '<div class="service-header-wrap">';
+    echo '<div class="service-header-wrap my-5">';
     if ( isset( $instance['icon'] ) ) : ?>
       <img class="service-icon my-5" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
       <?php
@@ -50,6 +50,8 @@ class Keitaro_Team extends WP_Widget {
 			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
 		}
 		echo '</div>';
+		echo '<div class="d-flex w-50 row mt-5 justify-content-between" ><a href="#"><i class="fa fa-phone fa-lg"></i></a> <a href="#" ><i class="fa fa-envelope fa-lg"></i>
+		</a></div>';
 		echo '</div>';
 
 		echo wp_kses_post( $args['after_widget'] );

@@ -52,7 +52,7 @@
 		background: linear-gradient(to bottom, $keitaro-gray-lightest 70%, $keitaro-white 30%);
 
 		h1 {
-			color: $keitaro-green-dark;
+			color: $keitaro-gray-dark;
 		}
 	}
 
@@ -147,6 +147,11 @@
 	.locations {
 		padding-left: $grid-gutter-width / 3;
 	}
+
+	// .right-box-image {
+	// 	width: 130px;
+	// 	margin: 0 !important;
+	// }
 }
 
 @include media-breakpoint-down(md) {
