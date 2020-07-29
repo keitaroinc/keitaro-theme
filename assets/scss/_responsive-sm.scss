@@ -20,7 +20,7 @@
 
 @include media-breakpoint-down(sm) {
 	.service-wrapper {
-		&.card{
+		&.card {
 			flex-basis: 100%;
 			max-width: 100%; // Because IE.
 		}

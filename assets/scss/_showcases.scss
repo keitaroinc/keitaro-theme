@@ -1,0 +1,46 @@
+.showcases-header {
+  position: relative;
+}
+
+.showcases-content {
+  text-align: center;
+  position: absolute;
+  min-width: 100%;
+  top: 30%;
+  color: $keitaro-white;
+
+  h2 {
+    font-size: 3.7rem;
+  }
+
+  p {
+    font-size: 22px;
+    width: 350px;
+    margin: auto;
+  }
+}
+
+.showcases-content {
+  h2:after {
+    content: '';
+    display: block;
+    height: 0.2em;
+    width: 5%;
+    margin: 7px auto;
+    border-bottom: solid;
+    color: $keitaro-white;
+  }
+}
+
+.showcases-header img {
+  height: 400px;
+  object-fit: cover !important;
+}
+
+.showcase-item {
+  bottom: 0;
+}
+
+.showcase-title {
+  color: $keitaro-white;
+}
