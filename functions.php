@@ -318,6 +318,17 @@ function keitaro_gutenberg_blocks(){
 }
 add_action('init', 'keitaro_gutenberg_blocks');
 
+// custom block register script and init
+function keitaro_gutenberg_blocksone(){
+	wp_register_script('keitaro-custom-one', get_template_directory_uri().'/assets/js/blocksone.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/product-service-block', array(
+			'editor_script' => 'keitaro-custom-one',
+	));
+}
+add_action('init', 'keitaro_gutenberg_blocksone');
+
+
+
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
 
@@ -403,6 +414,9 @@ add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 // Require Keitaro Team widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-team.php';
 
+// Require Keitaro Cards widget
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-service-product-card.php';
+
 // Require Keitaro Showcase widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-showcase.php';
 
@@ -477,6 +491,29 @@ function keitaro_widgets_init() {
 				'after_widget'  => '</div>',
 				'before_title'  => '<h3 class="showcase-title">',
 				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Product Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products/services page.', 'keitaro' ),
+				'id'            => 'keitaro_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+
+		 register_sidebar(
+			array(
+				'name'          => __( 'Product Actions', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products/services page.', 'keitaro' ),
+				'id'            => 'keitaro_product_actions',
+				'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h1 class="call-to-action-title my-5">',
+				'after_title'   => '</h1>',
 			)
 		 );
 
@@ -637,6 +674,9 @@ function keitaro_widgets_init() {
 	if ( class_exists( 'Keitaro_Team' ) ) :
 		register_widget( 'Keitaro_Team' );
 	endif;	 
+	if ( class_exists( 'Keitaro_Cards' ) ) :
+		register_widget( 'Keitaro_Cards' );
+	endif;	
 	if ( class_exists( 'Keitaro_Showcase' ) ) :
 		register_widget( 'Keitaro_Showcase' );
 	endif;
