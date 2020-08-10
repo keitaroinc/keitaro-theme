@@ -14,13 +14,17 @@
 get_header();
 
 ?>
-<div class="container" >
+<div class="container-fluid my-5" >
 <?php the_content();?>
 </div>
 <?php
 $title=get_the_title();
 if($title=="Microkubes"):
-	get_template_part( SNIPPETS_DIR . '/sidebars/product-cards' );
-	get_template_part( SNIPPETS_DIR . '/sidebars/products-actions' );
+	get_template_part( SNIPPETS_DIR . '/sidebars/product-microkubes-cards' );
+	get_template_part( SNIPPETS_DIR . '/sidebars/microkubes-actions' );
+endif;
+if($title=="Amplus"):
+	get_template_part( SNIPPETS_DIR . '/sidebars/product-amplus-cards' );
+	get_template_part( SNIPPETS_DIR . '/sidebars/amplus-actions' );
 endif;
 get_footer();

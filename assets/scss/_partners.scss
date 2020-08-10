@@ -53,9 +53,10 @@
 
 .partners-text {
   margin-left: 0;
-  padding-left: 1.5rem;
+  padding: 1rem 2rem 1rem 1.5rem;
 
   p {
-    font-size: 20px;
+    color: $keitaro-gray-dark;
+    font-size: 22px;
   }
 }

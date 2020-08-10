@@ -495,9 +495,20 @@ function keitaro_widgets_init() {
 		 );
 		 register_sidebar(
 			array(
-				'name'          => __( 'Product Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products/services page.', 'keitaro' ),
-				'id'            => 'keitaro_cards',
+				'name'          => __( 'Product Microkubes Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products page.', 'keitaro' ),
+				'id'            => 'keitaro_microkubes_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Product Amplus Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product amplus cards widgets and rendered within the products page.', 'keitaro' ),
+				'id'            => 'keitaro_amplus_cards',
 				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h3 class="showcase-title">',
@@ -507,9 +518,21 @@ function keitaro_widgets_init() {
 
 		 register_sidebar(
 			array(
-				'name'          => __( 'Product Actions', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products/services page.', 'keitaro' ),
-				'id'            => 'keitaro_product_actions',
+				'name'          => __( 'Microkubes Actions', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product microkubes cards widgets and rendered within the products  page.', 'keitaro' ),
+				'id'            => 'keitaro_microkubes_actions',
+				'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h1 class="call-to-action-title my-5">',
+				'after_title'   => '</h1>',
+			)
+		 );
+
+		 register_sidebar(
+			array(
+				'name'          => __( 'Amplus Actions', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro product amplus cards widgets and rendered within the products page.', 'keitaro' ),
+				'id'            => 'keitaro_amplus_actions',
 				'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1 class="call-to-action-title my-5">',

@@ -135,26 +135,26 @@
 
       var attributes = props.attributes;
       return (
-        el('div', { className: '' },
+        el('div', { className: ' ' },
           el('div', { className: ' row ' },
-            attributes.mediaURL &&
 
             // right part of the box - logo and content
-            el('div', { className: ' col-md-6 col-12' },
+            el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
               el('h1', { className: 'custom-block-title' }, attributes.name),
             ),
-            el('div', { className: 'row' },
-              el('div', { className: 'col-md-5 col-12 p-5', },
-                el('p', { className: 'custom-text' }, attributes.testimonial),
-              ),
-              el('div', { className: 'col-md-7 col-12 ' },
-                el('img', { src: attributes.mediaURL, className: 'img-fluid' }),
-              ),
-
+          ),
+          el('div', { className: 'row no-gutters products-right-content' },
+            el('div', { className: 'products-right-absolute' }),
+            el('div', { className: 'col-lg-6 col-12', },
+              el('p', { className: 'products-description' }, attributes.testimonial),
+            ),
+            el('div', { className: 'col-lg-6 col-12 products-right-image' },
+              el('img', { src: attributes.mediaURL, className: 'img-fluid' }),
             ),
 
           ),
         )
+        // end of return
       );
     },
 

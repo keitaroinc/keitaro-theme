@@ -8,14 +8,14 @@
  * @subpackage Keitaro
  */
 
-$sidebar_id = 'keitaro_cards';
+$sidebar_id = 'keitaro_microkubes_cards';
 
 if ( is_active_sidebar( $sidebar_id ) ) :
 
   ?>
 <div class="bg-white">
-<div class="container">
-  <div class="row justify-content-center">
+<div class="container py-5">
+  <div class="row justify-content-center pt-5 mt-5">
     <?php dynamic_sidebar( $sidebar_id ); ?>
   </div>
 </div>
