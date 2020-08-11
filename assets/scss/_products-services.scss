@@ -1,0 +1,71 @@
+.product-service-card {
+  background-color: $keitaro-green-gray-l-35;
+  height: 100%;
+  color: $keitaro-gray-dark;
+
+  h3 {
+    color: $keitaro-gray-dark;
+    margin-bottom: 3.5rem;
+  }
+}
+
+.products-right-content {
+  position: relative;
+}
+
+.products-right-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $keitaro-white;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.products-description {
+  padding: 4rem 2rem 4rem 4rem;
+}
+
+.products-right-image {
+  bottom: 2rem;
+
+  img {
+    max-width: 95% !important;
+    display: block;
+    margin: auto;
+  }
+}
+
+.wp-block-keitaro-product-service-block {
+  color: $keitaro-gray-dark;
+
+  p {
+    font-size: 22px;
+  }
+
+  h1 {
+    position: relative;
+  }
+
+  h1::after {
+    content: '';
+    display: block;
+    height: 0.2em;
+    width: 10%;
+    margin: 7px auto;
+    border-bottom: solid $keitaro-green-dark;
+  }
+}
+
+.products-right-absolute::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  border-bottom: 12px solid #5b0b80;
+  border-left: 12px solid #5b0b80;
+  height: 5.5rem;
+  width: 5.5rem;
+}
