@@ -539,7 +539,28 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h1>',
 			)
 		 );
-
+		 register_sidebar(
+			array(
+				'name'          => __( 'Services Open-source Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro services open-source cards widgets and rendered within the services page.', 'keitaro' ),
+				'id'            => 'keitaro_open_source_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Showcases Open-source', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services open-source page.', 'keitaro' ),
+				'id'            => 'keitaro_showcases_open_source',
+				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
 		 register_sidebar(
 			array(
 				'name'          => __( 'Partners', 'keitaro' ),

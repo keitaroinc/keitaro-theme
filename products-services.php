@@ -14,7 +14,7 @@
 get_header();
 
 ?>
-<div class="container-fluid my-5" >
+<div class="container-fluid services-products-container my-5" >
 <?php the_content();?>
 </div>
 <?php
@@ -27,4 +27,9 @@ if($title=="Amplus"):
 	get_template_part( SNIPPETS_DIR . '/sidebars/product-amplus-cards' );
 	get_template_part( SNIPPETS_DIR . '/sidebars/amplus-actions' );
 endif;
+if (strpos($title, 'Open-source') !== false) {
+  get_template_part( SNIPPETS_DIR . '/sidebars/services-open-source-cards' );
+  get_template_part( SNIPPETS_DIR . '/sidebars/showcases-open-source' );
+  get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-connect' );
+}
 get_footer();

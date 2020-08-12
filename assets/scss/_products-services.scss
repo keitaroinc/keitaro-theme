@@ -1,3 +1,8 @@
+.services-products-container {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 .product-service-card {
   background-color: $keitaro-green-gray-l-35;
   height: 100%;
@@ -68,4 +73,15 @@
   border-left: 12px solid #5b0b80;
   height: 5.5rem;
   width: 5.5rem;
+}
+
+.services-showcases {
+  .showcase-item {
+    bottom: 0 !important;
+  }
+}
+
+.custom-block-title {
+  text-align: center;
+  color: $keitaro-gray-dark;
 }
