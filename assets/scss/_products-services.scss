@@ -33,8 +33,39 @@
   padding: 4rem 2rem 4rem 4rem;
 }
 
+.products-right-image ul {
+  background-color: $keitaro-green-dark !important;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  list-style: none;
+}
+
+.products-right-image ul li {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.products-right-image ul li::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  display: inline-block;
+  padding-right: 1.2rem;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
 .products-right-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
   bottom: 2rem;
+  color: $keitaro-white;
+  font-size: 25px;
 
   img {
     max-width: 95% !important;

@@ -46,7 +46,7 @@ get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
           <div class='row my-5'>
               <div class='col-md-6 col-12 partners-images-wrapper'>
                   <?php
-                  the_post_thumbnail(  array( 'class'  => ' main-partners-image' ) );
+                  the_post_thumbnail(  array( 'class'  => ' main-partners-image','size' => 'large' ) );
                   ?>
                   <div class="custom-partners-image d-flex justify-content-center align-items-center">
                   <?php echo wp_get_attachment_image(get_post_meta(get_the_ID(), 'second_featured_image', true)); ?>
@@ -70,6 +70,5 @@ get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
   </div>
 <?php
 get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-connect' );
-get_sidebar();
 
 get_footer();

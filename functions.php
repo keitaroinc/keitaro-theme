@@ -327,6 +327,14 @@ function keitaro_gutenberg_blocksone(){
 }
 add_action('init', 'keitaro_gutenberg_blocksone');
 
+function keitaro_gutenberg_blocklist(){
+	wp_register_script('keitaro-custom-list', get_template_directory_uri().'/assets/js/blocklist.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/list-block', array(
+			'editor_script' => 'keitaro-custom-list',
+	));
+}
+add_action('init', 'keitaro_gutenberg_blocklist');
+
 
 
 // Add static CSS and JS theme assets
@@ -347,6 +355,8 @@ function keitaro_theme_scripts() {
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
+	// Contact us elements JS minified
+	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
 	// Locations worldwide JS minified
 	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.min.js', null, null, true );
 	// Prism.js - load only for pages, posts and custom post types
