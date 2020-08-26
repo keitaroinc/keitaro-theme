@@ -103,6 +103,10 @@
 		bottom: 11rem;
 	}
 
+	.block-right-list {
+		bottom: 11rem;
+	}
+
 	.products-description {
 		padding: 4rem 2rem 8rem 4rem;
 	}
@@ -119,6 +123,30 @@
 		margin-left: auto;
 	}
 
+	.lists-right-absolute {
+		position: absolute;
+		width: 95%;
+		height: calc(100% - 8rem);
+		background-color: $keitaro-white;
+		left: 0;
+		right: 0;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.lists-right-absolute::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: -10px;
+		border-bottom: 13px solid $keitaro-green-dark;
+		border-left: 13px solid $keitaro-green-dark;
+		height: 6rem;
+		width: 6rem;
+		border-top-left-radius: 13px;
+		border-bottom-right-radius: 13px;
+	}
 
 }
 

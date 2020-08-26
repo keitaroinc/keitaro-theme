@@ -75,3 +75,63 @@
   font-size: 20px;
   color: $keitaro-gray-dark;
 }
+
+.block-right-list {
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  color: $keitaro-white;
+  font-size: 25px;
+  background-color: $keitaro-green-dark !important;
+}
+
+.block-right-list ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  list-style: none;
+}
+
+.block-right-list ul li {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+
+.block-right-list ul li::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  display: inline-block;
+  padding-right: 1.2rem;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+.lists-right-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $keitaro-white;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.lists-right-absolute::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: none;
+  border-left: none;
+  height: 0;
+  width: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

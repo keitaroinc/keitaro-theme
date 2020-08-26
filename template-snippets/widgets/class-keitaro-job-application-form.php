@@ -41,22 +41,8 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 		?>
 
 	<div class="row">
-		<div class="col-md-12 offset-lg-1 col-lg-2">
+		<div class="col-12 contact-form-content">
 			<?php
-
-			if ( '' !== get_the_post_thumbnail() && ! is_single() ) :
-				get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
-			endif;
-
-			?>
-		</div>
-		<div class="col-md-12 col-lg-4">
-			<?php
-
-			if ( get_the_content() ) :
-				get_template_part( SNIPPETS_DIR . '/header/entry-header' );
-				get_template_part( SNIPPETS_DIR . '/entry-content' );
-			endif;
 
 			if ( ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['submit'] ) ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'contact-form-widget' ) ) :
 
@@ -164,7 +150,8 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 				endif;
 			else :
 				if ( ! empty( $instance['title'] ) ) {
-					echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
+					//echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
+					?><h3> <?php echo $instance['title']; ?> </h3><?php
 				}
 
 				if ( ! empty( $instance['description'] ) ) {
@@ -189,53 +176,69 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 				?>
 				<form enctype="multipart/form-data" method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
+				<!-- tuka -->
+				<div class='row'>
+					<div class='col-md-6 col-12'>
+
 					<?php if ( ! empty( $instance['name_label'] ) ) : ?>
 						<div class="form-group">
 							<input class="form-control" type="text" name="sender-name" id="sender-name" required="required" value="<?php echo ( isset( $_POST['sender-name'] ) ? esc_attr( $_POST['sender-name'] ) : '' ); ?>">
 							<label for="sender-name"><?php echo esc_html( $instance['name_label'] ); ?></label>
 						</div>
-					<?php
+					<?php endif; ?>
 
-					endif;
+					<?php 
+						if ( ! empty( $instance['job_list'] ) ) :
 
-					if ( ! empty( esc_html( $instance['email_label'] ) ) ) :
+							$intent_options = explode( "\n", $instance['job_list'] );
 
-						?>
+							if ( $intent_options ) :
+
+								?>
+								<div class="form-group form-select mt-4">
+
+								<label for="intent"><?php echo esc_html( $instance['job_label'] ); ?></label>
+									<select name="intent" id="intent" class="form-control">
+										<?php foreach ( $intent_options as $key => $value ) : ?>
+											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
+												<?php echo esc_attr( trim( $value ) ); ?></option>
+										<?php
+										endforeach;
+
+										?>
+									</select>
+								</div>
+							<?php
+
+							endif;
+						endif;
+					?>
+
+					</div>
+					<div class='col-md-6 col-12'>
+
+					<?php	if ( ! empty( esc_html( $instance['email_label'] ) ) ) : ?>
 						<div class="form-group">
 							<input class="form-control" type="email" name="sender-email" id="sender-email" required="required" value="<?php echo ( isset( $_POST['sender-email'] ) ? esc_attr( $_POST['sender-email'] ) : '' ); ?>">
 							<label for="sender-email"><?php echo esc_html( $instance['email_label'] ); ?></label>
 						</div>
-					<?php
+					<?php endif; ?>
 
-					endif;
 
-					if ( ! empty( $instance['introduction_label'] ) ) :
-
-						?>
-						<div class="form-group">
-							<textarea name="intro" id="intro" class="form-control" rows="8" required="required"><?php echo ( isset( $_POST['intro'] ) ? esc_textarea( $_POST['intro'] ) : '' ); ?></textarea>
-							<label for="intro"><?php echo esc_html( $instance['introduction_label'] ); ?></label>
-						</div>
-					<?php
-					endif;
-
-					if ( ! empty( $instance['attachment_label'] ) ) :
-
-						?>
+					<?php if ( ! empty( $instance['attachment_label'] ) ) : ?>
 						<div class="form-group">
 							<input type="file" name="upload" required="required" class="form-control" placeholder="Upload">
 							<label for="upload"><?php echo esc_html( $instance['attachment_label'] ); ?></label>
 						</div>
-					<?php
+					<?php endif; ?>
 
-					endif;
-
-					wp_nonce_field( 'contact-form-widget' );
-
-					?>
+					</div>
+				</div>
+				
+					<?php wp_nonce_field( 'contact-form-widget' ); ?>
 					<input type="hidden" name="submit" id="submit" value="1">
 					<?php if ( ! empty( $instance['submit_label'] ) ) : ?>
-						<button type="submit" class="btn btn-primary btn-submit"><?php echo esc_html( $instance['submit_label'] ); ?></button>
+						<button type="submit" class="btn btn-primary btn-submit float-right"><?php echo esc_html( $instance['submit_label'] ); ?></button>
 					<?php endif; ?>
 				</form>
 			<?php
@@ -246,18 +249,9 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 
 			?>
 
-			<div class="col-md-12 col-lg-3">
-				<?php
-
-				// Don't show Locations sidebar when contact form data is successfully submitted
-				if ( false === isset( $_POST['submit'] ) ) :
-					get_template_part( SNIPPETS_DIR . '/sidebars/locations' );
-				endif;
-
-				?>
-			</div>
 		</div>
 	</div>
+	
 <?php
 
 }
@@ -275,7 +269,8 @@ public function form( $instance ) {
 		$description        = ! empty( $instance['description'] ) ? $instance['description'] : __( 'We need bright thinkers like you. Join our team at some of our existing offices or remotely. We offer competitive salary, flexible work hours and much more.', 'keitaro' );
 		$name_label         = ! empty( $instance['name_label'] ) ? $instance['name_label'] : __( 'Name', 'keitaro' );
 		$email_label        = ! empty( $instance['email_label'] ) ? $instance['email_label'] : __( 'Email', 'keitaro' );
-		$introduction_label = ! empty( $instance['introduction_label'] ) ? $instance['introduction_label'] : __( 'Where do you fit?', 'keitaro' );
+		$job_label = ! empty( $instance['job_label'] ) ? $instance['job_label'] : __( 'Where do you fit?', 'keitaro' );
+		$job_list   = ! empty( $instance['job_list'] ) ? $instance['job_list'] : __( 'Jobs...', 'keitaro' );
 		$attachment_label   = ! empty( $instance['attachment_label'] ) ? $instance['attachment_label'] : __( 'Your Resume / CV / Portfolio', 'keitaro' );
 		$send_to            = ! empty( $instance['sent_to'] ) ? $instance['sent_to'] : get_option( 'admin_email' );
 		$submit_label       = ! empty( $instance['submit_label'] ) ? $instance['submit_label'] : __( 'Apply', 'keitaro' );
@@ -299,8 +294,12 @@ public function form( $instance ) {
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email_label' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'email_label' ) ); ?>" type="text" value="<?php echo esc_attr( $email_label ); ?>">
 	</p>
 	<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'introduction_label' ) ); ?>"><?php esc_attr_e( 'Intro field label:', 'keitaro' ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'introduction_label' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'introduction_label' ) ); ?>" type="text" value="<?php echo esc_attr( $introduction_label ); ?>">
+		<label for="<?php echo esc_attr( $this->get_field_id( 'job_label' ) ); ?>"><?php esc_attr_e( 'Job field label:', 'keitaro' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'job_label' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'job_label' ) ); ?>" type="text" value="<?php echo esc_attr( $job_label ); ?>">
+	</p>
+	<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'job_list' ) ); ?>"><?php esc_attr_e( 'Job list options &mdash; one option per line:', 'keitaro' ); ?></label>
+		<textarea id="<?php echo esc_attr( $this->get_field_id( 'job_list' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'job_list' ) ); ?>" class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $job_list ); ?></textarea>
 	</p>
 	<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'attachment_label' ) ); ?>"><?php esc_attr_e( 'Attachment field label:', 'keitaro' ); ?></label>
@@ -338,7 +337,8 @@ public function update( $new_instance, $old_instance ) {
 
 		$instance['title']              = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['description']        = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
-		$instance['introduction_label'] = ( ! empty( $new_instance['introduction_label'] ) ) ? strip_tags( $new_instance['introduction_label'] ) : '';
+		$instance['job_label'] = ( ! empty( $new_instance['job_label'] ) ) ? strip_tags( $new_instance['job_label'] ) : '';
+		$instance['job_list']   = ( ! empty( $new_instance['job_list'] ) ) ? strip_tags( $new_instance['job_list'] ) : '';
 		$instance['attachment_label']   = ( ! empty( $new_instance['attachment_label'] ) ) ? strip_tags( $new_instance['attachment_label'] ) : '';
 		$instance['name_label']         = ( ! empty( $new_instance['name_label'] ) ) ? strip_tags( $new_instance['name_label'] ) : '';
 		$instance['email_label']        = ( ! empty( $new_instance['email_label'] ) ) ? strip_tags( $new_instance['email_label'] ) : '';

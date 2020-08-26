@@ -124,11 +124,11 @@
             ),
           ),
           el('div', { className: 'row no-gutters products-right-content' },
-            el('div', { className: 'products-right-absolute' }),
+            el('div', { className: 'lists-right-absolute' }),
             el('div', { className: 'col-lg-6 col-12', },
               el('p', { className: 'products-description' }, attributes.desciption),
             ),
-            el('div', { className: 'col-lg-6 col-12 products-right-image bg-success' },
+            el('div', { className: 'col-lg-6 col-12 block-right-list' },
               el(RichText.Content, {
                 tagName: 'ul',
                 className: 'list',

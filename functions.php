@@ -672,6 +672,17 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h3>',
 			)
 		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Sales Team', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Sales Team widgets and rendered within the Contact us page.', 'keitaro' ),
+				'id'            => 'keitaro_sales_team',
+				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="service-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
 
 	register_sidebar(
 		 array(
