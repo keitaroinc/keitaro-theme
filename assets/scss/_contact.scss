@@ -1,0 +1,118 @@
+/* The container */
+.custom-radio {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  p {
+    color: $keitaro-gray-dark;
+    margin-left: 0.7rem;
+  }
+}
+
+/* Hide the browser's default radio button */
+.custom-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 35px;
+  width: 35px;
+  background-color: #eee;
+  border: 1.5px $keitaro-gray-dark solid;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-radio:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.custom-radio input:checked~.checkmark {
+  background-color: $keitaro-green-dark;
+  border: none;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.custom-radio input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.custom-radio .checkmark:after {
+  left: 13px;
+  top: 8px;
+  width: 8px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.contact-container {
+  background-color: $keitaro-white;
+  position: relative;
+}
+
+.contact-container::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 13px solid $keitaro-green-dark;
+  border-right: 13px solid $keitaro-green-dark;
+  height: 6rem;
+  width: 6rem;
+  border-top-right-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+
+.checkbox-wrapper {
+  bottom: 0;
+  padding-top: 3.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  background-color: $keitaro-white;
+}
+
+.checkboxes-row {
+  height: auto;
+}
+
+.sales-card-wrapper {
+  p {
+    font-size: 22px;
+    color: $keitaro-white;
+    letter-spacing: 0.1rem;
+  }
+}
+
+.contact-form-content {
+  color: $keitaro-gray-dark;
+
+  label {
+    color: $keitaro-gray-dark !important;
+  }
+}

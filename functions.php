@@ -327,6 +327,14 @@ function keitaro_gutenberg_blocksone(){
 }
 add_action('init', 'keitaro_gutenberg_blocksone');
 
+function keitaro_gutenberg_blocklist(){
+	wp_register_script('keitaro-custom-list', get_template_directory_uri().'/assets/js/blocklist.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/list-block', array(
+			'editor_script' => 'keitaro-custom-list',
+	));
+}
+add_action('init', 'keitaro_gutenberg_blocklist');
+
 
 
 // Add static CSS and JS theme assets
@@ -347,6 +355,8 @@ function keitaro_theme_scripts() {
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
+	// Contact us elements JS minified
+	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
 	// Locations worldwide JS minified
 	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.min.js', null, null, true );
 	// Prism.js - load only for pages, posts and custom post types
@@ -539,7 +549,94 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h1>',
 			)
 		 );
-
+		 register_sidebar(
+			array(
+				'name'          => __( 'Services Open-source Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro services open-source cards widgets and rendered within the services page.', 'keitaro' ),
+				'id'            => 'keitaro_open_source_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Cloud Services Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro cloud services cards widgets and rendered within the services page.', 'keitaro' ),
+				'id'            => 'keitaro_cloud_services_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'CKAN Services Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro ckan services cards widgets and rendered within the services page.', 'keitaro' ),
+				'id'            => 'keitaro_ckan_services_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Security & Licensing Services Cards', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro security & licensing services cards widgets and rendered within the services page.', 'keitaro' ),
+				'id'            => 'keitaro_security_licensing_services_cards',
+				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Showcases Open-source', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services open-source page.', 'keitaro' ),
+				'id'            => 'keitaro_showcases_open_source',
+				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Showcases Cloud Services', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services open-source page.', 'keitaro' ),
+				'id'            => 'keitaro_showcases_cloud_services',
+				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Showcases CKAN Services', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services CKAN page.', 'keitaro' ),
+				'id'            => 'keitaro_showcases_ckan_services',
+				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Showcases Security Licensing Services', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services Security & Licensing page.', 'keitaro' ),
+				'id'            => 'keitaro_showcases_security_licensing_services',
+				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="showcase-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
 		 register_sidebar(
 			array(
 				'name'          => __( 'Partners', 'keitaro' ),
@@ -569,6 +666,17 @@ function keitaro_widgets_init() {
 				'name'          => __( 'Core Team', 'keitaro' ),
 				'description'   => __( 'Reserved for Keitaro Core Team widgets and rendered within the About page.', 'keitaro' ),
 				'id'            => 'keitaro_core_team',
+				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="service-title">',
+				'after_title'   => '</h3>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Sales Team', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Sales Team widgets and rendered within the Contact us page.', 'keitaro' ),
+				'id'            => 'keitaro_sales_team',
 				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h3 class="service-title">',
