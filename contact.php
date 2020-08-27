@@ -34,12 +34,12 @@ get_header();
   <div class="row checkboxes-row" id="checkboxes">
 	<?php get_template_part(SNIPPETS_DIR . '/radio-box');?>
   <div class="row px-5 d-flex my-5 py-5 flex-column">
-		<div class="1 radio-show-content" class="" style="display:none;"></div>
+		<div class="1 radio-show-content" class="" style="display:none;"><?php get_template_part( SNIPPETS_DIR . '/sidebars/get-quote' ); ?></div>
     <div class="2 radio-show-content"style="display:none" ><?php get_template_part( SNIPPETS_DIR . '/content/content-contact-page' ); ?></div>
-    <div class="3 radio-show-content" style="display:none">  </div>
-    <div class="4 radio-show-content" style="display:none" ></div>
+    <div class="3 radio-show-content" style="display:none"><?php get_template_part( SNIPPETS_DIR . '/sidebars/information-about-products' ); ?></div>
+    <div class="4 radio-show-content" style="display:none" ><?php get_template_part( SNIPPETS_DIR . '/sidebars/partner-with-keitaro' ); ?></div>
     <div class="5 radio-show-content"  style="display:block"><?php get_template_part( SNIPPETS_DIR . '/content/content-job-application-page' ); ?></div>
-    <div class="6 radio-show-content" style="display:none" ></div>
+    <div class="6 radio-show-content" style="display:none" ><?php get_template_part( SNIPPETS_DIR . '/sidebars/information-other' ); ?></div>
 	</div>
 </div>
 <div class="my-5 py-5">

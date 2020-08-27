@@ -743,7 +743,50 @@ function keitaro_widgets_init() {
 			 'after_title'   => '</h2></header>',
 		 )
 		);
-
+register_sidebar(
+		 array(
+			 'name'          => __( 'Partner with Keitaro', 'keitaro' ),
+			 'description'   => __( 'Reserved for Partner with Keitaro contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+			 'id'            => 'keitaro_partner_with',
+			 'before_widget' => '<div class="widget-contact %2$s">',
+			 'after_widget'  => '</div>',
+			 'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+			 'after_title'   => '</h2></header>',
+		 )
+		);
+		register_sidebar(
+			array(
+				'name'          => __( 'Get a Quote', 'keitaro' ),
+				'description'   => __( 'Reserved for Get A Quote contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+				'id'            => 'keitaro_get_quote',
+				'before_widget' => '<div class="widget-contact %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+				'after_title'   => '</h2></header>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Information About Our Products', 'keitaro' ),
+				'description'   => __( 'Reserved for Information about our products contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+				'id'            => 'keitaro_information_about_products',
+				'before_widget' => '<div class="widget-contact %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+				'after_title'   => '</h2></header>',
+			)
+		 );
+		 register_sidebar(
+			array(
+				'name'          => __( 'Other', 'keitaro' ),
+				'description'   => __( 'Reserved for other contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
+				'id'            => 'keitaro_other',
+				'before_widget' => '<div class="widget-contact %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
+				'after_title'   => '</h2></header>',
+			)
+		 );
 	register_sidebar(
 		array(
 			'name'          => __( 'Job Application', 'keitaro' ),
