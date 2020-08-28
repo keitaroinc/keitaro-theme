@@ -357,6 +357,10 @@ function keitaro_theme_scripts() {
 
 	// Contact us elements JS minified
 	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
+
+	// Career elements JS minified
+	wp_enqueue_script( 'showjobs-js', get_stylesheet_directory_uri() . '/assets/js/showjobs.js', null, null, true );
+
 	// Locations worldwide JS minified
 	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.min.js', null, null, true );
 	// Prism.js - load only for pages, posts and custom post types
@@ -447,6 +451,9 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
 
 // Require Contact Form widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-job-application-form.php';
+
+// Require Career widget
+require_once SNIPPETS_DIR . '/widgets/class-keitaro-career-job.php';
 
 // Require Twitter Grid widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
@@ -798,6 +805,17 @@ register_sidebar(
 			'after_title'   => '</h2></header>',
 		)
 		);
+		register_sidebar(
+			array(
+				'name'          => __( 'Keitaro Careers', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Careers Job List widgets and rendered within static pages with the Careers page template.', 'keitaro' ),
+				'id'            => 'keitaro_careers',
+				'before_widget' => '<div class="w-100">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="entry-title my-5 text-center">',
+				'after_title'   => '</h2>',
+			)
+			);
 
 	register_sidebar(
 		 array(
@@ -853,6 +871,9 @@ register_sidebar(
 	endif;	
 	if ( class_exists( 'Keitaro_Showcase' ) ) :
 		register_widget( 'Keitaro_Showcase' );
+	endif;
+	if ( class_exists( 'Keitaro_Career_Job' ) ) :
+		register_widget( 'Keitaro_Career_Job' );
 	endif;
 	if ( class_exists( 'Keitaro_Service' ) ) :
 		register_widget( 'Keitaro_Service' );

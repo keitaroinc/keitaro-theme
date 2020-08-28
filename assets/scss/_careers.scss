@@ -1,0 +1,60 @@
+.job-button {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+  padding: 20px 30px;
+  font-size: 20px;
+
+  i {
+    margin-top: 5px;
+  }
+}
+
+.career-content {
+  color: $keitaro-gray-dark;
+  font-size: 20px;
+
+  a {
+    color: $keitaro-white;
+  }
+}
+
+.career-content a:hover {
+  color: $keitaro-white;
+}
+
+.dashed-ul {
+  list-style-type: none;
+
+  p {
+    font-weight: 900;
+    font-size: 22px;
+  }
+}
+
+.dashed-ul li::before {
+  content: "-";
+}
+
+.checked-ul {
+  list-style-type: none;
+
+  p {
+    font-weight: 900;
+    font-size: 22px;
+  }
+}
+
+.checked-ul li::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: middle;
+  font-weight: 600;
+  color: $keitaro-green-dark
+}
+
+.keitaro-careers-wrapper {
+  color: $keitaro-gray-dark;
+}
