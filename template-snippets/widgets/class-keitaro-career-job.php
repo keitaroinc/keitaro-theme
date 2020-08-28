@@ -39,6 +39,7 @@ class Keitaro_Career_Job extends WP_Widget {
 		echo wp_kses_post( $args['before_widget'] );
     $jobclass = str_replace(" ", "-", $instance['title']);
 ?>
+<div class="container">
   <div class="row justify-content-center">
 
       <div class="col-12 p-0 my-2">
@@ -52,17 +53,15 @@ class Keitaro_Career_Job extends WP_Widget {
 
       <div class='m-0 p-0 career-content <?php echo $jobclass  ?>' style="display:none;">
 
-        <div class='row'>
           <div class='col-12 px-5 mt-4'>
             <?php if ( ! empty( $instance['description'] ) ) { ?>  
                 <?php echo wp_kses_post( apply_filters( 'the_content', $instance['description'] ) ); ?>
             <?php } ?>
-          </div>
         </div>
         
-        <div class='row'>
+        <div class='row no-gutters'>
         
-          <div class='col-md-6'>
+          <div class='col-md-6 col-12'>
           <?php 
           // here
 						if ( ! empty( $instance['responsibilities_list'] ) ) :
@@ -71,7 +70,7 @@ class Keitaro_Career_Job extends WP_Widget {
 
 							if ( $intent_options ) : ?>
 
-									<ul class="d-flex flex-column align-items-end dashed-ul">
+									<ul class="d-flex flex-column  dashed-ul">
 								    <p>Responsibilities:</p>
 										<?php foreach ( $intent_options as $key => $value ) : ?>
 											<li value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
@@ -88,7 +87,7 @@ class Keitaro_Career_Job extends WP_Widget {
           ?>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-12">
             <?php 
             // here
               if ( ! empty( $instance['skills_list'] ) ) :
@@ -117,12 +116,13 @@ class Keitaro_Career_Job extends WP_Widget {
         <?php $pagelink = get_permalink( get_page_by_title( 'Contact Us' ) );
         ?>
 
-        <div class="row justify-content-end mx-5 my-3"><a href="<?php echo $pagelink  ?>" class="btn btn-primary" >Apply Now</a></div>      
+        <div class="row justify-content-end mx-5 my-5"><a href="<?php echo $pagelink  ?>" class="btn btn-primary" >Apply Now</a></div>      
         
         <hr>
       </div>
       
     
+  </div>
   </div>
 <?php
 

@@ -810,7 +810,7 @@ register_sidebar(
 				'name'          => __( 'Keitaro Careers', 'keitaro' ),
 				'description'   => __( 'Reserved for Keitaro Careers Job List widgets and rendered within static pages with the Careers page template.', 'keitaro' ),
 				'id'            => 'keitaro_careers',
-				'before_widget' => '<div class="w-100">',
+				'before_widget' => '<div">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="entry-title my-5 text-center">',
 				'after_title'   => '</h2>',

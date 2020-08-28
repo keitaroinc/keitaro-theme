@@ -207,6 +207,16 @@
 		height: 0;
 	}
 
+	.dashed-ul {
+		list-style-type: none;
+		align-items: flex-end;
+
+		p {
+			font-weight: 900;
+			font-size: 22px;
+		}
+	}
+
 
 }
 
