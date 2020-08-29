@@ -36,13 +36,13 @@ const { registerBlockType } = wp.blocks;
       mediaURL: {
         type: 'string',
         source: 'attribute',
-        selector: 'img',
+        selector: '.left-box-image',
         attribute: 'src',
       },
       mediaURLONE: {
         type: 'string',
         source: 'attribute',
-        selector: 'img',
+        selector: '.right-box-image',
         attribute: 'src',
       }
     },

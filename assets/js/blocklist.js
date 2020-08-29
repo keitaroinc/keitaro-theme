@@ -20,17 +20,10 @@
 
     // Necessary for saving block content.
     attributes: {
-      ingredients: {
-        type: 'string',
-        source: 'html',
-        selector: '.list',
-        query: {
-          val: {
-            type: 'string',
-            selector: 'li',
-            source: 'text',
-          },
-        },
+      content: {
+        type: 'array',
+        source: 'children',
+        selector: 'ul',
       },
       desciption: {
         type: 'array',
@@ -76,44 +69,21 @@
         // lista
         el(RichText, {
           tagName: 'ul',
+          key: 'editable',
           placeholder: 'LIST GOES HERE',
-          value: attributes.ingredients,
+          value: attributes.content,
+          multiline: 'li',
+          multilineWrapperTags: ['ul'],
+          isSelected: attributes.isSelected,
           onChange: function (value) {
-            props.setAttributes({ ingredients: value });
+            props.setAttributes({ content: value });
           },
-          className: 'ingredients',
+          className: 'content-custom-list',
         })
       );
     },
     save: function (props) {
       var attributes = props.attributes;
-      var content = '';
-      var ingredients = '';
-      if (attributes.ingredients) {
-        if (attributes.ingredients.includes('<br>')) {
-          ingredients = attributes.ingredients.split('<br>');
-          for (var i = 0; i < ingredients.length; i++) {
-            content =
-              content +
-              '<li class="list-item' +
-              (i + 1) +
-              '">' +
-              ingredients[i] +
-              '</li>';
-          }
-        } else {
-          ingredients = attributes.ingredients.split('</li>');
-          for (var i = 0; i < ingredients.length; i++) {
-            if (i == ingredients.length - 1) {
-              content = content + ingredients[i];
-            } else {
-              content = content + ingredients[i] + '</li>';
-            }
-          }
-        }
-      }
-      //<i class="fas fa-check"></i>
-
       return (
         el('div', { className: ' ' },
           el('div', { className: ' row ' },
@@ -126,13 +96,13 @@
           el('div', { className: 'row no-gutters products-right-content' },
             el('div', { className: 'lists-right-absolute' }),
             el('div', { className: 'col-lg-6 col-12', },
-              el('p', { className: 'products-description' }, attributes.desciption),
+              el('p', { className: 'products-description block-list-desc' }, attributes.desciption),
             ),
             el('div', { className: 'col-lg-6 col-12 block-right-list' },
               el(RichText.Content, {
                 tagName: 'ul',
                 className: 'list',
-                value: content,
+                value: attributes.content,
               })
             ),
           ),

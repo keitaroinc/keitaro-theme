@@ -54,18 +54,7 @@
     font-size: 22px;
   }
 
-  h1 {
-    position: relative;
-  }
 
-  h1::after {
-    content: '';
-    display: block;
-    height: 0.2em;
-    width: 10%;
-    margin: 7px auto;
-    border-bottom: solid $keitaro-green-dark;
-  }
 }
 
 .products-right-absolute::after {
@@ -83,9 +72,4 @@
   .showcase-item {
     bottom: 0 !important;
   }
-}
-
-.custom-block-title {
-  text-align: center;
-  color: $keitaro-gray-dark;
 }

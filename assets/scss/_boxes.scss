@@ -99,6 +99,8 @@
 .block-right-list ul li {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
+  padding-right: 1rem;
+  line-height: 2.4rem;
 }
 
 
@@ -134,4 +136,24 @@
   width: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.block-list-desc {
+  color: $keitaro-gray-dark;
+  font-size: 22px;
+}
+
+.custom-block-title {
+  text-align: center;
+  color: $keitaro-gray-dark;
+  position: relative;
+}
+
+.custom-block-title::after {
+  content: '';
+  display: block;
+  height: 0.2em;
+  width: 10%;
+  margin: 7px auto;
+  border-bottom: solid $keitaro-green-dark;
 }
