@@ -406,3 +406,29 @@ pre {
 	border-bottom: solid;
 	color: $keitaro-green-dark;
 }
+
+.blog-list-categories {
+	list-style: none;
+	padding: 1rem;
+
+	li {
+		padding: 5px;
+		font-size: 1.3rem;
+	}
+
+	li::before {
+		font-family: "Font Awesome 5 Free";
+		content: "\f292";
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: 600;
+		margin-right: 10px;
+		color: $keitaro-green-dark;
+	}
+
+	a {
+		color: $keitaro-green-dark;
+		text-decoration: none;
+	}
+
+}

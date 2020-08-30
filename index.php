@@ -46,10 +46,12 @@ if ( ! is_front_page() ) :
 											<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 											<p>By <?php the_author(); ?></p>
 											</div>
-											<div class="col-md-12 col-lg-3 order-1 order-md-12 mb-5" >	
+											<div class="col-md-12 col-lg-3 order-1 order-lg-12 mb-5" >
+												<ul class="blog-list-categories">	
 												<?php 
 													wp_list_categories('orderby=name&title_li=&show_count=1'); 
 												?>
+												</ul>
 											</div>
 										</div>
 									</div>

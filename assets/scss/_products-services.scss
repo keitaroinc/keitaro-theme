@@ -58,14 +58,17 @@
 }
 
 .products-right-absolute::after {
+  display: block;
   content: '';
   position: absolute;
   bottom: -10px;
   left: -10px;
-  border-bottom: 12px solid #5b0b80;
-  border-left: 12px solid #5b0b80;
-  height: 5.5rem;
-  width: 5.5rem;
+  border-bottom: 13px solid $keitaro-green-dark;
+  border-left: 13px solid $keitaro-green-dark;
+  height: 6rem;
+  width: 6rem;
+  border-top-left-radius: 13px;
+  border-bottom-right-radius: 13px;
 }
 
 .services-showcases {
