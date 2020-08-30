@@ -14,8 +14,14 @@
 get_header();
 
 ?>
-<div class="bg-white">
-  <?php get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-careers' );?>
+<div class="py-5">
+  <div class="container-fluid  services-products-container py-5" >
+  <?php the_content();?>
+  </div>
 </div>
-<?php
-get_footer();
+<div class='bg-white'>
+  <?php
+  get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-careers' );
+  get_footer();
+  ?>
+</div>
