@@ -16,6 +16,12 @@
 	.hero-title {
 		font-size: $h1-font-size*1.2;
 	}
+
+	.showcases-header img {
+		height: 660px;
+		object-fit: cover !important;
+		width: 100%;
+	}
 }
 
 @include media-breakpoint-down(sm) {
