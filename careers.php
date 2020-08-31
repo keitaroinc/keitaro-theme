@@ -15,7 +15,7 @@ get_header();
 
 ?>
 <div class="pt-5">
-  <div class="container-fluid  services-products-container py-5" >
+  <div class="container-fluid py-5" >
   <?php the_content();?>
   </div>
 </div>
