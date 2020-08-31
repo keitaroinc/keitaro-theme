@@ -140,12 +140,12 @@
 		position: absolute;
 		bottom: -10px;
 		left: -10px;
-		border-bottom: 13px solid $keitaro-green-dark;
-		border-left: 13px solid $keitaro-green-dark;
-		height: 6rem;
-		width: 6rem;
-		border-top-left-radius: 13px;
-		border-bottom-right-radius: 13px;
+		border-bottom: 15px solid $keitaro-green-dark;
+		border-left: 15px solid $keitaro-green-dark;
+		height: 7rem;
+		width: 7rem;
+		border-right: 20px solid transparent;
+		border-top: 20px solid transparent;
 	}
 
 }
