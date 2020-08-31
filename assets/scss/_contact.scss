@@ -74,6 +74,7 @@
 .contact-container {
   background-color: $keitaro-white;
   position: relative;
+  width: 95%;
 }
 
 .contact-container::after {
@@ -81,12 +82,12 @@
   position: absolute;
   bottom: -10px;
   right: -10px;
-  border-bottom: 13px solid $keitaro-green-dark;
-  border-right: 13px solid $keitaro-green-dark;
-  height: 6rem;
-  width: 6rem;
-  border-top-right-radius: 13px;
-  border-bottom-left-radius: 13px;
+  border-bottom: 15px solid $keitaro-green-dark;
+  border-right: 15px solid $keitaro-green-dark;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
 }
 
 .checkbox-wrapper {

@@ -6,7 +6,7 @@
   text-align: center;
   position: absolute;
   min-width: 100%;
-  top: 30%;
+  top: 20%;
   color: $keitaro-white;
 
   h2 {
@@ -15,7 +15,7 @@
 
   p {
     font-size: 22px;
-    width: 350px;
+    width: 85% !important;
     margin: auto;
   }
 }
@@ -33,7 +33,7 @@
 }
 
 .showcases-header img {
-  height: 400px;
+  height: 550px;
   object-fit: cover !important;
   width: 100%;
 }
