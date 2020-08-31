@@ -98,10 +98,11 @@
 	}
 
 	.main-navigation {
+
 		>li {
 			&:last-child {
 				>a {
-					margin-left: $spacer*1.5;
+					//margin-left: $spacer*1.5;
 				}
 			}
 
@@ -205,6 +206,16 @@
 
 	.checkboxes-row {
 		height: 0;
+	}
+
+	.dashed-ul {
+		list-style-type: none;
+		align-items: flex-end;
+
+		p {
+			font-weight: 900;
+			font-size: 22px;
+		}
 	}
 
 

@@ -176,7 +176,6 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 				?>
 				<form enctype="multipart/form-data" method="POST" class="contact-form" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'send-mail', true, get_the_permalink() ) ) ); ?>">
 
-				<!-- tuka -->
 				<div class='row'>
 					<div class='col-md-6 col-12'>
 
