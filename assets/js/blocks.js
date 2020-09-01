@@ -190,7 +190,7 @@ const { registerBlockType } = wp.blocks;
 
         return (
           el('div', { className: ' ' },
-            el('div', { className: ' row flex-row-reverse' },
+            el('div', { className: ' row flex-row-reverse mx-0' },
 
               // right part of the box - logo and content
               el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
@@ -216,7 +216,7 @@ const { registerBlockType } = wp.blocks;
 
         return (
           el('div', { className: ' ' },
-            el('div', { className: ' row ' },
+            el('div', { className: ' row mx-0' },
 
               // right part of the box - logo and content
               el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },

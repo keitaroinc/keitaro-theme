@@ -18,7 +18,7 @@ if(is_front_page()):
 		while ( have_posts() ) :
 			the_post();
 			?>
-			<div class="container-fluid my-5">
+			<div class="container-fluid home-content-wrapper my-5">
 			<?php
 			the_content();
 			?>
