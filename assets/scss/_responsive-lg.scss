@@ -111,6 +111,28 @@
 		padding: 4rem 2rem 8rem 8rem;
 	}
 
+	.wp-block-keitaro-custom-block {
+		margin-top: 8rem;
+		margin-bottom: 4rem;
+	}
+
+	.custom-block-description-left {
+		padding-bottom: 8rem;
+		padding-top: 2rem;
+		padding-right: 8.5rem;
+		padding-left: 2rem;
+		font-size: 22px;
+		color: $keitaro-gray-dark;
+	}
+
+	.custom-block-description-right {
+		padding-bottom: 8rem;
+		padding-top: 2rem;
+		padding-right: 2rem;
+		padding-left: 8.5rem;
+		font-size: 22px;
+		color: $keitaro-gray-dark;
+	}
 
 	.products-right-absolute {
 		position: absolute;

@@ -185,7 +185,7 @@
 }
 
 .wp-block-keitaro-custom-block {
-  margin-top: 4rem;
+  margin-top: 3rem;
   margin-bottom: 4rem;
 }
 
@@ -295,4 +295,23 @@
   width: 7rem;
   border-top: 20px solid transparent;
   border-right: 20px solid transparent;
+}
+
+//
+.custom-block-description-right {
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  font-size: 18px;
+  color: $keitaro-gray-dark;
+}
+
+.custom-block-description-left {
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  font-size: 18px;
+  color: $keitaro-gray-dark;
 }
