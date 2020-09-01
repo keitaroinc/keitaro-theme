@@ -320,3 +320,14 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.block-link {
+  background-color: $keitaro-white !important;
+  color: $keitaro-gray-dark;
+  border-color: $keitaro-gray-dark;
+}
+
+.custom-block-button {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}

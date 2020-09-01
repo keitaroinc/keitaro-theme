@@ -27,6 +27,11 @@ const { registerBlockType } = wp.blocks;
         source: 'children',
         selector: 'p',
       },
+      link: {
+        type: 'array',
+        source: 'children',
+        selector: '.block-link',
+      },
       position: {
         type: 'array',
         source: 'children',
@@ -154,6 +159,19 @@ const { registerBlockType } = wp.blocks;
             el(RichText, {
               tagName: 'p',
               inline: true,
+              placeholder: i18n.__('Write the link here...'),
+              value: attributes.link,
+              onChange: function (newLink) {
+                props.setAttributes({ link: newLink });
+              },
+              focus: focusedEditable === 'link' ? focus : null,
+              onFocus: function (focus) {
+                props.setFocus(_.extend({}, focus, { editable: 'link' }));
+              },
+            }),
+            el(RichText, {
+              tagName: 'p',
+              inline: true,
               placeholder: i18n.__('Write the position here...'),
               value: attributes.position,
               onChange: function (newPosition) {
@@ -199,8 +217,9 @@ const { registerBlockType } = wp.blocks;
             ),
             el('div', { className: 'row no-gutters products-right-content flex-row-reverse' },
               el('div', { className: 'custom-block-absolute left-blocks-color-' + color.toString().toLowerCase() }),
-              el('div', { className: 'col-lg-5 col-12', },
-                el('p', { className: 'custom-block-description-left' }, attributes.testimonial),
+              el('div', { className: 'col-lg-5 col-12 custom-block-description-left', },
+                el('p', { className: '' }, attributes.testimonial),
+                el('a', { className: 'block-link btn btn-secondary' }, attributes.link),
                 el('p', { className: 'blocks-hidden' }, attributes.position),
                 el('p', { className: 'blocks-color' }, attributes.color),
               ),
@@ -225,8 +244,13 @@ const { registerBlockType } = wp.blocks;
             ),
             el('div', { className: 'row no-gutters products-right-content' },
               el('div', { className: 'custom-block-absolute right-blocks-color-' + color.toString().toLowerCase() }),
-              el('div', { className: 'col-lg-5 col-12', },
-                el('p', { className: 'custom-block-description-right' }, attributes.testimonial),
+              el('div', { className: 'col-lg-5 col-12 ', },
+                el('div', { className: "custom-block-description-right" },
+                  el('p', { className: '' }, attributes.testimonial),
+                  el('div', { className: 'custom-block-button' },
+                    el('a', { className: 'block-link btn btn-primary ' }, attributes.link),
+                  ),
+                ),
                 el('p', { className: 'blocks-hidden' }, attributes.position),
                 el('p', { className: 'blocks-color' }, attributes.color),
               ),
