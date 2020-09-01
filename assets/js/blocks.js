@@ -227,7 +227,7 @@ const { registerBlockType } = wp.blocks;
                 el('p', { className: 'blocks-hidden' }, attributes.position),
                 el('p', { className: 'blocks-color' }, attributes.color),
               ),
-              el('div', { className: 'col-lg-7 col-12 products-right-image' },
+              el('div', { className: 'col-lg-7 col-12 products-left-image' },
                 el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
               ),
 

@@ -62,6 +62,19 @@
   }
 }
 
+.products-left-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+
+  img {
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+  }
+}
+
 .wp-block-keitaro-product-service-block {
   color: $keitaro-gray-dark;
 
