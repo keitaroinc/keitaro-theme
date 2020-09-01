@@ -18,6 +18,17 @@
   position: relative;
 }
 
+.products-left-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $keitaro-white;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .products-right-absolute {
   position: absolute;
   width: 100%;
@@ -71,6 +82,20 @@
   width: 7rem;
   border-top: 20px solid transparent;
   border-right: 20px solid transparent;
+}
+
+.products-left-absolute::after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  border-bottom: 15px solid $keitaro-green-dark;
+  border-right: 15px solid $keitaro-green-dark;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
 }
 
 .services-showcases {

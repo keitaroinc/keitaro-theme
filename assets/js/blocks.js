@@ -27,6 +27,11 @@ const { registerBlockType } = wp.blocks;
         source: 'children',
         selector: 'p',
       },
+      position: {
+        type: 'array',
+        source: 'children',
+        selector: 'p',
+      },
       mediaID: {
         type: 'number',
       },
@@ -141,6 +146,19 @@ const { registerBlockType } = wp.blocks;
                 props.setFocus(_.extend({}, focus, { editable: 'testimonial' }));
               },
             }),
+            el(RichText, {
+              tagName: 'p',
+              inline: true,
+              placeholder: i18n.__('Write the position here...'),
+              value: attributes.position,
+              onChange: function (newPosition) {
+                props.setAttributes({ position: newPosition });
+              },
+              focus: focusedEditable === 'position' ? focus : null,
+              onFocus: function (focus) {
+                props.setFocus(_.extend({}, focus, { editable: 'position' }));
+              },
+            }),
           ),
         )
       ];
@@ -149,28 +167,53 @@ const { registerBlockType } = wp.blocks;
     save: function (props) {
 
       var attributes = props.attributes;
-      return (
-        el('div', { className: ' my-5' },
-          el('div', { className: ' row ' },
+      if (attributes.position.toString().toLowerCase().includes("left")) {
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row flex-row-reverse' },
 
-            // right part of the box - logo and content
-            el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
-              el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+                el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
+              ),
             ),
-          ),
-          el('div', { className: 'row no-gutters products-right-content' },
-            el('div', { className: 'products-right-absolute' }),
-            el('div', { className: 'col-lg-5 col-12', },
-              el('p', { className: 'products-description' }, attributes.testimonial),
-            ),
-            el('div', { className: 'col-lg-7 col-12 products-right-image' },
-              el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
-            ),
+            el('div', { className: 'row no-gutters products-right-content flex-row-reverse' },
+              el('div', { className: 'products-left-absolute' }),
+              el('div', { className: 'col-lg-5 col-12', },
+                el('p', { className: 'products-description' }, attributes.testimonial),
+              ),
+              el('div', { className: 'col-lg-7 col-12 products-right-image' },
+                el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
+              ),
 
-          ),
-        )
-        // end of return
-      );
+            ),
+          )
+          // end of return
+        );
+      } else {
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row ' },
+
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+                el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
+              ),
+            ),
+            el('div', { className: 'row no-gutters products-right-content' },
+              el('div', { className: 'products-right-absolute' }),
+              el('div', { className: 'col-lg-5 col-12', },
+                el('p', { className: 'products-description' }, attributes.testimonial),
+              ),
+              el('div', { className: 'col-lg-7 col-12 products-right-image' },
+                el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
+              ),
+
+            ),
+          )
+          // end of return
+        );
+      }
     },
 
   });
