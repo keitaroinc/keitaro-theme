@@ -22,8 +22,8 @@
 .custom-rights-text::after {
   content: '';
   position: absolute;
-  bottom: -10px;
-  right: -10px;
+  bottom: -15px;
+  right: -15px;
   border-bottom: 10px solid $keitaro-green-dark;
   border-right: 10px solid $keitaro-green-dark;
   height: 5rem;
@@ -62,12 +62,14 @@
 .right-box-text::after {
   content: '';
   position: absolute;
-  bottom: -10px;
-  right: -10px;
-  border-bottom: 10px solid $keitaro-green-dark;
-  border-right: 10px solid $keitaro-green-dark;
-  height: 5rem;
-  width: 5rem;
+  bottom: -15px;
+  right: -15px;
+  border-bottom: 15px solid $keitaro-green-dark;
+  border-right: 15px solid $keitaro-green-dark;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
 }
 
 .right-text {

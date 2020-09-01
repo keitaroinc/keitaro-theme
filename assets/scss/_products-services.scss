@@ -31,6 +31,8 @@
 
 .products-description {
   padding: 4rem 2rem 4rem 4rem;
+  color: $keitaro-gray-dark;
+  font-size: 22px;
 }
 
 
@@ -38,10 +40,10 @@
   background-color: transparent !important;
   display: flex;
   align-items: center;
-  bottom: 2rem;
+  bottom: 0rem;
 
   img {
-    max-width: 95% !important;
+    max-width: 100% !important;
     display: block;
     margin: auto;
   }
@@ -61,8 +63,8 @@
   display: block;
   content: '';
   position: absolute;
-  bottom: -10px;
-  left: -10px;
+  bottom: -15px;
+  left: -15px;
   border-bottom: 15px solid $keitaro-green-dark;
   border-left: 15px solid $keitaro-green-dark;
   height: 7rem;

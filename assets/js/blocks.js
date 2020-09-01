@@ -146,60 +146,30 @@ const { registerBlockType } = wp.blocks;
       ];
     },
 
-    // save: function (props) {
-
-    //   var attributes = props.attributes;
-    //   return (
-    //     el('div', { className: ' row no-gutters d-flex' },
-    //       attributes.mediaURL && attributes.mediaURLONE &&
-    //       el('div', { className: 'col-md-6 custom-left' },
-    //         el('img', { src: attributes.mediaURL, className: 'img-fluid' }),
-    //       ),
-    //       el('div', { className: ' col-md-5 d-flex custom-right' },
-    //         el('div', { className: 'custom-rights-image', style: { textAlign: attributes.alignment } },
-    //           el('img', { src: attributes.mediaURLONE, className: 'img-fluid' }),
-    //         ),
-    //         el('div', { className: 'custom-rights-text', style: { textAlign: attributes.alignment } },
-    //           el('p', {}, attributes.testimonial),
-    //         )
-    //       ),
-    //     )
-    //   );
-    // },
     save: function (props) {
 
       var attributes = props.attributes;
       return (
+        el('div', { className: ' my-5' },
+          el('div', { className: ' row ' },
 
-        el('div', { className: ' row my-5 no-gutters d-flex main-box' },
-          attributes.mediaURL && attributes.mediaURLONE &&
-
-          // left part of the box - image
-          el('div', { className: 'col-md-12 col-lg-7 h-100' },
-            el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
-            el('div', { className: 'left-box-filler' })
-          ),
-
-          // right part of the box - logo and content
-          el('div', { className: ' col-lg-4 col-md-12' },
-            el('div', { className: 'row h-100 d-flex no-gutters' },
-
-              el('div', { className: 'col-md-12 right-box', },
-                el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
-              ),
-
-              el('div', { className: 'col-md-12 h-50', },
-                el('div', { className: 'h-100 right-box-text' },
-                  el('p', { className: 'right-text' }, attributes.testimonial),
-                ),
-              )
-
+            // right part of the box - logo and content
+            el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+              el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
             ),
           ),
+          el('div', { className: 'row no-gutters products-right-content' },
+            el('div', { className: 'products-right-absolute' }),
+            el('div', { className: 'col-lg-5 col-12', },
+              el('p', { className: 'products-description' }, attributes.testimonial),
+            ),
+            el('div', { className: 'col-lg-7 col-12 products-right-image' },
+              el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
+            ),
 
-
+          ),
         )
-
+        // end of return
       );
     },
 
