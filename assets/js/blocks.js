@@ -30,7 +30,12 @@ const { registerBlockType } = wp.blocks;
       position: {
         type: 'array',
         source: 'children',
-        selector: 'p',
+        selector: '.blocks-hidden',
+      },
+      color: {
+        type: 'array',
+        source: 'children',
+        selector: '.blocks-color',
       },
       mediaID: {
         type: 'number',
@@ -159,6 +164,19 @@ const { registerBlockType } = wp.blocks;
                 props.setFocus(_.extend({}, focus, { editable: 'position' }));
               },
             }),
+            el(RichText, {
+              tagName: 'p',
+              inline: true,
+              placeholder: i18n.__('Write the type here...(exp Amplus)'),
+              value: attributes.color,
+              onChange: function (newColor) {
+                props.setAttributes({ color: newColor });
+              },
+              focus: focusedEditable === 'color' ? focus : null,
+              onFocus: function (focus) {
+                props.setFocus(_.extend({}, focus, { editable: 'color' }));
+              },
+            }),
           ),
         )
       ];
@@ -167,7 +185,9 @@ const { registerBlockType } = wp.blocks;
     save: function (props) {
 
       var attributes = props.attributes;
+      var color = attributes.color;
       if (attributes.position.toString().toLowerCase().includes("left")) {
+
         return (
           el('div', { className: ' ' },
             el('div', { className: ' row flex-row-reverse' },
@@ -178,9 +198,11 @@ const { registerBlockType } = wp.blocks;
               ),
             ),
             el('div', { className: 'row no-gutters products-right-content flex-row-reverse' },
-              el('div', { className: 'products-left-absolute' }),
+              el('div', { className: 'custom-block-absolute left-blocks-color-' + color.toString().toLowerCase() }),
               el('div', { className: 'col-lg-5 col-12', },
                 el('p', { className: 'products-description' }, attributes.testimonial),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
               ),
               el('div', { className: 'col-lg-7 col-12 products-right-image' },
                 el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
@@ -191,6 +213,7 @@ const { registerBlockType } = wp.blocks;
           // end of return
         );
       } else {
+
         return (
           el('div', { className: ' ' },
             el('div', { className: ' row ' },
@@ -201,9 +224,11 @@ const { registerBlockType } = wp.blocks;
               ),
             ),
             el('div', { className: 'row no-gutters products-right-content' },
-              el('div', { className: 'products-right-absolute' }),
+              el('div', { className: 'custom-block-absolute right-blocks-color-' + color.toString().toLowerCase() }),
               el('div', { className: 'col-lg-5 col-12', },
                 el('p', { className: 'products-description' }, attributes.testimonial),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
               ),
               el('div', { className: 'col-lg-7 col-12 products-right-image' },
                 el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),

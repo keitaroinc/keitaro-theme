@@ -134,6 +134,17 @@
 		margin-left: auto;
 	}
 
+	.custom-block-absolute {
+		position: absolute;
+		width: 90%;
+		height: calc(100% - 8rem);
+		background-color: $keitaro-white;
+		left: 0;
+		right: 0;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
 	.lists-right-absolute {
 		position: absolute;
 		width: 95%;
