@@ -323,11 +323,18 @@
 
 .block-link {
   background-color: $keitaro-white !important;
-  color: $keitaro-gray-dark;
-  border-color: $keitaro-gray-dark;
+  padding: 0;
+
+  a {
+    padding: 1rem 1rem 1rem 1rem;
+    color: $keitaro-gray-dark;
+    text-decoration: none;
+    border: 2px solid $keitaro-gray-dark;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+  }
 }
 
 .custom-block-button {
-  padding-top: 2.5rem;
+  padding-top: 2.2rem;
   padding-bottom: 3rem;
 }
