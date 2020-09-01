@@ -108,13 +108,35 @@
 	}
 
 	.products-description {
-		padding: 4rem 2rem 8rem 6rem;
+		padding: 4rem 2rem 8rem 8rem;
 	}
 
 
 	.products-right-absolute {
 		position: absolute;
-		width: 95%;
+		width: 90%;
+		height: calc(100% - 8rem);
+		background-color: $keitaro-white;
+		left: 0;
+		right: 0;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.products-left-absolute {
+		position: absolute;
+		width: 90%;
+		height: calc(100% - 8rem);
+		background-color: $keitaro-white;
+		left: 0;
+		right: 0;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.custom-block-absolute {
+		position: absolute;
+		width: 90%;
 		height: calc(100% - 8rem);
 		background-color: $keitaro-white;
 		left: 0;
@@ -138,8 +160,8 @@
 		display: block;
 		content: '';
 		position: absolute;
-		bottom: -10px;
-		left: -10px;
+		bottom: -15px;
+		left: -15px;
 		border-bottom: 15px solid $keitaro-green-dark;
 		border-left: 15px solid $keitaro-green-dark;
 		height: 7rem;

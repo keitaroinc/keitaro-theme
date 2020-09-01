@@ -27,6 +27,16 @@ const { registerBlockType } = wp.blocks;
         source: 'children',
         selector: 'p',
       },
+      position: {
+        type: 'array',
+        source: 'children',
+        selector: '.blocks-hidden',
+      },
+      color: {
+        type: 'array',
+        source: 'children',
+        selector: '.blocks-color',
+      },
       mediaID: {
         type: 'number',
       },
@@ -141,66 +151,94 @@ const { registerBlockType } = wp.blocks;
                 props.setFocus(_.extend({}, focus, { editable: 'testimonial' }));
               },
             }),
+            el(RichText, {
+              tagName: 'p',
+              inline: true,
+              placeholder: i18n.__('Write the position here...'),
+              value: attributes.position,
+              onChange: function (newPosition) {
+                props.setAttributes({ position: newPosition });
+              },
+              focus: focusedEditable === 'position' ? focus : null,
+              onFocus: function (focus) {
+                props.setFocus(_.extend({}, focus, { editable: 'position' }));
+              },
+            }),
+            el(RichText, {
+              tagName: 'p',
+              inline: true,
+              placeholder: i18n.__('Write the type here...(exp Amplus)'),
+              value: attributes.color,
+              onChange: function (newColor) {
+                props.setAttributes({ color: newColor });
+              },
+              focus: focusedEditable === 'color' ? focus : null,
+              onFocus: function (focus) {
+                props.setFocus(_.extend({}, focus, { editable: 'color' }));
+              },
+            }),
           ),
         )
       ];
     },
 
-    // save: function (props) {
-
-    //   var attributes = props.attributes;
-    //   return (
-    //     el('div', { className: ' row no-gutters d-flex' },
-    //       attributes.mediaURL && attributes.mediaURLONE &&
-    //       el('div', { className: 'col-md-6 custom-left' },
-    //         el('img', { src: attributes.mediaURL, className: 'img-fluid' }),
-    //       ),
-    //       el('div', { className: ' col-md-5 d-flex custom-right' },
-    //         el('div', { className: 'custom-rights-image', style: { textAlign: attributes.alignment } },
-    //           el('img', { src: attributes.mediaURLONE, className: 'img-fluid' }),
-    //         ),
-    //         el('div', { className: 'custom-rights-text', style: { textAlign: attributes.alignment } },
-    //           el('p', {}, attributes.testimonial),
-    //         )
-    //       ),
-    //     )
-    //   );
-    // },
     save: function (props) {
 
       var attributes = props.attributes;
-      return (
+      var color = attributes.color;
+      if (attributes.position.toString().toLowerCase().includes("left")) {
 
-        el('div', { className: ' row my-5 no-gutters d-flex main-box' },
-          attributes.mediaURL && attributes.mediaURLONE &&
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row flex-row-reverse' },
 
-          // left part of the box - image
-          el('div', { className: 'col-md-12 col-lg-7 h-100' },
-            el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
-            el('div', { className: 'left-box-filler' })
-          ),
-
-          // right part of the box - logo and content
-          el('div', { className: ' col-lg-4 col-md-12' },
-            el('div', { className: 'row h-100 d-flex no-gutters' },
-
-              el('div', { className: 'col-md-12 right-box', },
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
                 el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
               ),
-
-              el('div', { className: 'col-md-12 h-50', },
-                el('div', { className: 'h-100 right-box-text' },
-                  el('p', { className: 'right-text' }, attributes.testimonial),
-                ),
-              )
+            ),
+            el('div', { className: 'row no-gutters products-right-content flex-row-reverse' },
+              el('div', { className: 'custom-block-absolute left-blocks-color-' + color.toString().toLowerCase() }),
+              el('div', { className: 'col-lg-5 col-12', },
+                el('p', { className: 'products-description' }, attributes.testimonial),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
+              ),
+              el('div', { className: 'col-lg-7 col-12 products-right-image' },
+                el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
+              ),
 
             ),
-          ),
+          )
+          // end of return
+        );
+      } else {
 
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row ' },
 
-        )
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+                el('img', { src: attributes.mediaURLONE, className: 'img-fluid right-box-image' }),
+              ),
+            ),
+            el('div', { className: 'row no-gutters products-right-content' },
+              el('div', { className: 'custom-block-absolute right-blocks-color-' + color.toString().toLowerCase() }),
+              el('div', { className: 'col-lg-5 col-12', },
+                el('p', { className: 'products-description' }, attributes.testimonial),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
+              ),
+              el('div', { className: 'col-lg-7 col-12 products-right-image' },
+                el('img', { src: attributes.mediaURL, className: 'img-fluid left-box-image' }),
+              ),
 
-      );
+            ),
+          )
+          // end of return
+        );
+      }
     },
 
   });
