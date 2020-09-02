@@ -50,12 +50,14 @@ class Keitaro_Team extends WP_Widget {
 			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['member_desc'] ) ) );
 		}
 		echo '</div>';
-		if ( isset( $instance['phone_number'] ) || isset($instance['mail_to'])) :
+		if (  $instance['phone_number'] !=='' || $instance['mail_to']!=='') :
 		?>
 		<div class="d-flex w-100 mt-auto pt-4 pb-2 justify-content-lg-between justify-content-center" ><p><a href="tel:<?php echo $instance['phone_number'] ?>" title="Call us"><i class="fa fa-phone fa-lg"></i></a></p> <p><a href="mailto:<?php 
 		echo $instance['mail_to']; ?>" title="Mail us"><i class="fa fa-envelope fa-lg"></i>
 		</a></p></div>
 		<?php
+		else:
+			
 		endif;
 		echo '</div>';
 		echo wp_kses_post( $args['after_widget'] );
