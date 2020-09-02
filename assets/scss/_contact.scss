@@ -117,3 +117,24 @@
     color: $keitaro-gray-dark !important;
   }
 }
+
+.team-card {
+  background-color: $keitaro-white;
+  height: 100%;
+  color: $keitaro-gray-dark;
+  min-height: 450px;
+  text-align: center;
+  justify-content: flex-start;
+  box-shadow: 4px 6px 40px 0 rgba(153, 147, 139, 0.1);
+
+  h3 {
+    color: $keitaro-gray-dark;
+    margin-bottom: 3.5rem;
+  }
+
+  a {
+    color: $keitaro-gray-dark;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
