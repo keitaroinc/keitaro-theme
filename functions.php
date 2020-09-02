@@ -334,8 +334,16 @@ function keitaro_gutenberg_blockservices(){
 			'editor_script' => 'keitaro-custom-services',
 	));
 }
-// custom block register script and init
 add_action('init', 'keitaro_gutenberg_blockservices');
+// custom block register script and init
+function keitaro_gutenberg_blockaboutus(){
+	wp_register_script('keitaro-custom-about', get_template_directory_uri().'/assets/js/blockaboutus.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/aboutus-block', array(
+			'editor_script' => 'keitaro-custom-about',
+	));
+}
+// custom block register script and init
+add_action('init', 'keitaro_gutenberg_blockaboutus');
 
 function keitaro_gutenberg_blocklist(){
 	wp_register_script('keitaro-custom-list', get_template_directory_uri().'/assets/js/blocklist.js',array('wp-blocks','wp-element','wp-editor'));

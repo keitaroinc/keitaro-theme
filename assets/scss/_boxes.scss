@@ -338,3 +338,30 @@
   padding-top: 2.2rem;
   padding-bottom: 3rem;
 }
+
+.about-right-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  justify-content: center;
+
+  img {
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+  }
+}
+
+.about-left-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+
+  img {
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+  }
+}
