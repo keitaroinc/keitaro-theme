@@ -35,7 +35,7 @@ class Keitaro_Team extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		echo wp_kses_post( $args['before_widget'] );
-
+   
 		echo '<div class="team-card p-4 d-flex flex-column" >';if ( isset( $instance['icon'] ) ) : ?>
 			<div class='d-flex justify-content-center'>
       	<img class="" style="width:130px;border-radius:50%;" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
@@ -46,14 +46,18 @@ class Keitaro_Team extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
-		if ( ! empty( $instance['service_desc'] ) ) {
-			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['service_desc'] ) ) );
+		if ( ! empty( $instance['member_desc'] ) ) {
+			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['member_desc'] ) ) );
 		}
 		echo '</div>';
-		echo '<div class="d-flex w-100 mt-auto pt-4 pb-2 justify-content-lg-between justify-content-center" ><p><a href="#"><i class="fa fa-phone fa-lg"></i></a></p> <p><a href="#" ><i class="fa fa-envelope fa-lg"></i>
-		</a></p></div>';
+		if ( isset( $instance['phone_number'] ) || isset($instance['mail_to'])) :
+		?>
+		<div class="d-flex w-100 mt-auto pt-4 pb-2 justify-content-lg-between justify-content-center" ><p><a href="tel:<?php echo $instance['phone_number'] ?>" title="Call us"><i class="fa fa-phone fa-lg"></i></a></p> <p><a href="mailto:<?php 
+		echo $instance['mail_to']; ?>" title="Mail us"><i class="fa fa-envelope fa-lg"></i>
+		</a></p></div>
+		<?php
+		endif;
 		echo '</div>';
-
 		echo wp_kses_post( $args['after_widget'] );
 	}
 
@@ -67,7 +71,9 @@ class Keitaro_Team extends WP_Widget {
 	public function form( $instance ) {
 
 		$title        = ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$service_desc = ! empty( $instance['service_desc'] ) ? $instance['service_desc'] : '';
+		$member_desc = ! empty( $instance['member_desc'] ) ? $instance['member_desc'] : '';
+		$phone_number	= ! empty( $instance['phone_number'] ) ? $instance['phone_number'] : '';
+		$mail_to	= ! empty( $instance['mail_to'] ) ? $instance['mail_to'] : '';
 		$icon         = ! empty( $instance['icon'] ) ? $instance['icon'] : '';
 
 		?>
@@ -78,37 +84,31 @@ class Keitaro_Team extends WP_Widget {
 	 type="text" value="<?php echo esc_attr( $title ); ?>">
 </p>
 <p>
-	<label for="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
-	<textarea id="<?php echo esc_attr( $this->get_field_id( 'service_desc' ) ); ?>"
-	 name="<?php echo esc_attr( $this->get_field_name( 'service_desc' ) ); ?>"
-	 class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $service_desc ); ?></textarea>
+	<label for="<?php echo esc_attr( $this->get_field_id( 'member_desc' ) ); ?>"><?php esc_attr_e( 'Description:', 'keitaro' ); ?></label>
+	<textarea id="<?php echo esc_attr( $this->get_field_id( 'member_desc' ) ); ?>"
+	 name="<?php echo esc_attr( $this->get_field_name( 'member_desc' ) ); ?>"
+	 class="widefat text" style="height: 200px" rows="16" cols="20"><?php echo esc_textarea( $member_desc ); ?></textarea>
 </p>
 <p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_attr_e( 'Icon:', 'keitaro' ); ?></label>
-			<input type="number" class="hidden custom-image-value widefat" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>">
-		</p>
-    <p>
+	<label for="<?php echo esc_attr( $this->get_field_id( 'phone_number' ) ); ?>"><?php esc_attr_e( 'Phone Number:', 'keitaro' ); ?></label>
+	<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'phone_number' ) ); ?>"
+	 name="<?php echo esc_attr( $this->get_field_name( 'phone_number' ) ); ?>"
+	 type="text" value="<?php echo esc_attr( $phone_number ); ?>">
+</p>
+<p>
+	<label for="<?php echo esc_attr( $this->get_field_id( 'mail_to' ) ); ?>"><?php esc_attr_e( 'Mail to :', 'keitaro' ); ?></label>
+	<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'mail_to' ) ); ?>"
+	 name="<?php echo esc_attr( $this->get_field_name( 'mail_to' ) ); ?>"
+	 type="text" value="<?php echo esc_attr( $mail_to ); ?>">
+</p>
+<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_attr_e( 'Icon:', 'keitaro' ); ?></label>
+		<input type="number" class="hidden custom-image-value widefat" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>">
+</p>
+<p>
 			<?php keitaro_custom_image_placeholder( $icon ); ?>
-		</p>
-<p>
-	<?php
-			$wp_pages = get_posts(
-				 array(
-					 'post_type' => array( 'post', 'page' ),
-					 'nopaging'  => 1,
-					 'order'     => 'ASC',
-					 'orderby'   => 'title',
-				 )
-				);
-
-			if ( $wp_pages ) :
-				?>
-	<?php
-
-			endif;
-
-			?>
 </p>
+
 <?php
 
 	}
@@ -128,7 +128,9 @@ class Keitaro_Team extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['service_desc'] = ( ! empty( $new_instance['service_desc'] ) ) ? strip_tags( $new_instance['service_desc'] ) : '';
+		$instance['member_desc'] = ( ! empty( $new_instance['member_desc'] ) ) ? strip_tags( $new_instance['member_desc'] ) : '';
+		$instance['phone_number'] = ( ! empty( $new_instance['phone_number'] ) ) ? strip_tags( $new_instance['phone_number'] ) : '';
+		$instance['mail_to'] = ( ! empty( $new_instance['mail_to'] ) ) ? strip_tags( $new_instance['mail_to'] ) : '';
 		$instance['icon']         = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
 
 		return $instance;
