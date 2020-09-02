@@ -75,10 +75,10 @@
 		text-emphasis: center;
 	}
 
-	.right-box-image {
-		width: 130px;
-		margin: 0 !important;
-	}
+	// .right-box-image {
+	// 	width: 130px;
+	// 	margin: 0 !important;
+	// }
 
 	.left-box-image {
 		position: relative !important;
@@ -108,7 +108,15 @@
 		bottom: 11rem;
 	}
 
+	.services-right-image {
+		bottom: 11rem;
+	}
+
 	.products-left-image {
+		bottom: 11rem;
+	}
+
+	.services-left-image {
 		bottom: 11rem;
 	}
 

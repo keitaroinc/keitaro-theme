@@ -63,11 +63,39 @@
   }
 }
 
+.services-right-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  justify-content: center;
+
+  img {
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+  }
+}
+
 .products-left-image {
   background-color: transparent !important;
   display: flex;
   align-items: center;
   bottom: 0rem;
+
+  img {
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
+  }
+}
+
+.services-left-image {
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  justify-content: center;
 
   img {
     max-width: 100% !important;

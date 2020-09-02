@@ -327,6 +327,16 @@ function keitaro_gutenberg_blocksone(){
 }
 add_action('init', 'keitaro_gutenberg_blocksone');
 
+// custom block register script and init
+function keitaro_gutenberg_blockservices(){
+	wp_register_script('keitaro-custom-services', get_template_directory_uri().'/assets/js/blockservices.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/services-block', array(
+			'editor_script' => 'keitaro-custom-services',
+	));
+}
+// custom block register script and init
+add_action('init', 'keitaro_gutenberg_blockservices');
+
 function keitaro_gutenberg_blocklist(){
 	wp_register_script('keitaro-custom-list', get_template_directory_uri().'/assets/js/blocklist.js',array('wp-blocks','wp-element','wp-editor'));
 	register_block_type('keitaro/list-block', array(

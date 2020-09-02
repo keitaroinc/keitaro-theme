@@ -23,7 +23,8 @@ get_header();
 				/* Start the Loop */
 				while ( have_posts() ) :
 					the_post();
-					get_template_part( SNIPPETS_DIR . '/content/content-parent-page' );
+          //get_template_part( SNIPPETS_DIR . '/content/content-parent-page' );
+          the_content();
 				endwhile;
 			else :
 				get_template_part( SNIPPETS_DIR . '/content/content-none' );
