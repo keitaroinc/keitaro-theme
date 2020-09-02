@@ -664,18 +664,17 @@ function keitaro_widgets_init() {
 			)
 		 );
 
-		register_sidebar(
+		 register_sidebar(
 			array(
 				'name'          => __( 'Business Development', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro Business Development widgets and rendered within the About page.', 'keitaro' ),
+				'description'   => __( 'Reserved for Keitaro Team widgets and rendered within the About page.', 'keitaro' ),
 				'id'            => 'keitaro_business',
-				'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
+				'before_widget' => '<div class="col-md-12 col-lg-3 my-3 %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="service-title">',
+				'before_title'  => '<h3 class="showcase-title">',
 				'after_title'   => '</h3>',
 			)
 		 );
-
 		 register_sidebar(
 			array(
 				'name'          => __( 'Core Team', 'keitaro' ),
