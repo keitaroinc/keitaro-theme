@@ -71,7 +71,8 @@
 
       locations.forEach(function (el) {
         var icon = new L.Icon({
-          iconUrl: 'wp-content/themes/keitaro-theme/assets/leaflet/images/marker-icon.png',
+          //iconUrl: 'wp-content/themes/keitaro-theme/assets/leaflet/images/marker-icon.png',
+          iconUrl: '../wp-content/themes/keitaro-theme/assets/leaflet/images/marker-icon.png',
           shadowUrl: '',
           iconSize: [25, 41],
           iconAnchor: [12.5, 41],
