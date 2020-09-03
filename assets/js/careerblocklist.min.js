@@ -7,10 +7,10 @@
   blocks.registerBlockType(
 
     // The name of our block. Must be a string with prefix. Example: my-plugin/my-custom-block.
-    'keitaro/list-block', {
+    'keitaro/career-list-block', {
 
     // The title of our block.
-    title: i18n.__('Keitaro-List-Block'),
+    title: i18n.__('Keitaro-Career-List-Block'),
 
     // Dashicon icon for our block.
     icon: 'megaphone',
@@ -101,7 +101,7 @@
             el('div', { className: 'col-lg-6 col-12 block-right-list' },
               el(RichText.Content, {
                 tagName: 'ul',
-                className: 'list',
+                className: 'career-list',
                 value: attributes.content,
               })
             ),

@@ -372,6 +372,9 @@ function keitaro_theme_scripts() {
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
+	// leaflet style
+		wp_enqueue_style( 'leaflet-css', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.css', null, null );
+
 	// jQuery
 	wp_enqueue_script( 'jquery' );
 
@@ -381,6 +384,9 @@ function keitaro_theme_scripts() {
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
+	// Leaflet script
+	wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
+	
 	// Contact us elements JS minified
 	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
 
