@@ -319,6 +319,23 @@
 .home-content-wrapper {
   padding-left: 30px;
   padding-right: 30px;
+
+  h1 {
+    color: $keitaro-gray-dark;
+    text-align: center;
+    font-weight: 900;
+    margin-top: 6rem;
+  }
+
+  h1::after {
+    content: '';
+    display: block;
+    height: 0.2em;
+    width: 35px;
+    margin: 7px auto;
+    border-bottom: solid;
+    color: $keitaro-green-dark;
+  }
 }
 
 .block-link {

@@ -123,7 +123,7 @@
             el(RichText, {
               tagName: 'p',
               inline: true,
-              placeholder: i18n.__('Write the position here...'),
+              placeholder: i18n.__('Main image position...(left or right)'),
               value: attributes.position,
               onChange: function (newPosition) {
                 props.setAttributes({ position: newPosition });
@@ -136,7 +136,7 @@
             el(RichText, {
               tagName: 'p',
               inline: true,
-              placeholder: i18n.__('Write the type here...(exp Amplus)'),
+              placeholder: i18n.__('Write the type here...(amplus or microkubes or leave blank)'),
               value: attributes.color,
               onChange: function (newColor) {
                 props.setAttributes({ color: newColor });
