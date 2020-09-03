@@ -37,7 +37,7 @@ get_header();
 get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-map' );
 get_template_part( SNIPPETS_DIR . '/sidebars/business-development' );
 ?>
-<div class="container my-5 pt-5">
+<div class="container my-5 pt-5 about-child-pages">
 <?php
 $child_pages = new WP_Query(
   array(
@@ -67,7 +67,7 @@ wp_reset_postdata();
 get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
 ?>
 <div class='bg-white py-5'>
-  <div class="container mt-5 pt-5">
+  <div class="container mt-5 pt-5 about-child-pages">
       <?php
       $child_pages = new WP_Query(
         array(
@@ -85,7 +85,7 @@ get_template_part( SNIPPETS_DIR . '/sidebars/core-team' );
 
           $child_pages->the_post();
           ?>
-          <div class='d-flex justify-content-center my-5'>
+          <div class='d-flex justify-content-center my-5 about-child-pages'>
           <?php
           the_post_thumbnail();
           ?>
