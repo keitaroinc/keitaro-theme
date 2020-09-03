@@ -71,7 +71,7 @@
 
       locations.forEach(function (el) {
         var icon = new L.Icon({
-          iconUrl: 'assets/img/leaflet/marker-icon-amplus.svg',
+          iconUrl: 'wp-content/themes/keitaro-theme/assets/img/leaflet/marker-icon-amplus.svg',
           shadowUrl: '',
           iconSize: [25, 41],
           iconAnchor: [12.5, 41],

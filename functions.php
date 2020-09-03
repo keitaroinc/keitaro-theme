@@ -388,7 +388,7 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'showjobs-js', get_stylesheet_directory_uri() . '/assets/js/showjobs.js', null, null, true );
 
 	// Locations worldwide JS minified
-	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.min.js', null, null, true );
+	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.js', null, null, true );
 	// Prism.js - load only for pages, posts and custom post types
 	if ( is_singular() && ! is_page() ) :
 		// Main keitaro_theme stylesheet
