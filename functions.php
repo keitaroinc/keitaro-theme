@@ -311,7 +311,7 @@ function google_search_console_tags() {
 add_action( 'wp_head', 'google_search_console_tags' );
 // custom block register script and init
 function keitaro_gutenberg_blocks(){
-	wp_register_script('keitaro-custom', get_template_directory_uri().'/assets/js/blocks.js',array('wp-blocks','wp-element','wp-editor'));
+	wp_register_script('keitaro-custom', get_template_directory_uri().'/assets/js/zblocks.js',array('wp-blocks','wp-element','wp-editor'));
 	register_block_type('keitaro/custom-block', array(
 			'editor_script' => 'keitaro-custom',
 	));

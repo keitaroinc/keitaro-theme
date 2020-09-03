@@ -23,7 +23,6 @@ $title=get_the_title();
 
 // services
 
-if (get_the_title($parent)=="Services"):
   if (strpos($title, 'Open-source') !== false) {
     get_template_part( SNIPPETS_DIR . '/sidebars/services-open-source-cards' );
     get_template_part( SNIPPETS_DIR . '/sidebars/showcases-open-source' );
@@ -44,7 +43,6 @@ if (get_the_title($parent)=="Services"):
     get_template_part( SNIPPETS_DIR . '/sidebars/showcases-security-licensing-services' );
     get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-connect' );
   }
-endif;
 
 // products
 
