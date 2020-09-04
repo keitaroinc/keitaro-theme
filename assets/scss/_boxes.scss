@@ -382,3 +382,16 @@
     margin: auto;
   }
 }
+
+.careers-block-text {
+  h1 {
+    margin-bottom: 3rem !important;
+    padding-right: 3rem;
+  }
+
+  p {
+    color: $keitaro-gray-dark;
+    font-size: 19px;
+    padding-right: 3rem;
+  }
+}

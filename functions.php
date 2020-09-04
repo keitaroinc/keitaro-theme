@@ -361,6 +361,14 @@ function keitaro_gutenberg_career_blocklist(){
 }
 add_action('init', 'keitaro_gutenberg_career_blocklist');
 
+function keitaro_gutenberg_career_blockcareer(){
+	wp_register_script('keitaro-custom-career-block', get_template_directory_uri().'/assets/js/blockscareers.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/custom-careers-block', array(
+			'editor_script' => 'keitaro-custom-career-block',
+	));
+}
+add_action('init', 'keitaro_gutenberg_career_blockcareer');
+
 
 
 // Add static CSS and JS theme assets
