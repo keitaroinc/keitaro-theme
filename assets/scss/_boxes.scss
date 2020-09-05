@@ -49,6 +49,53 @@
   text-align: center;
 }
 
+.about-content-area {
+  .left-box-image {
+    width: 90%;
+  }
+
+  .custom-block-title {
+    left: 0;
+  }
+}
+
+.careers-content-area {
+  .left-box-image {
+    width: 90%;
+  }
+
+}
+
+.careers-block-text {
+  left: 1rem;
+}
+
+.home-content-wrapper {
+  padding-left: 30px;
+  padding-right: 30px;
+
+  h1 {
+    color: $keitaro-gray-dark;
+    text-align: center;
+    font-weight: 900;
+    margin-top: 6rem;
+  }
+
+  h1::after {
+    content: '';
+    display: block;
+    height: 0.2em;
+    width: 35px;
+    margin: 7px auto;
+    border-bottom: solid;
+    color: $keitaro-green-dark;
+  }
+
+  .left-box-image {
+    width: 90%;
+  }
+}
+
 .right-box-image {
   max-width: 320px;
   //margin: 30px;
@@ -78,16 +125,36 @@
   color: $keitaro-gray-dark;
 }
 
-.block-right-list {
+.career-ul-list- {
   display: flex;
   align-items: center;
   bottom: 0rem;
   color: $keitaro-white;
   font-size: 25px;
-  background-color: $keitaro-green-dark !important;
+  background-color: $keitaro-green-dark;
 }
 
-.block-right-list ul {
+.career-ul-list-amplus {
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  color: $keitaro-white;
+  font-size: 25px;
+  background-color: #DE0465;
+}
+
+.career-ul-list-microkubes {
+  display: flex;
+  align-items: center;
+  bottom: 0rem;
+  color: $keitaro-white;
+  font-size: 25px;
+  background-color: #4A148C;
+}
+
+
+
+.career-list {
   width: 100%;
   height: 100%;
   display: flex;
@@ -98,13 +165,30 @@
   list-style: none;
 }
 
-.block-right-list ul li {
+.list li {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
   padding-right: 1rem;
   line-height: 2.4rem;
 }
 
+.list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  list-style: none;
+}
+
+.li {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  padding-right: 1rem;
+  line-height: 2.4rem;
+}
 
 .list li::before {
   font-family: "Font Awesome 5 Free";
@@ -297,6 +381,94 @@
   border-right: 20px solid transparent;
 }
 
+// list blocks 
+
+.left-list-blocks-color-amplus::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  border-bottom: 15px solid #DE0465;
+  border-right: 15px solid #DE0465;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+
+.left-list-blocks-color-microkubes::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  border-bottom: 15px solid #4A148C;
+  border-right: 15px solid #4A148C;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+
+// for image right side 
+.right-list-blocks-color-amplus::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  border-bottom: 15px solid #DE0465;
+  border-left: 15px solid #DE0465;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+.right-list-blocks-color-microkubes::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  border-bottom: 15px solid #4A148C;
+  border-left: 15px solid #4A148C;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+// regular color
+.left-list-blocks-color-::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  border-bottom: 15px solid $keitaro-green-dark;
+  border-right: 15px solid $keitaro-green-dark;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+
+.right-list-blocks-color-::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  border-bottom: 15px solid $keitaro-green-dark;
+  border-left: 15px solid $keitaro-green-dark;
+  height: 7rem;
+  width: 7rem;
+  border-top: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
 //
 .custom-block-description-right {
   padding-bottom: 1rem;
@@ -316,27 +488,6 @@
   color: $keitaro-gray-dark;
 }
 
-.home-content-wrapper {
-  padding-left: 30px;
-  padding-right: 30px;
-
-  h1 {
-    color: $keitaro-gray-dark;
-    text-align: center;
-    font-weight: 900;
-    margin-top: 6rem;
-  }
-
-  h1::after {
-    content: '';
-    display: block;
-    height: 0.2em;
-    width: 35px;
-    margin: 7px auto;
-    border-bottom: solid;
-    color: $keitaro-green-dark;
-  }
-}
 
 .block-link {
   background-color: $keitaro-white !important;

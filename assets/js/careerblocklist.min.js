@@ -35,10 +35,22 @@
         source: 'children',
         selector: 'h1',
       },
+      position: {
+        type: 'array',
+        source: 'children',
+        selector: '.blocks-hidden',
+      },
+      color: {
+        type: 'array',
+        source: 'children',
+        selector: '.blocks-color',
+      },
     },
 
     edit: function (props) {
       var attributes = props.attributes;
+      var focus = props.focus;
+      var focusedEditable = props.focus ? props.focus.editable || 'name' : null;
 
       return el(
         'div',
@@ -79,36 +91,100 @@
             props.setAttributes({ content: value });
           },
           className: 'content-custom-list',
-        })
+        }),
+        el(RichText, {
+          tagName: 'p',
+          inline: true,
+          placeholder: i18n.__('Main image position...(left or right)'),
+          value: attributes.position,
+          onChange: function (newPosition) {
+            props.setAttributes({ position: newPosition });
+          },
+          focus: focusedEditable === 'position' ? focus : null,
+          onFocus: function (focus) {
+            props.setFocus(_.extend({}, focus, { editable: 'position' }));
+          },
+        }),
+        el(RichText, {
+          tagName: 'p',
+          inline: true,
+          placeholder: i18n.__('Write the type here...(amplus or microkubes or leave blank)'),
+          value: attributes.color,
+          onChange: function (newColor) {
+            props.setAttributes({ color: newColor });
+          },
+          focus: focusedEditable === 'color' ? focus : null,
+          onFocus: function (focus) {
+            props.setFocus(_.extend({}, focus, { editable: 'color' }));
+          },
+        }),
       );
+
     },
     save: function (props) {
       var attributes = props.attributes;
-      return (
-        el('div', { className: ' ' },
-          el('div', { className: ' row ' },
+      var color = attributes.color;
+      if (attributes.position.toString().toLowerCase().includes("left")) {
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row flex-row-reverse mx-0' },
 
-            // right part of the box - logo and content
-            el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
-              el('h1', { className: 'custom-block-title' }, attributes.name),
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+                el('h1', { className: 'custom-block-title' }, attributes.name),
+              ),
             ),
-          ),
-          el('div', { className: 'row no-gutters products-right-content' },
-            el('div', { className: 'lists-right-absolute' }),
-            el('div', { className: 'col-lg-6 col-12', },
-              el('p', { className: 'products-description block-list-desc' }, attributes.desciption),
+            el('div', { className: 'row no-gutters products-right-content' },
+              el('div', { className: 'custom-block-absolute left-list-blocks-color-' + color.toString().toLowerCase() }),
+              el('div', { className: 'col-lg-6 col-12 order-2 career-ul-list-' + color.toString().toLowerCase() },
+                el(RichText.Content, {
+                  tagName: 'ul',
+                  className: 'career-list',
+                  value: attributes.content,
+                })
+              ),
+              el('div', { className: 'col-lg-6 order-1 order-lg-12 col-12', },
+                el('div', { className: "custom-block-description-left" },
+                  el('p', { className: '' }, attributes.desciption),
+                ),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
+              ),
             ),
-            el('div', { className: 'col-lg-6 col-12 block-right-list' },
-              el(RichText.Content, {
-                tagName: 'ul',
-                className: 'career-list',
-                value: attributes.content,
-              })
+          )
+          // end of return bellow
+        );
+      } else {
+        return (
+          el('div', { className: ' ' },
+            el('div', { className: ' row mx-0' },
+
+              // right part of the box - logo and content
+              el('div', { className: ' col-lg-6 col-12 my-4 py-4 text-center' },
+                el('h1', { className: 'custom-block-title' }, attributes.name),
+              ),
             ),
-          ),
-        )
-        // end of return bellow
-      );
+            el('div', { className: 'row no-gutters products-right-content' },
+              el('div', { className: 'custom-block-absolute right-list-blocks-color-' + color.toString().toLowerCase() }),
+              el('div', { className: 'col-lg-6 col-12', },
+                el('div', { className: "custom-block-description-right" },
+                  el('p', { className: '' }, attributes.desciption),
+                ),
+                el('p', { className: 'blocks-hidden' }, attributes.position),
+                el('p', { className: 'blocks-color' }, attributes.color),
+              ),
+              el('div', { className: 'col-lg-6 col-12 career-ul-list-' + color.toString().toLowerCase() },
+                el(RichText.Content, {
+                  tagName: 'ul',
+                  className: 'career-list',
+                  value: attributes.content,
+                })
+              ),
+            ),
+          )
+          // end of return bellow
+        );
+      }
 
     },
 

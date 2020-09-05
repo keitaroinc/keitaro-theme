@@ -209,6 +209,131 @@
 		border-top: 20px solid transparent;
 	}
 
+
+	.careers-block-text {
+		left: -3rem;
+	}
+
+	.about-content-area {
+
+		.custom-block-title {
+			left: -3rem;
+		}
+	}
+
+	.career-ul-list- {
+		display: flex;
+		align-items: center;
+		bottom: 11rem;
+		color: $keitaro-white;
+		font-size: 25px;
+		background-color: $keitaro-green-dark;
+	}
+
+	.career-ul-list-amplus {
+		display: flex;
+		align-items: center;
+		bottom: 11rem;
+		color: $keitaro-white;
+		font-size: 25px;
+		background-color: #DE0465;
+	}
+
+	.career-ul-list-microkubes {
+		display: flex;
+		align-items: center;
+		bottom: 11rem;
+		color: $keitaro-white;
+		font-size: 25px;
+		background-color: #4A148C;
+	}
+
+	.left-list-blocks-color-amplus::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		right: -15px;
+		border-bottom: 15px solid #DE0465;
+		border-right: 15px solid #DE0465;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-left: 20px solid transparent;
+	}
+
+	.left-list-blocks-color-microkubes::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		right: -15px;
+		border-bottom: 15px solid #4A148C;
+		border-right: 15px solid #4A148C;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-left: 20px solid transparent;
+	}
+
+	// for image right side 
+	.right-list-blocks-color-amplus::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		left: -15px;
+		border-bottom: 15px solid #DE0465;
+		border-left: 15px solid #DE0465;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-right: 20px solid transparent;
+	}
+
+	.right-list-blocks-color-microkubes::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		left: -15px;
+		border-bottom: 15px solid #4A148C;
+		border-left: 15px solid #4A148C;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-right: 20px solid transparent;
+	}
+
+	// regular color
+	.left-list-blocks-color-::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		right: -15px;
+		border-bottom: 15px solid $keitaro-green-dark;
+		border-right: 15px solid $keitaro-green-dark;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-left: 20px solid transparent;
+	}
+
+	.right-list-blocks-color-::after {
+		display: block;
+		content: '';
+		position: absolute;
+		bottom: -15px;
+		left: -15px;
+		border-bottom: 15px solid $keitaro-green-dark;
+		border-left: 15px solid $keitaro-green-dark;
+		height: 7rem;
+		width: 7rem;
+		border-top: 20px solid transparent;
+		border-right: 20px solid transparent;
+	}
+
 }
 
 @include media-breakpoint-down(lg) {}

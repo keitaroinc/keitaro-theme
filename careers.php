@@ -15,7 +15,7 @@ get_header();
 
 ?>
 <div class="pt-5">
-  <div class="container-fluid py-5 px-lg-0" >
+  <div class="container-fluid py-5 px-lg-0 careers-content-area" >
   <?php the_content();?>
   </div>
 </div>
