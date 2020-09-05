@@ -102,6 +102,10 @@
 	.home-content-wrapper {
 		padding-left: 0;
 		padding-right: 0;
+
+		.left-box-image {
+			width: 90%;
+		}
 	}
 
 	.products-right-image {
@@ -209,12 +213,22 @@
 		border-top: 20px solid transparent;
 	}
 
+	.careers-content-area {
+		.left-box-image {
+			width: 90%;
+		}
+
+	}
+
 
 	.careers-block-text {
 		left: -3rem;
 	}
 
 	.about-content-area {
+		.left-box-image {
+			width: 90%;
+		}
 
 		.custom-block-title {
 			left: -3rem;
