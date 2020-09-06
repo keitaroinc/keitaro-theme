@@ -26,7 +26,7 @@ the_post_thumbnail();
 <?php
 get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
 ?>
-<div class="container-fluid pl-0">
+<div class="container-fluid px-xl-0 pb-5 mb-5">
       <?php
       $child_pages = new WP_Query(
         array(
@@ -43,23 +43,11 @@ get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
 
           $child_pages->the_post();
           ?>
-          <div class='row my-5'>
-              <div class='col-md-6 col-12 partners-images-wrapper'>
-                  <?php
-                  the_post_thumbnail(  array( 'class'  => ' main-partners-image','size' => 'large' ) );
-                  ?>
-                  <div class="custom-partners-image d-flex justify-content-center align-items-center">
-                  <?php echo wp_get_attachment_image(get_post_meta(get_the_ID(), 'second_featured_image', true)); ?>
-                  </div>
-              </div>
-              <div class='col-md-6 col-12 partners-text-wrapper'>
-                <div class="justify-content-center partners-text">
-                <?php
-                  the_content();
-                ?>
-                </div>
-            </div>
-        </div>
+          <div class='my-5'>
+              <?php
+                the_content();
+              ?>
+           </div> 
           <?php
         endwhile;
       endif;

@@ -369,6 +369,16 @@ function keitaro_gutenberg_career_blockcareer(){
 }
 add_action('init', 'keitaro_gutenberg_career_blockcareer');
 
+// custom block register script and init
+function keitaro_gutenberg_partnersblocks(){
+	wp_register_script('keitaro-custom-partners', get_template_directory_uri().'/assets/js/blockpartners.js',array('wp-blocks','wp-element','wp-editor'));
+	register_block_type('keitaro/custom-partner-block', array(
+			'editor_script' => 'keitaro-custom-partners',
+	));
+}
+add_action('init', 'keitaro_gutenberg_partnersblocks');
+
+
 
 
 // Add static CSS and JS theme assets
