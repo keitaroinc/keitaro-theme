@@ -21,6 +21,7 @@ if(is_front_page()):
 			<div class="container-fluid home-content-wrapper my-5 ">
 			<?php
 			the_content();
+			
 			?>
 			</div>
 			<?php
@@ -53,7 +54,7 @@ if ( ! is_front_page() ) :
 						else :
 							if (is_single()):
 								?>
-												<div class="row justify-content-center">
+												<div class="d-flex justify-content-center">
 													<div class="col-md-8 col-12 my-5">
 													<?php the_post_thumbnail(); ?>
 														<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
@@ -65,6 +66,8 @@ if ( ! is_front_page() ) :
 													</div>
 												</div>
 							<?php
+
+							get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
 							else:
 								$counter = $counter + 1;
 								if($counter == 1):

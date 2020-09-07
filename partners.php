@@ -43,7 +43,7 @@ get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
 
           $child_pages->the_post();
           ?>
-          <div class='my-5'>
+          <div class='my-5 py-5'>
               <?php
                 the_content();
               ?>
