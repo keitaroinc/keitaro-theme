@@ -54,14 +54,14 @@ if ( ! is_front_page() ) :
 						else :
 							if (is_single()):
 								?>
-												<div class="d-flex justify-content-center">
-													<div class="col-md-8 col-12 my-5">
-													<?php the_post_thumbnail(); ?>
-														<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-														<div>
-														<p><?php the_content(); ?></p>
-														<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
+												<div class="d-flex justify-content-center single-post-wrapper">
+													<div class="col-md-8 col-12 my-3">
+													<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 														<p>By <?php the_author(); ?></p>
+													<h2 class="my-5"><?php the_title(); ?></h2>
+													<?php the_post_thumbnail(); ?>
+														<div class='my-5'>
+														<p><?php the_content(); ?></p>
 														</div>
 													</div>
 												</div>
