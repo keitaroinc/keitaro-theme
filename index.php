@@ -63,15 +63,15 @@ if ( ! is_front_page() ) :
 								?>
 												<div class="d-flex justify-content-center single-post-wrapper">
 													<div class="col-md-12 my-3">
-														<div class='px-5'>
+														<div class='px-xl-5'>
 															<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 																<p>By <?php the_author(); ?></p>
 																<div class="blogs-content-categories"><?php 
 														the_category(); ?></div>
 															<h2 class="mb-5"><?php the_title(); ?></h2>
 													</div>
-													<?php the_post_thumbnail(); ?>
-														<div class='my-5 px-5'>
+													<?php the_post_thumbnail('large'); ?>
+														<div class='my-5 entry-content px-xl-5'>
 														<p><?php the_content(); ?></p>
 														</div>
 													</div>
