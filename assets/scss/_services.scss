@@ -95,6 +95,14 @@
 	background-color: $keitaro-white;
 	justify-content: space-between;
 
+	.service-title {
+		color: $keitaro-gray-dark;
+	}
+
+	.service-description {
+		color: $keitaro-gray-dark;
+	}
+
 	span {
 		padding-top: 2.5rem;
 	}
@@ -117,7 +125,7 @@
 
 		.service-title,
 		.service-description {
-			color: inherit;
+			color: $keitaro-gray-dark;
 		}
 	}
 }

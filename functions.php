@@ -1138,7 +1138,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 }
 
-function keitaro_author_avatar( $author = false, $size = 112, $display = true ) {
+function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 
 	$print = '';
 

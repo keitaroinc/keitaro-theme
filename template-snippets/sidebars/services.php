@@ -15,7 +15,7 @@ if ( is_active_sidebar( $sidebar_id ) ) :
 	?>
 <div class="container-fluid services-section">
 	<div class="row no-gutters">
-		<div class='my-5 col-12 text-center'>
+		<div class='my-md-5 col-12 text-center'>
 			<h1 class="mt-5">Explore our expertise</h1>
 			</div>
 		<div class="col-lg-10 offset-lg-1">

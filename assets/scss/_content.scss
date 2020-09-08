@@ -389,8 +389,17 @@ pre {
 		color: $keitaro-green-dark;
 	}
 
+	h3 a {
+		color: $keitaro-gray-dark;
+		font-size: inherit;
+	}
+
+	color: $keitaro-gray-dark;
+
 	h1 a {
 		text-decoration: none;
+		color: $keitaro-gray-dark;
+		font-size: inherit;
 	}
 
 	h1:after {
@@ -400,6 +409,30 @@ pre {
 		width: 35px;
 		margin: 7px auto;
 		border-bottom: solid;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	li {
+		margin: 0;
+	}
+
+	li::before {
+		font-family: "Font Awesome 5 Free";
+		content: "\f292";
+		display: inline-block;
+		vertical-align: middle;
+		color: #7f7a71;
+		font-size: 12px;
+		font-weight: 600;
+	}
+
+	a {
+		padding: 5px;
+		font-size: 16px;
 	}
 }
 

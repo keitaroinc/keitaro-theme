@@ -35,6 +35,7 @@
 						<p>
 						<?php
 				// Display the Post Excerpt
+						the_category();
 						the_excerpt(__('(more…)')); ?></p>
 						<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 						<p>By <?php the_author(); ?></p>
@@ -72,6 +73,7 @@
 				<?php the_post_thumbnail(); ?>
 					<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 					<div>
+					<?php the_category(); ?>
 					<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 					<p>By <?php the_author(); ?></p>
 					</div>

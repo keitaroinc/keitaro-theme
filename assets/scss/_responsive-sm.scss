@@ -3,6 +3,7 @@
 		background-size: auto 60%;
 		background-position-x: center;
 		background-position-y: 120%;
+		height: 400px;
 	}
 
 	.lead {
@@ -30,6 +31,15 @@
 			flex-basis: 100%;
 			max-width: 100%; // Because IE.
 		}
+	}
+
+	.hero-title {
+		font-size: 2.5rem;
+		text-align: center;
+	}
+
+	.right-box-image {
+		max-width: 260px;
 	}
 
 	.author-box {
