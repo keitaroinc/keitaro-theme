@@ -33,11 +33,11 @@ $read_more_content = new WP_Query(
 if ( $read_more_content->have_posts() ) :
 
 	?>
-	<section class="read-next">
-		<div class="row">
-			<div class="col-md-10">
-
-				<h3 class="read-next-title"><?php esc_html_e( 'Read next', 'keitaro' ); ?></h3>
+	<section class="read-next mt-5">
+		<div class="row mt-5">
+				<div class="col-12">	
+				<h2 class="read-next-title entry-title text-center"><?php esc_html_e( 'Read next', 'keitaro' ); ?></h2>
+				</div>
 				<?php
 
 				while ( $read_more_content->have_posts() ) :
@@ -45,19 +45,23 @@ if ( $read_more_content->have_posts() ) :
 					$read_more_content->the_post();
 
 					?>
-					<div class="media align-items-center my-2">
-						<?php keitaro_author_avatar( get_the_author_meta( 'ID' ), 48 ); ?>
+					<div class="col-md-4 col-12 d-flex flex-column">
+					<div class="align-items-center my-2">
+					<?php the_post_thumbnail(); ?>
 						<div class="media-body">
 							<?php the_title( '<h4 class="read-more-item-title media-heading"><a href="' . get_permalink() . '">', '</a></h4>' ); ?>
+							<div class="blogs-content-categories"><?php 
+														the_category(); ?></div>
+							<?php keitaro_author_avatar( get_the_author_meta( 'ID' ), 48 ); ?>
 						</div>
 					</div>
-
+					</div>
 					<?php
 
 				endwhile;
 
 				?>
-			</div>
+
 		</div>
 	</section>
 		<hr class="visible-xs visible-sm">

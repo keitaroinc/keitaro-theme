@@ -15,9 +15,11 @@
 }
 
 .read-next-title {
-	@extend .text-uppercase;
-	font-size: $h4-font-size;
+	//@extend .text-uppercase;
+	//font-size: $h4-font-size;
 	margin: $spacer*2 0;
+	color: $keitaro-gray-dark;
+	font-weight: 600;
 }
 
 .read-more-item-title {

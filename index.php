@@ -34,14 +34,23 @@ else:
 endif;
 // endhomepage
 if ( ! is_front_page() ) :
+	?>
+	<?php
 	if ( have_posts() ) :
 		?>
 		<div class="container-fluid bg-white">
+
 			<div id="primary" class="content-area">
 				<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
 				<main id="main" class="site-main" role="main">
 					<div class="container blogs-content px-xl-0">
 						<div class="row">
+							<?php if(is_home()):
+							?>
+							<h1 class="entry-title insights-title mb-5">Insights</h1>
+							<?php
+							endif;
+								?>
 					<?php
 					/* Start the Loop */
 					$counter = 0;
@@ -54,12 +63,15 @@ if ( ! is_front_page() ) :
 								?>
 												<div class="d-flex justify-content-center single-post-wrapper">
 													<div class="col-md-12 my-3">
-													<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
-														<p>By <?php the_author(); ?></p>
-														<p> <?php the_category(', '); ?></p>
-													<h2 class="my-5"><?php the_title(); ?></h2>
+														<div class='px-5'>
+															<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
+																<p>By <?php the_author(); ?></p>
+																<div class="blogs-content-categories"><?php 
+														the_category(); ?></div>
+															<h2 class="mb-5"><?php the_title(); ?></h2>
+													</div>
 													<?php the_post_thumbnail(); ?>
-														<div class='my-5'>
+														<div class='my-5 px-5'>
 														<p><?php the_content(); ?></p>
 														</div>
 													</div>
@@ -69,6 +81,7 @@ if ( ! is_front_page() ) :
 							<?php
 								get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
 							else:
+								
 								$counter = $counter + 1;
 								if($counter == 1):
 									?>
