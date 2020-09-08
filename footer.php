@@ -14,7 +14,7 @@
 		<div class="content main-footer">
 			<hr>
 			<div class="row no-gutters justify-content-between mt-5">
-				<div class="mb-4">
+				<div class="mb-4 social-footer-wrapper">
 				<?php get_template_part( SNIPPETS_DIR . '/sidebars/social' ); ?>
 				</div>
 			<hr class="d-none d-xs-block d-sm-block">
