@@ -1,9 +1,29 @@
 .job-button {
+  background-color: #F9F9F7;
   width: 100%;
+  color: $keitaro-gray-dark;
   border-radius: 5px;
   display: block;
   padding: 20px 30px;
   font-size: 20px;
+  font-weight: 600;
+  border: none;
+
+  i {
+    margin-top: 5px;
+  }
+}
+
+.job-button-active {
+  background-color: $keitaro-green-dark;
+  width: 100%;
+  color: $keitaro-white;
+  border-radius: 5px;
+  display: block;
+  padding: 20px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
 
   i {
     margin-top: 5px;
