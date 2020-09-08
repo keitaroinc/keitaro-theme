@@ -33,6 +33,55 @@
 		}
 	}
 
+	.list li {
+		font-size: 18px;
+	}
+
+	.career-list li {
+		font-size: 18px;
+		flex: 45%;
+	}
+
+	.contact-container {
+		width: 85%;
+	}
+
+	.career-list li::before {
+		font-family: "Font Awesome 5 Free";
+		content: "\f058";
+		display: inline-block;
+		padding-bottom: 1rem;
+		vertical-align: middle;
+		font-weight: 900;
+		font-size: 24px;
+	}
+
+	.partners-absolute-left {
+		position: initial;
+		z-index: 1;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		height: auto;
+		width: 300px;
+		right: -8rem;
+		background-color: transparent;
+		display: flex;
+	}
+
+	.partners-absolute-right {
+		position: initial;
+		z-index: 1;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		height: auto;
+		width: 300px;
+		left: -8rem;
+		background-color: transparent;
+		display: flex;
+	}
+
 	.services-products-container {
 		padding-left: 2rem;
 		padding-right: 2rem;
