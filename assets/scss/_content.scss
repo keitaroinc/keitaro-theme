@@ -385,6 +385,32 @@ pre {
 	}
 }
 
+.blogs-content-categories {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	li {
+		margin: 0;
+	}
+
+	li::before {
+		font-family: "Font Awesome 5 Free";
+		content: "\f292";
+		display: inline-block;
+		vertical-align: middle;
+		color: #7f7a71;
+		font-size: 12px;
+		font-weight: 600;
+	}
+
+	a {
+		padding: 5px;
+		font-size: 16px;
+	}
+}
+
 .frontpage-content {
 	h1 {
 		color: $keitaro-green-dark;
@@ -393,6 +419,7 @@ pre {
 	h3 a {
 		color: $keitaro-gray-dark;
 		font-size: inherit;
+		text-decoration: none;
 	}
 
 	color: $keitaro-gray-dark;
@@ -451,13 +478,37 @@ pre {
 	color: $keitaro-green-dark;
 }
 
+.blogs-content {
+
+	h3,
+	h4 {
+		color: $keitaro-gray-dark;
+		margin-top: 2rem;
+	}
+
+	h4 a {
+		color: $keitaro-gray-dark;
+		text-decoration: none;
+	}
+
+	h3 a {
+		color: $keitaro-gray-dark;
+		text-decoration: none;
+	}
+
+	p {
+		color: $keitaro-gray-dark;
+	}
+}
+
 .blog-list-categories {
 	list-style: none;
-	padding: 1rem;
+	padding: 0;
+
 
 	li {
 		padding: 5px;
-		font-size: 1.3rem;
+		font-size: 18px;
 	}
 
 	li::before {
