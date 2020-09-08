@@ -42,7 +42,7 @@ class Keitaro_Team extends WP_Widget {
 			</div>
 			<?php
       endif;
-    echo '<div class=" py-4">';
+    echo '<div class=" member-name-desc py-4">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}

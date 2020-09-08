@@ -385,6 +385,13 @@ pre {
 	}
 }
 
+.member-name-desc {
+	h3 {
+		min-height: 4.5rem;
+		margin-bottom: 0 !important;
+	}
+}
+
 .insights-title {
 	font-weight: 600;
 	color: $keitaro-gray-dark;
