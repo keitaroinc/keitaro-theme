@@ -225,9 +225,10 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 
 
 					<?php if ( ! empty( $instance['attachment_label'] ) ) : ?>
-						<div class="form-group">
+						<div class="form-group attachment-form">
+						<label for="upload"><?php echo esc_html( $instance['attachment_label'] ); ?></label>
 							<input type="file" name="upload" required="required" class="form-control" placeholder="Upload">
-							<label for="upload"><?php echo esc_html( $instance['attachment_label'] ); ?></label>
+							
 						</div>
 					<?php endif; ?>
 

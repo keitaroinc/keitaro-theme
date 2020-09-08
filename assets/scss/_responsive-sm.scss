@@ -46,6 +46,14 @@
 		width: 85%;
 	}
 
+	.attachment-form {
+		margin-top: 5rem !important;
+
+		label {
+			top: -4rem;
+		}
+	}
+
 	.career-list li::before {
 		font-family: "Font Awesome 5 Free";
 		content: "\f058";
