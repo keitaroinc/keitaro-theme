@@ -75,6 +75,11 @@
 	background-color: $keitaro-white;
 	position: relative;
 
+	a {
+		background-color: $keitaro-green-dark;
+		color: $keitaro-white;
+	}
+
 	h1 {
 		margin-bottom: 20px;
 		color: $keitaro-gray-dark;

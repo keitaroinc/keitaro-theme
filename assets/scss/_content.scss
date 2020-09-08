@@ -129,6 +129,7 @@
 
 	a {
 		color: $keitaro-gray-dark;
+		text-decoration: none;
 	}
 }
 
@@ -444,7 +445,7 @@ pre {
 	content: '';
 	display: block;
 	height: 0.2em;
-	width: 10%;
+	width: 3rem;
 	margin: 7px auto;
 	border-bottom: solid;
 	color: $keitaro-green-dark;
