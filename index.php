@@ -41,7 +41,7 @@ if ( ! is_front_page() ) :
 			<div id="primary" class="content-area">
 				<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
 				<main id="main" class="site-main" role="main">
-					<div class="px-0">
+					<div class="container">
 						<div class="row">
 					<?php
 
@@ -55,16 +55,19 @@ if ( ! is_front_page() ) :
 							if (is_single()):
 								?>
 												<div class="d-flex justify-content-center single-post-wrapper">
-													<div class="col-md-8 col-12 my-3">
+													<div class="col-md-12 my-3">
 													<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
 														<p>By <?php the_author(); ?></p>
+														<p> <?php the_category(', '); ?></p>
 													<h2 class="my-5"><?php the_title(); ?></h2>
 													<?php the_post_thumbnail(); ?>
 														<div class='my-5'>
 														<p><?php the_content(); ?></p>
 														</div>
 													</div>
+													<hr>
 												</div>
+
 							<?php
 
 							get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
@@ -88,6 +91,7 @@ if ( ! is_front_page() ) :
 												<div class="col-md-12 col-lg-3 order-1 order-lg-12 mb-5" >
 													<ul class="blog-list-categories">	
 													<?php 
+													 get_search_form(); 
 														wp_list_categories('orderby=name&title_li=&show_count=1'); 
 													?>
 													</ul>

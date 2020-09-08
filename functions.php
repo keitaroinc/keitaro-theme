@@ -38,6 +38,12 @@ function keitaro_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	
+	// video support for the header IN FUNCTIONS PHP
+	add_theme_support( 'custom-header', array(
+		'video' => true,
+	 ) );
+
+
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a

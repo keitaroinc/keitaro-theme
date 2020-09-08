@@ -210,6 +210,7 @@
 		height: 0;
 	}
 
+
 	.dashed-ul {
 		list-style-type: none;
 		align-items: flex-end;
@@ -220,6 +221,34 @@
 		}
 	}
 
+	.hero-video {
+		display: block;
+		position: relative;
+		height: 719px;
+
+		video {
+			height: 719px;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.hero-video::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		background-color: black;
+		opacity: 0.3;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	.new-hero {
+		display: none !important;
+	}
 
 }
 

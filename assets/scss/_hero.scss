@@ -2,6 +2,15 @@ body {
 	background-color: $keitaro-green-gray-l-35;
 }
 
+.hero-video {
+	display: none;
+
+	video {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
 .hero-padding {
 	padding-top: $grid-gutter-width*3;
 	padding-bottom: $grid-gutter-width*3;
@@ -10,6 +19,21 @@ body {
 .hero,
 .hero-sm {
 	background: $keitaro-gray-lightest;
+}
+
+.new-hero {
+	display: block !important;
+}
+
+.hero-video-title {
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	font-weight: 600;
+	letter-spacing: $letter-spacing-base;
+	left: 12.33333333%;
 }
 
 .hero-sm {
@@ -21,6 +45,7 @@ body {
 }
 
 .hero {
+	display: block;
 	background-color: $hero-bg;
 	background-position: right bottom;
 	background-size: auto 50%;
