@@ -70,7 +70,9 @@ if ( ! is_front_page() ) :
 														the_category(); ?></div>
 															<h2 class="mb-5"><?php the_title(); ?></h2>
 													</div>
+													<div class="single-post-thumbnail">
 													<?php the_post_thumbnail('large'); ?>
+													</div>
 														<div class='my-5 entry-content px-xl-5'>
 														<p><?php the_content(); ?></p>
 														</div>

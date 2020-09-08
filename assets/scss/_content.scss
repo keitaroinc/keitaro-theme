@@ -100,6 +100,12 @@
 	}
 }
 
+.single-post-thumbnail {
+	img {
+		display: block;
+		margin: auto;
+	}
+}
 
 .entry-content {
 	word-break: break-word;
