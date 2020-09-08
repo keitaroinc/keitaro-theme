@@ -11,12 +11,12 @@
 $hero_class   = '';
 $header_image = get_header_image();
 $header_video = get_header_video_url();
-//if ( DEFAULT_HEADER_IMAGE === $header_image ) :
+if ( DEFAULT_HEADER_IMAGE === $header_image ) :
 $header_image_style = 'style="background-image: url(' . esc_attr( $header_image ) . ')"';
- //else :
+else :
  	$hero_class         = 'hero-non-default';
 $header_image_style = 'style="background-image: url(' . esc_attr( $header_image ) . '); background-size: cover"';
- //endif;
+ endif;
  if($header_video):
 ?>
 
