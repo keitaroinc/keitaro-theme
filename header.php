@@ -48,7 +48,7 @@
 				</div>
 				<?php if ( have_posts() && ! is_page() && !is_home() ) : ?>
 					<div class="col-md-4 col-lg-3">
-						<?php get_search_form(); ?>
+						<?php //get_search_form(); ?>
 					</div>
 				<?php endif; ?>
 			</div>
