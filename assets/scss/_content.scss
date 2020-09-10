@@ -107,6 +107,13 @@
 	}
 }
 
+.partners-content {
+	.wp-block-separator {
+		width: 80%;
+		margin-top: 2rem;
+	}
+}
+
 .entry-content {
 	word-break: break-word;
 	margin-top: $grid-gutter-width / 2;

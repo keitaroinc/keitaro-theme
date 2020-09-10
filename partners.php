@@ -26,7 +26,7 @@ the_post_thumbnail();
 <?php
 get_template_part( SNIPPETS_DIR . '/sidebars/partners' );
 ?>
-<div class="container-fluid px-xl-0 pb-5 mb-5">
+<div class="container-fluid partners-content px-xl-0 pb-5 mb-5">
       <?php
       $child_pages = new WP_Query(
         array(
