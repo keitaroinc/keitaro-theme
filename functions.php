@@ -301,6 +301,292 @@ function open_graph_tags() {
 
 }
 
+// custom taxonomy category for Job Applications
+add_action( 'init', 'create_job_applications_categories_taxonomy', 0 );
+ 
+//create a custom taxonomy name it topics for your posts
+ 
+function create_job_applications_categories_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Job Application Categories', 'taxonomy general name' ),
+    'singular_name' => _x( 'Job Application Category', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Job Application Categories' ),
+    'all_items' => __( 'All Job Application Categories' ),
+    'parent_item' => __( 'Parent Job Application Category' ),
+    'parent_item_colon' => __( 'Parent Job Application Category:' ),
+    'edit_item' => __( 'Edit Job Application Category' ), 
+    'update_item' => __( 'Update Job Application Category' ),
+    'add_new_item' => __( 'Add New Job Application Category' ),
+    'new_item_name' => __( 'New Job Application Category Name' ),
+    'menu_name' => __( 'Job Application Categories' ),
+  );    
+ 
+// Now register the taxonomy
+ 
+  register_taxonomy('job_application_category',array('job_application'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+		'show_in_rest' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'job_application_category' ),
+  ));
+ 
+}
+// custom taxonomy tags for Job Application
+add_action( 'init', 'create_job_application_tags_taxonomy', 0 );
+ 
+function create_job_application_tags_taxonomy() {
+ 
+// Labels part for the GUI
+ 
+  $labels = array(
+    'name' => _x( 'Job Application Tags', 'taxonomy general name' ),
+    'singular_name' => _x( 'Job Application Tag', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Job Application Tags' ),
+    'popular_items' => __( 'Popular Job Application Tags' ),
+    'all_items' => __( 'All Job Application Tags' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit ShowJob Applicationcase Tag' ), 
+    'update_item' => __( 'Update Job Application Tag' ),
+    'add_new_item' => __( 'Add New Job Application Tag' ),
+    'new_item_name' => __( 'New Job Application Tag Name' ),
+    'separate_items_with_commas' => __( 'Separate tags with commas' ),
+    'add_or_remove_items' => __( 'Add or remove job application tags' ),
+    'choose_from_most_used' => __( 'Choose from the most used job application tags' ),
+		'menu_name' => __( 'Job Application Tags' ),
+  ); 
+ 
+// Now register the non-hierarchical taxonomy like tag
+ 
+  register_taxonomy('job_application_tag','job_application',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+		'show_in_rest' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+		'rewrite' => array( 'slug' => 'job_application_tag' ),
+		
+	));
+	
+}
+// end cusotm showcase taxonomy
+/*
+* Creating a function to create our CPT
+*/
+function custom_post_type_job_application() {
+ 
+	// Set UI labels for Custom Post Type
+			$labels = array(
+					'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
+					'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
+					'menu_name'           => __( 'Job Application', 'keitaro' ),
+					'all_items'           => __( 'All Job Applications', 'keitaro' ),
+					'view_item'           => __( 'View Job Applications', 'keitaro' ),
+					'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
+					'add_new'             => __( 'Add New', 'keitaro' ),
+					'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
+					'update_item'         => __( 'Update Job Applications', 'keitaro' ),
+					'search_items'        => __( 'Search Job Applications', 'keitaro' ),
+					'not_found'           => __( 'Not Found', 'keitaro' ),
+					'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+			);
+			 
+	// Set other options for Custom Post Type
+			 
+			$args = array(
+					'label'               => __( 'Job Applications', 'keitaro' ),
+					'description'         => __( ' Custom post type for Job Applications ', 'keitaro' ),
+					'labels'              => $labels,
+					// Features this CPT supports in Post Editor
+					'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields','post-formats' ),
+					// You can associate this CPT with a taxonomy or custom taxonomy. 
+					'taxonomies'          => array( 'job_application_category',  'job_application_tag' ),
+					/* A hierarchical CPT is like Pages and can have
+					* Parent and child items. A non-hierarchical CPT
+					* is like Posts.
+					*/ 
+					'hierarchical'        => false,
+					'public'              => true,
+					'show_ui'             => true,
+					'show_in_menu'        => true,
+					'show_in_nav_menus'   => true,
+					'show_in_admin_bar'   => true,
+					'has_archive'         => true,
+					'publicly_queryable'  => true,
+					'capability_type'     => 'post',
+					'show_in_rest' => true,
+	 
+			);
+			 
+			// Registering your Custom Post Type
+			register_post_type( 'job_application', $args );
+	 
+	}
+	 
+	/* Hook into the 'init' action so that the function
+	* Containing our post type registration is not 
+	* unnecessarily executed. 
+	*/
+	 
+	add_action( 'init', 'custom_post_type_job_application', 0 );
+
+	// end custom post type Showcase
+
+
+// start custom showcase taxonomy
+
+// custom taxonomy tag for Showcases
+add_action( 'init', 'create_showcase_tags_taxonomy', 0 );
+ 
+function create_showcase_tags_taxonomy() {
+ 
+// Labels part for the GUI
+ 
+  $labels = array(
+    'name' => _x( 'Showcase Tags', 'taxonomy general name' ),
+    'singular_name' => _x( 'Showcase Tag', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Showcase Tags' ),
+    'popular_items' => __( 'Popular Showcase Tags' ),
+    'all_items' => __( 'All Showcase Tags' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Showcase Tag' ), 
+    'update_item' => __( 'Update Showcase Tag' ),
+    'add_new_item' => __( 'Add New Showcase Tag' ),
+    'new_item_name' => __( 'New Showcase Tag Name' ),
+    'separate_items_with_commas' => __( 'Separate tags with commas' ),
+    'add_or_remove_items' => __( 'Add or remove showcase tags' ),
+    'choose_from_most_used' => __( 'Choose from the most used showcase tags' ),
+		'menu_name' => __( 'Showcase Tags' ),
+  ); 
+ 
+// Now register the non-hierarchical taxonomy like tag
+ 
+  register_taxonomy('showcase_tag','showcases',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+		'show_in_rest' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+		'rewrite' => array( 'slug' => 'showcase_tag' ),
+		
+	));
+	
+}
+// end custom taxonomy category for Showcases
+//hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_showcase_categories_taxonomy', 0 );
+ 
+//create a custom taxonomy name it topics for your posts
+ 
+function create_showcase_categories_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Showcase Categories', 'taxonomy general name' ),
+    'singular_name' => _x( 'Showcase Category', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Showcase Categories' ),
+    'all_items' => __( 'All Showcase Categories' ),
+    'parent_item' => __( 'Parent Showcase Category' ),
+    'parent_item_colon' => __( 'Parent Showcase Category:' ),
+    'edit_item' => __( 'Edit Showcase Category' ), 
+    'update_item' => __( 'Update Showcase Category' ),
+    'add_new_item' => __( 'Add New Showcase Category' ),
+    'new_item_name' => __( 'New Showcase Category Name' ),
+    'menu_name' => __( 'Showcase Categories' ),
+  );    
+ 
+// Now register the taxonomy
+ 
+  register_taxonomy('showcase_category',array('showcases'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+		'show_in_rest' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'showcase_category' ),
+  ));
+ 
+}
+
+/*
+* Creating a function to create our CPT
+*/
+function custom_post_type_showcase() {
+ 
+	// Set UI labels for Custom Post Type
+			$labels = array(
+					'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
+					'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
+					'menu_name'           => __( 'Showcases', 'keitaro' ),
+					'all_items'           => __( 'All Showcases', 'keitaro' ),
+					'view_item'           => __( 'View Showcase', 'keitaro' ),
+					'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
+					'add_new'             => __( 'Add New', 'keitaro' ),
+					'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
+					'update_item'         => __( 'Update Showcase', 'keitaro' ),
+					'search_items'        => __( 'Search Showcases', 'showcases' ),
+					'not_found'           => __( 'Not Found', 'keitaro' ),
+					'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+			);
+			 
+	// Set other options for Custom Post Type
+			 
+			$args = array(
+					'label'               => __( 'Showcases', 'keitaro' ),
+					'description'         => __( ' Custom post type for Showcases ', 'keitaro' ),
+					'labels'              => $labels,
+					// Features this CPT supports in Post Editor
+					'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields','post-formats' ),
+					// You can associate this CPT with a taxonomy or custom taxonomy. 
+					'taxonomies'          => array( 'showcase_category',  'showcase_tag' ),
+					/* A hierarchical CPT is like Pages and can have
+					* Parent and child items. A non-hierarchical CPT
+					* is like Posts.
+					*/ 
+					'hierarchical'        => false,
+					'public'              => true,
+					'show_ui'             => true,
+					'show_in_menu'        => true,
+					'show_in_nav_menus'   => true,
+					'show_in_admin_bar'   => true,
+					'has_archive'         => true,
+					'publicly_queryable'  => true,
+					'capability_type'     => 'post',
+					'show_in_rest' => true,
+	 
+			);
+			 
+			// Registering your Custom Post Type
+			register_post_type( 'showcases', $args );
+	 
+	}
+	 
+	/* Hook into the 'init' action so that the function
+	* Containing our post type registration is not 
+	* unnecessarily executed. 
+	*/
+	 
+	add_action( 'init', 'custom_post_type_showcase', 0 );
+
+	// end custom post type Showcase
+
+	
+  
 add_action( 'wp_head', 'open_graph_tags' );
 
 /* Set custom meta tag for Google Search Console */
