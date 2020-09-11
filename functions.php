@@ -308,27 +308,27 @@ add_action( 'init', 'create_job_applications_categories_taxonomy', 0 );
 function create_job_applications_categories_taxonomy() {
  
   $labels = array(
-    'name' => _x( 'Job Application Categories', 'taxonomy general name' ),
-    'singular_name' => _x( 'Job Application Category', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Job Application Categories' ),
-    'all_items' => __( 'All Job Application Categories' ),
-    'parent_item' => __( 'Parent Job Application Category' ),
+    'name' 							=> _x( 'Job Application Categories', 'taxonomy general name' ),
+    'singular_name'			=> _x( 'Job Application Category', 'taxonomy singular name' ),
+    'search_items' 			=>  __( 'Search Job Application Categories' ),
+    'all_items' 				=> __( 'All Job Application Categories' ),
+    'parent_item' 			=> __( 'Parent Job Application Category' ),
     'parent_item_colon' => __( 'Parent Job Application Category:' ),
-    'edit_item' => __( 'Edit Job Application Category' ), 
-    'update_item' => __( 'Update Job Application Category' ),
-    'add_new_item' => __( 'Add New Job Application Category' ),
-    'new_item_name' => __( 'New Job Application Category Name' ),
-    'menu_name' => __( 'Job Application Categories' ),
+    'edit_item' 				=> __( 'Edit Job Application Category' ), 
+    'update_item' 			=> __( 'Update Job Application Category' ),
+    'add_new_item' 			=> __( 'Add New Job Application Category' ),
+    'new_item_name' 		=> __( 'New Job Application Category Name' ),
+    'menu_name' 				=> __( 'Job Application Categories' ),
   );    
  
   register_taxonomy('job_application_category',array('job_application'), array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_ui' => true,
+    'hierarchical' 			=> true,
+    'labels' 						=> $labels,
+    'show_ui' 					=> true,
     'show_admin_column' => true,
-		'show_in_rest' => true,
-    'query_var' => true,
-    'rewrite' => array( 'slug' => 'job_application_category' ),
+		'show_in_rest' 			=> true,
+    'query_var' 				=> true,
+    'rewrite' 					=> array( 'slug' => 'job_application_category' ),
   ));
  
 }
@@ -338,32 +338,32 @@ add_action( 'init', 'create_job_application_tags_taxonomy', 0 );
 function create_job_application_tags_taxonomy() {
  
   $labels = array(
-    'name' => _x( 'Job Application Tags', 'taxonomy general name' ),
-    'singular_name' => _x( 'Job Application Tag', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Job Application Tags' ),
-    'popular_items' => __( 'Popular Job Application Tags' ),
-    'all_items' => __( 'All Job Application Tags' ),
-    'parent_item' => null,
-    'parent_item_colon' => null,
-    'edit_item' => __( 'Edit ShowJob Applicationcase Tag' ), 
-    'update_item' => __( 'Update Job Application Tag' ),
-    'add_new_item' => __( 'Add New Job Application Tag' ),
-    'new_item_name' => __( 'New Job Application Tag Name' ),
+    'name' 										   => _x( 'Job Application Tags', 'taxonomy general name' ),
+    'singular_name' 						 => _x( 'Job Application Tag', 'taxonomy singular name' ),
+    'search_items' 							 =>  __( 'Search Job Application Tags' ),
+    'popular_items' 						 => __( 'Popular Job Application Tags' ),
+    'all_items' 								 => __( 'All Job Application Tags' ),
+    'parent_item' 							 => null,
+    'parent_item_colon' 				 => null,
+    'edit_item' 								 => __( 'Edit ShowJob Applicationcase Tag' ), 
+    'update_item' 							 => __( 'Update Job Application Tag' ),
+    'add_new_item' 							 => __( 'Add New Job Application Tag' ),
+    'new_item_name' 						 => __( 'New Job Application Tag Name' ),
     'separate_items_with_commas' => __( 'Separate tags with commas' ),
-    'add_or_remove_items' => __( 'Add or remove job application tags' ),
-    'choose_from_most_used' => __( 'Choose from the most used job application tags' ),
-		'menu_name' => __( 'Job Application Tags' ),
+    'add_or_remove_items' 			 => __( 'Add or remove job application tags' ),
+    'choose_from_most_used' 		 => __( 'Choose from the most used job application tags' ),
+		'menu_name' 								 => __( 'Job Application Tags' ),
   ); 
  
   register_taxonomy('job_application_tag','job_application',array(
-    'hierarchical' => false,
-    'labels' => $labels,
-    'show_ui' => true,
-		'show_in_rest' => true,
-    'show_admin_column' => true,
+    'hierarchical' 					=> false,
+    'labels' 								=> $labels,
+    'show_ui' 							=> true,
+		'show_in_rest' 					=> true,
+    'show_admin_column' 		=> true,
     'update_count_callback' => '_update_post_term_count',
-    'query_var' => true,
-		'rewrite' => array( 'slug' => 'job_application_tag' ),
+    'query_var' 						=> true,
+		'rewrite' 							=> array( 'slug' => 'job_application_tag' ),
 	));
 	
 }
@@ -404,44 +404,44 @@ function custom_post_type_job_application() {
 					'has_archive'         => true,
 					'publicly_queryable'  => true,
 					'capability_type'     => 'post',
-					'show_in_rest' => true,
+					'show_in_rest' 				=> true,
 	 
 			);
 			register_post_type( 'job_application', $args );
 	}
-	add_action( 'init', 'custom_post_type_job_application', 0 );
+add_action( 'init', 'custom_post_type_job_application', 0 );
 
 // custom taxonomy tag for Showcases
 add_action( 'init', 'create_showcase_tags_taxonomy', 0 ); 
 function create_showcase_tags_taxonomy() {
  
   $labels = array(
-    'name' => _x( 'Showcase Tags', 'taxonomy general name' ),
-    'singular_name' => _x( 'Showcase Tag', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Showcase Tags' ),
-    'popular_items' => __( 'Popular Showcase Tags' ),
-    'all_items' => __( 'All Showcase Tags' ),
-    'parent_item' => null,
-    'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Showcase Tag' ), 
-    'update_item' => __( 'Update Showcase Tag' ),
-    'add_new_item' => __( 'Add New Showcase Tag' ),
-    'new_item_name' => __( 'New Showcase Tag Name' ),
+    'name' 											 => _x( 'Showcase Tags', 'taxonomy general name' ),
+    'singular_name' 						 => _x( 'Showcase Tag', 'taxonomy singular name' ),
+    'search_items' 							 =>  __( 'Search Showcase Tags' ),
+    'popular_items' 						 => __( 'Popular Showcase Tags' ),
+    'all_items' 								 => __( 'All Showcase Tags' ),
+    'parent_item' 							 => null,
+    'parent_item_colon' 				 => null,
+    'edit_item' 								 => __( 'Edit Showcase Tag' ), 
+    'update_item' 							 => __( 'Update Showcase Tag' ),
+    'add_new_item' 							 => __( 'Add New Showcase Tag' ),
+    'new_item_name' 						 => __( 'New Showcase Tag Name' ),
     'separate_items_with_commas' => __( 'Separate tags with commas' ),
-    'add_or_remove_items' => __( 'Add or remove showcase tags' ),
-    'choose_from_most_used' => __( 'Choose from the most used showcase tags' ),
-		'menu_name' => __( 'Showcase Tags' ),
+    'add_or_remove_items' 			 => __( 'Add or remove showcase tags' ),
+    'choose_from_most_used' 		 => __( 'Choose from the most used showcase tags' ),
+		'menu_name'     						 => __( 'Showcase Tags' ),
   ); 
  
   register_taxonomy('showcase_tag','showcases',array(
-    'hierarchical' => false,
-    'labels' => $labels,
-    'show_ui' => true,
-		'show_in_rest' => true,
-    'show_admin_column' => true,
+    'hierarchical' 					=> false,
+    'labels' 								=> $labels,
+    'show_ui' 							=> true,
+		'show_in_rest' 					=> true,
+    'show_admin_column' 		=> true,
     'update_count_callback' => '_update_post_term_count',
-    'query_var' => true,
-		'rewrite' => array( 'slug' => 'showcase_tag' ),
+    'query_var' 						=> true,
+		'rewrite' 							=> array( 'slug' => 'showcase_tag' ),
 	));
 	
 }
@@ -451,27 +451,27 @@ add_action( 'init', 'create_showcase_categories_taxonomy', 0 );
 function create_showcase_categories_taxonomy() {
  
   $labels = array(
-    'name' => _x( 'Showcase Categories', 'taxonomy general name' ),
-    'singular_name' => _x( 'Showcase Category', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Showcase Categories' ),
-    'all_items' => __( 'All Showcase Categories' ),
-    'parent_item' => __( 'Parent Showcase Category' ),
+    'name' 							=> _x( 'Showcase Categories', 'taxonomy general name' ),
+    'singular_name' 		=> _x( 'Showcase Category', 'taxonomy singular name' ),
+    'search_items' 			=>  __( 'Search Showcase Categories' ),
+    'all_items' 				=> __( 'All Showcase Categories' ),
+    'parent_item' 			=> __( 'Parent Showcase Category' ),
     'parent_item_colon' => __( 'Parent Showcase Category:' ),
-    'edit_item' => __( 'Edit Showcase Category' ), 
-    'update_item' => __( 'Update Showcase Category' ),
-    'add_new_item' => __( 'Add New Showcase Category' ),
-    'new_item_name' => __( 'New Showcase Category Name' ),
-    'menu_name' => __( 'Showcase Categories' ),
+    'edit_item' 				=> __( 'Edit Showcase Category' ), 
+    'update_item' 			=> __( 'Update Showcase Category' ),
+    'add_new_item' 			=> __( 'Add New Showcase Category' ),
+    'new_item_name' 		=> __( 'New Showcase Category Name' ),
+    'menu_name' 				=> __( 'Showcase Categories' ),
   );    
  
   register_taxonomy('showcase_category',array('showcases'), array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_ui' => true,
+    'hierarchical' 			=> true,
+    'labels' 						=> $labels,
+    'show_ui' 					=> true,
     'show_admin_column' => true,
-		'show_in_rest' => true,
-    'query_var' => true,
-    'rewrite' => array( 'slug' => 'showcase_category' ),
+		'show_in_rest' 			=> true,
+    'query_var' 				=> true,
+    'rewrite' 					=> array( 'slug' => 'showcase_category' ),
   ));
  
 }
@@ -512,7 +512,7 @@ function custom_post_type_showcase() {
 					'has_archive'         => true,
 					'publicly_queryable'  => true,
 					'capability_type'     => 'post',
-					'show_in_rest' => true,
+					'show_in_rest' 				=> true,
 	 
 			);
 			register_post_type( 'showcases', $args );
