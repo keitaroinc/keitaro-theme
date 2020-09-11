@@ -37,7 +37,7 @@ function keitaro_theme_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	
+
 	// video support for the header IN FUNCTIONS PHP
 	add_theme_support( 'custom-header', array(
 		'video' => true,
@@ -66,7 +66,7 @@ function keitaro_theme_setup() {
 	$GLOBALS['content_width'] = 960;
 
 	// This theme uses wp_nav_menu() in two locations.
-	
+
 register_nav_menus(
 	array(
 		'main'             => __( 'Main Menu', 'keitaro' ),
@@ -146,21 +146,21 @@ register_nav_menus(
 			add_action( 'add_meta_boxes', 'custom_postimage_meta_box' );
 			add_action( 'save_post', 'custom_postimage_meta_box_save' );
 	}
-	
+
 	function custom_postimage_meta_box(){
-	
+
 			//on which post types should the box appear?
 			$post_types = array('post','page');
 			foreach($post_types as $pt){
 					add_meta_box('custom_postimage_meta_box',__( 'More Featured Images', 'keitaro'),'custom_postimage_meta_box_func',$pt,'side','low');
 			}
 	}
-	
+
 	function custom_postimage_meta_box_func($post){
-	
+
 			//an array with all the images (ba meta key). The same array has to be in custom_postimage_meta_box_save($post_id) as well.
 			$meta_keys = array('second_featured_image');
-	
+
 			foreach($meta_keys as $meta_key){
 					$image_meta_val=get_post_meta( $post->ID, $meta_key, true);
 					?>
@@ -173,9 +173,9 @@ register_nav_menus(
 			<?php } ?>
 			<script>
 			function custom_postimage_add_image(key){
-	
+
 					var $wrapper = jQuery('#'+key+'_wrapper');
-	
+
 					custom_postimage_uploader = wp.media.frames.file_frame = wp.media({
 							title: '<?php _e('select image','keitaro'); ?>',
 							button: {
@@ -184,7 +184,7 @@ register_nav_menus(
 							multiple: false
 					});
 					custom_postimage_uploader.on('select', function() {
-	
+
 							var attachment = custom_postimage_uploader.state().get('selection').first().toJSON();
 							var img_url = attachment['url'];
 							var img_id = attachment['id'];
@@ -203,7 +203,7 @@ register_nav_menus(
 					custom_postimage_uploader.open();
 					return false;
 			}
-	
+
 			function custom_postimage_remove_image(key){
 					var $wrapper = jQuery('#'+key+'_wrapper');
 					$wrapper.find('input#'+key).val('');
@@ -215,13 +215,13 @@ register_nav_menus(
 			<?php
 			wp_nonce_field( 'custom_postimage_meta_box', 'custom_postimage_meta_box_nonce' );
 	}
-	
+
 	function custom_postimage_meta_box_save($post_id){
-	
+
 			if ( ! current_user_can( 'edit_posts', $post_id ) ){ return 'not permitted'; }
-	
+
 			if (isset( $_POST['custom_postimage_meta_box_nonce'] ) && wp_verify_nonce($_POST['custom_postimage_meta_box_nonce'],'custom_postimage_meta_box' )){
-	
+
 					//same array as in custom_postimage_meta_box_func($post)
 					$meta_keys = array('second_featured_image');
 					foreach($meta_keys as $meta_key){
@@ -300,8 +300,85 @@ function open_graph_tags() {
 	endif;
 
 }
-
 add_action( 'wp_head', 'open_graph_tags' );
+
+/* Create Job Applications content type */
+
+function custom_post_type_job_applications() {
+
+	$labels = array(
+			'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
+			'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
+			'menu_name'           => __( 'Job Applications', 'keitaro' ),
+			'all_items'           => __( 'All Job Applications', 'keitaro' ),
+			'view_item'           => __( 'View Job Applications', 'keitaro' ),
+			'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
+			'add_new'             => __( 'Add New', 'keitaro' ),
+			'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
+			'update_item'         => __( 'Update Job Applications', 'keitaro' ),
+			'search_items'        => __( 'Search Job Applications', 'keitaro' ),
+			'not_found'           => __( 'Not Found', 'keitaro' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+	);
+
+	$args = array(
+			'label'               => __( 'Job Applications', 'keitaro' ),
+			'description'         => __( 'Custom post type for Job Applications ', 'keitaro' ),
+			'labels'              => $labels,
+			// Features this CPT supports in Post Editor
+			'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+			// CPT taxonomies.
+			'taxonomies'          => array( 'category', 'post_tag' ),
+			'public'              => true,
+			'has_archive'         => true,
+			'show_in_rest' 		  => true,
+
+	);
+
+	register_post_type( 'job-applications', $args );
+}
+
+add_action( 'init', 'custom_post_type_job_applications' );
+
+/* Create Showcases content type */
+
+function custom_post_type_showcases() {
+
+	$labels = array(
+			'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
+			'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
+			'menu_name'           => __( 'Showcases', 'keitaro' ),
+			'all_items'           => __( 'All Showcases', 'keitaro' ),
+			'view_item'           => __( 'View Showcase', 'keitaro' ),
+			'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
+			'add_new'             => __( 'Add New', 'keitaro' ),
+			'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
+			'update_item'         => __( 'Update Showcase', 'keitaro' ),
+			'search_items'        => __( 'Search Showcases', 'showcases' ),
+			'not_found'           => __( 'Not Found', 'keitaro' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+	);
+
+	$args = array(
+			'label'               => __( 'Showcases', 'keitaro' ),
+			'description'         => __( 'Custom post type for Showcases ', 'keitaro' ),
+			'labels'              => $labels,
+			// Features this CPT supports in Post Editor
+			'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+			// CPT taxonomies.
+			'taxonomies'          => array( 'category',  'post_tag' ),
+
+			'public'              => true,
+			'has_archive'         => true,
+			'show_in_rest' 		  => true,
+
+	);
+
+	register_post_type( 'showcases', $args );
+}
+
+add_action( 'init', 'custom_post_type_showcases');
+
 
 /* Set custom meta tag for Google Search Console */
 
@@ -410,7 +487,7 @@ function keitaro_theme_scripts() {
 
 	// Leaflet script
 	wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
-	
+
 	// Contact us elements JS minified
 	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
 
@@ -920,10 +997,10 @@ register_sidebar(
 
 	if ( class_exists( 'Keitaro_Team' ) ) :
 		register_widget( 'Keitaro_Team' );
-	endif;	 
+	endif;
 	if ( class_exists( 'Keitaro_Cards' ) ) :
 		register_widget( 'Keitaro_Cards' );
-	endif;	
+	endif;
 	if ( class_exists( 'Keitaro_Showcase' ) ) :
 		register_widget( 'Keitaro_Showcase' );
 	endif;
