@@ -37,7 +37,7 @@ function keitaro_theme_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	
+
 	// video support for the header IN FUNCTIONS PHP
 	add_theme_support( 'custom-header', array(
 		'video' => true,
@@ -66,7 +66,7 @@ function keitaro_theme_setup() {
 	$GLOBALS['content_width'] = 960;
 
 	// This theme uses wp_nav_menu() in two locations.
-	
+
 register_nav_menus(
 	array(
 		'main'             => __( 'Main Menu', 'keitaro' ),
@@ -146,21 +146,21 @@ register_nav_menus(
 			add_action( 'add_meta_boxes', 'custom_postimage_meta_box' );
 			add_action( 'save_post', 'custom_postimage_meta_box_save' );
 	}
-	
+
 	function custom_postimage_meta_box(){
-	
+
 			//on which post types should the box appear?
 			$post_types = array('post','page');
 			foreach($post_types as $pt){
 					add_meta_box('custom_postimage_meta_box',__( 'More Featured Images', 'keitaro'),'custom_postimage_meta_box_func',$pt,'side','low');
 			}
 	}
-	
+
 	function custom_postimage_meta_box_func($post){
-	
+
 			//an array with all the images (ba meta key). The same array has to be in custom_postimage_meta_box_save($post_id) as well.
 			$meta_keys = array('second_featured_image');
-	
+
 			foreach($meta_keys as $meta_key){
 					$image_meta_val=get_post_meta( $post->ID, $meta_key, true);
 					?>
@@ -173,9 +173,9 @@ register_nav_menus(
 			<?php } ?>
 			<script>
 			function custom_postimage_add_image(key){
-	
+
 					var $wrapper = jQuery('#'+key+'_wrapper');
-	
+
 					custom_postimage_uploader = wp.media.frames.file_frame = wp.media({
 							title: '<?php _e('select image','keitaro'); ?>',
 							button: {
@@ -184,7 +184,7 @@ register_nav_menus(
 							multiple: false
 					});
 					custom_postimage_uploader.on('select', function() {
-	
+
 							var attachment = custom_postimage_uploader.state().get('selection').first().toJSON();
 							var img_url = attachment['url'];
 							var img_id = attachment['id'];
@@ -203,7 +203,7 @@ register_nav_menus(
 					custom_postimage_uploader.open();
 					return false;
 			}
-	
+
 			function custom_postimage_remove_image(key){
 					var $wrapper = jQuery('#'+key+'_wrapper');
 					$wrapper.find('input#'+key).val('');
@@ -215,13 +215,13 @@ register_nav_menus(
 			<?php
 			wp_nonce_field( 'custom_postimage_meta_box', 'custom_postimage_meta_box_nonce' );
 	}
-	
+
 	function custom_postimage_meta_box_save($post_id){
-	
+
 			if ( ! current_user_can( 'edit_posts', $post_id ) ){ return 'not permitted'; }
-	
+
 			if (isset( $_POST['custom_postimage_meta_box_nonce'] ) && wp_verify_nonce($_POST['custom_postimage_meta_box_nonce'],'custom_postimage_meta_box' )){
-	
+
 					//same array as in custom_postimage_meta_box_func($post)
 					$meta_keys = array('second_featured_image');
 					foreach($meta_keys as $meta_key){
@@ -302,222 +302,82 @@ function open_graph_tags() {
 }
 add_action( 'wp_head', 'open_graph_tags' );
 
+/* Create Job Applications content type */
 
-// custom taxonomy category for Job Applications
-add_action( 'init', 'create_job_applications_categories_taxonomy', 0 );
-function create_job_applications_categories_taxonomy() {
- 
-  $labels = array(
-    'name' 							=> _x( 'Job Application Categories', 'taxonomy general name' ),
-    'singular_name'			=> _x( 'Job Application Category', 'taxonomy singular name' ),
-    'search_items' 			=>  __( 'Search Job Application Categories' ),
-    'all_items' 				=> __( 'All Job Application Categories' ),
-    'parent_item' 			=> __( 'Parent Job Application Category' ),
-    'parent_item_colon' => __( 'Parent Job Application Category:' ),
-    'edit_item' 				=> __( 'Edit Job Application Category' ), 
-    'update_item' 			=> __( 'Update Job Application Category' ),
-    'add_new_item' 			=> __( 'Add New Job Application Category' ),
-    'new_item_name' 		=> __( 'New Job Application Category Name' ),
-    'menu_name' 				=> __( 'Job Application Categories' ),
-  );    
- 
-  register_taxonomy('job_application_category',array('job_application'), array(
-    'hierarchical' 			=> true,
-    'labels' 						=> $labels,
-    'show_ui' 					=> true,
-    'show_admin_column' => true,
-		'show_in_rest' 			=> true,
-    'query_var' 				=> true,
-    'rewrite' 					=> array( 'slug' => 'job_application_category' ),
-  ));
- 
+function custom_post_type_job_applications() {
+
+	$labels = array(
+			'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
+			'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
+			'menu_name'           => __( 'Job Applications', 'keitaro' ),
+			'all_items'           => __( 'All Job Applications', 'keitaro' ),
+			'view_item'           => __( 'View Job Applications', 'keitaro' ),
+			'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
+			'add_new'             => __( 'Add New', 'keitaro' ),
+			'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
+			'update_item'         => __( 'Update Job Applications', 'keitaro' ),
+			'search_items'        => __( 'Search Job Applications', 'keitaro' ),
+			'not_found'           => __( 'Not Found', 'keitaro' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+	);
+
+	$args = array(
+			'label'               => __( 'Job Applications', 'keitaro' ),
+			'description'         => __( 'Custom post type for Job Applications ', 'keitaro' ),
+			'labels'              => $labels,
+			// Features this CPT supports in Post Editor
+			'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+			// CPT taxonomies.
+			'taxonomies'          => array( 'category', 'post_tag' ),
+			'public'              => true,
+			'has_archive'         => true,
+			'show_in_rest' 		  => true,
+
+	);
+
+	register_post_type( 'job-applications', $args );
 }
 
-// custom taxonomy tags for Job Application
-add_action( 'init', 'create_job_application_tags_taxonomy', 0 );
-function create_job_application_tags_taxonomy() {
- 
-  $labels = array(
-    'name' 										   => _x( 'Job Application Tags', 'taxonomy general name' ),
-    'singular_name' 						 => _x( 'Job Application Tag', 'taxonomy singular name' ),
-    'search_items' 							 =>  __( 'Search Job Application Tags' ),
-    'popular_items' 						 => __( 'Popular Job Application Tags' ),
-    'all_items' 								 => __( 'All Job Application Tags' ),
-    'parent_item' 							 => null,
-    'parent_item_colon' 				 => null,
-    'edit_item' 								 => __( 'Edit ShowJob Applicationcase Tag' ), 
-    'update_item' 							 => __( 'Update Job Application Tag' ),
-    'add_new_item' 							 => __( 'Add New Job Application Tag' ),
-    'new_item_name' 						 => __( 'New Job Application Tag Name' ),
-    'separate_items_with_commas' => __( 'Separate tags with commas' ),
-    'add_or_remove_items' 			 => __( 'Add or remove job application tags' ),
-    'choose_from_most_used' 		 => __( 'Choose from the most used job application tags' ),
-		'menu_name' 								 => __( 'Job Application Tags' ),
-  ); 
- 
-  register_taxonomy('job_application_tag','job_application',array(
-    'hierarchical' 					=> false,
-    'labels' 								=> $labels,
-    'show_ui' 							=> true,
-		'show_in_rest' 					=> true,
-    'show_admin_column' 		=> true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var' 						=> true,
-		'rewrite' 							=> array( 'slug' => 'job_application_tag' ),
-	));
-	
+add_action( 'init', 'custom_post_type_job_applications' );
+
+/* Create Showcases content type */
+
+function custom_post_type_showcases() {
+
+	$labels = array(
+			'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
+			'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
+			'menu_name'           => __( 'Showcases', 'keitaro' ),
+			'all_items'           => __( 'All Showcases', 'keitaro' ),
+			'view_item'           => __( 'View Showcase', 'keitaro' ),
+			'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
+			'add_new'             => __( 'Add New', 'keitaro' ),
+			'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
+			'update_item'         => __( 'Update Showcase', 'keitaro' ),
+			'search_items'        => __( 'Search Showcases', 'showcases' ),
+			'not_found'           => __( 'Not Found', 'keitaro' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+	);
+
+	$args = array(
+			'label'               => __( 'Showcases', 'keitaro' ),
+			'description'         => __( 'Custom post type for Showcases ', 'keitaro' ),
+			'labels'              => $labels,
+			// Features this CPT supports in Post Editor
+			'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+			// CPT taxonomies.
+			'taxonomies'          => array( 'category',  'post_tag' ),
+
+			'public'              => true,
+			'has_archive'         => true,
+			'show_in_rest' 		  => true,
+
+	);
+
+	register_post_type( 'showcases', $args );
 }
 
-// custom post type for Job Application
-function custom_post_type_job_application() {
- 
-			$labels = array(
-					'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
-					'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
-					'menu_name'           => __( 'Job Applications', 'keitaro' ),
-					'all_items'           => __( 'All Job Applications', 'keitaro' ),
-					'view_item'           => __( 'View Job Applications', 'keitaro' ),
-					'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
-					'add_new'             => __( 'Add New', 'keitaro' ),
-					'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
-					'update_item'         => __( 'Update Job Applications', 'keitaro' ),
-					'search_items'        => __( 'Search Job Applications', 'keitaro' ),
-					'not_found'           => __( 'Not Found', 'keitaro' ),
-					'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
-			);
-			 
-			$args = array(
-					'label'               => __( 'Job Applications', 'keitaro' ),
-					'description'         => __( ' Custom post type for Job Applications ', 'keitaro' ),
-					'labels'              => $labels,
-					// Features this CPT supports in Post Editor
-					'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields','post-formats' ),
-					// CPT taxonomies. 
-					'taxonomies'          => array( 'job_application_category',  'job_application_tag' ),
-				
-					'hierarchical'        => false,
-					'public'              => true,
-					'show_ui'             => true,
-					'show_in_menu'        => true,
-					'show_in_nav_menus'   => true,
-					'show_in_admin_bar'   => true,
-					'has_archive'         => true,
-					'publicly_queryable'  => true,
-					'capability_type'     => 'post',
-					'show_in_rest' 				=> true,
-	 
-			);
-			register_post_type( 'job_application', $args );
-	}
-add_action( 'init', 'custom_post_type_job_application', 0 );
-
-// custom taxonomy tag for Showcases
-add_action( 'init', 'create_showcase_tags_taxonomy', 0 ); 
-function create_showcase_tags_taxonomy() {
- 
-  $labels = array(
-    'name' 											 => _x( 'Showcase Tags', 'taxonomy general name' ),
-    'singular_name' 						 => _x( 'Showcase Tag', 'taxonomy singular name' ),
-    'search_items' 							 =>  __( 'Search Showcase Tags' ),
-    'popular_items' 						 => __( 'Popular Showcase Tags' ),
-    'all_items' 								 => __( 'All Showcase Tags' ),
-    'parent_item' 							 => null,
-    'parent_item_colon' 				 => null,
-    'edit_item' 								 => __( 'Edit Showcase Tag' ), 
-    'update_item' 							 => __( 'Update Showcase Tag' ),
-    'add_new_item' 							 => __( 'Add New Showcase Tag' ),
-    'new_item_name' 						 => __( 'New Showcase Tag Name' ),
-    'separate_items_with_commas' => __( 'Separate tags with commas' ),
-    'add_or_remove_items' 			 => __( 'Add or remove showcase tags' ),
-    'choose_from_most_used' 		 => __( 'Choose from the most used showcase tags' ),
-		'menu_name'     						 => __( 'Showcase Tags' ),
-  ); 
- 
-  register_taxonomy('showcase_tag','showcases',array(
-    'hierarchical' 					=> false,
-    'labels' 								=> $labels,
-    'show_ui' 							=> true,
-		'show_in_rest' 					=> true,
-    'show_admin_column' 		=> true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var' 						=> true,
-		'rewrite' 							=> array( 'slug' => 'showcase_tag' ),
-	));
-	
-}
-
-// custom taxonomy category for Showcases
-add_action( 'init', 'create_showcase_categories_taxonomy', 0 ); 
-function create_showcase_categories_taxonomy() {
- 
-  $labels = array(
-    'name' 							=> _x( 'Showcase Categories', 'taxonomy general name' ),
-    'singular_name' 		=> _x( 'Showcase Category', 'taxonomy singular name' ),
-    'search_items' 			=>  __( 'Search Showcase Categories' ),
-    'all_items' 				=> __( 'All Showcase Categories' ),
-    'parent_item' 			=> __( 'Parent Showcase Category' ),
-    'parent_item_colon' => __( 'Parent Showcase Category:' ),
-    'edit_item' 				=> __( 'Edit Showcase Category' ), 
-    'update_item' 			=> __( 'Update Showcase Category' ),
-    'add_new_item' 			=> __( 'Add New Showcase Category' ),
-    'new_item_name' 		=> __( 'New Showcase Category Name' ),
-    'menu_name' 				=> __( 'Showcase Categories' ),
-  );    
- 
-  register_taxonomy('showcase_category',array('showcases'), array(
-    'hierarchical' 			=> true,
-    'labels' 						=> $labels,
-    'show_ui' 					=> true,
-    'show_admin_column' => true,
-		'show_in_rest' 			=> true,
-    'query_var' 				=> true,
-    'rewrite' 					=> array( 'slug' => 'showcase_category' ),
-  ));
- 
-}
-
-// custom post type for Job Application
-function custom_post_type_showcase() {
- 
-			$labels = array(
-					'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
-					'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
-					'menu_name'           => __( 'Showcases', 'keitaro' ),
-					'all_items'           => __( 'All Showcases', 'keitaro' ),
-					'view_item'           => __( 'View Showcase', 'keitaro' ),
-					'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
-					'add_new'             => __( 'Add New', 'keitaro' ),
-					'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
-					'update_item'         => __( 'Update Showcase', 'keitaro' ),
-					'search_items'        => __( 'Search Showcases', 'showcases' ),
-					'not_found'           => __( 'Not Found', 'keitaro' ),
-					'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
-			);
-
-			$args = array(
-					'label'               => __( 'Showcases', 'keitaro' ),
-					'description'         => __( ' Custom post type for Showcases ', 'keitaro' ),
-					'labels'              => $labels,
-					// Features this CPT supports in Post Editor
-					'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields','post-formats' ),
-					// CPT taxonomies. 
-					'taxonomies'          => array( 'showcase_category',  'showcase_tag' ),
-					
-					'hierarchical'        => false,
-					'public'              => true,
-					'show_ui'             => true,
-					'show_in_menu'        => true,
-					'show_in_nav_menus'   => true,
-					'show_in_admin_bar'   => true,
-					'has_archive'         => true,
-					'publicly_queryable'  => true,
-					'capability_type'     => 'post',
-					'show_in_rest' 				=> true,
-	 
-			);
-			register_post_type( 'showcases', $args );
-	} 
-	add_action( 'init', 'custom_post_type_showcase', 0 );
+add_action( 'init', 'custom_post_type_showcases');
 
 
 /* Set custom meta tag for Google Search Console */
@@ -627,7 +487,7 @@ function keitaro_theme_scripts() {
 
 	// Leaflet script
 	wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
-	
+
 	// Contact us elements JS minified
 	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
 
@@ -1137,10 +997,10 @@ register_sidebar(
 
 	if ( class_exists( 'Keitaro_Team' ) ) :
 		register_widget( 'Keitaro_Team' );
-	endif;	 
+	endif;
 	if ( class_exists( 'Keitaro_Cards' ) ) :
 		register_widget( 'Keitaro_Cards' );
-	endif;	
+	endif;
 	if ( class_exists( 'Keitaro_Showcase' ) ) :
 		register_widget( 'Keitaro_Showcase' );
 	endif;
