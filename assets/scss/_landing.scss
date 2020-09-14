@@ -92,7 +92,21 @@
 	.wp-block-media-text {
 
 		align-items: stretch;
-		margin-bottom: $spacer*13;
+		margin-bottom: $spacer*6;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			content: '';
+			display: block;
+			width: $box-arrow-width;
+			height: $box-arrow-width;
+			border-style: solid;
+			border-width: $box-arrow-border-width;
+			border-color: transparent $primary $primary transparent;
+			bottom: -$spacer;
+			right: $spacer*4;
+		}
 
 		@include media-breakpoint-down(lg) {
 			.wp-block-media-text__media {
@@ -103,19 +117,19 @@
 		&.has-media-on-the-right {
 			margin-right: 0;
 
-			.wp-block-image {
-				margin-left: 0;
-				margin-right: -$spacer*4.725;
+			>* {
+				padding-right: 0;
+			}
+
+			&:after {
+				border-color: transparent transparent $primary $primary;
+				left: $spacer*4;
+				right: auto;
 			}
 
 			.wp-block-media-text__content {
 				margin-left: $spacer*5;
-
-				&:after {
-					border-color: transparent transparent $primary $primary;
-					left: -$box-arrow-border-width;
-					right: auto;
-				}
+				margin-right: 0;
 			}
 
 			.wp-block-media-text__media {
@@ -124,8 +138,8 @@
 
 			.wp-block-image {
 				display: block;
-				margin-left: -$spacer*4.725;
 			}
+
 		}
 
 		.wp-block-group__inner-container {
@@ -133,32 +147,24 @@
 		}
 
 		.wp-block-media-text__content {
-			position: relative;
 			align-self: stretch;
 			color: $keitaro-gray-dark;
 			font-size: $font-size-lg;
 			background-color: $white;
-			margin-top: $spacer*5;
 			margin-right: $spacer*5;
 			padding-right: 0;
+			padding-left: 0;
 			height: 100%;
 
-			&:after {
-				position: absolute;
-				content: '';
-				display: block;
-				width: $box-arrow-width;
-				height: $box-arrow-width;
-				border-style: solid;
-				border-width: $box-arrow-border-width;
-				border-color: transparent $primary $primary transparent;
-				bottom: -$box-arrow-border-width;
-				right: -$box-arrow-border-width;
+			>* {
+				padding-left: $spacer*5;
+				padding-right: $spacer*5;
 			}
 		}
 
 		.wp-block-media-text__media {
 			box-shadow: $spacer*5 $spacer*5 0 0 $white;
+			margin-bottom: $spacer*5;
 
 			img {
 				object-fit: cover;
@@ -178,14 +184,11 @@
 		.wp-block-image {
 			background-color: $keitaro-gray-lightest;
 			margin-bottom: $spacer*2;
-			padding-left: $spacer*5;
-			padding-bottom: $spacer*3;
-			margin-left: -$spacer*4.725;
-			margin-top: -$spacer*2;
+			padding: $spacer*3 $spacer*5;
 
 			img {
 				width: auto;
-				max-height: $spacer*4;
+				max-height: $spacer*5;
 			}
 		}
 
@@ -199,7 +202,7 @@
 
 	.wp-block-latest-posts {
 
-		max-width: 70%;
+		max-width: 75%;
 		margin: auto;
 
 		&.is-grid {
