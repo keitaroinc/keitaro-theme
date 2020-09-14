@@ -105,7 +105,7 @@
 			border-width: $box-arrow-border-width;
 			border-color: transparent $primary $primary transparent;
 			bottom: -$spacer;
-			right: $spacer*4;
+			right: $spacer*5;
 		}
 
 		@include media-breakpoint-down(lg) {
@@ -123,12 +123,12 @@
 
 			&:after {
 				border-color: transparent transparent $primary $primary;
-				left: $spacer*4;
+				left: $spacer*5;
 				right: auto;
 			}
 
 			.wp-block-media-text__content {
-				margin-left: $spacer*5;
+				margin-left: $spacer*6;
 				margin-right: 0;
 			}
 
@@ -151,7 +151,7 @@
 			color: $keitaro-gray-dark;
 			font-size: $font-size-lg;
 			background-color: $white;
-			margin-right: $spacer*5;
+			margin-right: $spacer*6;
 			padding-right: 0;
 			padding-left: 0;
 			height: 100%;
@@ -163,6 +163,8 @@
 		}
 
 		.wp-block-media-text__media {
+			display: flex;
+			flex-direction: column;
 			box-shadow: $spacer*5 $spacer*5 0 0 $white;
 			margin-bottom: $spacer*5;
 
@@ -184,7 +186,7 @@
 		.wp-block-image {
 			background-color: $keitaro-gray-lightest;
 			margin-bottom: $spacer*2;
-			padding: $spacer*3 $spacer*5;
+			padding: $spacer*4 $spacer*5;
 
 			img {
 				width: auto;
@@ -225,34 +227,45 @@
 			}
 
 			.wp-post-image {
+				min-height: 100%;
+				min-width: 100%;
 				object-fit: cover;
+				max-height: $spacer*25;
 			}
 
 			.wp-block-latest-posts__post-author,
 			.wp-block-latest-posts__post-date {
 				margin: $spacer 0;
-				font-size: inherit;
+				font-size: $font-size-sm;
+				grid-column: 2 / auto;
 			}
 
 			&:first-child {
 
 				flex-basis: 100%;
-				overflow: auto;
+				display: grid;
+				grid-template-columns: minmax(66%, 1fr);
+				gap: 0 $spacer*2;
+				margin-bottom: 0;
 
 				.wp-block-latest-posts__featured-image {
-					max-width: 66%;
-					margin-right: $spacer*2;
-					float: left;
-					display: flex;
-					flex-direction: column;
+					grid-row: 1 / span 10;
+					grid-column: 1 / 2;
+					// max-width: 66%;
+					// margin-right: $spacer*2;
+					// float: left;
+					// display: flex;
+					// flex-direction: column;
 				}
 
 				a {
-					display: inline;
+					grid-column: 2 / auto;
+					margin-bottom: 0;
 					@extend .h2;
 				}
 
 				.wp-block-latest-posts__post-excerpt {
+					grid-column: 2 / auto;
 					color: $keitaro-gray-dark;
 				}
 			}
@@ -263,13 +276,13 @@
 				flex-grow: 1;
 
 				.wp-block-latest-posts__featured-image {
-					margin-bottom: $spacer;
+					margin-bottom: $spacer/2;
 					max-height: $spacer*10;
 					overflow: hidden;
 				}
 
 				a {
-					@extend .h3;
+					@extend .h4;
 					margin-bottom: 0;
 				}
 
@@ -278,7 +291,6 @@
 				}
 			}
 		}
-
 	}
 
 
