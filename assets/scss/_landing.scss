@@ -237,7 +237,7 @@
 				overflow: auto;
 
 				.wp-block-latest-posts__featured-image {
-					max-width: 63%;
+					max-width: 66%;
 					margin-right: $spacer*2;
 					float: left;
 					display: flex;
@@ -255,6 +255,9 @@
 			}
 
 			&:not(:first-child) {
+
+				flex-basis: 33%;
+				flex-grow: 1;
 
 				.wp-block-latest-posts__featured-image {
 					margin-bottom: $spacer;
