@@ -58,5 +58,5 @@
 
 		/* Show Hero section only on the front page */
 if ( is_front_page() ) :
-	get_template_part( SNIPPETS_DIR . '/header/hero' );
+	//get_template_part( SNIPPETS_DIR . '/header/hero' );
 		endif;
