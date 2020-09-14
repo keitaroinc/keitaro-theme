@@ -68,6 +68,7 @@
 // @import '../../node_modules/@fortawesome/fontawesome-free/scss/brands';
 
 /* Theme assets */
+@import "custom-variables";
 @import "flex";
 @import "mixins";
 @import "header";
@@ -80,7 +81,7 @@
 @import "locations";
 @import "tables";
 @import "forms";
-@import "homepage";
+@import "landing";
 @import "buttons";
 @import "careers";
 @import "images";
