@@ -40,21 +40,21 @@
 			</div>
 		</div>
 
-		<?php if ( ! is_front_page() ) : ?>
+		<?php /*if ( ! is_front_page() ) : ?>
 		<div class="container-fluid bg-white">
 			<div class="row no-gutters align-items-center">
-				<div class="col-md-8 col-lg-7 offset-lg-1">
+				<div class="col-md-8">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/breadcrumb' ); ?>
 				</div>
 				<?php if ( have_posts() && ! is_page() && !is_home() ) : ?>
-					<div class="col-md-4 col-lg-3">
-						<?php //get_search_form(); ?>
+					<div class="col-md-4">
+						<?php get_search_form(); ?>
 					</div>
 				<?php endif; ?>
 			</div>
 		</div>
 		<?php
-		endif;
+		endif; */
 
 		/* Show Hero section only on the front page */
 if ( is_front_page() ) :
