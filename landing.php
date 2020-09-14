@@ -11,11 +11,6 @@
 
 get_header();
 
-?>
+the_content();
 
-<div class="content-wrapper">
-  <?php the_content();?>
-</div>
-
-<?php
 get_footer();
