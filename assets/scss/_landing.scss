@@ -1,6 +1,43 @@
 .page-template-landing {
 
+	// Group block
+
+	.wp-block-group {
+
+		.wp-block-group__inner-container {
+			padding-top: $spacer*8;
+
+			&:not(:last-child) {
+				padding-bottom: $spacer*8;
+			}
+		}
+
+		&:nth-child(even) {
+			background-color: $white;
+		}
+
+		.has-huge-font-size {
+			@extend .text-uppercase;
+			color: $keitaro-gray-dark;
+			margin-bottom: $spacer*5;
+
+			&:after {
+				content: '';
+				display: block;
+				height: $spacer/6;
+				width: $spacer*3;
+				margin: $spacer auto;
+				background-color: $primary;
+			}
+		}
+	}
+
+
+	// Cover block
+
 	.wp-block-cover {
+
+		min-height: 700px;
 
 		.has-huge-font-size {
 			font-size: $display3-size;
@@ -19,100 +56,228 @@
 		}
 	}
 
-	// blocks
-	.wp-block-media-text {
-		margin-top: 5rem;
-		margin-bottom: 2rem;
-		height: 100%;
-		position: relative;
 
-		.wp-block-media-text__content {
-			color: $keitaro-gray-dark;
-			font-size: 1.3rem;
-			display: flex;
-			flex-direction: column;
-			height: 100%;
+	// Buttons block
 
-			a {
-				padding: 0.7rem 1.3rem;
-				border: 2px solid $keitaro-gray-dark;
-				text-decoration: none;
-				background-color: $keitaro-white;
-				color: $keitaro-gray-dark;
-				text-transform: uppercase;
-				font-weight: 600;
-				font-size: 1rem;
+	.wp-block-buttons {
 
-				&:hover {
-					background-color: $keitaro-green-gray-l-35;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+
+		.wp-block-button {
+			.wp-block-button__link {
+				@extend .btn;
+				@extend .btn-outline-dark;
+			}
+
+			&.is-style-fill {
+				.wp-block-button__link {
+					@extend .btn-primary;
 				}
 			}
 
-			img {
-				margin-bottom: 2rem;
-				width: 70%;
+			&.is-style-outline {
+				.wp-block-button__link {
+					@extend .btn-outline-primary;
+				}
 			}
 		}
 	}
 
 
-	// recent posts
-	.wp-block-latest-posts {
-		display: flex;
-		flex-wrap: wrap;
-		width: 75%;
-		margin: auto;
-		margin-top: 3rem;
-		margin-bottom: 3rem;
+	// Media Text block
 
-		.wp-block-latest-posts__featured-image {
-			margin-bottom: 1rem;
-			;
+	.wp-block-media-text {
+
+		align-items: stretch;
+		margin-bottom: $spacer*13;
+
+		@include media-breakpoint-down(lg) {
+			.wp-block-media-text__media {
+				box-shadow: none;
+			}
+		}
+
+		&.has-media-on-the-right {
+			margin-right: 0;
+
+			.wp-block-image {
+				margin-left: 0;
+				margin-right: -$spacer*4.725;
+			}
+
+			.wp-block-media-text__content {
+				margin-left: $spacer*5;
+
+				&:after {
+					border-color: transparent transparent $primary $primary;
+					left: -$box-arrow-border-width;
+					right: auto;
+				}
+			}
+
+			.wp-block-media-text__media {
+				box-shadow: -$spacer*5 $spacer*5 0 0 $white;
+			}
+
+			.wp-block-image {
+				display: block;
+				margin-left: -$spacer*4.725;
+			}
+		}
+
+		.wp-block-group__inner-container {
+			padding-right: 0;
+		}
+
+		.wp-block-media-text__content {
+			position: relative;
+			align-self: stretch;
+			color: $keitaro-gray-dark;
+			font-size: $font-size-lg;
+			background-color: $white;
+			margin-top: $spacer*5;
+			margin-right: $spacer*5;
+			padding-right: 0;
+			height: 100%;
+
+			&:after {
+				position: absolute;
+				content: '';
+				display: block;
+				width: $box-arrow-width;
+				height: $box-arrow-width;
+				border-style: solid;
+				border-width: $box-arrow-border-width;
+				border-color: transparent $primary $primary transparent;
+				bottom: -$box-arrow-border-width;
+				right: -$box-arrow-border-width;
+			}
+		}
+
+		.wp-block-media-text__media {
+			box-shadow: $spacer*5 $spacer*5 0 0 $white;
+
+			img {
+				object-fit: cover;
+			}
+		}
+
+		p {
+			&:first-of-type {
+				padding-top: $spacer*2;
+			}
+
+			margin-bottom: 0;
+			padding-bottom: $spacer*2;
+			padding-right: $spacer*5;
+		}
+
+		.wp-block-image {
+			background-color: $keitaro-gray-lightest;
+			margin-bottom: $spacer*2;
+			padding-left: $spacer*5;
+			padding-bottom: $spacer*3;
+			margin-left: -$spacer*4.725;
+			margin-top: -$spacer*2;
+
+			img {
+				width: auto;
+				max-height: $spacer*4;
+			}
+		}
+
+		.wp-block-buttons {
+			justify-content: initial;
+		}
+	}
+
+
+	// Latest Posts block
+
+	.wp-block-latest-posts {
+
+		max-width: 70%;
+		margin: auto;
+
+		&.is-grid {
+
+			li {
+				margin-right: 0;
+			}
 		}
 
 		li {
-			padding: 1rem;
+			padding: $spacer;
 
 			a {
-				color: $keitaro-gray-dark;
-				text-decoration: none;
+				@extend .btn;
+				@extend .btn-link;
+				white-space: normal;
+				text-align: initial;
+				padding-left: 0;
+				letter-spacing: initial;
+			}
 
-				&:hover {
-					color: $keitaro-green-dark;
+			.wp-post-image {
+				object-fit: cover;
+			}
+
+			.wp-block-latest-posts__post-author,
+			.wp-block-latest-posts__post-date {
+				margin: $spacer 0;
+				font-size: inherit;
+			}
+
+			&:first-child {
+
+				flex-basis: 100%;
+				overflow: auto;
+
+				.wp-block-latest-posts__featured-image {
+					max-width: 63%;
+					margin-right: $spacer*2;
+					float: left;
+					display: flex;
+					flex-direction: column;
+				}
+
+				a {
+					display: inline;
+					@extend .h2;
+				}
+
+				.wp-block-latest-posts__post-excerpt {
+					color: $keitaro-gray-dark;
 				}
 			}
-		}
 
-		li:first-of-type {
-			width: 100%;
+			&:not(:first-child) {
 
-			.wp-block-latest-posts__post-excerpt {
-				color: $keitaro-gray-dark;
-			}
+				.wp-block-latest-posts__featured-image {
+					margin-bottom: $spacer;
+					max-height: $spacer*10;
+					overflow: hidden;
+				}
 
-			a {
-				font-size: 2rem;
-				font-weight: 600;
-			}
-		}
+				a {
+					@extend .h3;
+					margin-bottom: 0;
+				}
 
-		li:not(:first-of-type) {
-			flex: 1;
-
-			a {
-				font-size: 1.7rem;
-				font-weight: 600;
-			}
-
-			.wp-block-latest-posts__post-excerpt {
-				display: none;
+				.wp-block-latest-posts__post-excerpt {
+					display: none;
+				}
 			}
 		}
 
 	}
 
 
-	// services cards
+	// Service Card block
+
 	.wp-block-group:last-child {
 		margin-top: 3rem;
 		padding: 5rem 0;
@@ -124,6 +289,9 @@
 			margin-bottom: 3rem;
 		}
 	}
+
+
+	// Columns block
 
 	.wp-block-columns {
 		width: 80%;
