@@ -6,7 +6,7 @@
 
 		.wp-block-group__inner-container {
 			padding-top: $spacer*8;
-			padding-bottom: $spacer*8;
+			padding-bottom: $spacer*5;
 		}
 
 		&:nth-child(odd) {
@@ -88,47 +88,49 @@
 
 	.wp-block-media-text {
 
-		align-items: stretch;
-		margin-bottom: $spacer*6;
 		position: relative;
+		margin-bottom: $spacer*6;
 
 		&:after {
-			position: absolute;
 			content: '';
+			width: $spacer*5;
+			height: $spacer*5;
+			background-color: $keitaro-gray-lightest;
 			display: block;
-			width: $box-arrow-width;
-			height: $box-arrow-width;
-			border-style: solid;
-			border-width: $box-arrow-border-width;
-			border-color: transparent $primary $primary transparent;
-			bottom: -$spacer;
-			right: $spacer*5;
+			position: absolute;
+			bottom: 0;
+			left: 0;
 		}
 
 		&.has-media-on-the-right {
 			margin-right: 0;
 
-			>* {
-				padding-right: 0;
+			&:after {
+				left: auto;
+				right: 0;
 			}
 
-			&:after {
-				border-color: transparent transparent $primary $primary;
-				left: $spacer*5;
-				right: auto;
+			>* {
+				padding-right: 0;
 			}
 
 			.wp-block-media-text__content {
 				margin-left: $spacer*6;
 				margin-right: 0;
-			}
 
-			.wp-block-media-text__media {
 				&:after {
-					left: auto;
-					right: 0;
+					border-color: transparent transparent $primary $primary;
+					left: -$spacer;
+					right: auto;
 				}
 			}
+
+			// .wp-block-media-text__media {
+			// 	&:after {
+			// 		left: 0;
+			// 		right: 0;
+			// 	}
+			// }
 
 			.wp-block-image {
 				display: block;
@@ -140,7 +142,8 @@
 		}
 
 		.wp-block-media-text__content {
-			align-self: stretch;
+			align-self: flex-start;
+			position: relative;
 			color: $keitaro-gray-dark;
 			font-size: $font-size-lg;
 			background-color: $white;
@@ -148,6 +151,19 @@
 			padding-right: 0;
 			padding-left: 0;
 			min-height: 100%;
+
+			&:after {
+				position: absolute;
+				content: '';
+				display: block;
+				width: $box-arrow-width;
+				height: $box-arrow-width;
+				border-style: solid;
+				border-width: $box-arrow-border-width;
+				border-color: transparent $primary $primary transparent;
+				bottom: -$spacer;
+				right: -$spacer;
+			}
 
 			>* {
 				padding-left: $spacer*5;
@@ -159,22 +175,13 @@
 			display: flex;
 			flex-direction: column;
 			position: relative;
-			// margin-right: $spacer*5;
-
-			&:after {
-				content: '';
-				width: $spacer*5;
-				height: $spacer*5;
-				background-color: $keitaro-gray-lightest;
-				display: block;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-			}
+			max-height: 100%;
+			overflow: auto;
+			align-self: flex-start;
 
 			img {
-				object-fit: scale-down;
-				height: auto;
+				object-fit: cover;
+				max-height: 50%;
 				background-color: $white;
 				border-bottom: $spacer*5 solid $white;
 			}
