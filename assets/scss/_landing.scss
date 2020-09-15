@@ -4,12 +4,24 @@
 
 	.wp-block-group {
 
-		.wp-block-group__inner-container {
-			padding-top: $spacer*8;
-			padding-bottom: $spacer*5;
+		&.has-background {
+			background: linear-gradient($primary 70%, $keitaro-gray-lightest 70% 100%);
+
+			.wp-block-group__inner-container {
+				padding-bottom: 0;
+			}
+
+			.wp-block-columns {
+				margin-bottom: 0;
+			}
 		}
 
-		&:nth-child(odd) {
+		.wp-block-group__inner-container {
+			padding-top: $spacer*8;
+			padding-bottom: $spacer*8;
+		}
+
+		&:nth-child(even) {
 			background-color: $keitaro-gray-lightest;
 		}
 
@@ -17,6 +29,14 @@
 			@extend .text-uppercase;
 			color: $keitaro-gray-dark;
 			margin-bottom: $spacer*5;
+
+			&.has-white-color {
+				color: $white;
+
+				&:after {
+					background-color: $success;
+				}
+			}
 
 			&:after {
 				content: '';
@@ -89,7 +109,10 @@
 	.wp-block-media-text {
 
 		position: relative;
-		margin-bottom: $spacer*6;
+
+		&:not(:last-child) {
+			margin-bottom: $spacer*8;
+		}
 
 		&:after {
 			content: '';
@@ -326,70 +349,49 @@
 	// Columns block
 
 	.wp-block-columns {
-		width: 80%;
-		margin: auto;
+
+		justify-content: center;
 
 		.wp-block-column {
+			flex: 0 1 20%;
 			display: flex;
-			justify-content: stretch;
-		}
+			flex-direction: column;
+			background-color: $keitaro-white;
+			padding: $spacer*2;
+			color: $keitaro-gray-dark;
+			position: relative;
+			transition: background-color .2s linear;
 
-		.wp-block-columns {
-			width: 100%;
-			margin-bottom: 0;
-			margin-top: 0;
+			&:hover {
+				box-shadow: 0 $spacer/2 $spacer*2 0 rgba(0, 0, 0, 0.1);
+			}
 
-			.wp-block-column {
-				display: flex;
-				flex-direction: column;
-				background-color: $keitaro-white;
-				padding: 2rem;
-				color: $keitaro-gray-dark;
-				box-shadow: 4px 6px 40px 0 rgba(153, 147, 139, 0.1);
-				position: relative;
+			.wp-block-buttons {
+				margin-top: auto;
+				justify-content: flex-start;
+			}
 
-				&:hover {
-					background-color: $success;
-					color: $keitaro-white;
-					transition: background-color 300ms linear;
+			.has-large-font-size {
+				text-transform: uppercase;
+				font-size: $h3-font-size;
+			}
 
-					a::after {
-						color: $keitaro-white;
-					}
+			a {
+				@extend .stretched-link;
+			}
 
-				}
-
-				a {
-					height: 100%;
-					background-color: transparent;
-					position: absolute;
-					color: transparent;
-					width: 100%;
-					left: 0;
-					top: 0;
-
-					&:after {
-						position: absolute;
-						bottom: 1rem;
-						left: 1.5rem;
-						color: $success;
-						font-family: "Font Awesome 5 Free";
-						content: "\f061";
-						font-size: 1.4rem;
-						display: inline-block;
-						padding-right: 1.2rem;
-						vertical-align: middle;
-						font-weight: 900;
-
-					}
-				}
+			.wp-block-image {
+				max-width: 100px;
+				@extend .rounded-circle;
+				@extend .bg-light;
+				padding: $spacer/2 $spacer;
 
 				img {
-					height: 100px;
+					object-fit: contain;
+					width: auto;
+					max-height: 100px;
 				}
 			}
 		}
-
 	}
-
 }
