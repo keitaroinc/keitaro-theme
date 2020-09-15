@@ -155,21 +155,16 @@
 			}
 		}
 
-		&.is-image-fill {
-			.wp-block-media-text__media {
-				min-height: $spacer*30;
-			}
-		}
-
 		.wp-block-media-text__media {
 			display: flex;
 			flex-direction: column;
 			position: relative;
+			// margin-right: $spacer*5;
 
 			&:after {
 				content: '';
-				width: $spacer*6;
-				height: $spacer*6;
+				width: $spacer*5;
+				height: $spacer*5;
 				background-color: $keitaro-gray-lightest;
 				display: block;
 				position: absolute;
@@ -181,7 +176,7 @@
 				object-fit: scale-down;
 				height: auto;
 				background-color: $white;
-				border-bottom: $spacer*6 solid $white;
+				border-bottom: $spacer*5 solid $white;
 			}
 		}
 
