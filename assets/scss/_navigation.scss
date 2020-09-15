@@ -6,6 +6,8 @@
 
 		a {
 			@extend .nav-link;
+			@extend .text-uppercase;
+			font-size: $font-size-sm;
 		}
 	}
 
