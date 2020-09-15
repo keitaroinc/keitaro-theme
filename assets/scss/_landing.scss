@@ -203,7 +203,7 @@
 			align-self: flex-start;
 
 			img {
-				object-fit: cover;
+				object-fit: none;
 				max-height: 50%;
 				background-color: $white;
 				border-bottom: $spacer*5 solid $white;
