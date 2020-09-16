@@ -1,11 +1,5 @@
 .page-template-single {
 
-
-  // list block
-  .wp-block-group {
-    margin-top: $spacer*5;
-  }
-
   // buttons
   .wp-block-buttons {
 
@@ -15,6 +9,8 @@
     justify-content: center;
 
     .wp-block-button {
+      margin: $spacer*2;
+
       .wp-block-button__link {
         @extend .btn;
         @extend .btn-outline-dark;
@@ -306,6 +302,15 @@
 
 
   .wp-block-group:last-child {
-    width: 100%;
+    width: 80%;
+    margin: auto;
+
+    .has-huge-font-size {
+      margin-bottom: $spacer*2;
+    }
+
+    p {
+      color: $keitaro-gray-dark;
+    }
   }
 }
