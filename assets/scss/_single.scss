@@ -259,33 +259,6 @@
           margin-bottom: 0;
         }
 
-        ul {
-          background-color: $keitaro-green-dark;
-          list-style: none;
-          padding: $spacer*3 $spacer;
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-bottom: $spacer*3.5;
-
-          li {
-            color: $keitaro-white;
-            font-size: $spacer*1.5;
-            padding: $spacer;
-
-            &::before {
-              font-family: "Font Awesome 5 Free";
-              content: "\f00c";
-              display: inline-block;
-              padding-right: $spacer;
-              font-size: $spacer*1.5;
-              vertical-align: middle;
-              font-weight: 600;
-            }
-          }
-        }
-
         p {
           color: $keitaro-gray-dark;
           padding: $spacer;
