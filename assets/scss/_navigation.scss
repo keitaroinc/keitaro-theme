@@ -6,6 +6,8 @@
 
 		a {
 			@extend .nav-link;
+			@extend .text-uppercase;
+			font-size: $font-size-sm;
 		}
 	}
 
@@ -152,7 +154,7 @@
 }
 
 .container-bg {
-	background-color: $keitaro-gray-lightest;
+	background-color: $white;
 }
 
 .container-bottom-border {
