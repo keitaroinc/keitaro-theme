@@ -214,12 +214,11 @@
 
   // list block
 
-  .wp-block-group:nth-child(odd) {
-    width: 90%;
-    margin-left: auto;
+  .wp-block-group:nth-child(even) {
 
     .wp-block-columns {
-      width: 100%;
+      width: 90%;
+      margin-right: 0;
       background-color: $keitaro-green-gray-l-40;
 
       // first column(description and title) of the list block
@@ -296,11 +295,7 @@
     }
   }
 
-}
-
-.single-page-content {
-
-
+  // last group block
   .wp-block-group:last-child {
     width: 80%;
     margin: auto;
@@ -313,4 +308,5 @@
       color: $keitaro-gray-dark;
     }
   }
+
 }
