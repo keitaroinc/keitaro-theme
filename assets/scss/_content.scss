@@ -39,18 +39,20 @@
 
 .list-checked {
 	list-style: none;
-	padding: $spacer*3 $spacer;
+	padding: $spacer*3;
+	font-size: $font-size-lg;
+	line-height: $headings-line-height;
 
 	li {
-		font-size: $spacer*1.5;
+		display: flex;
+		align-items: center;
 		padding: $spacer;
 
-		&::before {
-			font-family: "Font Awesome 5 Free";
-			content: "\f00c";
-			display: inline-block;
-			vertical-align: middle;
-			font-weight: 600;
+		&:before {
+			@extend .fa;
+			@extend .fas;
+			content: fa-content($fa-var-check);
+			margin-right: $spacer;
 		}
 	}
 }
@@ -585,7 +587,7 @@ pre {
 		bottom: 0;
 		left: $spacer*5;
 		right: $spacer*6;
-		top: 50%;
+		top: 20%;
 		background-color: $white;
 	}
 
@@ -676,7 +678,6 @@ pre {
 		img {
 			object-fit: none;
 			max-height: 50%;
-			background-color: $white;
 			margin-bottom: $spacer*5;
 		}
 	}
@@ -698,8 +699,9 @@ pre {
 	}
 
 	.wp-block-image {
-		padding: 0 $spacer*5 $spacer*3;
+		padding: 0 $spacer*5;
 		margin-bottom: 0;
+		transform: translateY(-$spacer*3);
 
 		img {
 			width: auto;
