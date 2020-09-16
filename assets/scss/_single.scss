@@ -219,7 +219,6 @@
     .wp-block-columns {
       width: 90%;
       margin-right: 0;
-      background-color: $keitaro-green-gray-l-40;
 
       // first column(description and title) of the list block
       .wp-block-column:first-child {
@@ -250,7 +249,7 @@
       .wp-block-column {
         padding: 0;
         margin: 0;
-        flex-basis: 50%;
+        flex: 1;
         background-color: $keitaro-white;
 
         .has-huge-font-size {
