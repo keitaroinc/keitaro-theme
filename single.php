@@ -11,8 +11,6 @@
 
 get_header();
 ?>
-<div class="single-page-content">
   <?php the_content(); ?>
-</div>
 <?php
 get_footer();
