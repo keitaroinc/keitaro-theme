@@ -168,7 +168,7 @@
 
 .breadcrumb {
 	background-color: $keitaro-white;
-	@extend .flex;
+	@extend .d-flex;
 	@extend .flex-nowrap;
 	white-space: nowrap;
 
