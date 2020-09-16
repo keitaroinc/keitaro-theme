@@ -1,0 +1,15 @@
+.page-template-about {
+
+	.wp-block-group {
+
+		.wp-block-media-text__content {
+			margin-top: 0;
+		}
+
+		.has-huge-font-size,
+		.has-large-font-size {
+			padding-bottom: $spacer*3;
+			margin-bottom: 0;
+		}
+	}
+}
