@@ -37,6 +37,24 @@
 	text-align: right;
 }
 
+.list-checked {
+	list-style: none;
+	padding: $spacer*3 $spacer;
+
+	li {
+		font-size: $spacer*1.5;
+		padding: $spacer;
+
+		&::before {
+			font-family: "Font Awesome 5 Free";
+			content: "\f00c";
+			display: inline-block;
+			vertical-align: middle;
+			font-weight: 600;
+		}
+	}
+}
+
 .lead-post-text {
 	font-size: $font-size-lg;
 	color: $keitaro-green-light;
