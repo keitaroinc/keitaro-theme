@@ -13,3 +13,22 @@
 		}
 	}
 }
+
+.page-template {
+
+	.wp-block-columns {
+
+		.wp-block-columns {
+			@include keitaro-edge-left(-$spacer);
+			position: relative;
+
+			.wp-block-column {
+				margin-left: 0;
+
+				.wp-block-group__inner-container {
+					padding: $spacer*5;
+				}
+			}
+		}
+	}
+}
