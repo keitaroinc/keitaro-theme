@@ -1,6 +1,5 @@
 .page-template-landing {
 
-
 	// Group block
 
 	.wp-block-group {
@@ -45,35 +44,6 @@
 			p {
 				&:last-child {
 					margin-bottom: 0;
-				}
-			}
-		}
-	}
-
-
-	// Buttons block
-
-	.wp-block-buttons {
-
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-
-		.wp-block-button {
-			.wp-block-button__link {
-				@extend .btn;
-				@extend .btn-outline-dark;
-			}
-
-			&.is-style-fill {
-				.wp-block-button__link {
-					@extend .btn-primary;
-				}
-			}
-
-			&.is-style-outline {
-				.wp-block-button__link {
-					@extend .btn-outline-primary;
 				}
 			}
 		}
@@ -196,7 +166,7 @@
 			transition: background-color .2s linear;
 
 			&:hover {
-				box-shadow: 0 $spacer/4 $spacer*2 0 rgba(0, 0, 0, 0.1);
+				box-shadow: 0 $spacer/4 $spacer*2 0 rgba(0, 0, 0, 0.2);
 			}
 
 			.wp-block-buttons {

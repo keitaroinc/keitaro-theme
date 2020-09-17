@@ -12,21 +12,21 @@
 	}
 }
 
-.list-service-icons {
-	@extend .d-flex;
-	@extend .justify-content-center;
-	@extend .flex-wrap;
-	@extend .my-5;
-	padding-left: 0;
-	font-size: 0; // Removes any text elements before the icons
-	text-align: center;
+// .list-service-icons {
+// 	@extend .d-flex;
+// 	@extend .justify-content-center;
+// 	@extend .flex-wrap;
+// 	@extend .my-5;
+// 	padding-left: 0;
+// 	font-size: 0; // Removes any text elements before the icons
+// 	text-align: center;
 
-	.image {
-		max-width: 30px !important; // Must use !important here since the width is inlined.
-		height: auto;
-		margin: $spacer;
-	}
-}
+// 	.image {
+// 		max-width: 30px !important; // Must use !important here since the width is inlined.
+// 		height: auto;
+// 		margin: $spacer;
+// 	}
+// }
 
 .address-list {
 	font-size: $h5-font-size;
@@ -35,6 +35,35 @@
 
 .post-list {
 	text-align: right;
+}
+
+.list-with-icon {
+	list-style: none;
+	font-size: $font-size-lg;
+	line-height: $headings-line-height;
+	padding-left: 0;
+
+	li {
+		display: flex;
+		align-items: center;
+		padding: $spacer;
+
+		&:before {
+			@extend .fa;
+			@extend .fas;
+			margin-right: $spacer*1.5;
+		}
+	}
+}
+
+.list-checked {
+	@extend .list-with-icon;
+
+	li {
+		&:before {
+			content: fa-content($fa-var-check);
+		}
+	}
 }
 
 .lead-post-text {
@@ -559,6 +588,7 @@ pre {
 .wp-block-media-text {
 
 	position: relative;
+	@include keitaro-edge-right;
 
 	&:before {
 		position: absolute;
@@ -567,21 +597,8 @@ pre {
 		bottom: 0;
 		left: $spacer*5;
 		right: $spacer*6;
-		top: 50%;
+		top: 20%;
 		background-color: $white;
-	}
-
-	&:after {
-		position: absolute;
-		content: '';
-		display: block;
-		width: $box-arrow-width;
-		height: $box-arrow-width;
-		border-style: solid;
-		border-width: $box-arrow-border-width;
-		border-color: transparent $primary $primary transparent;
-		bottom: -$spacer*1;
-		right: $spacer*5;
 	}
 
 	&:not(:last-child) {
@@ -590,15 +607,10 @@ pre {
 
 	&.has-media-on-the-right {
 		margin-right: 0;
+		@include keitaro-edge-left;
 
 		&:before {
 			left: $spacer*6;
-		}
-
-		&:after {
-			border-color: transparent transparent $primary $primary;
-			left: $spacer*5;
-			right: auto;
 		}
 
 		>* {
@@ -658,7 +670,6 @@ pre {
 		img {
 			object-fit: none;
 			max-height: 50%;
-			background-color: $white;
 			margin-bottom: $spacer*5;
 		}
 	}
@@ -680,8 +691,9 @@ pre {
 	}
 
 	.wp-block-image {
-		padding: 0 $spacer*5 $spacer*3;
+		padding: 0 $spacer*5;
 		margin-bottom: 0;
+		transform: translateY(-$spacer*3);
 
 		img {
 			width: auto;
@@ -719,5 +731,30 @@ pre {
 		width: $spacer*3;
 		margin: ($spacer - $spacer/4) auto;
 		background-color: $primary;
+	}
+}
+
+
+// Buttons block
+
+.wp-block-buttons {
+
+	.wp-block-button {
+		.wp-block-button__link {
+			@extend .btn;
+			@extend .btn-outline-dark;
+		}
+
+		&.is-style-fill {
+			.wp-block-button__link {
+				@extend .btn-primary;
+			}
+		}
+
+		&.is-style-outline {
+			.wp-block-button__link {
+				@extend .btn-outline-primary;
+			}
+		}
 	}
 }
