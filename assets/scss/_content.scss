@@ -733,3 +733,32 @@ pre {
 		background-color: $primary;
 	}
 }
+
+
+// Buttons block
+
+.wp-block-buttons {
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	.wp-block-button {
+		.wp-block-button__link {
+			@extend .btn;
+			@extend .btn-outline-dark;
+		}
+
+		&.is-style-fill {
+			.wp-block-button__link {
+				@extend .btn-primary;
+			}
+		}
+
+		&.is-style-outline {
+			.wp-block-button__link {
+				@extend .btn-outline-primary;
+			}
+		}
+	}
+}
