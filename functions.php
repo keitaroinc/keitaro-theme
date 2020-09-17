@@ -271,7 +271,6 @@ function custom_post_type_showcases() {
 			'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
 			// CPT taxonomies.
 			'taxonomies'          => array( 'category',  'post_tag' ),
-
 			'public'              => true,
 			'has_archive'         => true,
 			'show_in_rest' 		  => true,
@@ -296,77 +295,6 @@ function google_search_console_tags() {
 }
 
 add_action( 'wp_head', 'google_search_console_tags' );
-// custom block register script and init
-function keitaro_gutenberg_blocks(){
-	wp_register_script('keitaro-custom', get_template_directory_uri().'/assets/js/zblocks.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/custom-block', array(
-			'editor_script' => 'keitaro-custom',
-	));
-}
-add_action('init', 'keitaro_gutenberg_blocks');
-
-// custom block register script and init
-function keitaro_gutenberg_blocksone(){
-	wp_register_script('keitaro-custom-one', get_template_directory_uri().'/assets/js/blocksone.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/product-service-block', array(
-			'editor_script' => 'keitaro-custom-one',
-	));
-}
-add_action('init', 'keitaro_gutenberg_blocksone');
-
-// custom block register script and init
-function keitaro_gutenberg_blockservices(){
-	wp_register_script('keitaro-custom-services', get_template_directory_uri().'/assets/js/blockservices.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/services-block', array(
-			'editor_script' => 'keitaro-custom-services',
-	));
-}
-add_action('init', 'keitaro_gutenberg_blockservices');
-// custom block register script and init
-function keitaro_gutenberg_blockaboutus(){
-	wp_register_script('keitaro-custom-about', get_template_directory_uri().'/assets/js/blockaboutus.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/aboutus-block', array(
-			'editor_script' => 'keitaro-custom-about',
-	));
-}
-// custom block register script and init
-add_action('init', 'keitaro_gutenberg_blockaboutus');
-
-function keitaro_gutenberg_blocklist(){
-	wp_register_script('keitaro-custom-list', get_template_directory_uri().'/assets/js/blocklist.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/list-block', array(
-			'editor_script' => 'keitaro-custom-list',
-	));
-}
-add_action('init', 'keitaro_gutenberg_blocklist');
-
-function keitaro_gutenberg_career_blocklist(){
-	wp_register_script('keitaro-custom-career-list', get_template_directory_uri().'/assets/js/careerblocklist.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/career-list-block', array(
-			'editor_script' => 'keitaro-custom-career-list',
-	));
-}
-add_action('init', 'keitaro_gutenberg_career_blocklist');
-
-function keitaro_gutenberg_career_blockcareer(){
-	wp_register_script('keitaro-custom-career-block', get_template_directory_uri().'/assets/js/blockscareers.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/custom-careers-block', array(
-			'editor_script' => 'keitaro-custom-career-block',
-	));
-}
-add_action('init', 'keitaro_gutenberg_career_blockcareer');
-
-// custom block register script and init
-function keitaro_gutenberg_partnersblocks(){
-	wp_register_script('keitaro-custom-partners', get_template_directory_uri().'/assets/js/blockpartners.js',array('wp-blocks','wp-element','wp-editor'));
-	register_block_type('keitaro/custom-partner-block', array(
-			'editor_script' => 'keitaro-custom-partners',
-	));
-}
-add_action('init', 'keitaro_gutenberg_partnersblocks');
-
-
-
 
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
@@ -377,8 +305,8 @@ function keitaro_theme_scripts() {
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
-	// leaflet style
-		wp_enqueue_style( 'leaflet-css', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.css', null, null );
+	// Leaflet style
+	// wp_enqueue_style( 'leaflet-css', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.css', null, null );
 
 	// jQuery
 	wp_enqueue_script( 'jquery' );
@@ -390,7 +318,7 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
 
 	// Leaflet script
-	wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
+	// wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
 
 	// Contact us elements JS minified
 	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
@@ -399,7 +327,8 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'showjobs-js', get_stylesheet_directory_uri() . '/assets/js/showjobs.js', null, null, true );
 
 	// Locations worldwide JS minified
-	wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.js', null, null, true );
+	// wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.js', null, null, true );
+
 	// Prism.js - load only for pages, posts and custom post types
 	if ( is_singular() && ! is_page() ) :
 		// Main keitaro_theme stylesheet
@@ -410,9 +339,6 @@ function keitaro_theme_scripts() {
 		wp_enqueue_script( 'prism-toolbar-js', get_stylesheet_directory_uri() . '/assets/js/prism-toolbar.min.js', null, null, true );
 		wp_enqueue_script( 'prism-clipboard-js', get_stylesheet_directory_uri() . '/assets/js/prism-copy-to-clipboard.min.js', null, null, true );
 	endif;
-
-	// JS for testing layout issues
-	// wp_enqueue_script( 'layout-test', get_stylesheet_directory_uri() . '/assets/js/layout-test.js' );
 
 }
 
@@ -428,7 +354,7 @@ function keitaro_jquery_deregister() {
 }
 
 // Add favicon links to <head>
-function keitaro_theme_favicons() {
+/*function keitaro_theme_favicons() {
 
 	?>
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png' ); ?>">
@@ -437,7 +363,7 @@ function keitaro_theme_favicons() {
 
 }
 
-add_action( 'wp_head', 'keitaro_theme_favicons' );
+add_action( 'wp_head', 'keitaro_theme_favicons' ); */
 
 // Override default WordPress logo on wp-login.php
 function keitaro_theme_login_logo() {
@@ -466,22 +392,22 @@ add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-team.php';
 
 // Require Keitaro Cards widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-service-product-card.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-service-product-card.php';
 
 // Require Keitaro Showcase widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-showcase.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-showcase.php';
 
 // Require Keitaro Service widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-service.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-service.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-call-to-action.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-call-to-action.php';
 
 // Require Keitaro Call to Action widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-icon-block.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-icon-block.php';
 
 // Require Keitaro Location widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-location.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-location.php';
 
 // Require Contact Form widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
@@ -493,13 +419,13 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-job-application-form.php';
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-career-job.php';
 
 // Require Twitter Grid widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
 
 // Require Keitaro Page Text widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-page-text.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-page-text.php';
 
 // Require Keitaro Button widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-button.php';
+// require_once SNIPPETS_DIR . '/widgets/class-keitaro-button.php';
 
 // Register Widget areas
 function keitaro_widgets_init() {
@@ -570,163 +496,6 @@ function keitaro_widgets_init() {
 			)
 		 );
 
-		 register_sidebar(
-			array(
-				'name'          => __( 'Microkubes Actions', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product microkubes cards widgets and rendered within the products  page.', 'keitaro' ),
-				'id'            => 'keitaro_microkubes_actions',
-				'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1 class="call-to-action-title my-5">',
-				'after_title'   => '</h1>',
-			)
-		 );
-
-		 register_sidebar(
-			array(
-				'name'          => __( 'Amplus Actions', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product amplus cards widgets and rendered within the products page.', 'keitaro' ),
-				'id'            => 'keitaro_amplus_actions',
-				'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1 class="call-to-action-title my-5">',
-				'after_title'   => '</h1>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Services Open-source Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro services open-source cards widgets and rendered within the services page.', 'keitaro' ),
-				'id'            => 'keitaro_open_source_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Cloud Services Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro cloud services cards widgets and rendered within the services page.', 'keitaro' ),
-				'id'            => 'keitaro_cloud_services_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'CKAN Services Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro ckan services cards widgets and rendered within the services page.', 'keitaro' ),
-				'id'            => 'keitaro_ckan_services_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Security & Licensing Services Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro security & licensing services cards widgets and rendered within the services page.', 'keitaro' ),
-				'id'            => 'keitaro_security_licensing_services_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Showcases Open-source', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services open-source page.', 'keitaro' ),
-				'id'            => 'keitaro_showcases_open_source',
-				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Showcases Cloud Services', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services open-source page.', 'keitaro' ),
-				'id'            => 'keitaro_showcases_cloud_services',
-				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Showcases CKAN Services', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services CKAN page.', 'keitaro' ),
-				'id'            => 'keitaro_showcases_ckan_services',
-				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Showcases Security Licensing Services', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the services Security & Licensing page.', 'keitaro' ),
-				'id'            => 'keitaro_showcases_security_licensing_services',
-				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Partners', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro partners banner rendered within the partners page.', 'keitaro' ),
-				'id'            => 'keitaro_partners',
-				'before_widget' => '<div class=" partners-banner col-md-12 bg-white justify-content-center d-flex flex-column mb-5 p-5 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h2 class="">',
-				'after_title'   => '</h2>',
-			)
-		 );
-
-		 register_sidebar(
-			array(
-				'name'          => __( 'Business Development', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro Team widgets and rendered within the About page.', 'keitaro' ),
-				'id'            => 'keitaro_business',
-				'before_widget' => '<div class="col-md-12 col-lg-3 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Core Team', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro Core Team widgets and rendered within the About page.', 'keitaro' ),
-				'id'            => 'keitaro_core_team',
-				'before_widget' => '<div class="col-md-12 col-lg-3 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="service-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Sales Team', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro Sales Team widgets and rendered within the Contact us page.', 'keitaro' ),
-				'id'            => 'keitaro_sales_team',
-				'before_widget' => '<div class="col-md-12 col-lg-3 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="service-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-
 	register_sidebar(
 		 array(
 			 'name'          => __( 'Service Icons', 'keitaro' ),
@@ -786,50 +555,7 @@ function keitaro_widgets_init() {
 			 'after_title'   => '</h2></header>',
 		 )
 		);
-register_sidebar(
-		 array(
-			 'name'          => __( 'Partner with Keitaro', 'keitaro' ),
-			 'description'   => __( 'Reserved for Partner with Keitaro contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-			 'id'            => 'keitaro_partner_with',
-			 'before_widget' => '<div class="widget-contact %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-			 'after_title'   => '</h2></header>',
-		 )
-		);
-		register_sidebar(
-			array(
-				'name'          => __( 'Get a Quote', 'keitaro' ),
-				'description'   => __( 'Reserved for Get A Quote contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-				'id'            => 'keitaro_get_quote',
-				'before_widget' => '<div class="widget-contact %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-				'after_title'   => '</h2></header>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Information About Our Products', 'keitaro' ),
-				'description'   => __( 'Reserved for Information about our products contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-				'id'            => 'keitaro_information_about_products',
-				'before_widget' => '<div class="widget-contact %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-				'after_title'   => '</h2></header>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Other', 'keitaro' ),
-				'description'   => __( 'Reserved for other contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-				'id'            => 'keitaro_other',
-				'before_widget' => '<div class="widget-contact %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-				'after_title'   => '</h2></header>',
-			)
-		 );
+
 	register_sidebar(
 		array(
 			'name'          => __( 'Job Application', 'keitaro' ),
@@ -840,7 +566,8 @@ register_sidebar(
 			'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
 			'after_title'   => '</h2></header>',
 		)
-		);
+	);
+
 		register_sidebar(
 			array(
 				'name'          => __( 'Keitaro Careers', 'keitaro' ),
@@ -853,18 +580,6 @@ register_sidebar(
 			)
 			);
 
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Twitter', 'keitaro' ),
-			 'description'   => __( 'Reserved for Tweets widgets and rendered on the first page of the blog.', 'keitaro' ),
-			 'id'            => 'keitaro_twitter',
-			 'before_widget' => '<div class="twitter-content-widget %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<h2 class="twitter-content-widget-title text-center">',
-			 'after_title'   => '</h2>',
-		 )
-		);
-
 		register_sidebar(
 			array(
 				'name'          => __( 'Social', 'keitaro' ),
@@ -876,59 +591,9 @@ register_sidebar(
 				'after_title'   => '</h2>',
 			)
 		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Map', 'keitaro' ),
-				'description'   => __( 'Reserved for the Keitaro map.', 'keitaro' ),
-				'id'            => 'keitaro_map',
-				'before_widget' => '<div>',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h2>',
-				'after_title'   => '</h2>',
-			)
-		 );
-		 register_sidebar(
-			array(
-				'name'          => __( 'Connect', 'keitaro' ),
-				'description'   => __( 'Reserved for the pages with contact button area.', 'keitaro' ),
-				'id'            => 'keitaro_connect',
-				'before_widget' => '<div class="text-center">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			)
-		 );
 
-	if ( class_exists( 'Keitaro_Team' ) ) :
-		register_widget( 'Keitaro_Team' );
-	endif;
-	if ( class_exists( 'Keitaro_Cards' ) ) :
-		register_widget( 'Keitaro_Cards' );
-	endif;
-	if ( class_exists( 'Keitaro_Showcase' ) ) :
-		register_widget( 'Keitaro_Showcase' );
-	endif;
 	if ( class_exists( 'Keitaro_Career_Job' ) ) :
 		register_widget( 'Keitaro_Career_Job' );
-	endif;
-	if ( class_exists( 'Keitaro_Service' ) ) :
-		register_widget( 'Keitaro_Service' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Call_To_Action' ) ) :
-		register_widget( 'Keitaro_Call_To_Action' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Icon_Block' ) ) :
-		register_widget( 'Keitaro_Icon_Block' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Location' ) ) :
-		register_widget( 'Keitaro_Location' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Tweets' ) ) :
-		register_widget( 'Keitaro_Tweets' );
 	endif;
 
 	if ( class_exists( 'Keitaro_Contact_Form' ) ) :
@@ -937,14 +602,6 @@ register_sidebar(
 
 	if ( class_exists( 'Keitaro_Job_Application_Form' ) ) :
 		register_widget( 'Keitaro_Job_Application_Form' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Button' ) ) :
-		register_widget( 'Keitaro_Button' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Page_Text' ) ) :
-		register_widget( 'Keitaro_Page_Text' );
 	endif;
 
 }
