@@ -739,10 +739,6 @@ pre {
 
 .wp-block-buttons {
 
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-
 	.wp-block-button {
 		.wp-block-button__link {
 			@extend .btn;
