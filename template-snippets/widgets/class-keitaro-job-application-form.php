@@ -151,7 +151,9 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 			else :
 				if ( ! empty( $instance['title'] ) ) {
 					//echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
-					?><h3> <?php echo $instance['title']; ?> </h3><?php
+					?>
+					<h3> <?php echo $instance['title']; ?> </h3>
+					<?php
 				}
 
 				if ( ! empty( $instance['description'] ) ) {
@@ -186,25 +188,25 @@ class Keitaro_Job_Application_Form extends WP_Widget {
 						</div>
 					<?php endif; ?>
 
-					<?php 
+					<?php
 						if ( ! empty( $instance['job_list'] ) ) :
 
-							$intent_options = explode( "\n", $instance['job_list'] );
+						$intent_options = explode( "\n", $instance['job_list'] );
 
-							if ( $intent_options ) :
+						if ( $intent_options ) :
 
-								?>
+							?>
 								<div class="form-group form-select mt-4">
 
 								<label for="intent"><?php echo esc_html( $instance['job_label'] ); ?></label>
 									<select name="intent" id="intent" class="form-control">
-										<?php foreach ( $intent_options as $key => $value ) : ?>
+									<?php foreach ( $intent_options as $key => $value ) : ?>
 											<option value="<?php echo esc_attr( str_replace( ' ', '-', strtolower( $value ) ) ); ?>">
 												<?php echo esc_attr( trim( $value ) ); ?></option>
 										<?php
 										endforeach;
 
-										?>
+									?>
 									</select>
 								</div>
 							<?php

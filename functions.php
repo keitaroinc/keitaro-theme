@@ -37,12 +37,13 @@ function keitaro_theme_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-
 	// video support for the header IN FUNCTIONS PHP
-	add_theme_support( 'custom-header', array(
-		'video' => true,
-	 ) );
-
+	add_theme_support(
+		 'custom-header',
+		array(
+			'video' => true,
+		)
+		);
 
 	/*
 	 * Let WordPress manage the document title.
@@ -73,9 +74,9 @@ register_nav_menus(
 		'footer'           => __( 'Footer Menu' ),
 		'social'           => __( 'Social Links', 'keitaro' ),
 		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-		'footer-services'	=> __( 'Services Menu', 'keitaro' ),
-		'footer-products'	=> __( 'Products Menu', 'keitaro' ),
-		'footer-offices'	=> __( 'Offices Menu', 'keitaro' ),
+		'footer-services'   => __( 'Services Menu', 'keitaro' ),
+		'footer-products'   => __( 'Products Menu', 'keitaro' ),
+		'footer-offices'    => __( 'Offices Menu', 'keitaro' ),
 	)
  );
 
@@ -211,31 +212,31 @@ add_action( 'wp_head', 'open_graph_tags' );
 function custom_post_type_job_applications() {
 
 	$labels = array(
-			'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
-			'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
-			'menu_name'           => __( 'Job Applications', 'keitaro' ),
-			'all_items'           => __( 'All Job Applications', 'keitaro' ),
-			'view_item'           => __( 'View Job Applications', 'keitaro' ),
-			'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
-			'add_new'             => __( 'Add New', 'keitaro' ),
-			'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
-			'update_item'         => __( 'Update Job Applications', 'keitaro' ),
-			'search_items'        => __( 'Search Job Applications', 'keitaro' ),
-			'not_found'           => __( 'Not Found', 'keitaro' ),
-			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+		'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
+		'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
+		'menu_name'           => __( 'Job Applications', 'keitaro' ),
+		'all_items'           => __( 'All Job Applications', 'keitaro' ),
+		'view_item'           => __( 'View Job Applications', 'keitaro' ),
+		'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
+		'add_new'             => __( 'Add New', 'keitaro' ),
+		'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
+		'update_item'         => __( 'Update Job Applications', 'keitaro' ),
+		'search_items'        => __( 'Search Job Applications', 'keitaro' ),
+		'not_found'           => __( 'Not Found', 'keitaro' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
 	);
 
 	$args = array(
-			'label'               => __( 'Job Applications', 'keitaro' ),
-			'description'         => __( 'Custom post type for Job Applications ', 'keitaro' ),
-			'labels'              => $labels,
-			// Features this CPT supports in Post Editor
-			'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
-			// CPT taxonomies.
-			'taxonomies'          => array( 'category', 'post_tag' ),
-			'public'              => true,
-			'has_archive'         => true,
-			'show_in_rest' 		  => true,
+		'label'               => __( 'Job Applications', 'keitaro' ),
+		'description'         => __( 'Custom post type for Job Applications ', 'keitaro' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+		// CPT taxonomies.
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'public'              => true,
+		'has_archive'         => true,
+		'show_in_rest'        => true,
 
 	);
 
@@ -249,38 +250,38 @@ add_action( 'init', 'custom_post_type_job_applications' );
 function custom_post_type_showcases() {
 
 	$labels = array(
-			'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
-			'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
-			'menu_name'           => __( 'Showcases', 'keitaro' ),
-			'all_items'           => __( 'All Showcases', 'keitaro' ),
-			'view_item'           => __( 'View Showcase', 'keitaro' ),
-			'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
-			'add_new'             => __( 'Add New', 'keitaro' ),
-			'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
-			'update_item'         => __( 'Update Showcase', 'keitaro' ),
-			'search_items'        => __( 'Search Showcases', 'showcases' ),
-			'not_found'           => __( 'Not Found', 'keitaro' ),
-			'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+		'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
+		'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
+		'menu_name'           => __( 'Showcases', 'keitaro' ),
+		'all_items'           => __( 'All Showcases', 'keitaro' ),
+		'view_item'           => __( 'View Showcase', 'keitaro' ),
+		'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
+		'add_new'             => __( 'Add New', 'keitaro' ),
+		'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
+		'update_item'         => __( 'Update Showcase', 'keitaro' ),
+		'search_items'        => __( 'Search Showcases', 'showcases' ),
+		'not_found'           => __( 'Not Found', 'keitaro' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
 	);
 
 	$args = array(
-			'label'               => __( 'Showcases', 'keitaro' ),
-			'description'         => __( 'Custom post type for Showcases ', 'keitaro' ),
-			'labels'              => $labels,
-			// Features this CPT supports in Post Editor
-			'supports'            => array( 'title', 'editor', 'trackbacks',  'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
-			// CPT taxonomies.
-			'taxonomies'          => array( 'category',  'post_tag' ),
-			'public'              => true,
-			'has_archive'         => true,
-			'show_in_rest' 		  => true,
+		'label'               => __( 'Showcases', 'keitaro' ),
+		'description'         => __( 'Custom post type for Showcases ', 'keitaro' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+		// CPT taxonomies.
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'public'              => true,
+		'has_archive'         => true,
+		'show_in_rest'        => true,
 
 	);
 
 	register_post_type( 'showcases', $args );
 }
 
-add_action( 'init', 'custom_post_type_showcases');
+add_action( 'init', 'custom_post_type_showcases' );
 
 
 /* Set custom meta tag for Google Search Console */
@@ -473,7 +474,7 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h3>',
 			)
 		 );
-		 register_sidebar(
+		register_sidebar(
 			array(
 				'name'          => __( 'Product Microkubes Cards', 'keitaro' ),
 				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products page.', 'keitaro' ),
@@ -484,7 +485,7 @@ function keitaro_widgets_init() {
 				'after_title'   => '</h3>',
 			)
 		 );
-		 register_sidebar(
+		register_sidebar(
 			array(
 				'name'          => __( 'Product Amplus Cards', 'keitaro' ),
 				'description'   => __( 'Reserved for Keitaro product amplus cards widgets and rendered within the products page.', 'keitaro' ),

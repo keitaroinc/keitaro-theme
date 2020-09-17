@@ -40,7 +40,8 @@
 			</div>
 		</div>
 
-		<?php /*if ( ! is_front_page() ) : ?>
+		<?php
+		/*if ( ! is_front_page() ) : ?>
 		<div class="container-fluid bg-white">
 			<div class="row no-gutters align-items-center">
 				<div class="col-md-8">

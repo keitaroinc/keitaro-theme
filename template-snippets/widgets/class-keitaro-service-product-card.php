@@ -24,7 +24,7 @@ class Keitaro_Cards extends WP_Widget {
 
 	}
 
-	
+
 	/**
 	 * Front-end display of widget.
 	 *
@@ -38,10 +38,10 @@ class Keitaro_Cards extends WP_Widget {
 		echo wp_kses_post( $args['before_widget'] );
 
 		echo '<div class="product-service-card p-4" >';if ( isset( $instance['icon'] ) ) : ?>
-      <img class="" style="width:70px;border-radius:50%;" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
-      <?php
-      endif;
-    echo '<div class=" py-4">';
+	  <img class="" style="width:70px;border-radius:50%;" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
+	  <?php
+	  endif;
+	echo '<div class=" py-4">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
@@ -84,7 +84,7 @@ class Keitaro_Cards extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_attr_e( 'Icon:', 'keitaro' ); ?></label>
 			<input type="number" class="hidden custom-image-value widefat" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>">
 		</p>
-    <p>
+	<p>
 			<?php keitaro_custom_image_placeholder( $icon ); ?>
 		</p>
 <p>
@@ -99,7 +99,7 @@ class Keitaro_Cards extends WP_Widget {
 				);
 
 			if ( $wp_pages ) :
-				?>
+		?>
 	<?php
 
 			endif;

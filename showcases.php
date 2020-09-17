@@ -17,7 +17,7 @@ get_header();
 
 <div class="showcases-header d-flex flex-column">
 <div class="showcases-content">
-<?php the_content();?>
+<?php the_content(); ?>
 </div>
 <?php
 the_post_thumbnail();
