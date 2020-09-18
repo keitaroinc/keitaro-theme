@@ -466,59 +466,6 @@ pre {
 	}
 }
 
-.frontpage-content {
-	h1 {
-		color: $keitaro-green-dark;
-	}
-
-	h3 a {
-		color: $keitaro-gray-dark;
-		font-size: inherit;
-		text-decoration: none;
-	}
-
-	color: $keitaro-gray-dark;
-
-	h1 a {
-		text-decoration: none;
-		color: $keitaro-gray-dark;
-		font-size: inherit;
-	}
-
-	h1:after {
-		content: '';
-		display: block;
-		height: 0.2em;
-		width: 35px;
-		margin: 7px auto;
-		border-bottom: solid;
-	}
-
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	li {
-		margin: 0;
-	}
-
-	li::before {
-		font-family: "Font Awesome 5 Free";
-		content: "\f292";
-		display: inline-block;
-		vertical-align: middle;
-		color: #7f7a71;
-		font-size: 12px;
-		font-weight: 600;
-	}
-
-	a {
-		padding: 5px;
-		font-size: 16px;
-	}
-}
-
 .entry-header {
 	text-align: center;
 }
@@ -732,12 +679,24 @@ pre {
 		}
 	}
 
-	&.has-green-to-light-gray-gradient-background{
-		background: linear-gradient(180deg, $primary 0% 65%, $keitaro-gray-lightest 65%)
+	.wp-block-columns {
+		margin-bottom: 0;
 	}
 
-	&.has-light-gray-to-white-gradient-background{
-		background: linear-gradient(180deg, $keitaro-gray-lightest 0% 65%, $white 65%)
+	&.has-green-to-light-gray-gradient-background {
+		background: linear-gradient(180deg, $primary 0% 65%, $keitaro-gray-lightest 65%);
+
+		.wp-block-group__inner-container {
+			padding-bottom: $spacer*2;
+		}
+	}
+
+	&.has-light-gray-to-white-gradient-background {
+		background: linear-gradient(180deg, $keitaro-gray-lightest 0% 65%, $white 65%);
+
+		.wp-block-group__inner-container {
+			padding-bottom: $spacer*2;
+		}
 	}
 }
 
