@@ -596,7 +596,10 @@ pre {
 		>* {
 			padding-left: $spacer*5;
 			padding-right: $spacer*5;
-			background-color: $white;
+
+			&:has(h1, h2, h3, h4, h5, h6) {
+				background-color: $white;
+			}
 		}
 
 		.wp-block-image,
@@ -703,14 +706,9 @@ pre {
 
 // Block titles
 
-.has-huge-font-size,
-.has-large-font-size {
-	color: $keitaro-gray-dark;
-	text-align: center;
+.has-text-align-center {
 
 	&.has-white-color {
-		color: $white;
-
 		&:after {
 			background-color: $success;
 		}
@@ -723,6 +721,14 @@ pre {
 		width: $spacer*3;
 		margin: ($spacer - $spacer/4) auto;
 		background-color: $primary;
+	}
+}
+
+p {
+	&.has-text-align-center {
+		&:after {
+			content: none;
+		}
 	}
 }
 
