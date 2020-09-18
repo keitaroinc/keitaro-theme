@@ -785,6 +785,16 @@ pre {
 }
 
 
+// Column block
+
+.wp-block-column {
+	@include media-breakpoint-up(lg) {
+		&:not(:first-child) {
+			margin-left: $spacer*5;
+		}
+	}
+}
+
 .arrow-right{
 	@include keitaro-edge-right(-$spacer);
 }
