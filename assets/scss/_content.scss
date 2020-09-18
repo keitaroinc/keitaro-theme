@@ -662,13 +662,13 @@ pre {
 	}
 
 	&.no-padding-top {
-		.wp-block-group__inner-container {
+		>.wp-block-group__inner-container {
 			padding-top: 0;
 		}
 	}
 
 	&.no-padding-bottom {
-		.wp-block-group__inner-container {
+		>.wp-block-group__inner-container {
 			padding-bottom: 0;
 		}
 	}
