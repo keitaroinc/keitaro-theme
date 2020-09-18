@@ -31,3 +31,11 @@ Syntactically highlighted code blocks are rendered with the Okaidia theme.
 Execute `run_tests.sh` to validate the codebase with the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).
 
 Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve coding errors.
+
+## Visual Design
+
+### Adding Arrows
+
+Bottom left or bottom right arrows can be added to Group blocks, by assigning the `arrow-left` or `arrow-right` CSS classes. Select the Group block in Gutenberg, expand the **Advanced** section, enter one of the two CSS classes in the **Additional CSS class(es)** input and click Update.
+
+If you want the arrow to look like a border, *set a background color* on the Group the CSS classes are added.
