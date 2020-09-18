@@ -707,6 +707,8 @@ pre {
 
 .wp-block-group {
 
+	position: relative;
+
 	.wp-block-group__inner-container {
 		padding-top: $spacer*8;
 		padding-bottom: $spacer*8;
@@ -780,4 +782,13 @@ pre {
 			}
 		}
 	}
+}
+
+
+.arrow-right{
+	@include keitaro-edge-right(-$spacer);
+}
+
+.arrow-left{
+	@include keitaro-edge-left(-$spacer);
 }
