@@ -1,4 +1,4 @@
-.page-template-default {
+.page {
 
 	.wp-block-group {
 
@@ -8,16 +8,14 @@
 
 		&.has-background {
 
-			.wp-block-columns {
-
-				>.wp-block-column {
-					margin-left: inherit;
-				}
+			.wp-block-column {
+				margin-left: unset;
 			}
 		}
 
 		.has-huge-font-size,
 		.has-large-font-size {
+
 			padding-bottom: $spacer*3;
 			margin-bottom: 0;
 		}
@@ -26,13 +24,17 @@
 	.wp-block-columns {
 
 		.wp-block-columns {
+
 			&.are-vertically-aligned-center {
+
 				>.wp-block-column {
+
 					align-self: flex-end;
 					display: flex;
 					flex-direction: column;
 
 					.wp-block-group {
+
 						&.has-background {
 							flex-basis: 100%;
 						}
