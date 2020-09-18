@@ -27,7 +27,7 @@ function keitaro_theme_setup() {
 				 'description'   => __( 'The default hero image of Keitaro Inc.', 'keitaro' ),
 			 ),
 		 )
-		);
+	);
 
 	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
 
@@ -37,13 +37,28 @@ function keitaro_theme_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	// video support for the header IN FUNCTIONS PHP
+	// Video support for Custom Header
 	add_theme_support(
-		 'custom-header',
-		array(
+		'custom-header', array(
 			'video' => true,
 		)
-		);
+	);
+
+	/**
+	 * Custom gradient presets for Gutenberg
+	 */
+	add_theme_support('editor-gradient-presets', array(
+        array(
+            'name' => __('Green to Light Gray', 'keitaro'),
+            'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #f2f2f2 65%)',
+            'slug' => 'green-to-light-gray'
+        ),
+        array(
+            'name' => __('Light Gray to White', 'keitaro'),
+            'gradient' => 'linear-gradient(180deg, #f2f2f2 0% 65%, #fff 65%)',
+            'slug' => 'light-gray-to-white'
+        ),
+    ));
 
 	/*
 	 * Let WordPress manage the document title.
