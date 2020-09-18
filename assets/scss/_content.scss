@@ -714,14 +714,14 @@ pre {
 		padding-bottom: $spacer*8;
 	}
 
-	&.no-padding-top{
-		.wp-block-group__inner-container{
+	&.no-padding-top {
+		.wp-block-group__inner-container {
 			padding-top: 0;
 		}
 	}
 
-	&.no-padding-bottom{
-		.wp-block-group__inner-container{
+	&.no-padding-bottom {
+		.wp-block-group__inner-container {
 			padding-bottom: 0;
 		}
 	}
@@ -730,6 +730,14 @@ pre {
 		img {
 			height: auto;
 		}
+	}
+
+	&.has-green-to-light-gray-gradient-background{
+		background: linear-gradient(180deg, $primary 0% 65%, $keitaro-gray-lightest 65%)
+	}
+
+	&.has-light-gray-to-white-gradient-background{
+		background: linear-gradient(180deg, $keitaro-gray-lightest 0% 65%, $white 65%)
 	}
 }
 
@@ -795,10 +803,10 @@ pre {
 	}
 }
 
-.arrow-right{
+.arrow-right {
 	@include keitaro-edge-right(-$spacer);
 }
 
-.arrow-left{
+.arrow-left {
 	@include keitaro-edge-left(-$spacer);
 }
