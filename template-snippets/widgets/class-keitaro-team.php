@@ -35,14 +35,14 @@ class Keitaro_Team extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		echo wp_kses_post( $args['before_widget'] );
-   
+
 		echo '<div class="team-card p-4 d-flex flex-column" >';if ( isset( $instance['icon'] ) ) : ?>
 			<div class='d-flex justify-content-center'>
-      	<img class="" style="width:130px;border-radius:50%;" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
+		  <img class="" style="width:130px;border-radius:50%;" src="<?php echo wp_kses_post( keitaro_custom_image_placeholder( $instance['icon'], false ) ); ?>" alt="icon">
 			</div>
 			<?php
-      endif;
-    echo '<div class=" member-name-desc py-4">';
+	  endif;
+	echo '<div class=" member-name-desc py-4">';
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
@@ -50,14 +50,17 @@ class Keitaro_Team extends WP_Widget {
 			printf( '<span class="team-desc">%s</span>', esc_html( apply_filters( 'widget_text', $instance['member_desc'] ) ) );
 		}
 		echo '</div>';
-		if (  $instance['phone_number'] !=='' || $instance['mail_to']!=='') :
+		if ( $instance['phone_number'] !== '' || $instance['mail_to'] !== '' ) :
 		?>
-		<div class="d-flex w-100 mt-auto pt-4 pb-2 justify-content-lg-between justify-content-center" ><p><a href="tel:<?php echo $instance['phone_number'] ?>" title="Call us"><i class="fa fa-phone fa-lg"></i></a></p> <p><a href="mailto:<?php 
-		echo $instance['mail_to']; ?>" title="Mail us"><i class="fa fa-envelope fa-lg"></i>
+		<div class="d-flex w-100 mt-auto pt-4 pb-2 justify-content-lg-between justify-content-center" ><p><a href="tel:<?php echo $instance['phone_number']; ?>" title="Call us"><i class="fa fa-phone fa-lg"></i></a></p> <p><a href="mailto:
+																																  <?php
+		echo $instance['mail_to'];
+		?>
+		" title="Mail us"><i class="fa fa-envelope fa-lg"></i>
 		</a></p></div>
 		<?php
-		else:
-			
+		else :
+
 		endif;
 		echo '</div>';
 		echo wp_kses_post( $args['after_widget'] );
@@ -74,8 +77,8 @@ class Keitaro_Team extends WP_Widget {
 
 		$title        = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$member_desc = ! empty( $instance['member_desc'] ) ? $instance['member_desc'] : '';
-		$phone_number	= ! empty( $instance['phone_number'] ) ? $instance['phone_number'] : '';
-		$mail_to	= ! empty( $instance['mail_to'] ) ? $instance['mail_to'] : '';
+		$phone_number   = ! empty( $instance['phone_number'] ) ? $instance['phone_number'] : '';
+		$mail_to    = ! empty( $instance['mail_to'] ) ? $instance['mail_to'] : '';
 		$icon         = ! empty( $instance['icon'] ) ? $instance['icon'] : '';
 
 		?>

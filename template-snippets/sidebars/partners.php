@@ -15,7 +15,7 @@ if ( is_active_sidebar( $sidebar_id ) ) :
   ?>
 <div class="container">
   <div class="row justify-content-center">
-    <?php dynamic_sidebar( $sidebar_id ); ?>
+	<?php dynamic_sidebar( $sidebar_id ); ?>
   </div>
 </div>
 <?php

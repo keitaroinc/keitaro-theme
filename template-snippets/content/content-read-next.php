@@ -50,8 +50,11 @@ if ( $read_more_content->have_posts() ) :
 					<?php the_post_thumbnail(); ?>
 						<div class="media-body">
 							<?php the_title( '<h4 class="read-more-item-title media-heading"><a href="' . get_permalink() . '">', '</a></h4>' ); ?>
-							<div class="blogs-content-categories"><?php 
-														the_category(); ?></div>
+							<div class="blogs-content-categories">
+							<?php
+														the_category();
+														?>
+														</div>
 							<?php keitaro_author_avatar( get_the_author_meta( 'ID' ), 48 ); ?>
 						</div>
 					</div>

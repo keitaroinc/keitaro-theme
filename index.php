@@ -9,7 +9,7 @@
  */
 
 get_header();
-if(is_front_page()):
+if ( is_front_page() ) :
 	?> 
 	<!-- <h1>New blocks here</h1> -->
 	<?php
@@ -22,7 +22,7 @@ if(is_front_page()):
 			<div class="container-fluid home-content-wrapper my-5 ">
 			<?php
 			the_content();
-			
+
 			?>
 			</div>
 			<?php
@@ -30,7 +30,7 @@ if(is_front_page()):
 	else :
 		get_template_part( SNIPPETS_DIR . '/content/content-none' );
 	endif;
-else:
+else :
 endif;
 // endhomepage
 if ( ! is_front_page() ) :
@@ -45,7 +45,8 @@ if ( ! is_front_page() ) :
 				<main id="main" class="site-main" role="main">
 					<div class="container blogs-content px-xl-0">
 						<div class="row">
-							<?php if(is_home()):
+							<?php
+							if ( is_home() ) :
 							?>
 							<h1 class="entry-title insights-title mb-5">Insights</h1>
 							<?php
@@ -57,21 +58,24 @@ if ( ! is_front_page() ) :
 					while ( have_posts() ) :
 						the_post();
 						if ( is_page() ) :
-							get_template_part( SNIPPETS_DIR . '/content/content-page' );		
+							get_template_part( SNIPPETS_DIR . '/content/content-page' );
 						else :
-							if (is_single()):
+							if ( is_single() ) :
 								?>
 												<div class="d-flex justify-content-center single-post-wrapper">
 													<div class="col-md-12 my-3">
 														<div class='px-xl-5'>
-															<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
+															<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 																<p>By <?php the_author(); ?></p>
-																<div class="blogs-content-categories"><?php 
-														the_category(); ?></div>
+																<div class="blogs-content-categories">
+																<?php
+														the_category();
+														?>
+														</div>
 															<h2 class="mb-5"><?php the_title(); ?></h2>
 													</div>
 													<div class="single-post-thumbnail">
-													<?php the_post_thumbnail('large'); ?>
+													<?php the_post_thumbnail( 'large' ); ?>
 													</div>
 														<div class='my-5 entry-content px-xl-5'>
 														<p><?php the_content(); ?></p>
@@ -82,48 +86,55 @@ if ( ! is_front_page() ) :
 
 							<?php
 								get_template_part( SNIPPETS_DIR . '/content/content-read-next' );
-							else:
-								
+							else :
+
 								$counter = $counter + 1;
-								if($counter == 1):
+								if ( $counter == 1 ) :
 									?>
 										<div class="col-12 my-5 ">
 
 											<div class="row d-flex align-items-start">
 
 												<div class="col-md-12 col-lg-8 order-2" style="display:inline-block">
-													<?php 
-														the_post_thumbnail(); 
-													?> 
-												<div class="blogs-content-categories"><?php 
-														the_category(); ?></div>
+													<?php
+														the_post_thumbnail();
+													?>
+													 
+												<div class="blogs-content-categories">
+												<?php
+														the_category();
+														?>
+														</div>
 
-												<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+												<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 												
-												<p><?php the_excerpt(__('(more…)')); ?></p>
-												<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
+												<p><?php the_excerpt( __( '(more…)' ) ); ?></p>
+												<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 												<p>By <?php the_author(); ?></p>
 												</div>
 												<div class="col-md-12 col-lg-4 order-1 order-lg-12 mb-5" >
 													<ul class="blog-list-categories">	
-													<?php 
-													 get_search_form(); 
-														wp_list_categories('orderby=name&title_li=&show_count=1'); 
+													<?php
+													 get_search_form();
+														wp_list_categories( 'orderby=name&title_li=&show_count=1' );
 													?>
 													</ul>
 												</div>
 											</div>
 										</div>
 									<?php
-								else:
+								else :
 										?>
 												<div class="col-md-4 col-12 my-5">
 												<?php the_post_thumbnail(); ?>
-													<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-													<div class="blogs-content-categories"><?php 
-														the_category(); ?></div>
+													<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+													<div class="blogs-content-categories">
+													<?php
+														the_category();
+														?>
+														</div>
 													<div>
-													<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) );?>
+													<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 													<p>By <?php the_author(); ?></p>
 													</div>
 												</div>

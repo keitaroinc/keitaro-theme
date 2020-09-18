@@ -19,7 +19,7 @@
 // endif;
 
 // Show  the latest four posts on the frontpage
-if ( is_front_page()):
+if ( is_front_page() ) :
 get_template_part( SNIPPETS_DIR . '/frontpage-content' );
 endif;
 

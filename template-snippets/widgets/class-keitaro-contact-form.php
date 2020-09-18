@@ -131,7 +131,9 @@ class Keitaro_Contact_Form extends WP_Widget {
 			else :
 				if ( ! empty( $instance['title'] ) ) {
 					//echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
-					?><h3> <?php echo $instance['title']; ?> </h3><?php
+					?>
+					<h3> <?php echo $instance['title']; ?> </h3>
+					<?php
 				}
 
 				if ( ! empty( $instance['description'] ) ) {

@@ -698,6 +698,7 @@ pre {
 		img {
 			width: auto;
 			max-height: $spacer*5;
+			height: auto;
 		}
 	}
 }
@@ -705,11 +706,33 @@ pre {
 // Group block
 
 .wp-block-group {
+
 	.wp-block-group__inner-container {
 		padding-top: $spacer*8;
 		padding-bottom: $spacer*8;
 	}
+
+	&.no-padding-top{
+		.wp-block-group__inner-container{
+			padding-top: 0;
+		}
+	}
+
+	&.no-padding-bottom{
+		.wp-block-group__inner-container{
+			padding-bottom: 0;
+		}
+	}
+
+	.wp-block-image {
+		img {
+			height: auto;
+		}
+	}
 }
+
+
+// Block titles
 
 .has-huge-font-size,
 .has-large-font-size {

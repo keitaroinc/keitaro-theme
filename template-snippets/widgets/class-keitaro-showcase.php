@@ -33,26 +33,26 @@ class Keitaro_Showcase extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-    if (empty($instance['color'])):
-      $color = '#1e9843';
-    else:
-      $color = $instance['color'];
-    endif;
+	if ( empty( $instance['color'] ) ) :
+			  $color = '#1e9843';
+	else :
+	  $color = $instance['color'];
+	endif;
 		$service_icon = get_the_post_thumbnail( $instance['service_link'] );
 		echo wp_kses_post( $args['before_widget'] );
 		echo '<div class="showcase-inner text-center p-3 mx-3" style="height:100%;background: linear-gradient(to bottom, ',$color,' 80%, #f2f2f2 20%)!important;">';
 		echo '<div class="my-5">';
-    
+
 		if ( ! empty( $instance['title'] ) ) {
-			echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
-    }
-        echo '</div>';
-        echo '<a class="btn btn-outline-light p-3 mb-5" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">View Showcase</a>';
+		echo wp_kses_post( $args['before_title'] ) . wp_kses_post( apply_filters( 'widget_title', $instance['title'] ) ) . wp_kses_post( $args['after_title'] );
+	}
+		echo '</div>';
+		echo '<a class="btn btn-outline-light p-3 mb-5" href="' . ( isset( $instance['service_link'] ) ? esc_url( get_permalink( $instance['service_link'] ) ) : '#' ) . '">View Showcase</a>';
 		if ( $service_icon ) :
-			echo '<div class="showcase-icon">';
-			echo get_the_post_thumbnail( $instance['service_link'] );
-			echo '</div>';
-    endif;
+		echo '<div class="showcase-icon">';
+		echo get_the_post_thumbnail( $instance['service_link'] );
+		echo '</div>';
+	endif;
 		echo '</div>';
 
 		echo wp_kses_post( $args['after_widget'] );
@@ -68,8 +68,8 @@ class Keitaro_Showcase extends WP_Widget {
 	public function form( $instance ) {
 
 		$title        = ! empty( $instance['title'] ) ? $instance['title'] : '';
-    $service_link = ! empty( $instance['service_link'] ) ? $instance['service_link'] : '';
-    $color = ! empty( $instance['color'] ) ? $instance['color'] : '';
+	$service_link = ! empty( $instance['service_link'] ) ? $instance['service_link'] : '';
+	$color = ! empty( $instance['color'] ) ? $instance['color'] : '';
 
 		?>
 <p>
@@ -103,7 +103,7 @@ class Keitaro_Showcase extends WP_Widget {
 
 			if ( $wp_pages ) :
 
-				?>
+		?>
 	<select name="<?php echo esc_attr( $this->get_field_name( 'service_link' ) ); ?>"
 	 id="<?php echo esc_attr( $this->get_field_id( 'service_link' ) ); ?>"
 	 class="widefat">
