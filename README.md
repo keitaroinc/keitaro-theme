@@ -43,3 +43,11 @@ If you want the arrow to look like a border, *set a background color* on the Gro
 ### Creating lists with check marks
 
 Create or select a **List** block in Gutenberg and expand the **Advanced** section in the right sidebar. Enter `list-checked` in the **Additional CSS class(es)** input and click Update.
+
+### Removing extra empty space above and below Groups
+
+To remove the extra empty space above a Group block, select the Group block, expand the **Advanced** section in the right sidebar, enter `no-padding-top` the **Additional CSS class(es)** input and click Update.
+
+To remove the extra empty space below a Group block, select the Group block, expand the **Advanced** section in the right sidebar, enter `no-padding-bottom` the **Additional CSS class(es)** input and click Update.
+
+Entering both CSS classes delimited by a space is also supported.
