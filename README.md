@@ -42,4 +42,4 @@ If you want the arrow to look like a border, *set a background color* on the Gro
 
 ### Creating lists with check marks
 
-Create or select a **List** block in Gutenber and expand the **Advanced** section in the right sidebar. Enter `list-checked` in the **Additional CSS class(es)** input and click Update.
+Create or select a **List** block in Gutenberg and expand the **Advanced** section in the right sidebar. Enter `list-checked` in the **Additional CSS class(es)** input and click Update.
