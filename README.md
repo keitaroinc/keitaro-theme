@@ -34,6 +34,10 @@ Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve 
 
 ## Visual Design
 
+### Making Text Uppercase
+
+To make any block show all-caps letters, select the relevant block in Gutenberg, expand the **Advanced** section in the right sidebar, enter `text-uppercase` in the **Additional CSS class(es)** input and click Update.
+
 ### Adding Arrows
 
 Bottom left or bottom right arrows can be added to Group blocks, by assigning the `arrow-left` or `arrow-right` CSS classes. Select the Group block in Gutenberg, expand the **Advanced** section in the right sidebar, enter one of the two CSS classes in the **Additional CSS class(es)** input and click Update.
