@@ -297,6 +297,13 @@ function google_search_console_tags() {
 
 add_action( 'wp_head', 'google_search_console_tags' );
 
+function wp_block_overrides(){
+	wp_enqueue_style('wp-block-overrides', get_stylesheet_directory_uri() . '/assets/css/wp-block.css', null, null, false );
+}
+
+// Override the appearance of the Gutenberg block editor
+add_action( 'admin_enqueue_scripts', 'wp_block_overrides' );
+
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
 
