@@ -8,6 +8,10 @@
 			.wp-block-columns {
 				margin-bottom: 0;
 			}
+
+			.wp-block-column{
+				margin-left: $spacer*2;
+			}
 		}
 
 		.has-huge-font-size,
@@ -30,6 +34,7 @@
 
 		.has-large-font-size,
 		.has-huge-font-size {
+
 			&:after {
 				content: none;
 				padding-bottom: 0;
@@ -162,13 +167,12 @@
 			flex-direction: column;
 			background-color: $keitaro-white;
 			padding: $spacer*2;
-			margin: 0 $spacer/1.5 $spacer*1.5;
 			color: $keitaro-gray-dark;
 			position: relative;
 			transition: background-color .2s linear;
 
 			&:hover {
-				box-shadow: 0 $spacer/4 $spacer*2 0 rgba(0, 0, 0, 0.2);
+				box-shadow: 0 $spacer/4 $spacer*2 0 rgba($black, 0.1);
 			}
 
 			.wp-block-buttons {
