@@ -8,6 +8,10 @@
 		}
 	}
 
+	.wp-block-media-text__content {
+		margin-top: 0;
+	}
+
 	.wp-block-column {
 		>.wp-block-group {
 			z-index: 2;
@@ -53,14 +57,16 @@
 
 			.wp-block-group {
 
+				box-shadow: 0 0 $spacer*2 rgba($black, .1);
+
 				.wp-block-group__inner-container {
-					padding: $spacer*3;
+					padding: $spacer*5;
 					display: flex;
 					flex-direction: column;
 				}
 
 				position: absolute;
-				top: calc(50% - 80px);
+				top: calc(50% - 120px);
 				right: 55%;
 			}
 		}
