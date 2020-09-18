@@ -36,6 +36,10 @@ Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve 
 
 ### Adding Arrows
 
-Bottom left or bottom right arrows can be added to Group blocks, by assigning the `arrow-left` or `arrow-right` CSS classes. Select the Group block in Gutenberg, expand the **Advanced** section, enter one of the two CSS classes in the **Additional CSS class(es)** input and click Update.
+Bottom left or bottom right arrows can be added to Group blocks, by assigning the `arrow-left` or `arrow-right` CSS classes. Select the Group block in Gutenberg, expand the **Advanced** section in the right sidebar, enter one of the two CSS classes in the **Additional CSS class(es)** input and click Update.
 
 If you want the arrow to look like a border, *set a background color* on the Group the CSS classes are added.
+
+### Creating lists with check marks
+
+Create or select a **List** block in Gutenber and expand the **Advanced** section in the right sidebar. Enter `list-checked` in the **Additional CSS class(es)** input and click Update.
