@@ -6,22 +6,6 @@
 			margin-top: 0;
 		}
 
-		&:not(.has-background) {
-			.wp-block-column {
-				>.wp-block-columns {
-					&:after {
-						content: none;
-					}
-
-					.wp-block-column {
-						.wp-block-group__inner-container {
-							padding: $spacer*3;
-						}
-					}
-				}
-			}
-		}
-
 		&.has-background {
 
 			.wp-block-columns {
@@ -44,7 +28,7 @@
 		.wp-block-columns {
 			&.are-vertically-aligned-center {
 				>.wp-block-column {
-					align-self: stretch;
+					align-self: flex-end;
 					display: flex;
 					flex-direction: column;
 
