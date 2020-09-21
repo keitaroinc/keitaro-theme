@@ -683,6 +683,20 @@ pre {
 		}
 	}
 
+	&.feature-group {
+
+		.wp-block-columns {
+
+			.wp-block-column {
+				&:not(:first-child) {
+					margin-left: $spacer*2;
+				}
+
+				margin-bottom: $spacer*2;
+			}
+		}
+	}
+
 	.wp-block-image {
 		img {
 			height: auto;
@@ -810,17 +824,6 @@ p {
 	}
 }
 
-
-// Column block
-
-.wp-block-column {
-	@include media-breakpoint-up(lg) {
-		&:not(:first-child) {
-			margin-left: $spacer*3;
-		}
-	}
-}
-
 .arrow-right {
 	@include keitaro-edge-right(-$spacer);
 }
@@ -830,6 +833,7 @@ p {
 }
 
 .team-cards {
+
 	.wp-block-column {
 		display: flex;
 		flex-direction: column;
@@ -846,5 +850,13 @@ p {
 
 	.wp-block-buttons {
 		margin-top: auto;
+	}
+}
+
+.feature-block {
+	.wp-block-column {
+		&:not(:first-child) {
+			margin-left: unset;
+		}
 	}
 }
