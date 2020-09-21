@@ -745,6 +745,13 @@ p {
 .wp-block-buttons {
 
 	.wp-block-button {
+
+		&.btn-call,
+		&.btn-email {
+
+			border-color: transparent;
+		}
+
 		.wp-block-button__link {
 			@extend .btn;
 			@extend .btn-outline-dark;
@@ -759,6 +766,45 @@ p {
 		&.is-style-outline {
 			.wp-block-button__link {
 				@extend .btn-outline-primary;
+			}
+		}
+	}
+
+	.btn-call,
+	.btn-email {
+
+		width: $spacer*5;
+
+		.wp-block-button__link {
+			@extend .fa;
+			position: relative;
+			transition: none;
+
+			&:hover {
+				&:before {
+					@include btn-with-icon;
+					background-color: inherit;
+				}
+			}
+		}
+	}
+
+	.btn-call {
+
+		.wp-block-button__link {
+			&:before {
+				@include btn-with-icon;
+				content: fa-content($fa-var-phone-alt);
+			}
+		}
+	}
+
+	.btn-email {
+
+		.wp-block-button__link {
+			&:before {
+				@include btn-with-icon;
+				content: fa-content($fa-var-envelope);
 			}
 		}
 	}
@@ -796,5 +842,9 @@ p {
 		*:last-child {
 			margin-bottom: 0
 		}
+	}
+
+	.wp-block-buttons {
+		margin-top: auto;
 	}
 }
