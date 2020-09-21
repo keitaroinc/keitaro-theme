@@ -72,3 +72,13 @@
 		font-size: $font-size-base * 3;
 	}
 }
+
+@mixin btn-with-icon {
+	position: absolute;
+	top: $spacer/1.75;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: $spacer/2;
+	background-color: $white;
+}
