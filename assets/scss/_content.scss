@@ -770,7 +770,7 @@ p {
 .wp-block-column {
 	@include media-breakpoint-up(lg) {
 		&:not(:first-child) {
-			margin-left: $spacer*5;
+			margin-left: $spacer*3;
 		}
 	}
 }
@@ -781,4 +781,20 @@ p {
 
 .arrow-left {
 	@include keitaro-edge-left(-$spacer);
+}
+
+.team-cards {
+	.wp-block-column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		background-color: $white;
+		padding: $spacer*4 $spacer*3;
+		box-shadow: 0 $spacer/4 $spacer*2 0 rgba($black, 0.1);
+
+		*:last-child {
+			margin-bottom: 0
+		}
+	}
 }
