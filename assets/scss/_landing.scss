@@ -22,6 +22,15 @@
 
 		min-height: 700px;
 
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: unset;
+		}
+
 		.has-huge-font-size {
 			font-size: $display3-size;
 		}
