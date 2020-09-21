@@ -2,13 +2,6 @@
 
 	.wp-block-group {
 
-		// &.has-background {
-
-		// 	.wp-block-column {
-		// 		margin-left: unset;
-		// 	}
-		// }
-
 		.has-huge-font-size,
 		.has-large-font-size {
 
@@ -21,24 +14,19 @@
 
 		.wp-block-columns {
 
-			&.are-vertically-aligned-center {
+			.wp-block-column {
 
-				>.wp-block-column {
+				align-self: stretch;
+				display: flex;
+				flex-direction: column;
 
-					align-self: stretch;
-					display: flex;
-					flex-direction: column;
+				.wp-block-group {
 
-					.wp-block-group {
-
-						&.has-background {
-							flex-basis: 100%;
-						}
+					&.has-background {
+						flex-basis: 100%;
 					}
 				}
-			}
 
-			.wp-block-column {
 				.wp-block-group__inner-container {
 					padding: $spacer*3;
 				}
