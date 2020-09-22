@@ -35,12 +35,6 @@ gulp.task('prism-css', function () {
 		.pipe(gulp.dest('assets/css'));
 });
 
-// Copy Leaflet js assets in assets/js
-gulp.task('leaflet', function () {
-	return gulp.src(['node_modules/leaflet/dist/**/*'])
-		.pipe(gulp.dest('assets/leaflet'));
-});
-
 // Copy Clipboard.js assets in assets/js
 gulp.task('clipboard', function () {
 	return gulp.src('node_modules/clipboard/dist/clipboard.min.js')
@@ -65,11 +59,10 @@ gulp.task('jquery', function () {
 		.pipe(gulp.dest('assets/js'));
 });
 
-// JS minify 
+// JS minify
 gulp.task('js', function () {
 	return gulp.src(jsAssets)
-		// temporary disabled due to min issues
-		//.pipe(uglify())
+		.pipe(uglify())
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest('assets/js'));
 });
@@ -81,4 +74,4 @@ gulp.task('watch', function () {
 });
 
 // The default Gulp.js task
-gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'leaflet', 'js', 'sass', 'watch'));
+gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'js', 'sass', 'watch'));
