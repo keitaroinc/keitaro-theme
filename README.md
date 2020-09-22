@@ -55,3 +55,13 @@ To remove the extra empty space above a Group block, select the Group block, exp
 To remove the extra empty space below a Group block, select the Group block, expand the **Advanced** section in the right sidebar, enter `no-padding-bottom` the **Additional CSS class(es)** input and click Update.
 
 Entering both CSS classes delimited by a space is also supported.
+
+### Managing Spacing
+
+Managing the spacing of any block is possible by assigning a specific CSS class from Bootstrap. Please check the [Spacing](https://getbootstrap.com/docs/4.5/utilities/spacing/) documentation of Bootstrap for further details.
+
+If, for example, you want to change the margins of a specific block, select the relevant block, expand the **Advanced** section in the right sidebar, enter `mt-0`, `ml-0`, `mr-0`, `mb-0`, `mx-0`, `my-0` or `m-0` in the **Additional CSS class(es)** input and click Update.
+
+### Feature Group
+
+To present a Group block as a Feature Group (usually a list of evenly-sized boxes with some content), select the Group block, expand the **Advanced** section in the right sidebar, enter `feature-group` the **Additional CSS class(es)** input and click Update.
