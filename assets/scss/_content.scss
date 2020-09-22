@@ -853,11 +853,3 @@ p {
 		margin-top: auto;
 	}
 }
-
-.feature-block {
-	.wp-block-column {
-		&:not(:first-child) {
-			margin-left: unset;
-		}
-	}
-}
