@@ -38,9 +38,28 @@
 	padding-top: $spacer*3;
 	padding-bottom: $spacer*3;
 
+	.widget-wrapper {
+		flex-basis: 15%;
+	}
+
+	.widget_text {
+		margin-right: auto;
+		flex-basis: 33%;
+	}
+
+	.jetpack_widget_social_icons {
+		flex-basis: 100%;
+	}
+
+	.jetpack-social-widget-item {
+		&:not(:first-child) {
+			margin-left: $spacer;
+		}
+	}
+
 	.keitaro-symbol {
-		width: $spacer*3;
-		margin: $spacer*3 $spacer*3 $spacer*5;
+		width: $spacer*2;
+		margin: $spacer*1.5 $spacer;
 	}
 
 	.current-menu-item {
@@ -67,32 +86,5 @@
 	&,
 	a {
 		@extend .footer-links;
-	}
-}
-
-.keitaro-connect {
-	height: 550px;
-	background-color: $keitaro-white;
-	position: relative;
-
-	a {
-		background-color: $keitaro-green-dark;
-		color: $keitaro-white;
-	}
-
-	h1 {
-		margin-bottom: 20px;
-		color: $keitaro-gray-dark;
-		font-weight: 900;
-	}
-
-	h1:after {
-		content: '';
-		display: block;
-		height: 0.2em;
-		width: 10%;
-		margin: 7px auto;
-		border-bottom: solid;
-		color: $keitaro-green-dark;
 	}
 }
