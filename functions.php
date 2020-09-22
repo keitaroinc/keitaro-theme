@@ -461,7 +461,7 @@ function keitaro_widgets_init() {
 			 'before_widget' => '<div class="sidebar-default %2$s">',
 			 'after_widget'  => '</div>',
 		 )
-		);
+	);
 
 	register_sidebar(
 		 array(
@@ -471,7 +471,27 @@ function keitaro_widgets_init() {
 			 'before_widget' => '<div class="widget-wrapper %2$s">',
 			 'after_widget'  => '</div>',
 		 )
-		);
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer Widgets Sidebar', 'keitaro' ),
+			'description'   => __( 'Reserved for widgets shown in the footer of all pages', 'keitaro' ),
+			'id'            => 'keitaro_footer_widgets',
+			'before_widget' => '<div class="widget-wrapper %2$s">',
+			'after_widget'  => '</div>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Social Media Widgets Sidebar', 'keitaro' ),
+			'description'   => __( 'Reserved for social media widgets shown in the footer of all pages', 'keitaro' ),
+			'id'            => 'keitaro_social_media_widgets',
+			'before_widget' => '<div class="widget-wrapper %2$s">',
+			'after_widget'  => '</div>',
+		)
+    );
 
 	register_sidebar(
 		 array(
@@ -483,7 +503,7 @@ function keitaro_widgets_init() {
 			 'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
 			 'after_title'   => '</h2></header>',
 		 )
-		);
+	);
 
 	register_sidebar(
 		array(
