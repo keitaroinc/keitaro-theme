@@ -404,20 +404,50 @@ pre {
 .widgettitle {
 	font-size: $h4-font-size;
 	font-weight: $headings-font-weight;
-	color: $primary;
+	// color: $primary;
 	margin-bottom: $grid-gutter-width / 4;
 }
 
-.widget-wrapper {
-	&:first-child {
-		.widgettitle {
-			margin-top: 0;
+// .widget-wrapper {
+// 	&:first-child {
+// 		.widgettitle {
+// 			margin-top: 0;
+// 		}
+// 	}
+
+// 	&+.widget-wrapper {
+// 		.widgettitle {
+// 			margin-top: $grid-gutter-width / 4 + $grid-gutter-width / 6;
+// 		}
+// 	}
+// }
+
+.widget_nav_menu {
+
+	.widgettitle {
+		position: relative;
+		padding-left: $spacer*1.5;
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			display: inline-block;
+			content: "";
+			background-color: $primary;
+			width: $spacer;
+			height: $spacer/8;
 		}
 	}
 
-	&+.widget-wrapper {
-		.widgettitle {
-			margin-top: $grid-gutter-width / 4 + $grid-gutter-width / 6;
+	.menu {
+		@extend .list-unstyled;
+	}
+
+	.menu-item {
+		a {
+			@extend .btn;
+			@extend .btn-link;
 		}
 	}
 }
