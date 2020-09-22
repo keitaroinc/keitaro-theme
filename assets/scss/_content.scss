@@ -618,7 +618,7 @@ pre {
 		margin: auto;
 
 		img {
-			object-fit: none;
+			object-fit: scale-down;
 			max-height: 50%;
 			margin-bottom: $spacer*5;
 		}
