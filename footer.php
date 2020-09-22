@@ -10,42 +10,30 @@
 
 ?>
 <div class="footer-bg bg-white">
-	<div class="container">
-		<div class="content main-footer">
-			<hr>
-			<div class="row no-gutters justify-content-between mt-5">
-				<div class="mb-4 social-footer-wrapper">
-				<?php get_template_part( SNIPPETS_DIR . '/sidebars/social' ); ?>
-				</div>
-			<hr class="d-none d-xs-block d-sm-block">
-				<div class="footer-list mb-3">
-					<h3>- <?php echo wp_get_nav_menu_name( 'footer-services' ); ?> </h3>
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-services' ); ?>
-				</div>
-				<hr class="d-none d-xs-block d-sm-block">
-				<div class="footer-list mb-3">
-					<h3>- <?php echo wp_get_nav_menu_name( 'footer' ); ?> </h3> 
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-menu' ); ?>
-				</div>
-				<hr class="d-none d-xs-block d-sm-block">
-				<div class="footer-list mb-3">
-					<h3>- <?php echo wp_get_nav_menu_name( 'footer-products' ); ?> </h3>
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-products' ); ?>
-				</div>
-				<hr class="d-none d-xs-block d-sm-block">
-				<div class="footer-list mb-3">
-					<h3>- <?php echo wp_get_nav_menu_name( 'footer-offices' ); ?> </h3>
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/offices-menu' ); ?>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				<hr>
+				<div class="content main-footer">
+					<div class="d-flex flex-wrap px-3">
+						<?php get_template_part( SNIPPETS_DIR . '/sidebars/footer-widgets' ); ?>
+					</div>
+					<?php $site_icon_url = get_site_icon_url( 128 ); ?>
+					<?php if ( $site_icon_url ) : ?>
+						<a href="<?php echo esc_url( home_url() ); ?>"><img class="keitaro-symbol" src="<?php echo esc_url( $site_icon_url ); ?>" alt="Keitaro"></a>
+					<?php endif; ?>
+					<div class="d-flex flex-wrap px-3">
+						<?php get_template_part( SNIPPETS_DIR . '/sidebars/social-media-widgets' ); ?>
+					</div>
+					<hr>
+					<div class="d-flex flex-wrap justify-content-between">
+						<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-secondary-menu' ); ?>
+						<footer class="copyright">
+							<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>. <?php esc_html_e( 'Some rights reserved.', 'keitaro' ); ?></p>
+						</footer>
+					</div>
 				</div>
 			</div>
-			<hr>
-			<div class="row no-gutters justify-content-between">
-				<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-secondary-menu' ); ?>
-				<footer class="copyright">
-					<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>" class="text-uppercase"><?php bloginfo( 'name' ); ?></a>. <?php esc_html_e( 'Some rights reserved.', 'keitaro' ); ?></p>
-				</footer>
-			</div>
-
 		</div>
 	</div>
 	<?php wp_footer(); ?>
