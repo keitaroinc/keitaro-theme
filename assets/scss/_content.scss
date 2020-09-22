@@ -66,6 +66,28 @@
 	}
 }
 
+.list-checked-alt {
+	@extend .list-with-icon;
+	display: flex;
+	flex-wrap: wrap;
+
+	li {
+		flex-basis: 33%;
+		flex-direction: column;
+		align-items: unset;
+
+		strong {
+			margin-bottom: $spacer;
+		}
+
+		&:before {
+			content: fa-content($fa-var-check-circle);
+			margin-bottom: $spacer*0.5;
+			font-size: $spacer*2;
+		}
+	}
+}
+
 .lead-post-text {
 	font-size: $font-size-lg;
 	color: $keitaro-green-light;
