@@ -9,30 +9,7 @@
  */
 
 get_header();
-if ( is_front_page() ) :
-	?> 
-	<!-- <h1>New blocks here</h1> -->
-	<?php
 
-	if ( have_posts() ) :
-		/* Start the Loop */
-		while ( have_posts() ) :
-			the_post();
-			?>
-			<div class="container-fluid home-content-wrapper my-5 ">
-			<?php
-			the_content();
-
-			?>
-			</div>
-			<?php
-		endwhile;
-	else :
-		get_template_part( SNIPPETS_DIR . '/content/content-none' );
-	endif;
-else :
-endif;
-// endhomepage
 if ( ! is_front_page() ) :
 	?>
 	<?php
@@ -99,7 +76,7 @@ if ( ! is_front_page() ) :
 													<?php
 														the_post_thumbnail();
 													?>
-													 
+
 												<div class="blogs-content-categories">
 												<?php
 														the_category();
@@ -107,13 +84,13 @@ if ( ! is_front_page() ) :
 														</div>
 
 												<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-												
+
 												<p><?php the_excerpt( __( '(more…)' ) ); ?></p>
 												<?php keitaro_author_avatar( get_the_author_meta( 'ID' ) ); ?>
 												<p>By <?php the_author(); ?></p>
 												</div>
 												<div class="col-md-12 col-lg-4 order-1 order-lg-12 mb-5" >
-													<ul class="blog-list-categories">	
+													<ul class="blog-list-categories">
 													<?php
 													 get_search_form();
 														wp_list_categories( 'orderby=name&title_li=&show_count=1' );
@@ -151,7 +128,7 @@ if ( ! is_front_page() ) :
 					</div>
 					</div>
 				</main>
-					
+
 				<?php
 
 			else :
