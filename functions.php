@@ -473,100 +473,6 @@ function keitaro_widgets_init() {
 		 )
 		);
 
-			register_sidebar(
-		 array(
-			 'name'          => __( 'Services', 'keitaro' ),
-			 'description'   => __( 'Reserved for Keitaro Service widgets and rendered within the Hero section on the home page.', 'keitaro' ),
-			 'id'            => 'keitaro_services',
-			 'before_widget' => '<div class="card border-0 service-wrapper %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<h3 class="service-title">',
-			 'after_title'   => '</h3>',
-		 )
-		);
-
-		register_sidebar(
-			array(
-				'name'          => __( 'List Showcases', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro showcases widgets and rendered within the showcases page.', 'keitaro' ),
-				'id'            => 'keitaro_showcases',
-				'before_widget' => '<div class="col-sm-12 p-1 col-md-4 my-3 showcase-item %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		register_sidebar(
-			array(
-				'name'          => __( 'Product Microkubes Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product/services cards widgets and rendered within the products page.', 'keitaro' ),
-				'id'            => 'keitaro_microkubes_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-		register_sidebar(
-			array(
-				'name'          => __( 'Product Amplus Cards', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro product amplus cards widgets and rendered within the products page.', 'keitaro' ),
-				'id'            => 'keitaro_amplus_cards',
-				'before_widget' => '<div class="col-sm-12 col-md-4 my-3 %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="showcase-title">',
-				'after_title'   => '</h3>',
-			)
-		 );
-
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Service Icons', 'keitaro' ),
-			 'description'   => __( 'Reserved for Image widgets and rendered below the Hero section on the home page.', 'keitaro' ),
-			 'id'            => 'keitaro_service_icons',
-			 'before_widget' => '<li>',
-			 'after_widget'  => '</li>',
-			 'before_title'  => '',
-			 'after_title'   => '',
-		 )
-		);
-
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Call to Action', 'keitaro' ),
-			 'description'   => __( 'Reserved for Keitaro Call to Action widgets and rendered above the footer section on static pages and the front page.', 'keitaro' ),
-			 'id'            => 'keitaro_call_to_action',
-			 'before_widget' => '<div class="container d-flex flex-column align-items-center call-to-action-wrapper %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<h3 class="call-to-action-title">',
-			 'after_title'   => '</h3>',
-		 )
-		);
-
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Icon Blocks', 'keitaro' ),
-			 'description'   => __( 'Reserved for Keitaro Icon Block widgets and rendered within static pages.', 'keitaro' ),
-			 'id'            => 'keitaro_icon_blocks',
-			 'before_widget' => '<div class="icon-block-wrapper %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<h3 class="page-icon-blocks-title">',
-			 'after_title'   => '</h3>',
-		 )
-		);
-
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Locations', 'keitaro' ),
-			 'description'   => __( 'Reserved for Keitaro Location widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-			 'id'            => 'keitaro_locations',
-			 'before_widget' => '<div class="location %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<h4 class="location-title">',
-			 'after_title'   => '</h4>',
-		 )
-		);
-
 	register_sidebar(
 		 array(
 			 'name'          => __( 'Contact', 'keitaro' ),
@@ -591,29 +497,17 @@ function keitaro_widgets_init() {
 		)
 	);
 
-		register_sidebar(
-			array(
-				'name'          => __( 'Keitaro Careers', 'keitaro' ),
-				'description'   => __( 'Reserved for Keitaro Careers Job List widgets and rendered within static pages with the Careers page template.', 'keitaro' ),
-				'id'            => 'keitaro_careers',
-				'before_widget' => '<div">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h2 class="entry-title my-5 text-center">',
-				'after_title'   => '</h2>',
-			)
-			);
-
-		register_sidebar(
-			array(
-				'name'          => __( 'Social', 'keitaro' ),
-				'description'   => __( 'Reserved for footer menu social media.', 'keitaro' ),
-				'id'            => 'keitaro_social',
-				'before_widget' => '<div class="social-list">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h2 class="">',
-				'after_title'   => '</h2>',
-			)
-		 );
+	register_sidebar(
+		array(
+			'name'          => __( 'Keitaro Careers', 'keitaro' ),
+			'description'   => __( 'Reserved for Keitaro Careers Job List widgets and rendered within static pages with the Careers page template.', 'keitaro' ),
+			'id'            => 'keitaro_careers',
+			'before_widget' => '<div">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="entry-title my-5 text-center">',
+			'after_title'   => '</h2>',
+		)
+	);
 
 	if ( class_exists( 'Keitaro_Career_Job' ) ) :
 		register_widget( 'Keitaro_Career_Job' );
