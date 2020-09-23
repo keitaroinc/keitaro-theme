@@ -1,11 +1,15 @@
 .author-box {
-	overflow: auto;
-	margin-top: $spacer;
-	margin-bottom: $spacer;
+	margin: $spacer $spacer*2;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 
 	.author-avatar {
-		float: left;
-		@include shape-outside(circle());
+		flex-shrink: 0;
+	}
+
+	.author-title {
+		margin-bottom: $spacer/2;
 	}
 
 	.avatar-url {
@@ -14,9 +18,13 @@
 		margin-bottom: $spacer / 4;
 	}
 
-	.author-description {
-		margin-bottom: $grid-gutter-width / 4;
-	}
+}
+
+.author-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
 }
 
 .author-photo {
