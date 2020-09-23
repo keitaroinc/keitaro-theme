@@ -39,7 +39,8 @@ function keitaro_theme_setup() {
 
 	// Video support for Custom Header
 	add_theme_support(
-		'custom-header', array(
+		'custom-header',
+		array(
 			'video' => true,
 		)
 	);
@@ -47,18 +48,21 @@ function keitaro_theme_setup() {
 	/**
 	 * Custom gradient presets for Gutenberg
 	 */
-	add_theme_support('editor-gradient-presets', array(
-        array(
-            'name' => __('Green to Light Gray', 'keitaro'),
-            'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #f2f2f2 65%)',
-            'slug' => 'green-to-light-gray'
-        ),
-        array(
-            'name' => __('Light Gray to White', 'keitaro'),
-            'gradient' => 'linear-gradient(180deg, #f2f2f2 0% 65%, #fff 65%)',
-            'slug' => 'light-gray-to-white'
-        ),
-    ));
+	add_theme_support(
+		'editor-gradient-presets',
+		array(
+			array(
+				'name' => __( 'Green to Light Gray', 'keitaro' ),
+				'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #f2f2f2 65%)',
+				'slug' => 'green-to-light-gray',
+			),
+			array(
+				'name' => __( 'Light Gray to White', 'keitaro' ),
+				'gradient' => 'linear-gradient(180deg, #f2f2f2 0% 65%, #fff 65%)',
+				'slug' => 'light-gray-to-white',
+			),
+		)
+		);
 
 	/*
 	 * Let WordPress manage the document title.
@@ -491,7 +495,7 @@ function keitaro_widgets_init() {
 			'before_widget' => '<div class="widget-wrapper %2$s">',
 			'after_widget'  => '</div>',
 		)
-    );
+	);
 
 	register_sidebar(
 		 array(
@@ -700,7 +704,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 				keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
 				),
 		$author_title,
-		!empty($author_description) ? sprintf('<p class="author-description">%1$s</p>', $author_description) : '',
+		! empty( $author_description ) ? sprintf( '<p class="author-description">%1$s</p>', $author_description ) : '',
 		$author_stats,
 		( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
@@ -740,7 +744,7 @@ function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 }
 
 function keitaro_posted_on() {
-	the_date( '', '<time datetime="' . get_the_date('c') . '" itemprop="datePublished">', '</time>' );
+	the_date( '', '<time datetime="' . get_the_date( 'c' ) . '" itemprop="datePublished">', '</time>' );
 
 }
 

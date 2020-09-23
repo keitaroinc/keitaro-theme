@@ -11,14 +11,14 @@
 
 get_header();
 
-if (have_posts()) :
+if ( have_posts() ) :
 	$first = true;
 ?>
 	<div class="container-fluid">
 
 		<div id="primary" class="content-area">
 
-			<?php get_template_part(SNIPPETS_DIR . '/header/page-header'); ?>
+			<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
 
 			<div class="row">
 
@@ -27,10 +27,10 @@ if (have_posts()) :
 					<main id="main" class="site-main" role="main">
 						<?php
 
-						while (have_posts()) :
+						while ( have_posts() ) :
 
 							the_post();
-							get_template_part(SNIPPETS_DIR . '/content/content-single');
+							get_template_part( SNIPPETS_DIR . '/content/content-single' );
 
 						endwhile;
 
@@ -39,7 +39,7 @@ if (have_posts()) :
 
 					<nav class="nav-pagination">
 						<?php
-						get_template_part(SNIPPETS_DIR . '/navigation/pagination');
+						get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
 						?>
 					</nav>
 
@@ -51,9 +51,10 @@ if (have_posts()) :
 
 	else :
 
-		get_template_part(SNIPPETS_DIR . '/content/content-none');
+		get_template_part( SNIPPETS_DIR . '/content/content-none' );
 
-	endif; ?>
+	endif;
+	?>
 
 		</div>
 

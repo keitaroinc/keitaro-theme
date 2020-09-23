@@ -14,13 +14,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 
-	if (has_post_thumbnail()) :
-		get_template_part(SNIPPETS_DIR . '/post-thumbnail');
+	if ( has_post_thumbnail() ) :
+		get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
 	endif;
 
-	get_template_part(SNIPPETS_DIR . '/header/entry-header-read-next');
+	get_template_part( SNIPPETS_DIR . '/header/entry-header-read-next' );
 
-	get_template_part(SNIPPETS_DIR . '/post-author');
+	get_template_part( SNIPPETS_DIR . '/post-author' );
 
 	?>
 </article>

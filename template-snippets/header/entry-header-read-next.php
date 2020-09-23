@@ -15,7 +15,7 @@
 
 	the_category();
 
-	the_title('<h3 class="entry-title h4"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
+	the_title( '<h3 class="entry-title h4"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
 
 	?>
 </header>
