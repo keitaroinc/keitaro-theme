@@ -1,25 +1,18 @@
 .read-next {
-	margin: $spacer*2 0;
+	margin: $spacer*5 0;
 
-	.avatar-url {
-		margin-right: $spacer/2;
+	.hentry {
+		margin: auto;
 	}
 
-	.media-body {
-		vertical-align: middle;
-	}
-
-	.media-heading {
-		margin: $spacer/2;
+	.entry-title{
+		margin-bottom: $spacer;
 	}
 }
 
 .read-next-title {
-	//@extend .text-uppercase;
-	//font-size: $h4-font-size;
-	margin: $spacer*2 0;
-	color: $keitaro-gray-dark;
-	font-weight: 600;
+	color: $black;
+	margin: $spacer*5;
 }
 
 .read-more-item-title {
