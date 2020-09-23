@@ -43,8 +43,6 @@
 }
 
 @mixin shape-outside($shape) {
-	-moz-shape-outside: $shape;
-	-webkit-shape-outside: $shape;
 	shape-outside: $shape;
 }
 
@@ -81,4 +79,15 @@
 	bottom: 0;
 	padding-top: $spacer/2;
 	background-color: $white;
+}
+
+@mixin title-underdash {
+	&:after {
+		content: '';
+		display: block;
+		height: $spacer/4;
+		width: $spacer*3;
+		margin: ($spacer - $spacer/4) auto;
+		background-color: $primary;
+	}
 }
