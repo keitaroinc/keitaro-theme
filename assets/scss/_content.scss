@@ -12,22 +12,6 @@
 	// }
 }
 
-// .list-service-icons {
-// 	@extend .d-flex;
-// 	@extend .justify-content-center;
-// 	@extend .flex-wrap;
-// 	@extend .my-5;
-// 	padding-left: 0;
-// 	font-size: 0; // Removes any text elements before the icons
-// 	text-align: center;
-
-// 	.image {
-// 		max-width: 30px !important; // Must use !important here since the width is inlined.
-// 		height: auto;
-// 		margin: $spacer;
-// 	}
-// }
-
 .address-list {
 	font-size: $h5-font-size;
 	margin-top: $grid-gutter-width * 2;
@@ -192,8 +176,6 @@
 .entry-title {
 	word-break: break-word;
 	overflow-wrap: break-word;
-	// margin: auto;
-	// color: $black;
 }
 
 .entry-meta {
@@ -405,16 +387,6 @@ hr {
 	border-width: 1px;
 }
 
-.twitter-content-widget {
-	border: $sticky-border;
-	margin: $grid-gutter-width 0;
-	padding: 0 $grid-gutter-width;
-}
-
-.twitter-content-widget-title {
-	margin-bottom: $grid-gutter-width / 2;
-}
-
 .no-results {
 	margin-bottom: $grid-gutter-width;
 
@@ -448,23 +420,8 @@ pre {
 .widgettitle {
 	font-size: $h4-font-size;
 	font-weight: $headings-font-weight;
-	// color: $primary;
 	margin-bottom: $grid-gutter-width / 4;
 }
-
-// .widget-wrapper {
-// 	&:first-child {
-// 		.widgettitle {
-// 			margin-top: 0;
-// 		}
-// 	}
-
-// 	&+.widget-wrapper {
-// 		.widgettitle {
-// 			margin-top: $grid-gutter-width / 4 + $grid-gutter-width / 6;
-// 		}
-// 	}
-// }
 
 .widget_nav_menu {
 
@@ -532,82 +489,6 @@ pre {
 		margin-bottom: 0 !important;
 	}
 }
-
-// .blogs-content-categories {
-// 	ul {
-// 		display: flex;
-// 		flex-wrap: wrap;
-// 	}
-
-// 	li {
-// 		margin: 0;
-// 	}
-
-// 	li::before {
-// 		font-family: "Font Awesome 5 Free";
-// 		content: "\f292";
-// 		display: inline-block;
-// 		vertical-align: middle;
-// 		color: #7f7a71;
-// 		font-size: 12px;
-// 		font-weight: 600;
-// 	}
-
-// 	a {
-// 		padding: 5px;
-// 		font-size: 16px;
-// 	}
-// }
-
-// .blogs-content {
-
-// 	h3,
-// 	h4 {
-// 		color: $keitaro-gray-dark;
-// 		margin-top: 2rem;
-// 	}
-
-// 	h4 a {
-// 		color: $keitaro-gray-dark;
-// 		text-decoration: none;
-// 	}
-
-// 	h3 a {
-// 		color: $keitaro-gray-dark;
-// 		text-decoration: none;
-// 	}
-
-// 	p {
-// 		color: $keitaro-gray-dark;
-// 	}
-// }
-
-// .blog-list-categories {
-// 	list-style: none;
-// 	padding: 0;
-
-
-// 	li {
-// 		padding: 5px;
-// 		font-size: 18px;
-// 	}
-
-// 	li::before {
-// 		font-family: "Font Awesome 5 Free";
-// 		content: "\f292";
-// 		display: inline-block;
-// 		vertical-align: middle;
-// 		font-weight: 600;
-// 		margin-right: 10px;
-// 		color: $keitaro-green-dark;
-// 	}
-
-// 	a {
-// 		color: $keitaro-green-dark;
-// 		text-decoration: none;
-// 	}
-
-// }
 
 // Media Text block
 
