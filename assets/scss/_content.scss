@@ -1,15 +1,15 @@
 .content-area {
 	padding-bottom: $content-area-padding;
 
-	.post-thumbnail {
-		&:not(:first-child) {
-			margin-top: $grid-gutter-width / 2;
-		}
+	// .post-thumbnail {
+	// 	&:not(:first-child) {
+	// 		margin-top: $grid-gutter-width / 2;
+	// 	}
 
-		&:not(:last-child) {
-			margin-bottom: $grid-gutter-width / 2;
-		}
-	}
+	// 	&:not(:last-child) {
+	// 		margin-bottom: $grid-gutter-width / 2;
+	// 	}
+	// }
 }
 
 // .list-service-icons {
@@ -192,11 +192,14 @@
 .entry-title {
 	word-break: break-word;
 	overflow-wrap: break-word;
-	margin: auto;
+	// margin: auto;
+	// color: $black;
+}
 
-	a {
-		color: $keitaro-gray-dark;
-		text-decoration: none;
+.entry-meta {
+	time {
+		display: block;
+		color: $text-muted;
 	}
 }
 
@@ -296,11 +299,6 @@ hr {
 	}
 }
 
-.subpage-title {
-	text-transform: uppercase;
-	letter-spacing: $letter-spacing-small;
-}
-
 .hentry {
 	&:not(:last-child) {
 		margin-bottom: $content-area-padding;
@@ -330,11 +328,61 @@ hr {
 	}
 }
 
+.widget_categories ul,
 .post-categories {
-	@extend .post-meta-list;
+	@extend .text-warm;
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
 
 	a {
-		@extend .btn;
+		@extend .text-warm;
+
+		&:before {
+			content: '#';
+		}
+
+		margin-right: $spacer;
+	}
+}
+
+.widget_categories {
+	ul {
+		flex-direction: column;
+	}
+
+	li {
+		@extend .my-1;
+
+		a {
+			margin-right: initial;
+		}
+	}
+}
+
+.sidebar-default {
+	@extend .mb-5;
+}
+
+.site-main {
+	display: flex;
+	flex-wrap: wrap;
+
+	.hentry {
+		margin: $spacer;
+
+		&:first-child {
+			margin-top: 0;
+
+			.entry-content {
+				@extend .lead;
+			}
+		}
+
+		&:not(:first-child) {
+			flex-basis: 30%;
+		}
 	}
 }
 
@@ -345,10 +393,6 @@ hr {
 		@extend .btn;
 		@extend .btn-sm;
 	}
-}
-
-.entry-meta {
-	color: $keitaro-green-gray-l-10;
 }
 
 iframe,
@@ -489,100 +533,81 @@ pre {
 	}
 }
 
-.insights-title {
-	font-weight: 600;
-	color: $keitaro-gray-dark;
-}
+// .blogs-content-categories {
+// 	ul {
+// 		display: flex;
+// 		flex-wrap: wrap;
+// 	}
 
-.blogs-content-categories {
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-	}
+// 	li {
+// 		margin: 0;
+// 	}
 
-	li {
-		margin: 0;
-	}
+// 	li::before {
+// 		font-family: "Font Awesome 5 Free";
+// 		content: "\f292";
+// 		display: inline-block;
+// 		vertical-align: middle;
+// 		color: #7f7a71;
+// 		font-size: 12px;
+// 		font-weight: 600;
+// 	}
 
-	li::before {
-		font-family: "Font Awesome 5 Free";
-		content: "\f292";
-		display: inline-block;
-		vertical-align: middle;
-		color: #7f7a71;
-		font-size: 12px;
-		font-weight: 600;
-	}
+// 	a {
+// 		padding: 5px;
+// 		font-size: 16px;
+// 	}
+// }
 
-	a {
-		padding: 5px;
-		font-size: 16px;
-	}
-}
+// .blogs-content {
 
-.entry-header {
-	text-align: center;
-}
+// 	h3,
+// 	h4 {
+// 		color: $keitaro-gray-dark;
+// 		margin-top: 2rem;
+// 	}
 
-.entry-title:after {
-	content: '';
-	display: block;
-	height: 0.2em;
-	width: 3rem;
-	margin: 7px auto;
-	border-bottom: solid;
-	color: $keitaro-green-dark;
-}
+// 	h4 a {
+// 		color: $keitaro-gray-dark;
+// 		text-decoration: none;
+// 	}
 
-.blogs-content {
+// 	h3 a {
+// 		color: $keitaro-gray-dark;
+// 		text-decoration: none;
+// 	}
 
-	h3,
-	h4 {
-		color: $keitaro-gray-dark;
-		margin-top: 2rem;
-	}
+// 	p {
+// 		color: $keitaro-gray-dark;
+// 	}
+// }
 
-	h4 a {
-		color: $keitaro-gray-dark;
-		text-decoration: none;
-	}
-
-	h3 a {
-		color: $keitaro-gray-dark;
-		text-decoration: none;
-	}
-
-	p {
-		color: $keitaro-gray-dark;
-	}
-}
-
-.blog-list-categories {
-	list-style: none;
-	padding: 0;
+// .blog-list-categories {
+// 	list-style: none;
+// 	padding: 0;
 
 
-	li {
-		padding: 5px;
-		font-size: 18px;
-	}
+// 	li {
+// 		padding: 5px;
+// 		font-size: 18px;
+// 	}
 
-	li::before {
-		font-family: "Font Awesome 5 Free";
-		content: "\f292";
-		display: inline-block;
-		vertical-align: middle;
-		font-weight: 600;
-		margin-right: 10px;
-		color: $keitaro-green-dark;
-	}
+// 	li::before {
+// 		font-family: "Font Awesome 5 Free";
+// 		content: "\f292";
+// 		display: inline-block;
+// 		vertical-align: middle;
+// 		font-weight: 600;
+// 		margin-right: 10px;
+// 		color: $keitaro-green-dark;
+// 	}
 
-	a {
-		color: $keitaro-green-dark;
-		text-decoration: none;
-	}
+// 	a {
+// 		color: $keitaro-green-dark;
+// 		text-decoration: none;
+// 	}
 
-}
+// }
 
 // Media Text block
 
@@ -786,19 +811,12 @@ pre {
 
 .has-text-align-center {
 
+	@include title-underdash;
+
 	&.has-white-color {
 		&:after {
 			background-color: $success;
 		}
-	}
-
-	&:after {
-		content: '';
-		display: block;
-		height: $spacer/4;
-		width: $spacer*3;
-		margin: ($spacer - $spacer/4) auto;
-		background-color: $primary;
 	}
 }
 
