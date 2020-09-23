@@ -25,6 +25,3 @@
 
 	?>
 </div><!-- .entry-content -->
-<?php
-
-keitaro_read_more( 'btn-success' );
