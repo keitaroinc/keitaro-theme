@@ -16,6 +16,17 @@
 	padding-bottom: $grid-gutter-width;
 }
 
+.page-title {
+	@include title-underdash;
+	text-transform: uppercase;
+}
+
+.single {
+	.entry-title {
+		margin-bottom: $spacer*3;
+	}
+}
+
 .archive {
 
 	.author-title,
@@ -23,10 +34,4 @@
 		font-size: $h3-font-size;
 	}
 
-}
-
-.page-title,
-.entry-title {
-	@extend .text-uppercase;
-	letter-spacing: $letter-spacing-small;
 }
