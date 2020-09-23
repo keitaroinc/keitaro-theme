@@ -212,14 +212,32 @@
 	}
 }
 
+.nav-pagination{
+	@extend .my-5;
+}
+
 .page-numbers {
 	@extend .pagination;
-	margin: $grid-gutter-width / 2 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	li {
+		@extend .mx-1;
+	}
+
+	a {
+		@extend .btn;
+		@extend .btn-outline-secondary;
+	}
 
 	.current {
-		@extend .btn;
-		@extend .btn-success;
-		padding: $padding-base-vertical $padding-base-horizontal;
+		display: inline-block;
+		@extend .border-primary;
+		color: $white;
+		background-color: $primary;
+		line-height: $btn-line-height;
+		padding: $btn-padding-y $btn-padding-x;
 	}
 }
 
@@ -232,15 +250,5 @@
 			padding-left: $padding-base-horizontal;
 			text-decoration: none;
 		}
-	}
-}
-
-.page-numbers {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-
-	li {
-		padding: 10px;
 	}
 }
