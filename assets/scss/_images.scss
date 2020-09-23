@@ -1,7 +1,28 @@
 .wp-post-image,
 .post-thumbnail {
 	max-width: 100%;
+	min-width: 100%;
 	height: auto;
+}
+
+.hentry-grid {
+	.post-thumbnail {
+		display: flex;
+		flex-direction: column;
+		height: $spacer*15;
+
+		a {
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+		}
+	}
+
+	.wp-post-image {
+		width: auto;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 .format-image,
