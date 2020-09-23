@@ -676,7 +676,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
 	$author_work_position   = get_the_author_meta( 'user_work_position' );
 	$author_stats           = sprintf(
-		 '<p class="author-stats"><small>' .
+		 '<p class="author-stats mb-0"><small>' .
 			// translators: Authors Stats: sentence
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
 			// translators: Authors Stats: number of author posts
@@ -690,7 +690,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 		);
 
 	$print .= sprintf(
-		 '<h3 class="sr-only">%1$s</h3><div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4><p class="author-description">%6$s%4$s</p>%5$s</div></div>',
+		 '<h3 class="sr-only">%1$s</h3><div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ),
 		sprintf(
@@ -700,7 +700,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 				keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
 				),
 		$author_title,
-		$author_description,
+		!empty($author_description) ? sprintf('<p class="author-description">%1$s</p>', $author_description) : '',
 		$author_stats,
 		( ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '' )
 	);
@@ -740,7 +740,7 @@ function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 }
 
 function keitaro_posted_on() {
-	the_date( '', '<p>', '</p>' );
+	the_date( '', '<time datetime="' . get_the_date('c') . '" itemprop="datePublished">', '</time>' );
 
 }
 
