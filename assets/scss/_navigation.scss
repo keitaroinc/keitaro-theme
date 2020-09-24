@@ -220,7 +220,7 @@
 	@extend .pagination;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 
 	li {
 		@extend .mx-1;
