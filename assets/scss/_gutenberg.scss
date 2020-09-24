@@ -257,6 +257,90 @@
 	}
 }
 
+.is-style-media-text-partner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: $spacer*8 0;
+
+	&.has-media-on-the-right {
+
+		.wp-block-media-text__content {
+
+			.wp-block-group {
+
+				left: 55%;
+				right: auto;
+			}
+		}
+
+		.wp-block-media-text__media {
+			order: 2;
+
+			img {
+				margin: auto 0 auto auto;
+			}
+		}
+	}
+
+	.wp-block-group {
+		padding: 0;
+	}
+
+	.wp-block-media-text__content {
+		margin-top: 0;
+		position: initial;
+		flex-basis: 50%;
+
+		.wp-block-group {
+
+			box-shadow: 0 0 $spacer*2 rgba($black, .1);
+
+			.wp-block-group__inner-container {
+				padding: $spacer*5;
+				display: flex;
+				flex-direction: column;
+			}
+
+			position: absolute;
+			top: calc(50% - 120px);
+			right: 55%;
+		}
+	}
+
+	.wp-block-image {
+
+		padding: 0;
+		margin: 0;
+		transform: unset;
+
+		figure {
+			margin-bottom: 0;
+
+			img {
+				max-height: $spacer*5;
+				width: auto;
+			}
+		}
+	}
+
+	.wp-block-media-text__media {
+
+		margin: initial;
+		flex-basis: 50%;
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+
+		img {
+			margin: auto auto auto 0;
+			object-fit: cover;
+			max-height: unset;
+			max-width: $container-max-width;
+		}
+	}
+}
+
 
 // List block
 
