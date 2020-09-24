@@ -40,40 +40,6 @@
 	}
 }
 
-.list-checked {
-	@extend .list-with-icon;
-
-	li {
-		&:before {
-			content: fa-content($fa-var-check);
-		}
-	}
-}
-
-.list-checked-alt {
-	@extend .list-with-icon;
-	display: flex;
-	flex-wrap: wrap;
-
-	li {
-		flex-basis: 33%;
-		flex-direction: column;
-		align-items: initial;
-		font-size: $font-size-base;
-
-		strong {
-			font-size: $h4-font-size;
-			margin-bottom: $spacer;
-		}
-
-		&:before {
-			@extend .fa-2x;
-			content: fa-content($fa-var-check-circle);
-			margin-bottom: $spacer;
-		}
-	}
-}
-
 .lead-post-text {
 	font-size: $font-size-lg;
 	color: $keitaro-green-light;
