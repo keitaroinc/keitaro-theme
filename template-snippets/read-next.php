@@ -34,7 +34,7 @@ if ( $read_more_content->have_posts() ) :
 
 ?>
 	<section class="read-next">
-		<h2 class="read-next-title text-center has-text-align-center"><?php esc_html_e( 'Read next', 'keitaro' ); ?></h2>
+		<h2 class="read-next-title text-center has-text-align-center"><?php esc_html_e( 'Read Next', 'keitaro' ); ?></h2>
 		<div class="row">
 			<?php
 
