@@ -87,17 +87,17 @@ function keitaro_theme_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 
-register_nav_menus(
-	array(
-		'main'             => __( 'Main Menu', 'keitaro' ),
-		'footer'           => __( 'Footer Menu' ),
-		'social'           => __( 'Social Links', 'keitaro' ),
-		'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-		'footer-services'   => __( 'Services Menu', 'keitaro' ),
-		'footer-products'   => __( 'Products Menu', 'keitaro' ),
-		'footer-offices'    => __( 'Offices Menu', 'keitaro' ),
-	)
- );
+	register_nav_menus(
+		array(
+			'main'             => __( 'Main Menu', 'keitaro' ),
+			'footer'           => __( 'Footer Menu' ),
+			'social'           => __( 'Social Links', 'keitaro' ),
+			'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
+			'footer-services'   => __( 'Services Menu', 'keitaro' ),
+			'footer-products'   => __( 'Products Menu', 'keitaro' ),
+			'footer-offices'    => __( 'Offices Menu', 'keitaro' ),
+		)
+	);
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -174,6 +174,20 @@ function custom_excerpt_more( $more ) {
 }
 
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
+
+/* Enqueue custom Gutenberg assets to set and/or override styles, functionalities and more. */
+
+function gutenberg_assets() {
+
+    wp_enqueue_script(
+        'gutenberg-overrides',
+        get_stylesheet_directory_uri() . '/assets/js/gutenberg-overrides.min.js',
+        array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+        filemtime( get_stylesheet_directory() . '/assets/js/gutenberg-overrides.min.js' )
+    );
+}
+
+add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
 
 /* Set custom meta descriptions */
 
@@ -694,7 +708,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 		);
 
 	$print .= sprintf(
-		 '<h3 class="sr-only">%1$s</h3><div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div>',
+		 '<div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ),
 		sprintf(
@@ -999,8 +1013,8 @@ function keitaro_akismet_check_spam( $content ) {
 			if ( $response[1] == 'true' ) {
 				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
 				$isSpam = true;
-			}
-}
+		}
+	}
 }
 
 	return $isSpam;
