@@ -17,6 +17,10 @@
 	padding: 1rem 0;
 }
 
+.navbar-brand {
+	flex-shrink: 0;
+}
+
 .social-footer-wrapper {
 	width: 100%;
 	text-align: center;
@@ -212,7 +216,7 @@
 	}
 }
 
-.nav-pagination{
+.nav-pagination {
 	@extend .my-5;
 }
 
