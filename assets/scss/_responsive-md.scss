@@ -10,21 +10,10 @@
 		align-items: start;
 	}
 
-	.social-footer {
-		min-width: auto;
-		text-align: start;
-		align-items: start;
-	}
-
-	.social-footer-wrapper {
-		width: auto;
-	}
-
 	.carousel-control-next,
 	.carousel-control-prev {
 		filter: invert(100%);
 	}
-
 
 	.partners-carousel-small {
 		text-align: center;
@@ -150,57 +139,6 @@
 		text-align: right;
 	}
 
-	.locations {
-		padding-left: $grid-gutter-width / 3;
-	}
-
-	// .right-box-image {
-	// 	width: 130px;
-	// 	margin: 0 !important;
-	// }
-
-	// .showcases-header img {
-	// 	height: 650px !important;
-	// 	object-fit: cover !important;
-	// }
-
-	.showcases-content p {
-		width: 450px;
-		margin: auto;
-	}
-
-	.showcase-item {
-		bottom: 8rem;
-	}
-
-	.partners-banner {
-		bottom: 14rem;
-		position: relative;
-	}
-
-
-	.custom-partners-image {
-		background-color: $keitaro-white;
-		position: absolute;
-		top: 0;
-		right: -3rem;
-		bottom: 0;
-		margin: auto;
-		width: 300px;
-		height: 150px;
-		z-index: 1;
-	}
-
-	.partners-text {
-		margin-left: 2rem;
-	}
-
-	.custom-partners-image img {
-		object-fit: scale-down;
-		height: auto;
-		width: 90%;
-	}
-
 	.checkbox-wrapper {
 		bottom: 15.5rem;
 		padding-top: 3.5rem;
@@ -212,64 +150,9 @@
 	.checkboxes-row {
 		height: 0;
 	}
-
-
-	.dashed-ul {
-		list-style-type: none;
-		align-items: flex-end;
-
-		p {
-			font-weight: 900;
-			font-size: 22px;
-		}
-	}
-
-	.hero-video {
-		display: block;
-		position: relative;
-		height: 719px;
-
-		video {
-			height: 719px;
-			width: 100%;
-			object-fit: cover;
-		}
-	}
-
-	.hero-video::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		background-color: black;
-		opacity: 0.3;
-		width: 100%;
-		height: 100%;
-		z-index: 1;
-	}
-
-	.new-hero {
-		display: none !important;
-	}
-
 }
 
 @include media-breakpoint-down(md) {
-	.connect-action-icon {
-		img {
-			max-width: 30%;
-		}
-	}
-
-	.frontpage-content {
-		h3 {
-			font-size: 1.6rem;
-			padding-top: 1rem;
-
-		}
-	}
-
 	.entry-title {
 		margin-top: $grid-gutter-width / 2;
 	}
