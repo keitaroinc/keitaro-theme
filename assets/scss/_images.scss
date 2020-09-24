@@ -5,6 +5,18 @@
 	height: auto;
 }
 
+.hentry-first {
+	margin-top: 0;
+
+	.post-thumbnail {
+		margin-bottom: $spacer*1.5;
+	}
+
+	.entry-content {
+		@extend .lead;
+	}
+}
+
 .hentry-grid {
 	.post-thumbnail {
 		display: flex;
