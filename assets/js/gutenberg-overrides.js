@@ -29,3 +29,13 @@ wp.blocks.registerBlockStyle('core/latest-posts', {
 	name: 'latest-posts-insights',
 	label: 'Insights'
 });
+
+wp.blocks.registerBlockStyle('core/list', {
+	name: 'list-checked',
+	label: 'List with check marks'
+});
+
+wp.blocks.registerBlockStyle('core/list', {
+	name: 'list-checked-alt',
+	label: 'List with circled check marks'
+});
