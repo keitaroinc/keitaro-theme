@@ -3,6 +3,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: center;
+	flex-basis: 50%;
 
 	.author-avatar {
 		flex-shrink: 0;
@@ -13,7 +15,7 @@
 	}
 
 	.avatar-url {
-		margin-right: $spacer*1.5;
+		margin-right: $spacer*2;
 		margin-top: $spacer / 2;
 		margin-bottom: $spacer / 4;
 	}
