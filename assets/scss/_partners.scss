@@ -104,7 +104,7 @@
 				margin: auto auto auto 0;
 				object-fit: cover;
 				max-height: unset;
-				max-width: 80%;
+				max-width: $container-max-width;
 			}
 		}
 	}
