@@ -202,6 +202,7 @@
 			&:first-child {
 				margin-top: -$spacer*10;
 				margin-bottom: $spacer*5;
+				height: $spacer*5;
 			}
 		}
 	}
@@ -228,7 +229,7 @@
 
 		img {
 			width: auto;
-			height: $spacer*5;
+			height: auto;
 		}
 	}
 }
