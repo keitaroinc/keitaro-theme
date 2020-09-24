@@ -394,23 +394,6 @@ pre {
 		}
 	}
 
-	&.feature-group {
-
-		.wp-block-columns {
-
-			.wp-block-columns {
-
-				.wp-block-column {
-
-					&,
-					&:not(:first-child) {
-						margin-bottom: $spacer*2;
-					}
-				}
-			}
-		}
-	}
-
 	.wp-block-image {
 		img {
 			height: auto;
