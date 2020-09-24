@@ -10,6 +10,16 @@ wp.blocks.registerBlockStyle('core/columns', {
 	label: 'Team Group'
 });
 
+wp.blocks.registerBlockStyle('core/columns', {
+	name: 'feature-group',
+	label: 'Feature Group'
+});
+
+wp.blocks.registerBlockStyle('core/columns', {
+	name: 'feature-group-list',
+	label: 'Feature Group with List'
+});
+
 wp.blocks.registerBlockStyle('core/media-text', {
 	name: 'media-text-feature',
 	label: 'Feature'
