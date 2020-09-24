@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template for all pages, when not overridden
+ * Template for the Home page or the Blog page
  *
  * @link https://github.com/keitaroinc/keitaro-theme
  *
