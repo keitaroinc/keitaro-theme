@@ -168,9 +168,9 @@
 			margin-right: 0;
 		}
 
-		// .wp-block-image {
-		// 	display: block;
-		// }
+		.wp-block-image {
+			display: block;
+		}
 	}
 
 	.wp-block-group__inner-container {
@@ -220,7 +220,6 @@
 
 		img {
 			object-fit: cover;
-			// background: linear-gradient(180deg, rgba($white, 0) 12%, $white 12% 100%);
 			background: $white;
 			max-height: 600px;
 			margin-bottom: $spacer*5;
