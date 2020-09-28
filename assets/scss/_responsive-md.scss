@@ -153,6 +153,61 @@
 }
 
 @include media-breakpoint-down(md) {
+	.is-style-media-text-partner {
+		.wp-block-media-text__content .has-background {
+			max-width: 80%;
+			margin: auto auto $spacer auto;
+		}
+
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+
+		&.has-media-on-the-right {
+			flex-direction: column-reverse;
+
+			.wp-block-media-text__content {
+
+				.wp-block-group {
+
+					left: 0;
+				}
+			}
+
+			.wp-block-media-text__media {
+
+				img {
+					margin: auto;
+				}
+			}
+		}
+
+		.wp-block-media-text__content {
+			flex-basis: 100%;
+
+			.wp-block-group {
+				.wp-block-group__inner-container {
+					padding: $spacer*3;
+				}
+
+				position: relative;
+				right: 0;
+			}
+		}
+
+		.wp-block-media-text__media {
+
+			flex-basis: 100%;
+			display: flex;
+			flex-direction: column;
+
+			img {
+				margin: auto;
+			}
+		}
+	}
+
 	.entry-title {
 		margin-top: $grid-gutter-width / 2;
 	}
