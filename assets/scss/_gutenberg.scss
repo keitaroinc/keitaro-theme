@@ -133,12 +133,12 @@
 	align-items: flex-end;
 
 	@include media-breakpoint-down(lg) {
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 
-		.wp-block-media-text__content,
-		.wp-block-media-text__media {
-			flex-grow: 1;
-		}
+		// .wp-block-media-text__content,
+		// .wp-block-media-text__media {
+		// 	flex-grow: 1;
+		// }
 	}
 
 	@include keitaro-edge-right;
@@ -204,7 +204,7 @@
 				margin-bottom: $spacer*5;
 
 				img {
-					height: $spacer*4.5;
+					max-height: $spacer*4.5;
 				}
 			}
 		}
@@ -242,6 +242,7 @@
 	&.has-media-on-the-right {
 		.wp-block-media-text__media {
 			margin-left: 0;
+			margin-right: $spacer*5;
 		}
 	}
 
