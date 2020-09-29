@@ -20,7 +20,15 @@
 		img {
 			max-width: 70%;
 		}
-	}
+  }
+
+  .navbar-brand {
+    margin-right: $spacer*2;
+  }
+
+  .main-navigation {
+    flex-wrap: wrap;
+  }
 
 	.contact-form {
 		margin-top: $grid-gutter-width * 1.25;
