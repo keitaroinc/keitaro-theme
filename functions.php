@@ -15,10 +15,14 @@ define( 'DEFAULT_OG_IMAGE_URL', get_stylesheet_directory_uri() . '/assets/img/ke
 // Initialize theme
 function keitaro_theme_setup() {
 
-	// Remove WordPress version meta tag
+	/**
+	 * Remove WordPress version meta tag
+	 */
 	add_filter( 'the_generator', '__return_false' );
 
-	// Register Custom Headers
+	/**
+	 * Register Custom Headers
+	 */
 	register_default_headers(
 		 array(
 			 'keitaro' => array(
@@ -31,13 +35,19 @@ function keitaro_theme_setup() {
 
 	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
 
-	// Load text domain for localization
+	/**
+	 * Load text domain for localization
+	 */
 	load_theme_textdomain( 'keitaro' );
 
-	// Add default posts and comments RSS feed links to head.
+	/**
+	 * Add default posts and comments RSS feed links to head
+	 */
 	add_theme_support( 'automatic-feed-links' );
 
-	// Video support for Custom Header
+	/**
+	 * Video support for Custom Header
+	 */
 	add_theme_support(
 		'custom-header',
 		array(
@@ -82,11 +92,14 @@ function keitaro_theme_setup() {
 	add_image_size( 'keitaro-featured-image', 2000, 1200, true );
 	add_image_size( 'keitaro-thumbnail-avatar', 100, 100, true );
 
-	// Set the default content width.
+	/**
+	 * Set the default content width
+	 */
 	$GLOBALS['content_width'] = 960;
 
-	// This theme uses wp_nav_menu() in two locations.
-
+	/**
+	 * Register navigation menus
+	 */
 	register_nav_menus(
 		array(
 			'main'             => __( 'Main Menu', 'keitaro' ),
@@ -111,6 +124,8 @@ function keitaro_theme_setup() {
 			'search-form',
 			'gallery',
 			'caption',
+			'script',
+			'style'
 		)
 		);
 
@@ -132,7 +147,9 @@ function keitaro_theme_setup() {
 		)
 		);
 
-	// Add theme support for Custom Logo.
+	/**
+	 * Add theme support for Custom Logo
+	 */
 	add_theme_support(
 		 'custom-logo',
 		array(
@@ -141,10 +158,14 @@ function keitaro_theme_setup() {
 		)
 		);
 
-	// Add theme support for selective refresh for widgets.
+	/**
+	 * Add theme support for selective refresh for widgets
+	 */
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	// Add theme support for custom headers
+	/**
+	 * Add theme support for custom headers
+	 */
 	add_theme_support(
 		 'custom-header',
 		array(
@@ -152,7 +173,17 @@ function keitaro_theme_setup() {
 			'flex-height'   => true,
 			'flex-width'    => true,
 		)
-		);
+	);
+
+	/**
+	 * Additional styles for Gutenberg
+	 */
+	add_theme_support( 'wp-block-styles' );
+
+	/**
+	 * Support Full and Wide alignment in Gutenberg
+	 */
+    add_theme_support( 'align-wide' );
 
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
@@ -175,7 +206,9 @@ function custom_excerpt_more( $more ) {
 
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
-/* Enqueue custom Gutenberg assets to set and/or override styles, functionalities and more. */
+/**
+ * Enqueue custom Gutenberg assets to set and/or override styles, functionalities and more.
+ */
 
 function gutenberg_assets() {
 
@@ -332,6 +365,7 @@ add_action( 'wp_head', 'google_search_console_tags' );
 
 function wp_block_overrides() {
 	wp_enqueue_style( 'wp-block-overrides', get_stylesheet_directory_uri() . '/assets/css/wp-block.css', null, null, false );
+	// wp_enqueue_script( 'keitaro-carrers',  get_stylesheet_directory_uri() . '/blocks/blockcareers.js', null, null, false );
 }
 
 // Override the appearance of the Gutenberg block editor
@@ -346,9 +380,6 @@ function keitaro_theme_scripts() {
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
-	// Leaflet style
-	// wp_enqueue_style( 'leaflet-css', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.css', null, null );
-
 	// jQuery
 	wp_enqueue_script( 'jquery' );
 
@@ -357,18 +388,6 @@ function keitaro_theme_scripts() {
 
 	// Custom JS minified
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
-
-	// Leaflet script
-	// wp_enqueue_script( 'leaflet-js', get_stylesheet_directory_uri() . '/assets/leaflet/leaflet.js', null, null, true );
-
-	// Contact us elements JS minified
-	wp_enqueue_script( 'show-js', get_stylesheet_directory_uri() . '/assets/js/show.js', null, null, true );
-
-	// Career elements JS minified
-	wp_enqueue_script( 'showjobs-js', get_stylesheet_directory_uri() . '/assets/js/showjobs.js', null, null, true );
-
-	// Locations worldwide JS minified
-	// wp_enqueue_script( 'locations-js', get_stylesheet_directory_uri() . '/assets/js/locations.js', null, null, true );
 
 	// Prism.js - load only for pages, posts and custom post types
 	if ( is_singular() && ! is_page() ) :
@@ -394,18 +413,6 @@ function keitaro_jquery_deregister() {
 
 }
 
-// Add favicon links to <head>
-/*function keitaro_theme_favicons() {
-
-	?>
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-32x32.png' ); ?>">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/keitaro-favicon-144x144.png' ); ?>">
-	<?php
-
-}
-
-add_action( 'wp_head', 'keitaro_theme_favicons' ); */
-
 // Override default WordPress logo on wp-login.php
 function keitaro_theme_login_logo() {
 
@@ -429,27 +436,6 @@ function keitaro_theme_login_logo() {
 
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
-// Require Keitaro Team widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-team.php';
-
-// Require Keitaro Cards widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-service-product-card.php';
-
-// Require Keitaro Showcase widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-showcase.php';
-
-// Require Keitaro Service widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-service.php';
-
-// Require Keitaro Call to Action widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-call-to-action.php';
-
-// Require Keitaro Call to Action widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-icon-block.php';
-
-// Require Keitaro Location widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-location.php';
-
 // Require Contact Form widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
 
@@ -458,15 +444,6 @@ require_once SNIPPETS_DIR . '/widgets/class-keitaro-job-application-form.php';
 
 // Require Career widget
 require_once SNIPPETS_DIR . '/widgets/class-keitaro-career-job.php';
-
-// Require Twitter Grid widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-tweets.php';
-
-// Require Keitaro Page Text widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-page-text.php';
-
-// Require Keitaro Button widget
-// require_once SNIPPETS_DIR . '/widgets/class-keitaro-button.php';
 
 // Register Widget areas
 function keitaro_widgets_init() {
@@ -934,6 +911,23 @@ function keitaro_remove_jetpack_css() {
 }
 
 add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
+
+
+/**
+ * Remove default stylesheets loaded by Gutenberg
+ *
+ * @return void
+ */
+function keitaro_remove_gutenberg_css() {
+  wp_dequeue_style( 'wp-block-library' );
+  wp_dequeue_style( 'wp-block-library-theme' );
+
+}
+
+/**
+ * Currently deactivated but we might need it later
+ */
+// add_action( 'wp_enqueue_scripts', 'keitaro_remove_gutenberg_css' );
 
 /**
  * Show search results only within posts
