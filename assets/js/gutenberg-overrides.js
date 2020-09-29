@@ -1,5 +1,10 @@
 // Custom overrides to various Gutenberg components
 
+wp.blocks.registerBlockStyle('core/group', {
+	name: 'wrapper',
+	label: 'Wrapper'
+});
+
 wp.blocks.registerBlockStyle('core/columns', {
 	name: 'service-group',
 	label: 'Service Group'

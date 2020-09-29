@@ -1,3 +1,12 @@
+// Group block
+
+.is-style-wrapper {
+
+  .wp-block-group__inner-container{
+    padding: $spacer*3;
+  }
+}
+
 // Column block
 
 .is-style-service-group {
