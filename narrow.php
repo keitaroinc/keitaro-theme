@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Narrow Page
+ * Template Name: Narrow
  *
  * @link https://github.com/keitaroinc/keitaro-theme
  *
@@ -21,7 +21,8 @@ get_header();
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-				the_content();
+
+				get_template_part( SNIPPETS_DIR . '/content/content-page' );
 
 			endwhile;
 		else :
