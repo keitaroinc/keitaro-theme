@@ -2,6 +2,8 @@
 
 	.has-huge-font-size {
 
+		// Causes problems on the Partners page
+
 		&+.is-style-media-text-feature {
 			margin-top: $spacer*3;
 		}
