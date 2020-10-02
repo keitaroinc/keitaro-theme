@@ -1,11 +1,7 @@
 .contact-form {
 
-	label,
-	select {
-		color: $keitaro-green-gray-l-10;
+	label {
 		cursor: pointer;
-		font-weight: 500;
-		@extend .text-uppercase;
 	}
 
 	textarea {
@@ -18,36 +14,38 @@
 		padding: $grid-gutter-width / 6 0 0 0;
 	}
 
-	label {
-		@extend .unselectable;
-		@extend .animate-position;
-		cursor: pointer;
-		position: absolute;
-		width: 100%;
-		top: -$spacer*2;
-		left: $spacer;
-		display: block;
-	}
+	// label {
+	// 	@extend .unselectable;
+	// 	@extend .animate-position;
+	// 	cursor: pointer;
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	top: -$spacer*2;
+	// 	left: $spacer;
+	// 	display: block;
+	// }
 
 	.form-group {
-		position: relative;
-		margin: $spacer*3 0;
+		margin: $spacer 0;
 
-		&.form-select {
-			.form-control {
-				line-height: 1.5;
-			}
-
-			margin-top: -$spacer;
+		label {
+			padding: 0 $spacer;
 		}
 	}
 
+	// 	&.form-select {
+	// 		.form-control {
+	// 			line-height: 1.5;
+	// 		}
+
+	// 		margin-top: -$spacer;
+	// 	}
+	// }
+
 	.form-control {
-		height: auto;
 		background: $keitaro-gray-lightest;
 		border: transparent;
-		margin: $grid-gutter-width*0.75 0 0;
-		border-bottom: 2px solid $keitaro-green-gray;
+		border-bottom: $spacer/6 solid $keitaro-green-gray-l-20;
 		box-shadow: none;
 
 		&:focus {
@@ -58,7 +56,7 @@
 			}
 
 			~label {
-				top: -$spacer*2.125;
+				// top: -$spacer*2.125;
 				color: $primary;
 			}
 		}
