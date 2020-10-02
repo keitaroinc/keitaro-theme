@@ -31,13 +31,5 @@
 		.has-large-font-size {
 			line-height: $headings-line-height;
 		}
-
-		.wp-block-cover__inner-container {
-			p {
-				&:last-child {
-					margin-bottom: 0;
-				}
-			}
-		}
 	}
 }

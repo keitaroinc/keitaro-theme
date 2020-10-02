@@ -2,9 +2,9 @@
 
 .is-style-wrapper {
 
-  .wp-block-group__inner-container{
-    padding: $spacer*3;
-  }
+	.wp-block-group__inner-container {
+		padding: $spacer*3;
+	}
 }
 
 // Column block
@@ -480,6 +480,17 @@
 
 			.wp-block-latest-posts__post-excerpt {
 				display: none;
+			}
+		}
+	}
+}
+
+
+.wp-block-cover {
+	.wp-block-cover__inner-container {
+		* {
+			&:last-child {
+				margin-bottom: 0;
 			}
 		}
 	}
