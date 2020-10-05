@@ -282,11 +282,11 @@ function custom_post_type_job_applications() {
 		'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
 		'menu_name'           => __( 'Job Applications', 'keitaro' ),
 		'all_items'           => __( 'All Job Applications', 'keitaro' ),
-		'view_item'           => __( 'View Job Applications', 'keitaro' ),
-		'add_new_item'        => __( 'Add New Job Applications', 'keitaro' ),
+		'view_item'           => __( 'View Job Application', 'keitaro' ),
+		'add_new_item'        => __( 'Add New Job Application', 'keitaro' ),
 		'add_new'             => __( 'Add New', 'keitaro' ),
-		'edit_item'           => __( 'Edit Job Applications', 'keitaro' ),
-		'update_item'         => __( 'Update Job Applications', 'keitaro' ),
+		'edit_item'           => __( 'Edit Job Application', 'keitaro' ),
+		'update_item'         => __( 'Update Job Application', 'keitaro' ),
 		'search_items'        => __( 'Search Job Applications', 'keitaro' ),
 		'not_found'           => __( 'Not Found', 'keitaro' ),
 		'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
@@ -317,7 +317,7 @@ function custom_post_type_showcases() {
 
 	$labels = array(
 		'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
-		'singular_name'       => _x( 'showcase', 'Post Type Singular Name', 'keitaro' ),
+		'singular_name'       => _x( 'Showcase', 'Post Type Singular Name', 'keitaro' ),
 		'menu_name'           => __( 'Showcases', 'keitaro' ),
 		'all_items'           => __( 'All Showcases', 'keitaro' ),
 		'view_item'           => __( 'View Showcase', 'keitaro' ),
@@ -436,15 +436,6 @@ function keitaro_theme_login_logo() {
 
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
-// Require Contact Form widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-contact-form.php';
-
-// Require Contact Form widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-job-application-form.php';
-
-// Require Career widget
-require_once SNIPPETS_DIR . '/widgets/class-keitaro-career-job.php';
-
 // Register Widget areas
 function keitaro_widgets_init() {
 
@@ -487,55 +478,6 @@ function keitaro_widgets_init() {
 			'after_widget'  => '</div>',
 		)
 	);
-
-	register_sidebar(
-		 array(
-			 'name'          => __( 'Contact', 'keitaro' ),
-			 'description'   => __( 'Reserved for Contact Form widgets and rendered within static pages with the Contact page template.', 'keitaro' ),
-			 'id'            => 'keitaro_contact',
-			 'before_widget' => '<div class="widget-contact %2$s">',
-			 'after_widget'  => '</div>',
-			 'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-			 'after_title'   => '</h2></header>',
-		 )
-	);
-
-	register_sidebar(
-		array(
-			'name'          => __( 'Job Application', 'keitaro' ),
-			'description'   => __( 'Reserved for Job Application Form widgets and rendered within static pages with the Job Application page template.', 'keitaro' ),
-			'id'            => 'keitaro_job_application',
-			'before_widget' => '<div class="widget-contact %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<header class="entry-header"><h2 class="entry-title">',
-			'after_title'   => '</h2></header>',
-		)
-	);
-
-	register_sidebar(
-		array(
-			'name'          => __( 'Keitaro Careers', 'keitaro' ),
-			'description'   => __( 'Reserved for Keitaro Careers Job List widgets and rendered within static pages with the Careers page template.', 'keitaro' ),
-			'id'            => 'keitaro_careers',
-			'before_widget' => '<div">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2 class="entry-title my-5 text-center">',
-			'after_title'   => '</h2>',
-		)
-	);
-
-	if ( class_exists( 'Keitaro_Career_Job' ) ) :
-		register_widget( 'Keitaro_Career_Job' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Contact_Form' ) ) :
-		register_widget( 'Keitaro_Contact_Form' );
-	endif;
-
-	if ( class_exists( 'Keitaro_Job_Application_Form' ) ) :
-		register_widget( 'Keitaro_Job_Application_Form' );
-	endif;
-
 }
 
 add_action( 'widgets_init', 'keitaro_widgets_init' );
