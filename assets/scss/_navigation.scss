@@ -171,7 +171,6 @@
 }
 
 .breadcrumb {
-	background-color: $keitaro-white;
 	@extend .d-flex;
 	@extend .flex-nowrap;
 	white-space: nowrap;
@@ -187,6 +186,10 @@
 }
 
 .breadcrumb-item {
+	&:last-child {
+		color: $keitaro-green-gray-l-10;
+	}
+
 	&+.breadcrumb-item {
 		&:before {
 			padding-right: $spacer - 0.25;
