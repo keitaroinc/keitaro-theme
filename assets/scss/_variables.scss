@@ -1063,8 +1063,8 @@ $breadcrumb-item-padding:           1rem !default;
 
 $breadcrumb-margin-bottom:          0 !default;
 
-$breadcrumb-bg:                     $body-bg !default;
-$breadcrumb-divider-color:          $keitaro-green-gray-l-30 !default;
+$breadcrumb-bg:                     transparent !default;
+$breadcrumb-divider-color:          $keitaro-green-gray-l-20 !default;
 $breadcrumb-active-color:           $keitaro-green-gray !default;
 $breadcrumb-divider:                quote("\025B8") !default;
 
@@ -1152,7 +1152,7 @@ $hero-bg: $keitaro-green-dark;
 $hero-block-border: 3px solid $keitaro-green-gray-l-30;
 
 // navigation.less
-$container-bg-border: 1px solid $keitaro-gray-light;
+$container-bg-border: 1px solid $keitaro-green-gray-l-30;
 $main-navigation-top-margin: 5px;
 
 // services.less
