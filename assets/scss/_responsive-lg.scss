@@ -20,15 +20,21 @@
 		img {
 			max-width: 70%;
 		}
-  }
+	}
 
-  .navbar-brand {
-    margin-right: $spacer*2;
-  }
+	.navbar-breadcrumbs {
+		margin-bottom: -$spacer*3.25;
+		position: relative;
+		z-index: 2;
+	}
 
-  .main-navigation {
-    flex-wrap: wrap;
-  }
+	.navbar-brand {
+		margin-right: $spacer*2;
+	}
+
+	.main-navigation {
+		flex-wrap: wrap;
+	}
 
 	.page-template-contact,
 	.page-template-job-application {
