@@ -13,7 +13,9 @@
 <header class="entry-header">
 	<?php
 
-	the_category();
+	if (!is_singular('job-applications')):
+		the_category();
+	endif;
 
 	if ( is_singular() ) :
 		the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
