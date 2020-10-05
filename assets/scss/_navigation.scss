@@ -26,63 +26,6 @@
 	text-align: center;
 }
 
-.menu-social-media-container {
-	ul {
-		padding-left: 0;
-	}
-}
-
-.social-footer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 320px;
-
-	padding-right: 1rem;
-
-	.textwidget {
-		p {
-			margin-bottom: 0.2rem;
-		}
-
-		h3 {
-			margin-bottom: 0.2rem;
-		}
-	}
-}
-
-.social-list:last-of-type {
-	margin-top: auto;
-}
-
-.footer-offices-navigation {
-	display: flex !important;
-	justify-content: center;
-}
-
-.social-list {
-
-	li {
-		display: inline;
-	}
-
-	h3,
-	h2 {
-		font-size: 30px;
-		color: $keitaro-gray-dark;
-	}
-}
-
-.footer-list {
-	min-width: 100%;
-	text-align: center;
-	align-items: center;
-
-	h3 {
-		color: $keitaro-gray-dark;
-	}
-}
-
 .footer-navigation {
 	flex-direction: column;
 
