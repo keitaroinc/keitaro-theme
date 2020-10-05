@@ -24,4 +24,10 @@
 			padding: $spacer*3;
 		}
 	}
+
+	.breadcrumb-item {
+		a {
+			color: inherit;
+		}
+	}
 }
