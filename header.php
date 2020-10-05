@@ -25,7 +25,7 @@
 		$container_bg_class      = '';
 
 		if ( ! is_front_page() ) :
-			$container_bg_class = 'container-bg';
+			$container_bg_class = 'container-bg container-bottom-border';
 		endif;
 
 		?>
@@ -41,18 +41,13 @@
 		</div>
 
 		<?php
-		/*if ( ! is_front_page() ) : ?>
-		<div class="container-fluid bg-white">
-			<div class="row no-gutters align-items-center">
-				<div class="col-md-8">
+		if ( ! is_front_page() ) : ?>
+		<div class="container-fluid navbar-breadcrumbs">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
 					<?php get_template_part( SNIPPETS_DIR . '/navigation/breadcrumb' ); ?>
 				</div>
-				<?php if ( have_posts() && ! is_page() && !is_home() ) : ?>
-					<div class="col-md-4">
-						<?php get_search_form(); ?>
-					</div>
-				<?php endif; ?>
 			</div>
 		</div>
 		<?php
-		endif; */
+		endif;
