@@ -98,7 +98,7 @@ if ( ! is_front_page() ) {
 
 						// If it is a custom post type display name and link
 		if ( 'post' !== $post_type ) {
-			breadcrumb_item( get_post_type_archive_link( $post_type ), post_type_archive_title( '', false ) );
+			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
 		} else {
 
 			if ( get_option( 'page_for_posts' ) ) :
@@ -211,13 +211,11 @@ if ( ! is_front_page() ) {
 		if ( is_archive() ) {
 			breadcrumb_item( get_permalink( get_option( 'page_for_posts' ) ), get_the_title( get_option( 'page_for_posts' ) ) );
 		}
-		// Display author name
-		breadcrumb_item( false, __( 'Author' ), 'span' );
 
 		if ( get_the_author_posts_link() ) :
-			printf( '<li class="breadcrumb-item">%s</li>', wp_kses_post( get_the_author_posts_link() ) );
+			breadcrumb_item( false, get_the_author_meta( 'display_name', get_queried_object_id(), 'span' ));
 		else :
-			breadcrumb_item( get_author_posts_url( get_queried_object_id() ), get_the_author_meta( 'display_name', get_queried_object_id() ), 'a' );
+			breadcrumb_item( false, get_the_author_meta( 'display_name', get_queried_object_id() ), 'span' );
 		endif;
 	} elseif ( is_search() ) {
 
