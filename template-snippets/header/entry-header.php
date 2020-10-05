@@ -13,7 +13,7 @@
 <header class="entry-header">
 	<?php
 
-	if (!is_singular('job-applications')):
+	if ( ! is_singular( 'job-applications' ) ) :
 		the_category();
 	endif;
 

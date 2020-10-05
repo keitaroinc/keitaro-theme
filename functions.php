@@ -125,7 +125,7 @@ function keitaro_theme_setup() {
 			'gallery',
 			'caption',
 			'script',
-			'style'
+			'style',
 		)
 		);
 
@@ -183,7 +183,7 @@ function keitaro_theme_setup() {
 	/**
 	 * Support Full and Wide alignment in Gutenberg
 	 */
-    add_theme_support( 'align-wide' );
+	add_theme_support( 'align-wide' );
 
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
@@ -212,12 +212,12 @@ add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
 function gutenberg_assets() {
 
-    wp_enqueue_script(
-        'gutenberg-overrides',
-        get_stylesheet_directory_uri() . '/assets/js/gutenberg-overrides.min.js',
-        array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
-        filemtime( get_stylesheet_directory() . '/assets/js/gutenberg-overrides.min.js' )
-    );
+	wp_enqueue_script(
+		'gutenberg-overrides',
+		get_stylesheet_directory_uri() . '/assets/js/gutenberg-overrides.min.js',
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+		filemtime( get_stylesheet_directory() . '/assets/js/gutenberg-overrides.min.js' )
+	);
 }
 
 add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );

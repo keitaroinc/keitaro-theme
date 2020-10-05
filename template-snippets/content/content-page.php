@@ -10,7 +10,7 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('my-5'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'my-5' ); ?>>
 	<?php
 
 	get_template_part( SNIPPETS_DIR . '/header/entry-header' );

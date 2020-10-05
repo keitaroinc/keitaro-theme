@@ -41,7 +41,8 @@
 		</div>
 
 		<?php
-		if ( ! is_front_page() ) : ?>
+		if ( ! is_front_page() ) :
+		?>
 		<div class="container-fluid navbar-breadcrumbs">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
