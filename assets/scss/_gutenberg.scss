@@ -138,6 +138,7 @@
 .is-style-media-text-feature {
 
 	position: relative;
+	margin: $spacer*8 $spacer*5 $spacer*5;
 	display: flex;
 	align-items: flex-end;
 
@@ -148,50 +149,68 @@
 		.wp-block-media-text__media {
 			flex-grow: 1;
 		}
+
+		&.has-media-on-the-right {
+			.wp-block-media-text__media {
+				img {
+					margin-top: 0;
+				}
+			}
+		}
+
+		&:not(.has-media-on-the-right) {
+			.wp-block-media-text__content {
+				>.wp-block-image {
+					&:first-child {
+						margin-top: -$spacer*5;
+						margin-bottom: $spacer*3;
+					}
+				}
+			}
+		}
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(xl) {
+
+		@include keitaro-edge-right(-$spacer);
 
 		.wp-block-media-text__media,
 		.wp-block-media-text__content {
 			flex-basis: 50%;
 		}
 
-		.wp-block-media-text__content {
-			margin-right: $spacer*6;
-		}
-
 		&.has-media-on-the-right {
 			.wp-block-media-text__content {
-				margin-left: $spacer*6;
+				padding-left: $spacer*5;
 			}
 		}
 	}
 
-	@include keitaro-edge-right;
-
 	&:not(:last-child) {
-		margin-bottom: $spacer*8;
+		margin-bottom: $spacer*15;
 	}
 
 	&.has-media-on-the-right {
 		margin-right: 0;
-		@include keitaro-edge-left;
+
+		@include media-breakpoint-up(xl) {
+			@include keitaro-edge-left(-$spacer);
+		}
 
 		&:before {
 			left: $spacer*6;
 		}
 
 		.wp-block-media-text__media {
-			order: 2;
+			@include media-breakpoint-up(xl) {
+				margin-right: $spacer*5;
 
-			img {
-				box-shadow: -$spacer*5 $spacer*5 0 0 $white;
+				img {
+					margin-left: $spacer*5;
+				}
 			}
-		}
 
-		.wp-block-media-text__content {
-			margin-right: 0;
+			order: 2;
 		}
 
 		.wp-block-image {
@@ -228,9 +247,15 @@
 				margin-bottom: $spacer*5;
 
 				img {
-					height: $spacer*4.5;
+					max-height: $spacer*4.5;
 				}
 			}
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		.wp-block-media-text__content {
+			padding-left: 0;
 		}
 	}
 
@@ -238,15 +263,16 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		overflow: hidden;
+		overflow: visible;
 		align-self: flex-end;
+		background: $white;
 
 		img {
 			object-fit: cover;
-			background: $white;
 			max-height: 600px;
+			margin-top: -$spacer*5;
+			margin-left: -$spacer*5;
 			margin-bottom: $spacer*5;
-			box-shadow: $spacer*5 $spacer*5 0 0 $white;
 		}
 	}
 
@@ -265,17 +291,26 @@
 	&.has-media-on-the-right {
 		.wp-block-media-text__media {
 			margin-left: 0;
+
+			@include media-breakpoint-up(xl) {
+				img {
+					margin-top: -$spacer*5;
+				}
+			}
 		}
 	}
 
 	.wp-block-media-text__media {
-		margin-left: $spacer*5;
+		@include media-breakpoint-up(xl) {
+			margin-left: $spacer*6;
+			padding-right: $spacer*3;
+		}
+
+		overflow: visible;
 
 		img {
+			object-fit: contain;
 			box-shadow: none;
-			margin-bottom: 0;
-			object-fit: scale-down;
-			padding: $spacer*5;
 		}
 	}
 }
