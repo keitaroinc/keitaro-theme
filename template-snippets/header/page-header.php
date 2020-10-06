@@ -21,7 +21,12 @@ elseif ( is_search() ) :
 	$page_subtitle = __( 'Found', 'keitaro' ) . ' ' . highlight( $wp_query->found_posts ) . ' ' . __( 'search results', 'keitaro' );
 
 elseif ( is_archive() ) :
-	$page_title = get_the_archive_title();
+
+	if (is_post_type_archive()):
+		$page_title = post_type_archive_title('', false);
+	else:
+		$page_title = single_term_title('', false);
+	endif;
 	$page_subtitle = get_the_archive_description();
 
 elseif ( is_home() ) :
