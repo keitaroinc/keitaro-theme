@@ -13,7 +13,11 @@
 	&:after {
 		@include keitaro-edge;
 		border-color: transparent $primary $primary transparent;
-		right: $right;
+		right: $spacer;
+
+		@include media-breakpoint-up(lg) {
+			right: $right;
+		}
 	}
 }
 
@@ -21,7 +25,11 @@
 	&:after {
 		@include keitaro-edge;
 		border-color: transparent transparent $primary $primary;
-		left: $left;
+		left: $spacer;
+
+		@include media-breakpoint-up(lg) {
+			left: $left;
+		}
 	}
 }
 
