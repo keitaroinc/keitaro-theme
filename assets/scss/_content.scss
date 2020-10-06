@@ -242,7 +242,7 @@ hr {
 		margin: $spacer;
 
 		&:not(:first-child) {
-			flex-basis: 30%;
+			flex: 1 0 30%;
 		}
 	}
 }
