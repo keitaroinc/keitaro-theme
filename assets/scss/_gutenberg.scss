@@ -151,6 +151,12 @@
 	}
 
 	@include media-breakpoint-up(lg) {
+
+		.wp-block-media-text__media,
+		.wp-block-media-text__content {
+			flex-basis: 50%;
+		}
+
 		.wp-block-media-text__content {
 			margin-right: $spacer*6;
 		}
@@ -198,7 +204,6 @@
 	}
 
 	.wp-block-media-text__content {
-		flex-basis: 50%;
 		align-self: stretch;
 		position: relative;
 		color: $keitaro-gray-dark;
@@ -230,7 +235,6 @@
 	}
 
 	.wp-block-media-text__media {
-		flex-basis: 50%;
 		display: flex;
 		flex-direction: column;
 		position: relative;
