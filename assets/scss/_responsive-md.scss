@@ -72,6 +72,7 @@
 		text-align: left;
 		padding: 0 0 0 $grid-gutter-width / 4;
 		margin: 0;
+		height: 0;
 
 		li {
 			>a {
@@ -87,6 +88,7 @@
 			.sub-menu {
 				visibility: visible;
 				opacity: 1;
+				height: auto;
 			}
 		}
 	}
