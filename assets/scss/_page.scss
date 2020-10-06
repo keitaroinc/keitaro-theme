@@ -1,12 +1,8 @@
 .page {
 
-	.has-huge-font-size {
-
-		// Causes problems on the Partners page
-
-		&+.is-style-media-text-feature {
-			margin-top: $spacer*3;
-		}
+	.site-main {
+		padding-top: $spacer*5;
+		padding-bottom: $spacer*5;
 	}
 
 	.wp-block-group__inner-container {
