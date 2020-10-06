@@ -96,12 +96,6 @@
 	.main-navigation {
 
 		>li {
-			&:last-child {
-				>a {
-					//margin-left: $spacer*1.5;
-				}
-			}
-
 			>.sub-menu {
 				position: absolute;
 				top: 100%;
@@ -116,25 +110,6 @@
 
 	.lead-block {
 		min-height: $grid-gutter-width;
-	}
-
-	.page-template-parent {
-		.hentry {
-			.col-md-8 {
-				order: 1;
-			}
-		}
-	}
-
-	.page-template-parent {
-		&:not(.page-child) {
-
-			.post-thumbnail,
-			.widget-wrapper,
-			.service-list {
-				text-align: right;
-			}
-		}
 	}
 
 	.copyright {
