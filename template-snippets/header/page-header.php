@@ -26,8 +26,8 @@ elseif ( is_archive() ) :
 		$page_title = post_type_archive_title('', false);
 	else:
 		$page_title = single_term_title('', false);
+		$page_subtitle = get_the_archive_description();
 	endif;
-	$page_subtitle = get_the_archive_description();
 
 elseif ( is_home() ) :
 	$page_title = single_post_title( '', false );
