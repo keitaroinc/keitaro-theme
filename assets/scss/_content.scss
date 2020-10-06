@@ -349,6 +349,14 @@ pre {
 	}
 }
 
+.hentry-grid {
+	margin-bottom: $spacer*3;
+
+	.entry-title {
+		font-size: $h3-font-size - .4;
+	}
+}
+
 
 // Group block
 
@@ -389,11 +397,11 @@ pre {
 
 	.wp-block-columns {
 		margin-bottom: 0;
-  }
+	}
 
-  &.has-background {
-    padding: 0;
-  }
+	&.has-background {
+		padding: 0;
+	}
 
 	&.has-green-to-light-gray-gradient-background {
 		background: linear-gradient(180deg, $primary 0% 65%, $keitaro-gray-lightest 65%);
