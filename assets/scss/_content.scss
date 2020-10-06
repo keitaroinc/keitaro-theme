@@ -234,19 +234,6 @@ hr {
 	@extend .mb-5;
 }
 
-.site-main {
-	display: flex;
-	flex-wrap: wrap;
-
-	.hentry {
-		margin: $spacer;
-
-		&:not(:first-child) {
-			flex: 1 0 30%;
-		}
-	}
-}
-
 .post-tags {
 	@extend .post-meta-list;
 
