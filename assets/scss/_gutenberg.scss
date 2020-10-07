@@ -144,6 +144,8 @@
 
 	@include media-breakpoint-down(lg) {
 		flex-wrap: wrap;
+		margin-left: 0;
+		margin-right: 0;
 
 		.wp-block-media-text__content,
 		.wp-block-media-text__media {
@@ -184,6 +186,12 @@
 				padding-left: $spacer*5;
 			}
 		}
+
+		&:not(.has-media-on-the-right) {
+			.wp-block-media-text__content {
+				padding-left: 0;
+			}
+		}
 	}
 
 	&:not(:last-child) {
@@ -191,7 +199,6 @@
 	}
 
 	&.has-media-on-the-right {
-		margin-right: 0;
 
 		@include media-breakpoint-up(xl) {
 			@include keitaro-edge-left(-$spacer);
@@ -203,7 +210,6 @@
 
 		.wp-block-media-text__media {
 			@include media-breakpoint-up(xl) {
-				margin-right: $spacer*5;
 
 				img {
 					margin-left: $spacer*5;
@@ -253,12 +259,6 @@
 		}
 	}
 
-	@include media-breakpoint-up(lg) {
-		.wp-block-media-text__content {
-			padding-left: 0;
-		}
-	}
-
 	.wp-block-media-text__media {
 		display: flex;
 		flex-direction: column;
@@ -289,8 +289,8 @@
 	@extend .is-style-media-text-feature;
 
 	&.has-media-on-the-right {
+
 		.wp-block-media-text__media {
-			margin-left: 0;
 
 			@include media-breakpoint-up(xl) {
 				img {
@@ -301,16 +301,12 @@
 	}
 
 	.wp-block-media-text__media {
-		@include media-breakpoint-up(xl) {
-			margin-left: $spacer*6;
-			padding-right: $spacer*3;
-		}
-
 		overflow: visible;
 
 		img {
 			object-fit: contain;
 			box-shadow: none;
+			margin-left: 0;
 		}
 	}
 }
