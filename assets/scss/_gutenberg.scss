@@ -146,7 +146,13 @@
 .is-style-feature-group-list {
 	align-items: flex-end;
 
+	@include media-breakpoint-up(lg) {
+		max-width: $container-max-width;
+		margin: auto;
+	}
+
 	.wp-block-column {
+		flex-grow: 1;
 		&:not(:first-child) {
 			margin-bottom: $spacer*5;
 		}
@@ -434,6 +440,10 @@
 	@extend .list-with-icon;
 	display: flex;
 	flex-wrap: wrap;
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+	}
 
 	li {
 		flex-basis: 33%;
