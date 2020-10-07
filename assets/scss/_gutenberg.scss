@@ -153,6 +153,7 @@
 
 	.wp-block-column {
 		flex-grow: 1;
+
 		&:not(:first-child) {
 			margin-bottom: $spacer*5;
 		}
