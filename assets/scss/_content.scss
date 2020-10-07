@@ -385,6 +385,7 @@ pre {
 
 	.wp-block-columns {
 		margin-bottom: 0;
+		flex-wrap: wrap;
 	}
 
 	&.has-background {
@@ -502,9 +503,13 @@ p {
 }
 
 .arrow-right {
-	@include keitaro-edge-right(-$spacer);
+	@include media-breakpoint-up(lg) {
+		@include keitaro-edge-right(-$spacer);
+	}
 }
 
 .arrow-left {
-	@include keitaro-edge-left(-$spacer);
+	@include media-breakpoint-up(lg) {
+		@include keitaro-edge-left(-$spacer);
+	}
 }
