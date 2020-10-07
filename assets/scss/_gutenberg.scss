@@ -82,7 +82,7 @@
 
 	flex-wrap: wrap;
 
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(md) {
 		max-width: $container-max-width - 10;
 		margin: auto;
 	}
