@@ -60,19 +60,8 @@
 		margin-top: $grid-gutter-width;
 	}
 
-	.main-navigation {
-		margin-top: $grid-gutter-width / 3;
-	}
-
 	.navigation {
 		flex-basis: 100%;
-	}
-
-	.navbar-collapse {
-		li {
-			margin: $grid-gutter-width / 6 0;
-			display: block;
-		}
 	}
 
 	.footer-navigation {

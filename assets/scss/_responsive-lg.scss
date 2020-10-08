@@ -14,14 +14,6 @@
 		display: block;
 	}
 
-	.connect-action-icon {
-		text-align: right;
-
-		img {
-			max-width: 70%;
-		}
-	}
-
 	.navbar-breadcrumbs {
 		margin-bottom: -$spacer*3.25;
 		position: relative;
@@ -35,35 +27,16 @@
 	.main-navigation {
 		flex-wrap: wrap;
 	}
+}
 
-	.page-template-contact,
-	.page-template-job-application {
-		&:not(.page-child) {
-			.post-thumbnail {
-				text-align: right;
-			}
-		}
-	}
+@include media-breakpoint-down(lg) {
+	.navbar-collapse {
+		.main-navigation {
+			margin-top: $spacer;
 
-	.page-parent {
-		.icon-block-wrapper {
-			overflow: visible;
-		}
-
-		.panel-value-with-description {
-			cursor: help;
-
-			&:hover {
-				border-bottom: 5px dashed $keitaro-green-light;
-
-				~.panel-value-description {
-					visibility: visible;
-					opacity: 1;
-					animation: 300ms icon-block-appear ease-in-out 50ms;
-				}
+			a {
+				padding: $spacer 0;
 			}
 		}
 	}
 }
-
-@include media-breakpoint-down(lg) {}
