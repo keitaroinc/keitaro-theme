@@ -513,3 +513,8 @@ p {
 		@include keitaro-edge-left(-$spacer);
 	}
 }
+
+.wp-block-keitaro-latest-content {
+	max-width: $container-max-width - 10;
+	margin: auto;
+}
