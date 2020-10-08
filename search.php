@@ -11,47 +11,54 @@
 
 get_header();
 
-if ( have_posts() ) :
+if (have_posts()) :
 	$first = true;
 ?>
 	<div class="container-fluid">
 		<div id="primary" class="content-area">
-			<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
+			<?php get_template_part(SNIPPETS_DIR . '/header/page-header'); ?>
 
 			<div class="row">
 
 				<div class="col-lg-10 offset-lg-1">
 
 					<main id="main" class="site-main" role="main">
-						<?php
+						<div class="row">
+							<?php
 
-						while ( have_posts() ) :
+							while (have_posts()) :
 
-							the_post();
-							if ( $first ) {
-						?>
-								<div class="row mb-5">
-									<div class="col-lg-8">
-										<?php get_template_part( SNIPPETS_DIR . '/content/content-first' ); ?>
+								the_post();
+								if ($first) { ?>
+
+									<div class="col-lg-12">
+										<div class="row mb-5">
+											<div class="col-lg-8">
+												<?php get_template_part(SNIPPETS_DIR . '/content/content-first'); ?>
+											</div>
+											<div class="col-lg-4">
+												<?php get_sidebar(); ?>
+											</div>
+										</div>
 									</div>
+
+									<?php $first = false; ?>
+								<?php
+								} else { ?>
 									<div class="col-lg-4">
-										<?php get_sidebar(); ?>
+										<?php get_template_part(SNIPPETS_DIR . '/content/content-grid'); ?>
 									</div>
-								</div>
-								<?php $first = false; ?>
-						<?php
-							} else {
-								get_template_part( SNIPPETS_DIR . '/content/content-grid' );
-							}
+							<?php }
 
-						endwhile;
+							endwhile;
 
-						?>
+							?>
+						</div>
 					</main>
 
 					<nav class="nav-pagination">
 						<?php
-						get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
+						get_template_part(SNIPPETS_DIR . '/navigation/pagination');
 						?>
 					</nav>
 
@@ -63,17 +70,17 @@ if ( have_posts() ) :
 
 	else :
 
-		get_template_part( SNIPPETS_DIR . '/content/content-none' );
+		get_template_part(SNIPPETS_DIR . '/content/content-none');
 
 	endif;
 
-	if ( $paged && ( ! is_author() && ! is_404() ) ) :
+	if ($paged && (!is_author() && !is_404())) :
 
 		?>
 
 			<div class="row">
 				<div class="col-md-8 offset-md-2">
-					<?php get_template_part( SNIPPETS_DIR . '/navigation/pagination' ); ?>
+					<?php get_template_part(SNIPPETS_DIR . '/navigation/pagination'); ?>
 				</div>
 			</div>
 
@@ -84,7 +91,7 @@ if ( have_posts() ) :
 			<div class="row">
 				<div class="col-md-8 offset-md-2">
 					<?php
-					get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
+					get_template_part(SNIPPETS_DIR . '/navigation/pagination');
 					?>
 				</div>
 			</div>
