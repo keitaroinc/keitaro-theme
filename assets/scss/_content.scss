@@ -413,6 +413,14 @@ pre {
 		}
 	}
 
+	&.has-green-to-white-gradient-background {
+		background: linear-gradient(180deg, $primary 0% 65%, $white 65%);
+
+		.wp-block-group__inner-container {
+			padding-bottom: $spacer*2;
+		}
+	}
+
 	&.has-light-gray-to-white-gradient-background {
 		background: linear-gradient(180deg, $keitaro-gray-lightest 0% 65%, $white 65%);
 
