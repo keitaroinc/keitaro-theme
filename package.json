@@ -4,8 +4,8 @@
   "description": "The official WordPress theme of Keitaro Inc.",
   "main": "",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.1",
-    "bootstrap": "^4.4.1",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^4.5.2",
     "leaflet": "^1.7.1"
   },
   "scripts": {
@@ -26,15 +26,15 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
-    "gulp-cli": "^2.2.0",
+    "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "prismjs": "^1.19.0"
+    "prismjs": "^1.21.0"
   },
   "browserslist": [
     "defaults",
