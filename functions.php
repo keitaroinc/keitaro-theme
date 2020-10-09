@@ -67,6 +67,11 @@ function keitaro_theme_setup() {
 				'slug' => 'green-to-light-gray',
 			),
 			array(
+				'name' => __( 'Green to White', 'keitaro' ),
+				'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #fff 65%)',
+				'slug' => 'green-to-white',
+			),
+			array(
 				'name' => __( 'Light Gray to White', 'keitaro' ),
 				'gradient' => 'linear-gradient(180deg, #f2f2f2 0% 65%, #fff 65%)',
 				'slug' => 'light-gray-to-white',
