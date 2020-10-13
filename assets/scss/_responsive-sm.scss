@@ -16,44 +16,9 @@
 }
 
 @include media-breakpoint-down(sm) {
-	.list li {
-		font-size: 18px;
-	}
-
-	.career-list li {
-		font-size: 18px;
-		flex: 45%;
-	}
-
-	.contact-container {
-		width: 85%;
-	}
-
-	.attachment-form {
-		margin-top: 5rem !important;
-
-		label {
-			top: -4rem;
-		}
-	}
-
-	.career-list li::before {
-		font-family: "Font Awesome 5 Free";
-		content: "\f058";
-		display: inline-block;
-		padding-bottom: 1rem;
-		vertical-align: middle;
-		font-weight: 900;
-		font-size: 24px;
-	}
-
 	.hero-title {
 		font-size: 2.5rem;
 		text-align: center;
-	}
-
-	.right-box-image {
-		max-width: 260px;
 	}
 
 	.author-box {
@@ -72,9 +37,4 @@
 		margin-top: $grid-gutter-width / 2;
 	}
 
-	.footer-secondary-navigation {
-		.menu-item {
-			margin-bottom: $grid-gutter-width/2;
-		}
-	}
 }
