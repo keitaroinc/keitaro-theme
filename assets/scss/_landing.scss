@@ -4,7 +4,20 @@
 
 	.wp-block-cover {
 
-		min-height: 700px;
+		min-height: 75vh;
+
+		@include media-breakpoint-up(lg) {
+			min-height: 700px;
+		}
+
+		@include media-breakpoint-down(lg) {
+
+			.wp-block-keitaro-logo-slider {
+				.title {
+					margin-top: auto;
+				}
+			}
+		}
 
 		h1,
 		h2,
@@ -17,6 +30,16 @@
 
 		.has-huge-font-size {
 			font-size: $display3-size;
+
+			@include media-breakpoint-down(sm) {
+				font-size: $h1-font-size;
+			}
+		}
+
+		.has-large-font-size {
+			@include media-breakpoint-down(sm) {
+				font-size: $font-size-lg;
+			}
 		}
 
 		.has-large-font-size,
@@ -30,6 +53,23 @@
 
 		.has-large-font-size {
 			line-height: $headings-line-height;
+		}
+	}
+
+	@include media-breakpoint-down(lg) {
+		.wp-block-keitaro-logo-slider {
+			padding: $spacer*2 0;
+
+			.title {
+				margin: 0 $spacer*2 $spacer;
+				color: initial;
+				opacity: initial;
+				z-index: initial;
+			}
+
+			.logo {
+				margin: $spacer;
+			}
 		}
 	}
 }
