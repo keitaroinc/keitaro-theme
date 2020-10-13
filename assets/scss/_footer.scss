@@ -39,7 +39,11 @@
 	padding-bottom: $spacer*3;
 
 	.widget-wrapper {
-		flex-basis: 15%;
+		flex-basis: 100%;
+
+		@include media-breakpoint-up(md) {
+			flex-basis: 15%;
+		}
 	}
 
 	.widget_text {
