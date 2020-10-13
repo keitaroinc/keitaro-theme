@@ -16,9 +16,6 @@ gulp.task('sass', function () {
 	return gulp.src('assets/scss/**/style.scss')
 		// .pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
-		.pipe(cleanCSS({
-			compatibility: 'ie8'
-		}))
 		// .pipe(sourcemaps.write()) - Uncomment when developing
 		.pipe(gulp.dest('.'));
 });
