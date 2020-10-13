@@ -374,8 +374,24 @@ pre {
 	position: relative;
 
 	.wp-block-group__inner-container {
-		padding-top: $spacer*8;
-		padding-bottom: $spacer*8;
+
+		@include media-breakpoint-up(lg) {
+			padding-top: $spacer*3;
+			padding-bottom: $spacer*3;
+		}
+
+		@include media-breakpoint-up(xl) {
+			padding-top: $spacer*8;
+			padding-bottom: $spacer*8;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		.has-text-align-center {
+			padding-top: $spacer;
+			padding-right: $spacer*3;
+			padding-left: $spacer*3;
+		}
 	}
 
 	&.no-padding-top {
@@ -406,6 +422,10 @@ pre {
 	}
 
 	&.has-green-to-light-gray-gradient-background {
+		@include media-breakpoint-down(md) {
+			padding-top: $spacer*3;
+		}
+
 		background: linear-gradient(180deg, $primary 0% 65%, $keitaro-gray-lightest 65%);
 
 		.wp-block-group__inner-container {
@@ -414,6 +434,10 @@ pre {
 	}
 
 	&.has-green-to-white-gradient-background {
+		@include media-breakpoint-down(md) {
+			padding-top: $spacer*3;
+		}
+
 		background: linear-gradient(180deg, $primary 0% 65%, $white 65%);
 
 		.wp-block-group__inner-container {
@@ -422,6 +446,10 @@ pre {
 	}
 
 	&.has-light-gray-to-white-gradient-background {
+		@include media-breakpoint-down(md) {
+			padding-top: $spacer*3;
+		}
+
 		background: linear-gradient(180deg, $keitaro-gray-lightest 0% 65%, $white 65%);
 
 		.wp-block-group__inner-container {
