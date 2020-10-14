@@ -360,6 +360,12 @@ pre {
 
 	position: relative;
 
+	.has-huge-font-size {
+		@include media-breakpoint-up(md) {
+			padding-bottom: $spacer*2;
+		}
+	}
+
 	.wp-block-group__inner-container {
 
 		@include media-breakpoint-up(lg) {
