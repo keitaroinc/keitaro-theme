@@ -21,7 +21,10 @@
 	.post-thumbnail {
 		display: flex;
 		flex-direction: column;
-		height: $spacer*15;
+
+		@include media-breakpoint-up(md) {
+			height: $spacer*15;
+		}
 
 		a {
 			display: flex;
