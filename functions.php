@@ -1002,3 +1002,8 @@ function extract_featured_image() {
 
 	return $matches [1] ? $matches [1][0] : false;
   }
+
+/**
+ * Remove default Jetpack og:image
+ */
+add_filter( 'jetpack_open_graph_image_default', '__return_false' );
