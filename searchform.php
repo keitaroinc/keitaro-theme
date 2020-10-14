@@ -21,5 +21,4 @@ $unique_id = esc_attr( uniqid( 'search-form-' ) ); ?>
 			</button>
 		</div>
 	</div>
-
 </form>
