@@ -14,13 +14,22 @@
 		}
 	}
 
-	.wp-block-column {
-		>.wp-block-group {
-			z-index: 2;
-			margin-top: -$spacer*5;
+	@include media-breakpoint-down(md) {
+		.wp-block-column {
+			margin-left: initial;
+			flex-basis: auto !important;
+		}
+	}
 
-			.wp-block-group__inner-container {
-				padding: $spacer*5;
+	@include media-breakpoint-up(md) {
+		.wp-block-column {
+			>.wp-block-group {
+				z-index: 2;
+				margin-top: -$spacer*5;
+
+				.wp-block-group__inner-container {
+					padding: $spacer*5;
+				}
 			}
 		}
 	}
