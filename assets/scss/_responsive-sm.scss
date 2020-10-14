@@ -21,6 +21,13 @@
 		text-align: center;
 	}
 
+	.page-numbers {
+		li:not(:first-child):not(:last-child) {
+			display: none;
+		}
+
+	}
+
 	.author-box {
 		margin-top: $grid-gutter-width;
 	}
