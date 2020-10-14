@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template for all pages, when not overridden
  *
@@ -8,8 +9,19 @@
  * @subpackage Keitaro
  */
 
-get_header();
+get_header(); ?>
 
-the_content();
+<main id="main" role="main">
 
-get_footer();
+	<?php if (have_posts()) :
+		while (have_posts()) :
+
+			the_post();
+			the_content();
+
+		endwhile;
+	endif; ?>
+
+</main>
+
+<?php get_footer();
