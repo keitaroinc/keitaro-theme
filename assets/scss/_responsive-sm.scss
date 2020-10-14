@@ -22,8 +22,12 @@
 	}
 
 	.page-numbers {
-		li:not(:first-child):not(:last-child) {
-			display: none;
+		li {
+			&:not(:first-child) {
+				&:not(:last-child) {
+					display: none;
+				}
+			}
 		}
 	}
 
