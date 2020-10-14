@@ -22,10 +22,10 @@ elseif ( is_search() ) :
 
 elseif ( is_archive() ) :
 
-	if (is_post_type_archive()):
-		$page_title = post_type_archive_title('', false);
-	else:
-		$page_title = single_term_title('', false);
+	if ( is_post_type_archive() ) :
+		$page_title = post_type_archive_title( '', false );
+	else :
+		$page_title = single_term_title( '', false );
 		$page_subtitle = get_the_archive_description();
 	endif;
 

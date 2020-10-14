@@ -13,7 +13,7 @@
 <header class="entry-header">
 	<?php
 
-	if ( ! is_post_type_archive() && is_singular('post') ) :
+	if ( ! is_post_type_archive() && is_singular( 'post' ) ) :
 		the_category();
 	endif;
 
