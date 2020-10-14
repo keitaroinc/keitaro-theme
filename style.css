@@ -12930,6 +12930,9 @@ pre {
 
 .wp-block-group {
   position: relative; }
+  @media (min-width: 768px) {
+    .wp-block-group .has-huge-font-size {
+      padding-bottom: 2rem; } }
   @media (min-width: 992px) {
     .wp-block-group .wp-block-group__inner-container {
       padding-top: 3rem;
