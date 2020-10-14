@@ -12928,11 +12928,6 @@ pre {
   .hentry-grid .entry-title {
     font-size: 1.6145rem; }
 
-@media (max-width: 991.98px) {
-  .wp-block-columns .wp-block-column {
-    margin-left: initial;
-    flex-basis: auto !important; } }
-
 .wp-block-group {
   position: relative; }
   @media (min-width: 992px) {
@@ -13682,8 +13677,10 @@ p.has-text-align-center:after {
     background-color: #fff;
     padding: 4rem 3rem;
     box-shadow: 0 0.25rem 2rem 0 rgba(0, 0, 0, 0.1);
-    margin: 1rem;
-    flex-basis: calc(100%/5); }
+    margin: 1rem; }
+    @media (min-width: 768px) {
+      .is-style-team-group .wp-block-column {
+        flex-basis: calc(100%/5); } }
     .is-style-team-group .wp-block-column *:last-child {
       margin-bottom: 0; }
   @media (max-width: 1199.98px) {
