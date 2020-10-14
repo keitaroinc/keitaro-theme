@@ -354,19 +354,6 @@ pre {
 }
 
 
-// Columns block
-
-.wp-block-columns {
-
-	.wp-block-column {
-		@include media-breakpoint-down(md) {
-			margin-left: initial;
-			flex-basis: auto !important;
-		}
-	}
-
-}
-
 // Group block
 
 .wp-block-group {
