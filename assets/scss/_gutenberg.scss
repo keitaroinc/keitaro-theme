@@ -279,7 +279,7 @@
 		color: $keitaro-gray-dark;
 		font-size: $font-size-lg;
 
-		@include media-breakpoint-up(lg) {
+		@include media-breakpoint-up(xl) {
 			padding: $spacer*3 $spacer*5;
 
 			h1,
