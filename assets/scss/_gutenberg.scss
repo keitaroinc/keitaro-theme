@@ -97,7 +97,10 @@
 		padding: $spacer*4 $spacer*3;
 		box-shadow: $card-box-shadow-lg;
 		margin: $spacer;
-		flex-basis: calc(100%/5);
+
+		@include media-breakpoint-up(md) {
+			flex-basis: calc(100%/5);
+		}
 
 		*:last-child {
 			margin-bottom: 0;
