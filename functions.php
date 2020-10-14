@@ -270,7 +270,7 @@ function open_graph_tags() {
 		?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url(); ?>" />
 	<?php else : ?>
-		<meta property="og:image" content="<?php echo esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
+		<meta property="og:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
 	<?php
 
 	endif;
@@ -990,3 +990,15 @@ add_filter(
 	return $result;
 }
 	);
+
+/**
+ * Extract first image URL from content
+*/
+function extract_featured_image() {
+	global $post, $posts;
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+
+	return $matches [1] ? $matches [1][0] : false;
+  }
