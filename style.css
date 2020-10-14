@@ -13201,7 +13201,8 @@ p.has-text-align-center:after {
       opacity: initial;
       z-index: initial; }
     .page-template-landing .wp-block-keitaro-logo-slider .logo {
-      margin: 1rem; } }
+      margin: 1rem;
+      max-height: 2rem; } }
 
 .btn-success-dark {
   color: #212529;
@@ -13288,8 +13289,10 @@ p.has-text-align-center:after {
 
 .hentry-grid .post-thumbnail {
   display: flex;
-  flex-direction: column;
-  height: 15rem; }
+  flex-direction: column; }
+  @media (min-width: 768px) {
+    .hentry-grid .post-thumbnail {
+      height: 15rem; } }
   .hentry-grid .post-thumbnail a {
     display: flex;
     flex-direction: column;
@@ -13809,7 +13812,7 @@ p.has-text-align-center:after {
     color: #333;
     font-size: 1.48125rem;
     background: #fff; }
-    @media (min-width: 992px) {
+    @media (min-width: 1200px) {
       .is-style-media-text-feature .wp-block-media-text__content, .is-style-media-text-feature-transparent .wp-block-media-text__content {
         padding: 3rem 5rem; }
         .is-style-media-text-feature .wp-block-media-text__content h1, .is-style-media-text-feature-transparent .wp-block-media-text__content h1,
