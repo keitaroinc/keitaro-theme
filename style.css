@@ -12631,10 +12631,6 @@ readers do not read off random characters that represent icons */
 .navbar-brand {
   flex-shrink: 0; }
 
-.social-footer-wrapper {
-  width: 100%;
-  text-align: center; }
-
 .footer-navigation {
   flex-direction: column; }
   .footer-navigation.social-navigation li {
@@ -12805,10 +12801,6 @@ readers do not read off random characters that represent icons */
 .entry-meta time {
   display: block;
   color: #98938b; }
-
-.about-child-pages p {
-  color: #333;
-  font-size: 22px; }
 
 .img-round {
   border-radius: 50%;
@@ -14049,20 +14041,12 @@ p.has-text-align-center:after {
     font-size: 3.081rem; } }
 
 @media (min-width: 576px) {
-  .hero {
-    background-size: auto 60%;
-    background-position-x: center;
-    background-position-y: 120%;
-    height: 400px; }
   .content-area {
     padding-top: 8rem; }
   .hero-title {
     font-size: 3.6972rem; } }
 
 @media (max-width: 767.98px) {
-  .hero-title {
-    font-size: 2.5rem;
-    text-align: center; }
   .page-numbers li:not(:first-child):not(:last-child) {
     display: none; }
   .author-box {
@@ -14075,9 +14059,6 @@ p.has-text-align-center:after {
     margin-top: 30px; } }
 
 @media (min-width: 768px) {
-  .hero {
-    background-size: auto 80%;
-    background-position-y: 200%; }
   .carousel-control-next,
   .carousel-control-prev {
     filter: invert(100%); }
@@ -14113,30 +14094,13 @@ p.has-text-align-center:after {
   .lead-block {
     min-height: 60px; }
   .copyright {
-    text-align: right; }
-  .checkbox-wrapper {
-    bottom: 15.5rem;
-    padding-top: 3.5rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    background-color: #fff; }
-  .checkboxes-row {
-    height: 0; } }
+    text-align: right; } }
 
 @media (max-width: 991.98px) {
   .entry-title {
     margin-top: 30px; } }
 
 @media (min-width: 992px) {
-  .hero {
-    display: table;
-    width: 100%;
-    background-size: auto 90%;
-    background-position: right bottom; }
-  .hero-title {
-    padding-right: 30vw; }
-  .hero-subtitle {
-    display: block; }
   .navbar-breadcrumbs {
     margin-bottom: -3.25rem;
     position: relative;
