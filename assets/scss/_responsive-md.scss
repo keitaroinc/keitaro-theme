@@ -1,8 +1,10 @@
 @include media-breakpoint-up(md) {
-	.hero {
-		background-size: auto 80%;
-		background-position-y: 200%;
-	}
+	// This section is commented out due to implementation through different approach of the Hero section on the Home page
+
+	// .hero {
+	// 	background-size: auto 80%;
+	// 	background-position-y: 200%;
+	// }
 
 	.carousel-control-next,
 	.carousel-control-prev {
@@ -73,18 +75,6 @@
 
 	.copyright {
 		text-align: right;
-	}
-
-	.checkbox-wrapper {
-		bottom: 15.5rem;
-		padding-top: 3.5rem;
-		padding-left: 2.5rem;
-		padding-right: 2.5rem;
-		background-color: $keitaro-white;
-	}
-
-	.checkboxes-row {
-		height: 0;
 	}
 }
 

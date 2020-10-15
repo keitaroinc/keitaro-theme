@@ -1,18 +1,20 @@
 @include media-breakpoint-up(lg) {
-	.hero {
-		display: table; // Because IE
-		width: 100%; // Because IE
-		background-size: auto 90%;
-		background-position: right bottom;
-	}
+	// This section is commented out due to implementation through different approach of the Hero section on the Home page
 
-	.hero-title {
-		padding-right: 30vw;
-	}
+	// .hero {
+	// 	display: table; // Because IE
+	// 	width: 100%; // Because IE
+	// 	background-size: auto 90%;
+	// 	background-position: right bottom;
+	// }
 
-	.hero-subtitle {
-		display: block;
-	}
+	// .hero-title {
+	// 	padding-right: 30vw;
+	// }
+
+	// .hero-subtitle {
+	// 	display: block;
+	// }
 
 	.navbar-breadcrumbs {
 		margin-bottom: -$spacer*3.25;
