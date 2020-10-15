@@ -279,12 +279,12 @@ function open_graph_tags() {
 	if ( get_the_post_thumbnail() ) :
 		?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url(); ?>" />
-		<meta property="twitter:image" content="<?php the_post_thumbnail_url(); ?>" />
 	<?php else : ?>
-		<meta property="og:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
-		<meta property="twitter:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
-	<?php
-
+		<?php if ( is_home() ) : ?>
+			<meta property="og:image" content="<?php esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
+		<?php else : ?>
+			<meta property="og:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
+		<?php endif;
 	endif;
 
 }
