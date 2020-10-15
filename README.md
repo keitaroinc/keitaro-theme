@@ -8,9 +8,10 @@ Our mission is continuous improvement and enrichment of our knowledge and expert
 
 ## Requirements
 
-* WordPress 4.8+
-* Node.js
-* LESS
+- WordPress 4.8+
+- Node.js
+- Sass
+- gulp.js
 
 ## Install
 
@@ -34,19 +35,48 @@ Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve 
 
 ## Visual Design
 
-### Making Text Uppercase
+### Custom styles for Gutenberg
+
+There are multiple custom styles available for different Gutenberg components. Below is a brief introduction to all of these custom styles.
+
+#### Group
+
+- **Wrapper** - general-use style for adding extra padding to Group blocks
+
+#### Media & Text
+
+- **Feature** - stylized Media & Text block which reflects the Keitaro brand
+- **Feature with Transparent Image** - stylized Media & Text block which reflects the Keitaro brand and has support for transparent, symbol-based images
+- **Partner** - stylized Media & Text block for representing organizations partnered with Keitaro
+
+#### Columns
+
+- **Service Group** - stylized Columns block for rendering a group of Services
+- **Team Group** - stylized Columns block for rendering a group of team members
+- **Feature Group** -  stylized Columns block for rendering a group of blocks that include specific product or service features
+- **Feature Group with List** - stylized Columns block for rendering a group of blocks that include specific product or service features, rendered in a List block
+
+#### List
+
+- **List with check marks** - stylized List block for rendering list items with a check mark icon
+- **List with circled check marks** - stylized List block for rendering list items with a circled check mark icon
+
+### Making text uppercase
 
 To make any block show all-caps letters, select the relevant block in Gutenberg, expand the **Advanced** section in the right sidebar, enter `text-uppercase` in the **Additional CSS class(es)** input and click Update.
 
-### Adding Arrows
+### Adding arrows
 
 Bottom left or bottom right arrows can be added to Group blocks, by assigning the `arrow-left` or `arrow-right` CSS classes. Select the Group block in Gutenberg, expand the **Advanced** section in the right sidebar, enter one of the two CSS classes in the **Additional CSS class(es)** input and click Update.
 
-If you want the arrow to look like a border, *set a background color* on the Group the CSS classes are added.
+If you want the arrow to look like a border, _set a background color_ on the Group the CSS classes are added.
 
 ### Creating lists with check marks
 
-Create or select a **List** block in Gutenberg and expand the **Advanced** section in the right sidebar. Enter `list-checked` in the **Additional CSS class(es)** input and click Update.
+Create or select a **List** block in Gutenberg and select the relevant custom style preset. The following two are available for selection:
+
+- List with check marks
+- List with circled check marks
 
 ### Removing extra empty space above and below Groups
 
@@ -56,12 +86,8 @@ To remove the extra empty space below a Group block, select the Group block, exp
 
 Entering both CSS classes delimited by a space is also supported.
 
-### Managing Spacing
+### Managing spacing
 
 Managing the spacing of any block is possible by assigning a specific CSS class from Bootstrap. Please check the [Spacing](https://getbootstrap.com/docs/4.5/utilities/spacing/) documentation of Bootstrap for further details.
 
 If, for example, you want to change the margins of a specific block, select the relevant block, expand the **Advanced** section in the right sidebar, enter `mt-0`, `ml-0`, `mr-0`, `mb-0`, `mx-0`, `my-0` or `m-0` in the **Additional CSS class(es)** input and click Update.
-
-### Feature Group
-
-To present a Group block as a Feature Group (usually a list of evenly-sized boxes with some content), select the Group block, expand the **Advanced** section in the right sidebar, enter `feature-group` the **Additional CSS class(es)** input and click Update.
