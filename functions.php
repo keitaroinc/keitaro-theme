@@ -268,7 +268,8 @@ function open_graph_tags() {
 	 */
 	?>
 	<meta name="twitter:card" content="summary_large_image">
-
+	<meta name="twitter:site" content="@KeitaroInc">
+	<meta name="twitter:creator" content="@KeitaroInc">
 	<?php
 	/**
 	 * By default, featured images are used with the og:image and twitter:image tags.
@@ -1017,3 +1018,8 @@ function extract_featured_image() {
  * Remove default Jetpack og:image
  */
 add_filter( 'jetpack_open_graph_image_default', '__return_false' );
+
+/**
+ * Remove Jetpack's default Open Graph tags
+ */
+add_filter( 'jetpack_enable_open_graph', '__return_false' );
