@@ -263,14 +263,24 @@ function open_graph_tags() {
 	/* We are not adding explicit tags for title and description as these
 	 * can be reused from the existing meta tags */
 
-	/* Featured images will only be set for posts and
-	 * the default image will be displayed for pages */
-	if ( get_the_post_thumbnail() ) :
+	/**
+	 * We need to add the twitter:card tag to enable large images on posts
+	 */
+	?>
+	<meta name="twitter:card" content="summary_large_image">
 
+	<?php
+	/**
+	 * By default, featured images are used with the og:image and twitter:image tags.
+	 * If no Featured image is set, the src of the first <img /> tag in the content is used.
+	 */
+	if ( get_the_post_thumbnail() ) :
 		?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url(); ?>" />
+		<meta property="twitter:image" content="<?php the_post_thumbnail_url(); ?>" />
 	<?php else : ?>
 		<meta property="og:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
+		<meta property="twitter:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
 	<?php
 
 	endif;
