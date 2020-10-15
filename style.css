@@ -13160,45 +13160,45 @@ p.has-text-align-center:after {
 .animate-position {
   transition: 100ms top ease-in-out; }
 
-.page-template-landing .wp-block-cover {
+.home .wp-block-cover {
   min-height: 75vh; }
   @media (min-width: 992px) {
-    .page-template-landing .wp-block-cover {
+    .home .wp-block-cover {
       min-height: 700px; } }
   @media (max-width: 1199.98px) {
-    .page-template-landing .wp-block-cover .wp-block-keitaro-logo-slider .title {
+    .home .wp-block-cover .wp-block-keitaro-logo-slider .title {
       margin-top: auto; } }
-  .page-template-landing .wp-block-cover h1,
-  .page-template-landing .wp-block-cover h2,
-  .page-template-landing .wp-block-cover h3,
-  .page-template-landing .wp-block-cover h4,
-  .page-template-landing .wp-block-cover h5,
-  .page-template-landing .wp-block-cover h6 {
+  .home .wp-block-cover h1,
+  .home .wp-block-cover h2,
+  .home .wp-block-cover h3,
+  .home .wp-block-cover h4,
+  .home .wp-block-cover h5,
+  .home .wp-block-cover h6 {
     font-weight: initial; }
-  .page-template-landing .wp-block-cover .has-huge-font-size {
+  .home .wp-block-cover .has-huge-font-size {
     font-size: 4.5rem; }
     @media (max-width: 767.98px) {
-      .page-template-landing .wp-block-cover .has-huge-font-size {
+      .home .wp-block-cover .has-huge-font-size {
         font-size: 3.081rem; } }
   @media (max-width: 767.98px) {
-    .page-template-landing .wp-block-cover .has-large-font-size {
+    .home .wp-block-cover .has-large-font-size {
       font-size: 1.48125rem; } }
-  .page-template-landing .wp-block-cover .has-large-font-size:after,
-  .page-template-landing .wp-block-cover .has-huge-font-size:after {
+  .home .wp-block-cover .has-large-font-size:after,
+  .home .wp-block-cover .has-huge-font-size:after {
     content: none;
     padding-bottom: 0; }
-  .page-template-landing .wp-block-cover .has-large-font-size {
+  .home .wp-block-cover .has-large-font-size {
     line-height: 1.2; }
 
 @media (max-width: 1199.98px) {
-  .page-template-landing .wp-block-keitaro-logo-slider {
+  .home .wp-block-keitaro-logo-slider {
     padding: 2rem 0; }
-    .page-template-landing .wp-block-keitaro-logo-slider .title {
+    .home .wp-block-keitaro-logo-slider .title {
       margin: 0 2rem 1rem;
       color: initial;
       opacity: initial;
       z-index: initial; }
-    .page-template-landing .wp-block-keitaro-logo-slider .logo {
+    .home .wp-block-keitaro-logo-slider .logo {
       margin: 1rem;
       max-height: 2rem; } }
 
