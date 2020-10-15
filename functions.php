@@ -10,7 +10,7 @@
 
 define( 'SNIPPETS_DIR', 'template-snippets' );
 define( 'DEFAULT_HEADER_IMAGE', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png' );
-define( 'DEFAULT_OG_IMAGE_URL', get_stylesheet_directory_uri() . '/assets/img/keitaro-default-og-photo-1200x630.png' );
+define( 'DEFAULT_OG_IMAGE_URL', get_stylesheet_directory_uri() . '/assets/img/keitaro-default-og-photo-1200x630.jpg' );
 
 // Initialize theme
 function keitaro_theme_setup() {
