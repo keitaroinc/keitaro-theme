@@ -2,6 +2,7 @@
 
 $get_cats = get_the_terms( get_the_ID(), 'category' );
 $get_tags = get_the_terms( get_the_ID(), 'post_tag' );
+$post_type = get_post_type( get_the_ID() );
 
 $post_cats = array();
 $post_tags = array();
@@ -27,6 +28,7 @@ $read_more_content = new WP_Query(
 		'posts_per_page' => 3,
 		'tags__in'       => $post_tags,
 		'category__in'   => $post_cats,
+		'post_type'      => $post_type
 	)
 );
 
