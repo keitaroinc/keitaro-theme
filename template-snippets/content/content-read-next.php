@@ -20,8 +20,8 @@
 	endif;
 
 	get_template_part( SNIPPETS_DIR . '/header/entry-header-read-next' );
-	
-	if ($post_type!== 'job-applications' && $post_type !== 'showcases'):
+
+	if (!is_singular(array('job-applications', 'showcases'))):
 		get_template_part( SNIPPETS_DIR . '/post-author' );
 	endif;
 
