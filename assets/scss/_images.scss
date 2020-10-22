@@ -22,10 +22,6 @@
 		display: flex;
 		flex-direction: column;
 
-		@include media-breakpoint-up(md) {
-			height: $spacer*15;
-		}
-
 		a {
 			display: flex;
 			flex-direction: column;
