@@ -206,6 +206,13 @@
 		}
 	}
 
+	.page-template-showcase {
+		.wp-block-column {
+			margin: $spacer;
+			flex-basis: auto !important;
+		}
+	}
+
 	// Media Text block
 
 	.is-style-media-text-feature {

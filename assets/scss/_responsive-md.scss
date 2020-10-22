@@ -124,6 +124,25 @@
 		}
 	}
 
+	.page-template-showcase {
+		.is-style-feature-group {
+			.wp-block-column {
+				margin-bottom: $spacer *5;
+			}
+		}
+
+		.wp-block-column {
+			>.wp-block-group {
+				z-index: 2;
+				margin-top: -$spacer*5;
+
+				.wp-block-group__inner-container {
+					padding: $spacer*5;
+				}
+			}
+		}
+	}
+
 	// Latest Posts block
 
 	.is-style-latest-posts-insights {
