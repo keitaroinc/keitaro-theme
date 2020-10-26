@@ -76,10 +76,147 @@
 	.copyright {
 		text-align: right;
 	}
+
+	// Group block
+
+	.wp-block-group {
+		.has-huge-font-size {
+			padding-bottom: $spacer*2;
+		}
+
+	}
+
+	// footer
+
+	.main-footer {
+		.widget-wrapper {
+			flex-basis: 15%;
+		}
+	}
+
+	// Column block
+
+	.is-style-team-group {
+		max-width: $container-max-width;
+		margin: auto;
+
+		.wp-block-column {
+			flex-basis: calc(100%/5);
+		}
+	}
+
+	.is-style-feature-group {
+		.wp-block-column {
+			margin-bottom: $spacer;
+		}
+	}
+
+	.page-template-partners {
+		.wp-block-column {
+			>.wp-block-group {
+				z-index: 2;
+				margin-top: -$spacer*5;
+
+				.wp-block-group__inner-container {
+					padding: $spacer*5;
+				}
+			}
+		}
+	}
+
+	.page-template-showcase {
+		.is-style-feature-group {
+			.wp-block-column {
+				margin-bottom: $spacer *5;
+			}
+		}
+
+		.wp-block-column {
+			>.wp-block-group {
+				z-index: 2;
+				margin-top: -$spacer*5;
+
+				.wp-block-group__inner-container {
+					padding: $spacer*5;
+				}
+			}
+		}
+	}
+
+	// Latest Posts block
+
+	.is-style-latest-posts-insights {
+		li {
+			padding: $spacer;
+
+			&:first-child {
+				a {
+					font-size: $h2-font-size;
+				}
+			}
+		}
+	}
+
+	.hentry-grid {
+		.post-thumbnail {
+			height: $spacer*15;
+		}
+	}
+
 }
 
 @include media-breakpoint-down(md) {
 	.entry-title {
 		margin-top: $grid-gutter-width / 2;
 	}
+
+	// Group block
+
+	.wp-block-group {
+		&.has-green-to-light-gray-gradient-background {
+			padding-top: $spacer*3;
+		}
+
+		&.has-green-to-white-gradient-background {
+			padding-top: $spacer*3;
+		}
+
+		&.has-light-gray-to-white-gradient-background {
+			padding-top: $spacer*3;
+		}
+
+	}
+
+	// Column block
+
+	.is-style-team-group {
+		padding-left: $spacer/2;
+		padding-right: $spacer/2;
+	}
+
+	.page-template-partners {
+		.wp-block-column {
+			margin-left: initial;
+			flex-basis: auto !important;
+		}
+	}
+
+	// Media Text block
+
+	.is-style-media-text-partner {
+		flex-wrap: wrap;
+
+		.wp-block-media-text__content {
+			>.wp-block-group {
+				padding: $spacer*3;
+			}
+		}
+	}
+
+	// List block
+
+	.is-style-list-checked-alt {
+		flex-direction: column;
+	}
+
 }

@@ -51,4 +51,41 @@
 		margin-top: $grid-gutter-width / 2;
 	}
 
+	// Group block
+
+	.wp-block-group {
+		.has-text-align-center {
+			padding-top: $spacer;
+			padding-right: $spacer*3;
+			padding-left: $spacer*3;
+		}
+
+	}
+
+	// Column block
+
+	.is-style-team-group {
+
+		.wp-block-column {
+			flex-grow: 1;
+			flex-basis: 100%;
+		}
+	}
+
+	.wp-block-cover {
+		word-break: break-word;
+	}
+
+	.home {
+		.wp-block-cover {
+			.has-huge-font-size {
+				font-size: $h1-font-size;
+			}
+
+			.has-large-font-size {
+				font-size: $font-size-lg;
+			}
+		}
+	}
+
 }
