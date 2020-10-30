@@ -104,7 +104,6 @@
 }
 
 .entry-content {
-	word-break: break-word;
 	margin-top: $grid-gutter-width / 2;
 	margin-bottom: $spacer*2;
 
@@ -375,6 +374,11 @@ pre {
 	.wp-block-columns {
 		margin-bottom: 0;
 		flex-wrap: wrap;
+
+		.wp-block-column {
+			word-break: unset;
+		}
+
 	}
 
 	&.has-background {
