@@ -17,6 +17,7 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<?php wp_head(); ?>
+		<?php get_template_part( SNIPPETS_DIR . '/facebook-pixel' );?>
 	</head>
 	<body <?php body_class(); ?>>
 		<?php

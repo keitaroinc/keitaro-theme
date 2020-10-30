@@ -101,6 +101,14 @@ class Keitaro_Theme_Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'fb_pixel_id',
+			__( 'Facebook Pixel ID', 'keitaro' ),
+			array( $this, 'facebook_pixel_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -116,6 +124,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['gsc_verification_id'] ) ) {
 			$new_input['gsc_verification_id'] = sanitize_text_field( $input['gsc_verification_id'] );
+		}
+
+		if ( isset( $input['fb_pixel_id'] ) ) {
+			$new_input['fb_pixel_id'] = sanitize_text_field( $input['fb_pixel_id'] );
 		}
 
 		return $new_input;
@@ -148,6 +160,17 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="gsc_verification_id" name="keitaro_settings[gsc_verification_id]" value="%s" />',
 			isset( $this->options['gsc_verification_id'] ) ? esc_attr( $this->options['gsc_verification_id'] ) : ''
+		);
+
+	}
+
+		/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function facebook_pixel_id_callback() {
+		printf(
+			'<input type="text" id="fb_pixel_id" name="keitaro_settings[fb_pixel_id]" value="%s" />',
+			isset( $this->options['fb_pixel_id'] ) ? esc_attr( $this->options['fb_pixel_id'] ) : ''
 		);
 
 	}
