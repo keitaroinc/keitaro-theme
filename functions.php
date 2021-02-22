@@ -742,7 +742,7 @@ function keitaro_custom_profile_data( $user ) {
 
 	if ( current_user_can( 'upload_files', $user->ID ) ) :
 		wp_enqueue_media();
-		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.js' );
+		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.min.js' );
 
 		// Get thumbnail version of the current attachment
 		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
