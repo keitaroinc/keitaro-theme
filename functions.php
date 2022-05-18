@@ -86,7 +86,7 @@ function keitaro_theme_setup() {
 	 * provide it for us.
 	 */
 	add_theme_support( 'title-tag' );
-	
+
 	/*
 	 * Add support for excerpts on Pages
 	 */
