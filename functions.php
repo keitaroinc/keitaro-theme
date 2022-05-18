@@ -93,6 +93,11 @@ function keitaro_theme_setup() {
 	add_post_type_support( 'page', 'excerpt' );
 
 	/*
+	 * Add support for excerpts on Pages
+	 */
+	add_post_type_support( 'page', 'excerpt' );
+
+	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
@@ -392,6 +397,18 @@ function wp_block_overrides() {
 
 // Override the appearance of the Gutenberg block editor
 add_action( 'admin_enqueue_scripts', 'wp_block_overrides' );
+/* Set custom script for Metricool */
+
+function metricool_hash() {
+	$metricool_verification_hash_id = get_option( 'keitaro_settings' )['metricool_verification_hash_id'];
+
+	if ( $metricool_verification_hash_id ) :
+		printf( '<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"%s"})});</script>', esc_html( $metricool_verification_hash_id ) );
+	endif;
+
+}
+
+add_action( 'wp_head', 'metricool_hash' );
 
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
