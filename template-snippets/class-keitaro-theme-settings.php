@@ -101,6 +101,14 @@ class Keitaro_Theme_Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'metricool_verification_hash_id',
+			__( 'Metricool Hash ID', 'keitaro' ),
+			array( $this, 'metricool_verification_hash_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -116,6 +124,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['gsc_verification_id'] ) ) {
 			$new_input['gsc_verification_id'] = sanitize_text_field( $input['gsc_verification_id'] );
+		}
+
+		if ( isset( $input['metricool_verification_hash_id'] ) ) {
+			$new_input['metricool_verification_hash_id'] = sanitize_text_field( $input['metricool_verification_hash_id'] );
 		}
 
 		return $new_input;
@@ -148,6 +160,17 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="gsc_verification_id" name="keitaro_settings[gsc_verification_id]" value="%s" />',
 			isset( $this->options['gsc_verification_id'] ) ? esc_attr( $this->options['gsc_verification_id'] ) : ''
+		);
+
+	}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function metricool_verification_hash_id_callback() {
+		printf(
+			'<input type="text" id="metricool_verification_hash_id" name="keitaro_settings[metricool_verification_hash_id]" value="%s" />',
+			isset( $this->options['metricool_verification_hash_id'] ) ? esc_attr( $this->options['metricool_verification_hash_id'] ) : ''
 		);
 
 	}

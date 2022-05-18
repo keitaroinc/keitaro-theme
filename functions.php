@@ -214,6 +214,19 @@ function google_search_console_tags() {
 
 add_action( 'wp_head', 'google_search_console_tags' );
 
+/* Set custom script for Metricool */
+
+function metricool_hash() {
+	$metricool_verification_hash_id = get_option( 'keitaro_settings' )['metricool_verification_hash_id'];
+
+	if ( $metricool_verification_hash_id ) :
+		printf( '<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"%s"})});</script>', esc_html( $metricool_verification_hash_id ) );
+	endif;
+
+}
+
+add_action( 'wp_head', 'metricool_hash' );
+
 // Add static CSS and JS theme assets
 function keitaro_theme_scripts() {
 
