@@ -110,6 +110,14 @@ class Keitaro_Theme_Settings {
 		);
 
 		add_settings_field(
+			'li_partner_id',
+			__( 'LinkedIn Partner ID', 'keitaro' ),
+			array( $this, 'li_partner_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
+		add_settings_field(
 			'metricool_verification_hash_id',
 			__( 'Metricool Hash ID', 'keitaro' ),
 			array( $this, 'metricool_verification_hash_id_callback' ),
@@ -136,6 +144,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['fb_pixel_id'] ) ) {
 			$new_input['fb_pixel_id'] = sanitize_text_field( $input['fb_pixel_id'] );
+		}
+
+		if ( isset( $input['li_partner_id'] ) ) {
+			$new_input['li_partner_id'] = sanitize_text_field( $input['li_partner_id'] );
 		}
 
 		if ( isset( $input['metricool_verification_hash_id'] ) ) {
@@ -183,6 +195,15 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="fb_pixel_id" name="keitaro_settings[fb_pixel_id]" value="%s" />',
 			isset( $this->options['fb_pixel_id'] ) ? esc_attr( $this->options['fb_pixel_id'] ) : '');
+		}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function li_partner_id_callback() {
+		printf(
+			'<input type="text" id="li_partner_id" name="keitaro_settings[li_partner_id]" value="%s" />',
+			isset( $this->options['li_partner_id'] ) ? esc_attr( $this->options['li_partner_id'] ) : '');
 		}
 
 	/**
