@@ -16,7 +16,7 @@ if ($linkedin_partner_id) :
 ?>
 
 	<script type="text/javascript">
-		_linkedin_partner_id = <?php echo esc_js($linkedin_partner_id); ?>;
+		_linkedin_partner_id = "<?php echo esc_js($linkedin_partner_id); ?>";
 		window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
 		window._linkedin_data_partner_ids.push(_linkedin_partner_id);
 	</script>
