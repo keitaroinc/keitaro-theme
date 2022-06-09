@@ -43,6 +43,7 @@
 keitaro_go_to_top_link( __( 'Go to Top', 'keitaro' ) );
 
 get_template_part( SNIPPETS_DIR . '/google-analytics' );
+get_template_part( SNIPPETS_DIR . '/linkedin-partner' );
 
 ?>
 </body>
