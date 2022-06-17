@@ -133,6 +133,14 @@ class Keitaro_Theme_Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'lead_forensics_id',
+			__( 'Lead Forensics ID', 'keitaro' ),
+			array( $this, 'lead_forensics_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -164,6 +172,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['metricool_verification_hash_id'] ) ) {
 			$new_input['metricool_verification_hash_id'] = sanitize_text_field( $input['metricool_verification_hash_id'] );
+		}
+
+		if ( isset( $input['lead_forensics_id'] ) ) {
+			$new_input['lead_forensics_id'] = sanitize_text_field( $input['lead_forensics_id'] );
 		}
 
 		return $new_input;
@@ -227,6 +239,15 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="li_partner_id" name="keitaro_settings[li_partner_id]" value="%s" />',
 			isset( $this->options['li_partner_id'] ) ? esc_attr( $this->options['li_partner_id'] ) : '');
+		}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function lead_forensics_id_callback() {
+		printf(
+			'<input type="text" id="lead_forensics_id" name="keitaro_settings[lead_forensics_id]" value="%s" />',
+			isset( $this->options['lead_forensics_id'] ) ? esc_attr( $this->options['lead_forensics_id'] ) : '');
 		}
 
 	/**
