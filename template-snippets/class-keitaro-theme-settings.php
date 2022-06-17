@@ -141,6 +141,14 @@ class Keitaro_Theme_Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'lead_feeder_id',
+			__( 'Lead Feeder ID', 'keitaro' ),
+			array( $this, 'lead_feeder_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -176,6 +184,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['lead_forensics_id'] ) ) {
 			$new_input['lead_forensics_id'] = sanitize_text_field( $input['lead_forensics_id'] );
+		}
+
+		if ( isset( $input['lead_feeder_id'] ) ) {
+			$new_input['lead_feeder_id'] = sanitize_text_field( $input['lead_feeder_id'] );
 		}
 
 		return $new_input;
@@ -248,6 +260,15 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="lead_forensics_id" name="keitaro_settings[lead_forensics_id]" value="%s" />',
 			isset( $this->options['lead_forensics_id'] ) ? esc_attr( $this->options['lead_forensics_id'] ) : '');
+		}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function lead_feeder_id_callback() {
+		printf(
+			'<input type="text" id="lead_feeder_id" name="keitaro_settings[lead_feeder_id]" value="%s" />',
+			isset( $this->options['lead_feeder_id'] ) ? esc_attr( $this->options['lead_feeder_id'] ) : '');
 		}
 
 	/**
