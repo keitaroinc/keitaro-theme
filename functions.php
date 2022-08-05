@@ -994,3 +994,40 @@ add_filter( 'jetpack_open_graph_image_default', '__return_false' );
  * Remove Jetpack's default Open Graph tags
  */
 add_filter( 'jetpack_enable_open_graph', '__return_false' );
+
+/**
+ * Register a 'Sales Tag' taxonomy for posts.
+ *
+ * @see register_post_type() for registering post types.
+ */
+function keitaro_register_sales_tag_taxonomy() {
+	$labels = array(
+        'name'              => _x( 'Sales Tags', 'taxonomy general name', 'keitaro' ),
+        'singular_name'     => _x( 'Sales Tag', 'taxonomy singular name', 'keitaro' ),
+        'search_items'      => __( 'Search Sales Tags', 'keitaro' ),
+        'all_items'         => __( 'All Sales Tags', 'keitaro' ),
+        'parent_item'       => __( 'Parent Sales Tag', 'keitaro' ),
+        'parent_item_colon' => __( 'Parent Sales Tag:', 'keitaro' ),
+        'edit_item'         => __( 'Edit Sales Tag', 'keitaro' ),
+        'update_item'       => __( 'Update Sales Tag', 'keitaro' ),
+        'add_new_item'      => __( 'Add New Sales Tag', 'keitaro' ),
+        'new_item_name'     => __( 'New Genre Sales Tag', 'keitaro' ),
+    );
+
+    $args = array(
+        'labels'            => $labels,
+		'publicly_queryable'=> true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+		'show_in_menu'      => true,
+		'show_in_nav_menus' => true,
+		'show_in_quick_edit'=> true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+        'rewrite'           => array( 'slug' => 'sales_tag' ),
+    );
+
+    register_taxonomy( 'sales-tag', 'post', $args );
+}
+add_action( 'init', 'keitaro_register_sales_tag_taxonomy' );
