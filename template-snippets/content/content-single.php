@@ -40,11 +40,12 @@
 				get_template_part( SNIPPETS_DIR . '/entry-content' );
 			endif;
 
-			comments_template();
+			// comments_template();
 
 			?>
 		</div>
 	</div>
 
+	<?php get_template_part( SNIPPETS_DIR . '/sales-form' ); ?>
 	<?php get_template_part( SNIPPETS_DIR . '/read-next' ); ?>
 </article>
