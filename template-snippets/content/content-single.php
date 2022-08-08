@@ -40,6 +40,7 @@
 				get_template_part( SNIPPETS_DIR . '/entry-content' );
 			endif;
 
+			// Remove comments template temporarily
 			// comments_template();
 
 			?>
