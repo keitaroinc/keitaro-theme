@@ -86,6 +86,14 @@ class Keitaro_Theme_Settings {
 		);
 
 		add_settings_field(
+			'sales_contact',
+			__( 'Sales Contact', 'keitaro' ),
+			array( $this, 'sales_contact_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
+		add_settings_field(
 			'ga_tracking_id',
 			__( 'Google Analytics Tracking ID', 'keitaro' ),
 			array( $this, 'google_analytics_tracking_id_callback' ),
@@ -157,6 +165,11 @@ class Keitaro_Theme_Settings {
 	 * @param array $input - Contains all settings fields as array keys.
 	 */
 	public function sanitize( $input ) {
+
+		if ( isset( $input['sales_contact'] ) ) {
+			$new_input['sales_contact'] = sanitize_text_field( $input['sales_contact'] );
+		}
+
 		$new_input = array();
 		if ( isset( $input['ga_tracking_id'] ) ) {
 			$new_input['ga_tracking_id'] = sanitize_text_field( $input['ga_tracking_id'] );
@@ -199,6 +212,17 @@ class Keitaro_Theme_Settings {
 	 */
 	public function section_description() {
 		 printf( '<p>%s</p>', esc_html__( 'A list of customizable theme-specific settings', 'keitaro' ) );
+
+	}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function sales_contact_callback() {
+		printf(
+			'<input type="text" id="sales_contact" name="keitaro_settings[sales_contact]" value="%s" />',
+			isset( $this->options['sales_contact'] ) ? esc_attr( $this->options['sales_contact'] ) : ''
+		);
 
 	}
 
