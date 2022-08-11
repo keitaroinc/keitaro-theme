@@ -166,11 +166,12 @@ class Keitaro_Theme_Settings {
 	 */
 	public function sanitize( $input ) {
 
+		$new_input = array();
+
 		if ( isset( $input['sales_contact'] ) ) {
 			$new_input['sales_contact'] = sanitize_text_field( $input['sales_contact'] );
 		}
 
-		$new_input = array();
 		if ( isset( $input['ga_tracking_id'] ) ) {
 			$new_input['ga_tracking_id'] = sanitize_text_field( $input['ga_tracking_id'] );
 		}
