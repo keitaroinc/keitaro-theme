@@ -19,6 +19,7 @@
 		<?php wp_head(); ?>
 		<?php get_template_part( SNIPPETS_DIR . '/google-site-tag' );?>
 		<?php get_template_part( SNIPPETS_DIR . '/lead-feeder' );?>
+		<?php get_template_part( SNIPPETS_DIR . '/hotjar' );?>
 	</head>
 	<body <?php body_class(); ?>>
 		<?php get_template_part( SNIPPETS_DIR . '/facebook-pixel' );?>

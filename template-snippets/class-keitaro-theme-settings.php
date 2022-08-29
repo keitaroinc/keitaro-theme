@@ -157,6 +157,14 @@ class Keitaro_Theme_Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'lead_feeder_id',
+			__( 'Hotjar ID', 'keitaro' ),
+			array( $this, 'hotjar_id_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -202,6 +210,10 @@ class Keitaro_Theme_Settings {
 
 		if ( isset( $input['lead_feeder_id'] ) ) {
 			$new_input['lead_feeder_id'] = sanitize_text_field( $input['lead_feeder_id'] );
+		}
+
+		if ( isset( $input['hotjar_id'] ) ) {
+			$new_input['hotjar_id'] = sanitize_text_field( $input['hotjar_id'] );
 		}
 
 		return $new_input;
@@ -303,6 +315,17 @@ class Keitaro_Theme_Settings {
 		printf(
 			'<input type="text" id="metricool_verification_hash_id" name="keitaro_settings[metricool_verification_hash_id]" value="%s" />',
 			isset( $this->options['metricool_verification_hash_id'] ) ? esc_attr( $this->options['metricool_verification_hash_id'] ) : ''
+		);
+
+	}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function hotjar_id_callback() {
+		printf(
+			'<input type="text" id="hotjar_id" name="keitaro_settings[hotjar_id]" value="%s" />',
+			isset( $this->options['hotjar_id'] ) ? esc_attr( $this->options['hotjar_id'] ) : ''
 		);
 
 	}
