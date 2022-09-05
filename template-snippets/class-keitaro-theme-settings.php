@@ -158,7 +158,7 @@ class Keitaro_Theme_Settings {
 		);
 
 		add_settings_field(
-			'lead_feeder_id',
+			'hotjar_id',
 			__( 'Hotjar ID', 'keitaro' ),
 			array( $this, 'hotjar_id_callback' ),
 			'keitaro-setting-admin',
