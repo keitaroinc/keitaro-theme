@@ -12,6 +12,58 @@
 
 <?php
 
+/**
+ * Based on https://www.binarymoon.co.uk/2010/03/akismet-plugin-theme-stop-spam-dead/
+ *
+ * @param array $content
+ * @return void
+ */
+function keitaro_akismet_check_spam($content)
+{
+
+	// innocent until proven guilty
+	$isSpam = false;
+
+	$content = (array) $content;
+
+	if (function_exists('akismet_init')) {
+
+		$wpcom_api_key = get_option('wordpress_api_key');
+
+		if (!empty($wpcom_api_key)) {
+
+			global $akismet_api_host, $akismet_api_port;
+
+			// set remaining required values for akismet api
+			$content['user_ip'] = preg_replace('/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR']);
+			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+			$content['referrer'] = $_SERVER['HTTP_REFERER'];
+			$content['blog'] = get_option('home');
+
+			if (empty($content['referrer'])) {
+				$content['referrer'] = get_permalink();
+			}
+
+			$queryString = '';
+
+			foreach ($content as $key => $data) {
+				if (!empty($data)) {
+					$queryString .= $key . '=' . urlencode(stripslashes($data)) . '&';
+				}
+			}
+
+			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
+
+			if ($response[1] == 'true') {
+				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
+				$isSpam = true;
+			}
+		}
+	}
+
+	return $isSpam;
+}
+
 $tag_id = 'sales-tag';
 
 $email_sent = false;
@@ -25,6 +77,11 @@ $subject           = __('New message from ' . trim(esc_html($sender)), 'keitaro'
 $subject_autoreply = __('Thank you for contacting ' . get_bloginfo('name'), 'keitaro');
 $consent           = isset($_POST['salesFormConsent']) ? $_POST['salesFormConsent'] : false;
 $submitted_message = isset($_POST['salesFormMessage']) ? str_replace("\r\n", '<br>', trim(esc_html($_POST['salesFormMessage']))) : '';
+
+$spam_check['comment_author'] = $sender;
+$spam_check['comment_author_email'] = $sender_email;
+$spam_check['comment_author_url'] = get_option('home');
+$spam_check['comment_content'] = $submitted_message;
 
 $headers = array(
 	'Content-Type: text/html; charset=UTF-8',
@@ -69,18 +126,25 @@ if (get_the_terms(get_the_ID(), $tag_id)) : ?>
 					if ((isset($_GET['salesFormSubmitted'])) && wp_verify_nonce($_REQUEST['_wpnonce'], 'keitaroSalesForm')) :
 
 						try {
-							// Send mail to Keitaro Inc.
-							if (wp_mail($send_to, $subject, $body, $headers)) :
-								$email_sent = true;
+							// Check email content with Akismet before sending.
+							if (function_exists('keitaro_akismet_check_spam') && true === keitaro_akismet_check_spam($spam_check)) :
+								throw new Exception(esc_html__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 							else :
-								throw new Exception(__("Something's wrong. The email message was not delivered to sender.", 'keitaro'));
-							endif;
 
-							// Send autoreply to sender
-							if (wp_mail($sender_email, $subject_autoreply, $body_autoreply, $headers)) :
-								$autoreply_sent = true;
-							else :
-								throw new Exception(__("Something's wrong. The auto-respond email message was not delivered to sender.", 'keitaro'));
+								// Send mail to Keitaro Inc.
+								if (wp_mail($send_to, $subject, $body, $headers)) :
+									$email_sent = true;
+								else :
+									throw new Exception(__("Something's wrong. The email message was not delivered to sender.", 'keitaro'));
+								endif;
+
+								// Send autoreply to sender
+								if (wp_mail($sender_email, $subject_autoreply, $body_autoreply, $headers)) :
+									$autoreply_sent = true;
+								else :
+									throw new Exception(__("Something's wrong. The auto-respond email message was not delivered to sender.", 'keitaro'));
+								endif;
+
 							endif;
 						} catch (Exception $e) { ?>
 							<div class="mt-5 alert alert-danger">
