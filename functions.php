@@ -391,7 +391,7 @@ function google_search_console_tags() {
 add_action( 'wp_head', 'google_search_console_tags' );
 
 function wp_block_overrides() {
-	wp_enqueue_style( 'wp-block-overrides', get_stylesheet_directory_uri() . '/assets/css/wp-block.css', null, null, false );
+	wp_enqueue_style( 'wp-block-overrides', get_stylesheet_directory_uri() . '/assets/css/wp-block.css', null, filemtime( get_stylesheet_directory() . '/assets/css/wp-block.css' ) );
 	// wp_enqueue_script( 'keitaro-carrers',  get_stylesheet_directory_uri() . '/blocks/blockcareers.js', null, null, false );
 }
 
@@ -414,7 +414,7 @@ add_action( 'wp_head', 'metricool_hash' );
 function keitaro_theme_scripts() {
 
 	// Futura PT font from Typekit
-	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, null, true );
+	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/futura-pt.min.js' ), true );
 
 	// Main keitaro_theme stylesheet
 	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
@@ -423,20 +423,20 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'jquery' );
 
 	// Bootstrap JS modules
-	wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', null, null, true );
+	wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/bootstrap.min.js' ), true );
 
 	// Custom JS minified
-	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, null, true );
+	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/custom.min.js' ), true );
 
 	// Prism.js - load only for pages, posts and custom post types
 	if ( is_singular() && ! is_page() ) :
 		// Main keitaro_theme stylesheet
-		wp_enqueue_style( 'prism-css', get_stylesheet_directory_uri() . '/assets/css/prism-okaidia.css', null, null );
-		wp_enqueue_style( 'prism-toolbar-css', get_stylesheet_directory_uri() . '/assets/css/prism-toolbar.css', null, null );
-		wp_enqueue_script( 'clipboard-js', get_stylesheet_directory_uri() . '/assets/js/clipboard.min.js', null, null, true );
-		wp_enqueue_script( 'prism-js', get_stylesheet_directory_uri() . '/assets/js/prism.min.js', null, null, true );
-		wp_enqueue_script( 'prism-toolbar-js', get_stylesheet_directory_uri() . '/assets/js/prism-toolbar.min.js', null, null, true );
-		wp_enqueue_script( 'prism-clipboard-js', get_stylesheet_directory_uri() . '/assets/js/prism-copy-to-clipboard.min.js', null, null, true );
+		wp_enqueue_style( 'prism-css', get_stylesheet_directory_uri() . '/assets/css/prism-okaidia.css', null, filemtime( get_stylesheet_directory() . '/assets/css/prism-okaidia.css' ) );
+		wp_enqueue_style( 'prism-toolbar-css', get_stylesheet_directory_uri() . '/assets/css/prism-toolbar.css', null, filemtime( get_stylesheet_directory() . '/assets/css/prism-toolbar.css' ) );
+		wp_enqueue_script( 'clipboard-js', get_stylesheet_directory_uri() . '/assets/js/clipboard.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/clipboard.min.js' ), true );
+		wp_enqueue_script( 'prism-js', get_stylesheet_directory_uri() . '/assets/js/prism.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/prism.min.js' ), true );
+		wp_enqueue_script( 'prism-toolbar-js', get_stylesheet_directory_uri() . '/assets/js/prism-toolbar.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/prism-toolbar.min.js' ), true );
+		wp_enqueue_script( 'prism-clipboard-js', get_stylesheet_directory_uri() . '/assets/js/prism-copy-to-clipboard.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/prism-copy-to-clipboard.min.js' ), true );
 	endif;
 
 }
@@ -448,7 +448,7 @@ add_action( 'wp_enqueue_scripts', 'keitaro_jquery_deregister' );
 function keitaro_jquery_deregister() {
 	$jquery_path = '/assets/js/jquery.min.js';
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, null, true );
+	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, filemtime( get_stylesheet_directory() . $jquery_path ), true );
 
 }
 
@@ -764,7 +764,7 @@ function keitaro_custom_profile_data( $user ) {
 
 	if ( current_user_can( 'upload_files', $user->ID ) ) :
 		wp_enqueue_media();
-		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.min.js' );
+		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/custom-profile-picture.min.js' ) );
 
 		// Get thumbnail version of the current attachment
 		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
