@@ -62,19 +62,19 @@ function keitaro_theme_setup() {
 		'editor-gradient-presets',
 		array(
 			array(
-				'name' => __( 'Green to Light Gray', 'keitaro' ),
+				'name'     => __( 'Green to Light Gray', 'keitaro' ),
 				'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #f2f2f2 65%)',
-				'slug' => 'green-to-light-gray',
+				'slug'     => 'green-to-light-gray',
 			),
 			array(
-				'name' => __( 'Green to White', 'keitaro' ),
+				'name'     => __( 'Green to White', 'keitaro' ),
 				'gradient' => 'linear-gradient(180deg, #1e9843 0% 65%, #fff 65%)',
-				'slug' => 'green-to-white',
+				'slug'     => 'green-to-white',
 			),
 			array(
-				'name' => __( 'Light Gray to White', 'keitaro' ),
+				'name'     => __( 'Light Gray to White', 'keitaro' ),
 				'gradient' => 'linear-gradient(180deg, #f2f2f2 0% 65%, #fff 65%)',
-				'slug' => 'light-gray-to-white',
+				'slug'     => 'light-gray-to-white',
 			),
 		)
 		);
@@ -121,9 +121,9 @@ function keitaro_theme_setup() {
 			'footer'           => __( 'Footer Menu' ),
 			'social'           => __( 'Social Links', 'keitaro' ),
 			'footer-secondary' => __( 'Secondary Footer Menu', 'keitaro' ),
-			'footer-services'   => __( 'Services Menu', 'keitaro' ),
-			'footer-products'   => __( 'Products Menu', 'keitaro' ),
-			'footer-offices'    => __( 'Offices Menu', 'keitaro' ),
+			'footer-services'  => __( 'Services Menu', 'keitaro' ),
+			'footer-products'  => __( 'Products Menu', 'keitaro' ),
+			'footer-offices'   => __( 'Offices Menu', 'keitaro' ),
 		)
 	);
 
@@ -280,7 +280,7 @@ function open_graph_tags() {
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@KeitaroInc">
 	<meta name="twitter:creator" content="@KeitaroInc">
-	<meta name="og:title" content="<?php echo esc_attr( get_bloginfo('name') ) . wp_title('&#8211;', false); ?>">
+	<meta name="og:title" content="<?php echo esc_attr( get_bloginfo( 'name' ) ) . wp_title( '&#8211;', false ); ?>">
 	<?php
 	/**
 	 * By default, featured images are used with the og:image and twitter:image tags.
@@ -293,8 +293,9 @@ function open_graph_tags() {
 		<?php if ( is_front_page() ) : ?>
 			<meta property="og:image" content="<?php echo esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
 		<?php else : ?>
-			<meta property="og:image" content="<?php echo !empty(extract_featured_image()) ? esc_url(extract_featured_image()) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
-		<?php endif;
+			<meta property="og:image" content="<?php echo ! empty( extract_featured_image() ) ? esc_url( extract_featured_image() ) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
+		<?php
+		endif;
 	endif;
 
 }
@@ -305,31 +306,31 @@ add_action( 'wp_head', 'open_graph_tags' );
 function custom_post_type_job_applications() {
 
 	$labels = array(
-		'name'                => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
-		'singular_name'       => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
-		'menu_name'           => __( 'Job Applications', 'keitaro' ),
-		'all_items'           => __( 'All Job Applications', 'keitaro' ),
-		'view_item'           => __( 'View Job Application', 'keitaro' ),
-		'add_new_item'        => __( 'Add New Job Application', 'keitaro' ),
-		'add_new'             => __( 'Add New', 'keitaro' ),
-		'edit_item'           => __( 'Edit Job Application', 'keitaro' ),
-		'update_item'         => __( 'Update Job Application', 'keitaro' ),
-		'search_items'        => __( 'Search Job Applications', 'keitaro' ),
-		'not_found'           => __( 'Not Found', 'keitaro' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+		'name'               => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
+		'singular_name'      => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
+		'menu_name'          => __( 'Job Applications', 'keitaro' ),
+		'all_items'          => __( 'All Job Applications', 'keitaro' ),
+		'view_item'          => __( 'View Job Application', 'keitaro' ),
+		'add_new_item'       => __( 'Add New Job Application', 'keitaro' ),
+		'add_new'            => __( 'Add New', 'keitaro' ),
+		'edit_item'          => __( 'Edit Job Application', 'keitaro' ),
+		'update_item'        => __( 'Update Job Application', 'keitaro' ),
+		'search_items'       => __( 'Search Job Applications', 'keitaro' ),
+		'not_found'          => __( 'Not Found', 'keitaro' ),
+		'not_found_in_trash' => __( 'Not found in Trash', 'keitaro' ),
 	);
 
 	$args = array(
-		'label'               => __( 'Job Applications', 'keitaro' ),
-		'description'         => __( 'Custom post type for Job Applications ', 'keitaro' ),
-		'labels'              => $labels,
+		'label'        => __( 'Job Applications', 'keitaro' ),
+		'description'  => __( 'Custom post type for Job Applications ', 'keitaro' ),
+		'labels'       => $labels,
 		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+		'supports'     => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
 		// CPT taxonomies.
-		'taxonomies'          => array( 'category', 'post_tag' ),
-		'public'              => true,
-		'has_archive'         => true,
-		'show_in_rest'        => true,
+		'taxonomies'   => array( 'category', 'post_tag' ),
+		'public'       => true,
+		'has_archive'  => true,
+		'show_in_rest' => true,
 
 	);
 
@@ -343,31 +344,31 @@ add_action( 'init', 'custom_post_type_job_applications' );
 function custom_post_type_showcases() {
 
 	$labels = array(
-		'name'                => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
-		'singular_name'       => _x( 'Showcase', 'Post Type Singular Name', 'keitaro' ),
-		'menu_name'           => __( 'Showcases', 'keitaro' ),
-		'all_items'           => __( 'All Showcases', 'keitaro' ),
-		'view_item'           => __( 'View Showcase', 'keitaro' ),
-		'add_new_item'        => __( 'Add New Showcase', 'keitaro' ),
-		'add_new'             => __( 'Add New', 'keitaro' ),
-		'edit_item'           => __( 'Edit Showcase', 'keitaro' ),
-		'update_item'         => __( 'Update Showcase', 'keitaro' ),
-		'search_items'        => __( 'Search Showcases', 'showcases' ),
-		'not_found'           => __( 'Not Found', 'keitaro' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'keitaro' ),
+		'name'               => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
+		'singular_name'      => _x( 'Showcase', 'Post Type Singular Name', 'keitaro' ),
+		'menu_name'          => __( 'Showcases', 'keitaro' ),
+		'all_items'          => __( 'All Showcases', 'keitaro' ),
+		'view_item'          => __( 'View Showcase', 'keitaro' ),
+		'add_new_item'       => __( 'Add New Showcase', 'keitaro' ),
+		'add_new'            => __( 'Add New', 'keitaro' ),
+		'edit_item'          => __( 'Edit Showcase', 'keitaro' ),
+		'update_item'        => __( 'Update Showcase', 'keitaro' ),
+		'search_items'       => __( 'Search Showcases', 'showcases' ),
+		'not_found'          => __( 'Not Found', 'keitaro' ),
+		'not_found_in_trash' => __( 'Not found in Trash', 'keitaro' ),
 	);
 
 	$args = array(
-		'label'               => __( 'Showcases', 'keitaro' ),
-		'description'         => __( 'Custom post type for Showcases ', 'keitaro' ),
-		'labels'              => $labels,
+		'label'        => __( 'Showcases', 'keitaro' ),
+		'description'  => __( 'Custom post type for Showcases ', 'keitaro' ),
+		'labels'       => $labels,
 		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
+		'supports'     => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
 		// CPT taxonomies.
-		'taxonomies'          => array( 'category', 'post_tag' ),
-		'public'              => true,
-		'has_archive'         => true,
-		'show_in_rest'        => true,
+		'taxonomies'   => array( 'category', 'post_tag' ),
+		'public'       => true,
+		'has_archive'  => true,
+		'show_in_rest' => true,
 
 	);
 
@@ -520,18 +521,6 @@ function keitaro_widgets_init() {
 }
 
 add_action( 'widgets_init', 'keitaro_widgets_init' );
-
-
-// Shortcode to modify hero title to show first three words in bold
-add_shortcode( 'keitaro-hero-title', 'keitaro_hero_title_shortcode' );
-
-function keitaro_hero_title_shortcode() {
-
-	$formatted_title    = explode( ' ', get_bloginfo( 'description' ) );
-	$formatted_title[2] = esc_html( $formatted_title[2] ) . '<span class="hero-subtitle">';
-	printf( '<h2 class="hero-title">%s</span></h2>', implode( ' ', $formatted_title ) );
-
-}
 
 /* Add support for hyperlinks to default WordPress Image widget */
 
@@ -717,27 +706,6 @@ function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 
 function keitaro_posted_on() {
 	the_date( '', '<time datetime="' . get_the_date( 'c' ) . '" itemprop="datePublished">', '</time>' );
-
-}
-
-function keitaro_read_more( $class = 'btn-secondary' ) {
-	wp_kses(
-		printf(
-		 '<a class="%4$s text-white btn btn-sm btn-read-more" href="%1$s" title="%2$s">%3$s</a>',
-			 esc_url( get_permalink() ),
-			 sprintf( esc_html__( 'Continue reading', 'keitaro' ) . ' %s', get_the_title() ),
-			 esc_html__( 'Read more', 'keitaro' ),
-			 esc_html( $class )
-			),
-		array(
-			'a' => array(
-				'class' => array(),
-				'href'  => array(),
-				'title' => array(),
-			),
-		)
-		);
-
 }
 
 // Wrap text in highlight wrapper
@@ -934,7 +902,6 @@ if ( current_user_can( 'contributor' ) && ! current_user_can( 'upload_files' ) )
 function keitaro_allow_contributor_uploads() {
 	$contributor = get_role( 'contributor' );
 	$contributor->add_cap( 'upload_files' );
-
 }
 
 // Remove emoji prefetch links and inline scripts from <head>
@@ -944,43 +911,14 @@ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
-
-/**
- * https://developer.wordpress.org/rest-api/frequently-asked-questions/#require-authentication-for-all-requests
- */
-// add_filter(
-// 	 'rest_authentication_errors',
-// 	function( $result ) {
-// 	// If a previous authentication check was applied,
-// 	// pass that result along without modification.
-// 	if ( true === $result || is_wp_error( $result ) ) {
-// 			return $result;
-// 	}
-
-// 	// No authentication has been performed yet.
-// 	// Return an error if user is not logged in.
-// 	if ( ! is_user_logged_in() ) {
-// 			return new WP_Error(
-// 			'rest_not_logged_in',
-// 			__( 'You are not currently logged in.' ),
-// 			array( 'status' => 401 )
-// 				);
-// 	}
-
-// 	// Our custom authentication check should have no effect
-// 	// on logged-in requests
-// 	return $result;
-// }
-// 	);
-
 /**
  * Extract first image URL from content
-*/
+ */
 function extract_featured_image() {
 	global $post, $posts;
 	ob_start();
 	ob_end_clean();
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 
 	return $matches [1] ? $matches [1][0] : false;
   }
@@ -1002,32 +940,32 @@ add_filter( 'jetpack_enable_open_graph', '__return_false' );
  */
 function keitaro_register_sales_tag_taxonomy() {
 	$labels = array(
-        'name'              => _x( 'Sales Tags', 'taxonomy general name', 'keitaro' ),
-        'singular_name'     => _x( 'Sales Tag', 'taxonomy singular name', 'keitaro' ),
-        'search_items'      => __( 'Search Sales Tags', 'keitaro' ),
-        'all_items'         => __( 'All Sales Tags', 'keitaro' ),
-        'parent_item'       => __( 'Parent Sales Tag', 'keitaro' ),
-        'parent_item_colon' => __( 'Parent Sales Tag:', 'keitaro' ),
-        'edit_item'         => __( 'Edit Sales Tag', 'keitaro' ),
-        'update_item'       => __( 'Update Sales Tag', 'keitaro' ),
-        'add_new_item'      => __( 'Add New Sales Tag', 'keitaro' ),
-        'new_item_name'     => __( 'New Genre Sales Tag', 'keitaro' ),
-    );
+		'name'              => _x( 'Sales Tags', 'taxonomy general name', 'keitaro' ),
+		'singular_name'     => _x( 'Sales Tag', 'taxonomy singular name', 'keitaro' ),
+		'search_items'      => __( 'Search Sales Tags', 'keitaro' ),
+		'all_items'         => __( 'All Sales Tags', 'keitaro' ),
+		'parent_item'       => __( 'Parent Sales Tag', 'keitaro' ),
+		'parent_item_colon' => __( 'Parent Sales Tag:', 'keitaro' ),
+		'edit_item'         => __( 'Edit Sales Tag', 'keitaro' ),
+		'update_item'       => __( 'Update Sales Tag', 'keitaro' ),
+		'add_new_item'      => __( 'Add New Sales Tag', 'keitaro' ),
+		'new_item_name'     => __( 'New Genre Sales Tag', 'keitaro' ),
+	);
 
-    $args = array(
-        'labels'            => $labels,
-		'publicly_queryable'=> true,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-		'show_in_menu'      => true,
-		'show_in_nav_menus' => true,
-		'show_in_quick_edit'=> true,
-		'show_admin_column' => true,
-		'show_in_rest'      => true,
-        'rewrite'           => array( 'slug' => 'sales_tag' ),
-    );
+	$args = array(
+		'labels'             => $labels,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_admin_column'  => true,
+		'query_var'          => true,
+		'show_in_menu'       => true,
+		'show_in_nav_menus'  => true,
+		'show_in_quick_edit' => true,
+		'show_admin_column'  => true,
+		'show_in_rest'       => true,
+		'rewrite'            => array( 'slug' => 'sales_tag' ),
+	);
 
-    register_taxonomy( 'sales-tag', 'post', $args );
+	register_taxonomy( 'sales-tag', 'post', $args );
 }
 add_action( 'init', 'keitaro_register_sales_tag_taxonomy' );
