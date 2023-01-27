@@ -9,4 +9,4 @@
  * @subpackage Keitaro
  */
 
-get_template_part('page');
+get_template_part( 'page' );

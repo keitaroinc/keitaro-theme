@@ -9,13 +9,13 @@
  * @subpackage Keitaro
  */
 
-$lead_forensics_id = get_option('keitaro_settings')['lead_forensics_id'] ?? false;
+$lead_forensics_id = get_option( 'keitaro_settings' )['lead_forensics_id'] ?? false;
 
-if ($lead_forensics_id) :
+if ( $lead_forensics_id ) :
 
 ?>
-	<script type="text/javascript" src="https://secure.intelligent-data-247.com/js/<?php echo esc_js($lead_forensics_id); ?>.js"></script>
-	<noscript><img alt="" src="https://secure.intelligent-data-247.com/<?php echo esc_js($lead_forensics_id); ?>.png" style="display:none;" /></noscript>
+	<script type="text/javascript" src="https://secure.intelligent-data-247.com/js/<?php echo esc_js( $lead_forensics_id ); ?>.js"></script>
+	<noscript><img alt="" src="https://secure.intelligent-data-247.com/<?php echo esc_js( $lead_forensics_id ); ?>.png" style="display:none;" /></noscript>
 <?php
 
 endif;

@@ -9,9 +9,9 @@
  * @subpackage Keitaro
  */
 
-$gst_id = get_option('keitaro_settings')['gst_verification_id'] ?? false;
+$gst_id = get_option( 'keitaro_settings' )['gst_verification_id'] ?? false;
 
-if ($gst_id) :
+if ( $gst_id ) :
 
 ?>
 	<!-- Global site tag (gtag.js) - Google Ads: 411451537 -->

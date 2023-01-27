@@ -278,7 +278,8 @@ class Keitaro_Theme_Settings {
 	public function facebook_pixel_id_callback() {
 		printf(
 			'<input type="text" id="fb_pixel_id" name="keitaro_settings[fb_pixel_id]" value="%s" />',
-			isset( $this->options['fb_pixel_id'] ) ? esc_attr( $this->options['fb_pixel_id'] ) : '');
+			isset( $this->options['fb_pixel_id'] ) ? esc_attr( $this->options['fb_pixel_id'] ) : ''
+			);
 		}
 
 	/**
@@ -287,7 +288,8 @@ class Keitaro_Theme_Settings {
 	public function li_partner_id_callback() {
 		printf(
 			'<input type="text" id="li_partner_id" name="keitaro_settings[li_partner_id]" value="%s" />',
-			isset( $this->options['li_partner_id'] ) ? esc_attr( $this->options['li_partner_id'] ) : '');
+			isset( $this->options['li_partner_id'] ) ? esc_attr( $this->options['li_partner_id'] ) : ''
+			);
 		}
 
 	/**
@@ -296,7 +298,8 @@ class Keitaro_Theme_Settings {
 	public function lead_forensics_id_callback() {
 		printf(
 			'<input type="text" id="lead_forensics_id" name="keitaro_settings[lead_forensics_id]" value="%s" />',
-			isset( $this->options['lead_forensics_id'] ) ? esc_attr( $this->options['lead_forensics_id'] ) : '');
+			isset( $this->options['lead_forensics_id'] ) ? esc_attr( $this->options['lead_forensics_id'] ) : ''
+			);
 		}
 
 	/**
@@ -305,7 +308,8 @@ class Keitaro_Theme_Settings {
 	public function lead_feeder_id_callback() {
 		printf(
 			'<input type="text" id="lead_feeder_id" name="keitaro_settings[lead_feeder_id]" value="%s" />',
-			isset( $this->options['lead_feeder_id'] ) ? esc_attr( $this->options['lead_feeder_id'] ) : '');
+			isset( $this->options['lead_feeder_id'] ) ? esc_attr( $this->options['lead_feeder_id'] ) : ''
+			);
 		}
 
 	/**

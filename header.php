@@ -17,13 +17,13 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<?php wp_head(); ?>
-		<?php get_template_part( SNIPPETS_DIR . '/google-site-tag' );?>
-		<?php get_template_part( SNIPPETS_DIR . '/lead-feeder' );?>
-		<?php get_template_part( SNIPPETS_DIR . '/hotjar' );?>
+		<?php get_template_part( SNIPPETS_DIR . '/google-site-tag' ); ?>
+		<?php get_template_part( SNIPPETS_DIR . '/lead-feeder' ); ?>
+		<?php get_template_part( SNIPPETS_DIR . '/hotjar' ); ?>
 	</head>
 	<body <?php body_class(); ?>>
-		<?php get_template_part( SNIPPETS_DIR . '/facebook-pixel' );?>
-	    <?php get_template_part( SNIPPETS_DIR . '/lead-forensics' );?>
+		<?php get_template_part( SNIPPETS_DIR . '/facebook-pixel' ); ?>
+		<?php get_template_part( SNIPPETS_DIR . '/lead-forensics' ); ?>
 		<?php
 
 		$container_wrapper_class = 'container-fluid';

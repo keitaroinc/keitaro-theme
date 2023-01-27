@@ -9,9 +9,9 @@
  * @subpackage Keitaro
  */
 
-$lead_feeder_id = get_option('keitaro_settings')['lead_feeder_id'] ?? false;
+$lead_feeder_id = get_option( 'keitaro_settings' )['lead_feeder_id'] ?? false;
 
-if ($lead_feeder_id) :
+if ( $lead_feeder_id ) :
 
 ?>
 	<script>
@@ -30,7 +30,7 @@ if ($lead_feeder_id) :
 				};
 				ce('https://sc.lfeeder.com/lftracker_v1_' + ss + (ex ? '_' + ex : '') + '.js');
 			})(document, 'script');
-		})('<?php echo esc_js($lead_feeder_id); ?>');
+		})('<?php echo esc_js( $lead_feeder_id ); ?>');
 	</script>
 
 <?php

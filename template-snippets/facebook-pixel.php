@@ -22,12 +22,12 @@ if ( $facebook_pixel_id ) :
 		t.src=v;s=b.getElementsByTagName(e)[0];
 		s.parentNode.insertBefore(t,s)}(window,document,'script',
 		'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '<?php echo esc_js($facebook_pixel_id); ?>'); 
+		fbq('init', '<?php echo esc_js( $facebook_pixel_id ); ?>'); 
 		fbq('track', 'PageView');
 	</script>
   <noscript>
 		<img height="1" width="1" 
-		src="https://www.facebook.com/tr?id=<?php echo esc_js($facebook_pixel_id); ?>&ev=PageView
+		src="https://www.facebook.com/tr?id=<?php echo esc_js( $facebook_pixel_id ); ?>&ev=PageView
 		&noscript=1"/>
 	</noscript>
 	<?php

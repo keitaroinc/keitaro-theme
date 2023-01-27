@@ -9,9 +9,9 @@
  * @subpackage Keitaro
  */
 
-$hotjar_id = get_option('keitaro_settings')['hotjar_id'] ?? false;
+$hotjar_id = get_option( 'keitaro_settings' )['hotjar_id'] ?? false;
 
-if ($hotjar_id) :
+if ( $hotjar_id ) :
 
 ?>
 	<!-- Hotjar Tracking Code for https://keitaro.com/ -->
@@ -21,7 +21,7 @@ if ($hotjar_id) :
 				(h.hj.q = h.hj.q || []).push(arguments)
 			};
 			h._hjSettings = {
-				hjid: <?php echo esc_attr($hotjar_id) ?>,
+				hjid: <?php echo esc_attr( $hotjar_id ); ?>,
 				hjsv: 6
 			};
 			a = o.getElementsByTagName('head')[0];
