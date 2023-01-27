@@ -131,7 +131,7 @@ if ( ! is_front_page() ) {
 		if ( empty( $last_category ) && ! empty( $custom_taxonomy ) && $taxonomy_exists ) {
 
 			$taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
-			$cat_id         = $taxonomy_terms[0]->term_id;
+			$current_cat_id = $taxonomy_terms[0]->term_id;
 			$cat_nicename   = $taxonomy_terms[0]->slug;
 			$cat_link       = get_term_link( $taxonomy_terms[0]->term_id, $custom_taxonomy );
 			$cat_name       = $taxonomy_terms[0]->name;
@@ -144,7 +144,7 @@ if ( ! is_front_page() ) {
 			breadcrumb_item( false, get_the_title(), 'span' );
 
 			// Else if post is in a custom taxonomy
-		} elseif ( ! empty( $cat_id ) ) {
+		} elseif ( ! empty( $current_cat_id ) ) {
 
 			breadcrumb_item( $cat_link, $cat_name );
 			breadcrumb_item( false, get_the_title(), 'span' );
