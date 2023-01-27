@@ -280,7 +280,7 @@ function open_graph_tags() {
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@KeitaroInc">
 	<meta name="twitter:creator" content="@KeitaroInc">
-	<meta name="og:title" content="<?php esc_attr_e( get_bloginfo('name') ) . wp_title('&#8211;', false); ?>">
+	<meta name="og:title" content="<?php echo esc_attr( get_bloginfo('name') ) . wp_title('&#8211;', false); ?>">
 	<?php
 	/**
 	 * By default, featured images are used with the og:image and twitter:image tags.
