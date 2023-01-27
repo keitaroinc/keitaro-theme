@@ -17,14 +17,14 @@ $tag_id = 'sales-tag';
 $email_sent     = false;
 $autoreply_sent = false;
 
-$send_to           = get_option('keitaro_settings')['sales_contact'] ?? false;
-$sender            = isset($_POST['salesFormName']) ? trim(esc_html($_POST['salesFormName'])) : '';
-$sender_email      = isset($_POST['salesFormEmail']) ? trim(esc_html($_POST['salesFormEmail'])) : '';
-$phone             = isset($_POST['salesFormPhone']) ? trim($_POST['salesFormPhone']) : '';
-$subject           = __('New message from ' . trim(esc_html($sender)), 'keitaro');
-$subject_autoreply = __('Thank you for contacting ' . get_bloginfo('name'), 'keitaro');
-$consent           = isset($_POST['salesFormConsent']) ? $_POST['salesFormConsent'] : false;
-$submitted_message = isset($_POST['salesFormMessage']) ? str_replace("\r\n", '<br>', trim(esc_html($_POST['salesFormMessage']))) : '';
+$send_to           = get_option( 'keitaro_settings' )['sales_contact'] ?? false;
+$sender            = isset( $_POST['salesFormName'] ) ? trim( esc_html( $_POST['salesFormName'] ) ) : '';
+$sender_email      = isset( $_POST['salesFormEmail'] ) ? trim( esc_html( $_POST['salesFormEmail'] ) ) : '';
+$phone             = isset( $_POST['salesFormPhone'] ) ? trim( $_POST['salesFormPhone'] ) : '';
+$subject           = sprintf( '%1$s %2$s', __( 'New message from', 'keitaro' ), trim( esc_html( $sender ) ) );
+$subject_autoreply = sprintf( '%1$s %2$s', __( 'Thank you for contacting', 'keitaro' ), get_bloginfo( 'name' ) );
+$consent           = isset( $_POST['salesFormConsent'] ) ? $_POST['salesFormConsent'] : false;
+$submitted_message = isset( $_POST['salesFormMessage'] ) ? str_replace( "\r\n", '<br>', trim( esc_html( $_POST['salesFormMessage'] ) ) ) : '';
 
 $spam_check['comment_author']       = $sender;
 $spam_check['comment_author_email'] = $sender_email;
