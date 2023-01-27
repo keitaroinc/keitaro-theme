@@ -106,7 +106,7 @@ if (get_the_terms(get_the_ID(), $tag_id)) : ?>
 
 						if ($email_sent && $autoreply_sent) : ?>
 							<div class="alert alert-success">
-								<?php _e('Thank you! We will contact you as soon as possible.', 'keitaro') ?>
+								<?php esc_html_e('Thank you! We will contact you as soon as possible.', 'keitaro') ?>
 							</div>
 					<?php
 
