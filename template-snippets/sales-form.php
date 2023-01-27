@@ -17,54 +17,57 @@ $tag_id = 'sales-tag';
 $email_sent     = false;
 $autoreply_sent = false;
 
-$send_to           = get_option( 'keitaro_settings' )['sales_contact'] ?? false;
-$sender            = isset( $_POST['salesFormName'] ) ? trim( esc_html( $_POST['salesFormName'] ) ) : '';
-$sender_email      = isset( $_POST['salesFormEmail'] ) ? trim( esc_html( $_POST['salesFormEmail'] ) ) : '';
-$phone             = isset( $_POST['salesFormPhone'] ) ? trim( $_POST['salesFormPhone'] ) : '';
-$subject           = sprintf( '%1$s %2$s', __( 'New message from', 'keitaro' ), trim( esc_html( $sender ) ) );
-$subject_autoreply = sprintf( '%1$s %2$s', __( 'Thank you for contacting', 'keitaro' ), get_bloginfo( 'name' ) );
-$consent           = isset( $_POST['salesFormConsent'] ) ? $_POST['salesFormConsent'] : false;
-$submitted_message = isset( $_POST['salesFormMessage'] ) ? str_replace( "\r\n", '<br>', trim( esc_html( $_POST['salesFormMessage'] ) ) ) : '';
+$send_to = get_option( 'keitaro_settings' )['sales_contact'] ?? false;
 
-$spam_check['comment_author']       = $sender;
-$spam_check['comment_author_email'] = $sender_email;
-$spam_check['comment_author_url']   = get_option( 'home' );
-$spam_check['comment_content']      = $submitted_message;
+if ( isset( $_GET['salesFormSubmitted'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'keitaroSalesForm' ) ) :
+	$sender            = isset( $_POST['salesFormName'] ) ? trim( esc_html( $_POST['salesFormName'] ) ) : '';
+	$sender_email      = isset( $_POST['salesFormEmail'] ) ? trim( esc_html( $_POST['salesFormEmail'] ) ) : '';
+	$phone             = isset( $_POST['salesFormPhone'] ) ? trim( $_POST['salesFormPhone'] ) : '';
+	$subject           = sprintf( '%1$s %2$s', __( 'New message from', 'keitaro' ), trim( esc_html( $sender ) ) );
+	$subject_autoreply = sprintf( '%1$s %2$s', __( 'Thank you for contacting', 'keitaro' ), get_bloginfo( 'name' ) );
+	$consent           = isset( $_POST['salesFormConsent'] ) ? $_POST['salesFormConsent'] : false;
+	$submitted_message = isset( $_POST['salesFormMessage'] ) ? str_replace( "\r\n", '<br>', trim( esc_html( $_POST['salesFormMessage'] ) ) ) : '';
 
-$headers = array(
-	'Content-Type: text/html; charset=UTF-8',
-	'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
-);
+	$spam_check['comment_author']       = $sender;
+	$spam_check['comment_author_email'] = $sender_email;
+	$spam_check['comment_author_url']   = get_option( 'home' );
+	$spam_check['comment_content']      = $submitted_message;
 
-$body = join(
-	'<br>',
-	array(
-		__( 'Hello,', 'keitaro' ) . '<br>',
-		// translators: %1$s stands for the Sender name, %2$s for the Sender email address and %3$s for the URL of the form page
-		sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_the_permalink() ) . '<br>',
-		'<div style="background-color: #f2f2f2; padding: 30px;">' . $submitted_message . '</div>',
-		// translators: %1$s stands for the Sender name, %2$s for the Sender phone number
-		sprintf( __( '%1$s\'s phone number is <strong>%2$s</strong>.', 'keitaro' ), $sender, $phone ) . '<br>',
-		// translators: %1$s stands for 'wants' or 'doesn't want' based on the user preference. %2$s stands for the WordPress website name.
-		sprintf( __( 'The contact <strong>%1$s to receive</strong> marketing communication from %2$s.', 'keitaro' ), $consent ? __( 'wants', 'keitaro-contact-form' ) : __( "doesn't want", 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
-		__( 'Regards,', 'keitaro' ),
-		// translators: %s stands for get_bloginfo('name')
-		sprintf( __( 'Keitaro', 'keitaro' ), get_bloginfo( 'name' ) ),
-	)
-);
+	$headers = array(
+		'Content-Type: text/html; charset=UTF-8',
+		'From: ' . get_bloginfo( 'name' ) . ' <' . $send_to . '>',
+	);
 
-$body_autoreply = join(
-	'<br>',
-	array(
-		__( 'Hello,', 'keitaro' ) . '<br>',
-		// translators: %s stands for get_bloginfo('name')
-		sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message. We will respond back as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
-		__( 'Kind Regards,', 'keitaro' ),
-		get_bloginfo( 'name' ) . '<br>',
-		esc_url( get_home_url() ),
-		$send_to,
-	)
-);
+	$body = join(
+		'<br>',
+		array(
+			__( 'Hello,', 'keitaro' ) . '<br>',
+			// translators: %1$s stands for the Sender name, %2$s for the Sender email address and %3$s for the URL of the form page
+			sprintf( __( '%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro' ), $sender, $sender_email, get_the_permalink() ) . '<br>',
+			'<div style="background-color: #f2f2f2; padding: 30px;">' . $submitted_message . '</div>',
+			// translators: %1$s stands for the Sender name, %2$s for the Sender phone number
+			sprintf( __( '%1$s\'s phone number is <strong>%2$s</strong>.', 'keitaro' ), $sender, $phone ) . '<br>',
+			// translators: %1$s stands for 'wants' or 'doesn't want' based on the user preference. %2$s stands for the WordPress website name.
+			sprintf( __( 'The contact <strong>%1$s to receive</strong> marketing communication from %2$s.', 'keitaro' ), $consent ? __( 'wants', 'keitaro-contact-form' ) : __( "doesn't want", 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+			__( 'Regards,', 'keitaro' ),
+			// translators: %s stands for get_bloginfo('name')
+			sprintf( __( 'Keitaro', 'keitaro' ), get_bloginfo( 'name' ) ),
+		)
+	);
+
+	$body_autoreply = join(
+		'<br>',
+		array(
+			__( 'Hello,', 'keitaro' ) . '<br>',
+			// translators: %s stands for get_bloginfo('name')
+			sprintf( __( 'Thank you for contacting us at %s. We are just reaching out to confirm that we received your message. We will respond back as soon as possible.', 'keitaro' ), get_bloginfo( 'name' ) ) . '<br>',
+			__( 'Kind Regards,', 'keitaro' ),
+			get_bloginfo( 'name' ) . '<br>',
+			esc_url( get_home_url() ),
+			$send_to,
+		)
+	);
+endif;
 
 if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 ?>
@@ -100,7 +103,7 @@ if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 
 							endif;
 						} catch ( Exception $e ) {
-						?>
+					?>
 							<div class="mt-5 alert alert-danger">
 								<?php echo wp_kses_post( $e->getMessage() ), "\n"; ?>
 							</div>
