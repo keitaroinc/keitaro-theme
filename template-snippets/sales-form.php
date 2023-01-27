@@ -40,9 +40,12 @@ $body = join(
 	'<br>',
 	array(
 		__('Hello,', 'keitaro') . '<br>',
+		// translators: %1$s stands for the Sender name, %2$s for the Sender email address and %3$s for the URL of the form page
 		sprintf(__('%1$s submitted the following message from %2$s though the contact form on %3$s.', 'keitaro'), $sender, $sender_email, get_the_permalink()) . '<br>',
 		'<div style="background-color: #f2f2f2; padding: 30px;">' . $submitted_message . '</div>',
+		// translators: %1$s stands for the Sender name, %2$s for the Sender phone number
 		sprintf(__('%1$s\'s phone number is <strong>%2$s</strong>.', 'keitaro'), $sender, $phone) . '<br>',
+		// translators: %1$s stands for 'wants' or 'doesn't want' based on the user preference. %2$s stands for the WordPress website name.
 		sprintf(__('The contact <strong>%1$s to receive</strong> marketing communication from %2$s.', 'keitaro'), $consent ? __('wants', 'keitaro-contact-form') : __("doesn't want", 'keitaro'), get_bloginfo('name')) . '<br>',
 		__('Regards,', 'keitaro'),
 		// translators: %s stands for get_bloginfo('name')
