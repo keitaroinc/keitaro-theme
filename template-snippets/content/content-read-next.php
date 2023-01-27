@@ -13,7 +13,6 @@
 <div class="col-lg-4">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
-	$post_type = get_post_type( get_the_ID() );
 
 	if ( has_post_thumbnail() ) :
 		get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
