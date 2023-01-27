@@ -9,15 +9,15 @@ $post_tags = array();
 
 // Get current post categories
 if ( $get_cats ) :
-	foreach ( $get_cats as $tag ) :
-		array_push( $post_cats, $tag->term_id );
+	foreach ( $get_cats as $item ) :
+		array_push( $post_cats, $item->term_id );
 	endforeach;
 endif;
 
 // Get current post tags
 if ( $get_tags ) :
-	foreach ( get_the_terms( get_the_ID(), 'post_tag' ) as $tag ) :
-		array_push( $post_tags, $tag->term_id );
+	foreach ( get_the_terms( get_the_ID(), 'post_tag' ) as $item ) :
+		array_push( $post_tags, $item->term_id );
 	endforeach;
 endif;
 
