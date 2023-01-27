@@ -82,27 +82,27 @@ if ( ! is_front_page() ) {
 	} elseif ( is_archive() && is_tax() && ! is_category() && ! is_tag() ) {
 
 		// If post is a custom post type
-		$post_type = get_post_type();
+		$current_post_type = get_post_type();
 
 		// If it is a custom post type display name and link
-		if ( 'post' !== $post_type ) {
+		if ( 'post' !== $current_post_type ) {
 
-			breadcrumb_item( get_post_type_archive_link( $post_type ), post_type_archive_title( '', false ) );
+			breadcrumb_item( get_post_type_archive_link( $current_post_type ), post_type_archive_title( '', false ) );
 		}
 
 		breadcrumb_item( false, get_queried_object()->name, 'span' );
 	} elseif ( is_single() ) {
 
 		// If post is a custom post type
-		$post_type = get_post_type();
+		$current_post_type = get_post_type();
 
 						// If it is a custom post type display name and link
-		if ( 'post' !== $post_type ) {
-			breadcrumb_item( get_post_type_archive_link( $post_type ), get_post_type_object( $post_type )->labels->name );
+		if ( 'post' !== $current_post_type ) {
+			breadcrumb_item( get_post_type_archive_link( $current_post_type ), get_post_type_object( $current_post_type )->labels->name );
 		} else {
 
 			if ( get_option( 'page_for_posts' ) ) :
-				breadcrumb_item( get_post_type_archive_link( $post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
+				breadcrumb_item( get_post_type_archive_link( $current_post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
 						endif;
 		}
 
