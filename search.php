@@ -77,30 +77,6 @@ if ( have_posts() ) :
 
 	endif;
 
-	if ( $paged && ( ! is_author() && ! is_404() ) ) :
-
-		?>
-
-			<div class="row">
-				<div class="col-md-8 offset-md-2">
-					<?php get_template_part( SNIPPETS_DIR . '/navigation/pagination' ); ?>
-				</div>
-			</div>
-
-		<?php
-
-	else :
-		?>
-			<div class="row">
-				<div class="col-md-8 offset-md-2">
-					<?php
-					get_template_part( SNIPPETS_DIR . '/navigation/pagination' );
-					?>
-				</div>
-			</div>
-		<?php
-	endif;
-
 		?>
 
 		</div>
