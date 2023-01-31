@@ -5,7 +5,7 @@
   "main": "",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.6.2",
     "leaflet": "^1.7.1"
   },
   "scripts": {
