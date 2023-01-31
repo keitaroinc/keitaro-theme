@@ -34,10 +34,10 @@
 		endif;
 
 		?>
-		<div class="<?php echo esc_html( $container_bg_class ); ?> <?php echo esc_html( $container_wrapper_class ); ?>">
-		<div class="row">
-			<div class="col-xl-10 offset-xl-1">
-					<nav class="navbar navbar-expand-xl navbar-light">
+		<div class="sticky-top bg-white <?php echo esc_html( $container_bg_class ); ?> <?php echo esc_html( $container_wrapper_class ); ?>">
+			<div class="row">
+				<div class="col-xl-10 offset-xl-1">
+						<nav class="navbar navbar-expand-xl navbar-light">
 						<?php get_template_part( SNIPPETS_DIR . '/header/logo' ); ?>
 						<?php get_template_part( SNIPPETS_DIR . '/navigation/main-menu' ); ?>
 					</nav>
