@@ -1,25 +1,25 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+sass.compiler = require('sass');
 
-sass.compiler = require('node-sass');
-
-var cleanCSS = require('gulp-clean-css');
 //var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const autoprefixer = require('autoprefixer');
+const rename = require('gulp-rename');
+const postcss = require('gulp-postcss');
 
 var jsAssets = ['assets/js/*.js', '!assets/js/*.min.js'];
 
 // Rebuild CSS from LESS
-gulp.task('sass', function () {
+gulp.task('style', function () {
 	return gulp.src('assets/scss/**/style.scss')
-		// .pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(cleanCSS({
-			compatibility: 'ie8'
-		}))
-		// .pipe(sourcemaps.write()) - Uncomment when developing
+		//.pipe(sourcemaps.init())
+		.pipe(sass({
+			outputStyle: 'compressed'
+		}).on('error', sass.logError))
+		.pipe(postcss([autoprefixer()]))
+		//.pipe(sourcemaps.write())
 		.pipe(gulp.dest('.'));
 });
 
@@ -69,9 +69,9 @@ gulp.task('js', function () {
 
 // Watch for LESS and JS file changes
 gulp.task('watch', function () {
-	gulp.watch(['assets/scss/**/*.scss'], gulp.parallel('sass'));
+	gulp.watch(['assets/scss/**/*.scss'], gulp.parallel('style'));
 	gulp.watch(jsAssets, gulp.parallel('js'));
 });
 
 // The default Gulp.js task
-gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'js', 'sass', 'watch'));
+gulp.task('default', gulp.parallel('font-awesome', 'jquery', 'bootstrap-js', 'clipboard', 'prism-js', 'prism-css', 'js', 'style', 'watch'));
