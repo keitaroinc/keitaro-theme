@@ -134,7 +134,7 @@ if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="salesFormPhone">Phone</label>
-								<input class="form-control" required="required" minlength="11" type="tel" placeholder="+1-123-456-7890" pattern="+[0-9]{11}" name="salesFormPhone" id="salesFormPhone" />
+								<input class="form-control" minlength="11" type="tel" placeholder="+1-123-456-7890" pattern="+[0-9]{11}" name="salesFormPhone" id="salesFormPhone" />
 							</div>
 						</div>
 					</div>
