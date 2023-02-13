@@ -1,9 +1,7 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
-sass.compiler = require('sass');
+const sass = require('gulp-sass')(require('sass'));
 
 //var sourcemaps = require('gulp-sourcemaps');
-const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const autoprefixer = require('autoprefixer');
 const rename = require('gulp-rename');
