@@ -194,6 +194,12 @@ function keitaro_theme_setup() {
 	 * Additional styles for Gutenberg
 	 */
 	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'editor-color-palette' );
+	add_theme_support( 'editor-gradient-presets' );
+	add_theme_support( 'editor-font-sizes' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'custom-spacing' );
+	add_theme_support( 'custom-units' );
 
 	/**
 	 * Support Full and Wide alignment in Gutenberg
