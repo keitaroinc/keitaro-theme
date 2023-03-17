@@ -284,6 +284,73 @@
 
 // Latest Posts block
 
+.is-style-latest-posts-insights-no-lg-featured {
+
+	max-width: $container-max-width;
+	margin: auto;
+
+	&.is-grid {
+
+		li {
+			margin-right: 0;
+		}
+	}
+
+	li {
+		padding: $spacer/2;
+
+		position: relative;
+
+		a {
+			@extend .btn;
+			@extend .btn-link;
+			@extend .stretched-link;
+			white-space: normal;
+			text-align: initial;
+			padding-left: 0;
+			letter-spacing: initial;
+		}
+
+		.wp-post-image {
+			min-height: 100%;
+			min-width: 100%;
+			object-fit: cover;
+		}
+
+		.wp-block-latest-posts__post-author,
+		.wp-block-latest-posts__post-date,
+		.wp-block-latest-posts__post-excerpt {
+			margin-top: $spacer;
+		}
+
+		.wp-block-latest-posts__post-author,
+		.wp-block-latest-posts__post-date {
+			font-size: $font-size-sm;
+			grid-column: 2 / auto;
+		}
+
+		flex-basis: 33%;
+		flex-grow: 1;
+
+		.wp-block-latest-posts__featured-image {
+			margin-bottom: $spacer/2;
+			height: $spacer*15;
+			object-fit: cover;
+			overflow: hidden
+		}
+
+		a {
+			@extend .h4;
+			font-weight: 500;
+			margin-bottom: 0;
+		}
+
+		.wp-block-latest-posts__post-excerpt {
+			display: none;
+		}
+	}
+}
+
 .is-style-latest-posts-insights {
 
 	max-width: $container-max-width;

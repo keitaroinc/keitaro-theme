@@ -157,6 +157,12 @@
 		}
 	}
 
+	.is-style-latest-posts-insights-no-lg-featured {
+		li {
+			padding: $spacer;
+		}
+	}
+
 	.hentry-grid {
 		.post-thumbnail {
 			height: $spacer*15;
