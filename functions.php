@@ -420,7 +420,7 @@ function keitaro_theme_scripts() {
 	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/futura-pt.min.js' ), true );
 
 	// Main keitaro_theme stylesheet
-	wp_enqueue_style( 'keitaro-theme-style', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
+	wp_enqueue_style( 'keitaro-theme', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 	// jQuery
 	wp_enqueue_script( 'jquery' );
