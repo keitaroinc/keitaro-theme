@@ -94,6 +94,14 @@ class Keitaro_Theme_Settings {
 		);
 
 		add_settings_field(
+			'ckan_sales_contact',
+			__( 'CKAN Sales Form Contact', 'keitaro' ),
+			array( $this, 'ckan_sales_contact_callback' ),
+			'keitaro-setting-admin',
+			'setting_section_id'
+		);
+
+		add_settings_field(
 			'ga_tracking_id',
 			__( 'Google Analytics Tracking ID', 'keitaro' ),
 			array( $this, 'google_analytics_tracking_id_callback' ),
@@ -177,7 +185,11 @@ class Keitaro_Theme_Settings {
 		$new_input = array();
 
 		if ( isset( $input['sales_contact'] ) ) {
-			$new_input['sales_contact'] = sanitize_text_field( $input['sales_contact'] );
+			$new_input['sales_contact'] = sanitize_email( $input['sales_contact'] );
+		}
+
+		if ( isset( $input['ckan_sales_contact'] ) ) {
+			$new_input['ckan_sales_contact'] = sanitize_email( $input['ckan_sales_contact'] );
 		}
 
 		if ( isset( $input['ga_tracking_id'] ) ) {
@@ -233,8 +245,19 @@ class Keitaro_Theme_Settings {
 	 */
 	public function sales_contact_callback() {
 		printf(
-			'<input type="text" id="sales_contact" name="keitaro_settings[sales_contact]" value="%s" />',
+			'<input type="email" id="sales_contact" name="keitaro_settings[sales_contact]" value="%s" />',
 			isset( $this->options['sales_contact'] ) ? esc_attr( $this->options['sales_contact'] ) : ''
+		);
+
+	}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function ckan_sales_contact_callback() {
+		printf(
+			'<input type="email" id="ckan_sales_contact" name="keitaro_settings[ckan_sales_contact]" value="%s" />',
+			isset( $this->options['ckan_sales_contact'] ) ? esc_attr( $this->options['ckan_sales_contact'] ) : ''
 		);
 
 	}
