@@ -680,6 +680,37 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 }
 
+function keitaro_author_box_alt( $author = false, $display = true, $print = '' ) {
+
+	$author_posts           = get_the_author_posts_link( $author );
+	$author_title           = sprintf("%s %s", __('About', 'keitaro'), get_the_author());
+	$author_description     = get_the_author_meta( 'description' );
+	$author_posts_number    = get_the_author_posts( $author );
+	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
+	$author_work_position   = get_the_author_meta( 'user_work_position' );
+
+	$print .= sprintf(
+		 '<div class="row my-5 author vcard"><div class="col-auto">%1$s</div><div class="col-lg-8 align-self-center"><div class="author-info"><h3 class="author-title mb-2">%2$s</h3>%3$s%4$s</div></div></div>',
+			// translators: Authors Stats: title
+		sprintf(
+					// translators: Authors Stats: author name
+					'<div class="author-avatar mb-3">%2$s</div>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				keitaro_author_avatar( $author, ( 112 ), false )
+				),
+		$author_title,
+		! empty( $author_description ) && ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '',
+		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2">%1$s is a <strong>%2$s</strong> %3$s.</p>', $author_posts, $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s %3$s.</p>', $author_posts, __('is an important part of'), get_bloginfo( 'title' )))
+	);
+
+	if ( true === $display ) :
+		echo wp_kses_post( $print );
+	else :
+		return wp_kses_post( $print );
+	endif;
+
+}
+
 function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 
 	$print = '';
