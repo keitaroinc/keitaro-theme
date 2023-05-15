@@ -47,6 +47,7 @@
 		</div>
 	</div>
 
+	<?php get_template_part( SNIPPETS_DIR . '/about-author' ); ?>
 	<?php get_template_part( SNIPPETS_DIR . '/sales-form' ); ?>
 	<?php get_template_part( SNIPPETS_DIR . '/read-next' ); ?>
 </article>
