@@ -25,6 +25,15 @@
 	// 	text-align: center;
 	// }
 
+	.author-info {
+		align-items: center;
+	}
+
+	.author-description,
+	.author-stats {
+		display: none;
+	}
+
 	.page-numbers {
 		li {
 			&:not(:first-child) {
@@ -36,7 +45,8 @@
 	}
 
 	.author-box {
-		margin-top: $grid-gutter-width;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.navigation {
