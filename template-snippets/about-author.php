@@ -11,7 +11,7 @@
 ?>
 
 <div class="row">
-	<div class="col-lg-9 offset-lg-2">
+	<div class="col-md-6 offset-md-3 col-lg-9 offset-lg-2">
 		<?php keitaro_author_box_alt(get_the_author_meta('ID')); ?>
 	</div>
 </div>
