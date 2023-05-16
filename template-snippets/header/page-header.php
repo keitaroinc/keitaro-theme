@@ -38,14 +38,18 @@ if ( ! empty( $page_title ) ) :
 ?>
 	<header class="page-header">
 		<div class="row">
-			<div class="col-md-8 offset-md-2">
+			<div class="col-lg-10 offset-lg-1">
 				<?php if ( $page_title ) : ?>
-				<div class="d-flex align-items-center justify-content-center">
-					<h1 class="page-title"><?php echo wp_kses_post( $page_title ); ?></h1>
+				<div class="row no-gutters align-items-center justify-content-center">
+					<div class="col-auto col-xl-4">
+						<h1 class="page-title"><?php echo wp_kses_post( $page_title ); ?></h1>
+					</div>
 					<?php
-					if ( is_author() ) :
-						keitaro_author_box( get_the_author_meta( 'ID' ) );
-					endif;
+					if ( is_author() ) : ?>
+						<div class="col-lg col-xl-8 d-flex justify-content-center">
+						<?php keitaro_author_box( get_the_author_meta( 'ID' ) ); ?>
+						</div>
+					<?php endif;
 					?>
 				</div>
 				<?php endif; ?>
