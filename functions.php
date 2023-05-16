@@ -690,11 +690,11 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 	$author_work_position   = get_the_author_meta( 'user_work_position' );
 
 	$print .= sprintf(
-		 '<div class="row no-gutters my-5 author vcard"><div class="col-auto">%1$s</div><div class="col-lg-8 align-self-center"><div class="author-info"><h3 class="author-title mb-2">%2$s</h3>%3$s%4$s</div></div></div>',
+		 '<div class="row no-gutters my-5 align-items-center author vcard"><div class="col-auto d-flex justify-content-center">%1$s</div><div class="col-lg-8 align-self-center"><div class="author-info"><h3 class="author-title mb-2">%2$s</h3>%3$s%4$s</div></div></div>',
 			// translators: Authors Stats: title
 		sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar my-2 my-lg-0 mx-4">%2$s</div>',
+					'<div class="author-avatar m-3 m-lg-4 m-xl-5">%2$s</div>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				keitaro_author_avatar( $author, ( 112 ), false )
 				),
