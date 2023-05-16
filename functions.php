@@ -657,7 +657,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 		);
 
 	$print .= sprintf(
-		 '<div class="d-flex align-items-center author-box author vcard">%2$s<div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div>',
+		 '<div class="row flex-xl-nowrap align-items-center justify-content-center no-gutters author-box author vcard"><div class="col-auto d-flex justify-content-center">%2$s</div><div class="col-sm"><div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div></div>',
 			// translators: Authors Stats: title
 			__( 'Author', 'keitaro' ),
 		sprintf(
