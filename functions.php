@@ -700,7 +700,7 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 				),
 		$author_title,
 		! empty( $author_description ) && ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '.</p>' : '',
-		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2">%1$s is a <strong>%2$s</strong> %3$s.</p>', $author_posts, $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s %3$s.</p>', $author_posts, __('is an important part of'), get_bloginfo( 'title' )))
+		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2">%1$s is <strong>%2$s</strong> %3$s.</p>', $author_posts, $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s %3$s.</p>', $author_posts, __('is an important part of'), get_bloginfo( 'title' )))
 	);
 
 	if ( true === $display ) :
