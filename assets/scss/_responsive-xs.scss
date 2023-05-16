@@ -3,9 +3,12 @@
 }
 
 @include media-breakpoint-down(xs) {
-	.author-info {
-		align-items: center;
-	}
+	.page-header{
+		.author-info {
+			align-items: center;
+		}
+    }
+
 
     .content-area{
         padding-top: $content-area-padding / 2;
