@@ -41,12 +41,12 @@ if ( ! empty( $page_title ) ) :
 			<div class="col-lg-10 offset-lg-1">
 				<?php if ( $page_title ) : ?>
 				<div class="row no-gutters align-items-center justify-content-center">
-					<div class="col-auto col-xl-4">
+					<div class="col-auto">
 						<h1 class="page-title"><?php echo wp_kses_post( $page_title ); ?></h1>
 					</div>
 					<?php
 					if ( is_author() ) : ?>
-						<div class="col-lg col-xl-8 d-flex justify-content-center">
+						<div class="col-lg col-xl-6 d-flex justify-content-center justify-content-lg-start">
 						<?php keitaro_author_box( get_the_author_meta( 'ID' ) ); ?>
 						</div>
 					<?php endif;
