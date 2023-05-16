@@ -25,9 +25,11 @@
 	// 	text-align: center;
 	// }
 
-	.author-description,
-	.author-stats {
-		display: none;
+	.page-header {
+		.author-description,
+		.author-stats {
+			display: none;
+		}
 	}
 
 	.page-numbers {
