@@ -784,7 +784,6 @@ function keitaro_custom_profile_data( $user ) {
 
 	if ( current_user_can( 'manage_options', $user->ID ) ) :
 		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
-		var_dump($current_work_status);
 	endif;
 
 	if ( current_user_can( 'edit_posts', $user->ID ) ) :
