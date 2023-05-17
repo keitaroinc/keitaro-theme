@@ -205,6 +205,12 @@ function keitaro_theme_setup() {
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
 
+	register_meta('user', 'user_work_status', [
+		'single'       => true,
+		'description'  => 'Current Employee',
+		'type'         => 'boolean',
+	  ]);
+
 }
 
 add_action( 'after_setup_theme', 'keitaro_theme_setup' );
@@ -778,6 +784,7 @@ function keitaro_custom_profile_data( $user ) {
 
 	if ( current_user_can( 'manage_options', $user->ID ) ) :
 		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
+		var_dump($current_work_status);
 	endif;
 
 	if ( current_user_can( 'edit_posts', $user->ID ) ) :
@@ -794,7 +801,7 @@ function keitaro_custom_profile_data( $user ) {
 			<tr>
 				<th><label for="user_work_status"><?php esc_html_e( 'Current Employee', 'keitaro' ); ?></label></th>
 				<td>
-					<input type="checkbox" <?php checked( $current_work_status, 1 ); ?> name="user_work_status" id="user_work_status" value="1">
+					<input type="checkbox" <?php checked( $current_work_status ); ?> name="user_work_status" id="user_work_status" value="1">
 				</td>
 			</tr>
 			<?php endif; ?>
@@ -887,23 +894,6 @@ function keitaro_save_work_status( $user_id ) {
 
 }
 
-function keitaro_save_default_work_status() {
-
-	// only saves if the current user can manage options
-	if ( ! current_user_can( 'manage_options', get_current_user_id() ) && ! wp_verify_nonce( 'update-user_' . get_current_user_id() ) ) :
-		return false;
-	endif;
-
-	foreach(get_users() as $user) {
-		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
-
-		if (empty($current_work_status)){
-			update_user_meta( $user->ID, 'user_work_status', esc_attr( 1 ) );
-		}
-	}
-}
-
-add_action( 'wp', 'keitaro_save_default_work_status' );
 add_action( 'personal_options_update', 'keitaro_save_work_status' );
 add_action( 'edit_user_profile_update', 'keitaro_save_work_status' );
 
