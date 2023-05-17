@@ -694,13 +694,13 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 			// translators: Authors Stats: title
 		sprintf(
 					// translators: Authors Stats: author name
-					'<div class="author-avatar m-3 m-lg-4 m-xl-5">%2$s</div>',
+					'<div class="author-avatar m-3 m-lg-4">%2$s</div>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				keitaro_author_avatar( $author, ( 112 ), false )
 				),
 		$author_title,
 		! empty( $author_description ) && ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '</p>' : '',
-		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s</p>', __('Important part of'), get_bloginfo( 'title' )))
+		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s</p>', get_the_author_meta( 'user_work_status', $author ) ? sprintf('%s %s', $author_posts, __('is part of', 'keitaro')) : sprintf('%s %s', $author_posts, __('was part of', 'keitaro')), get_bloginfo( 'title' )))
 	);
 
 	if ( true === $display ) :
@@ -776,6 +776,10 @@ function keitaro_custom_profile_data( $user ) {
 		endif;
 	endif;
 
+	if ( current_user_can( 'manage_options', $user->ID ) ) :
+		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
+	endif;
+
 	if ( current_user_can( 'edit_posts', $user->ID ) ) :
 		$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 	endif;
@@ -786,6 +790,14 @@ function keitaro_custom_profile_data( $user ) {
 		<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
 
 		<table class="form-table">
+			<?php if ( current_user_can( 'manage_options', $user->ID ) ) : ?>
+			<tr>
+				<th><label for="user_work_status"><?php esc_html_e( 'Current Employee', 'keitaro' ); ?></label></th>
+				<td>
+					<input type="checkbox" <?php checked( $current_work_status, 1 ); ?> name="user_work_status" id="user_work_status" value="1">
+				</td>
+			</tr>
+			<?php endif; ?>
 			<tr>
 				<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
 				<td>
@@ -864,6 +876,37 @@ function keitaro_save_work_position( $user_id ) {
 add_action( 'personal_options_update', 'keitaro_save_work_position' );
 add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
 
+function keitaro_save_work_status( $user_id ) {
+
+	// only saves if the current user can manage options
+	if ( ! current_user_can( 'manage_options', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
+		return false;
+	endif;
+
+	update_user_meta( $user_id, 'user_work_status', esc_attr( $_POST['user_work_status'] ) );
+
+}
+
+function keitaro_save_default_work_status() {
+
+	// only saves if the current user can manage options
+	if ( ! current_user_can( 'manage_options', get_current_user_id() ) && ! wp_verify_nonce( 'update-user_' . get_current_user_id() ) ) :
+		return false;
+	endif;
+
+	foreach(get_users() as $user) {
+		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
+
+		if (!isset($current_work_status)){
+			update_user_meta( $user->ID, 'user_work_status', esc_attr( 1 ) );
+		}
+	}
+}
+
+add_action( 'wp_loaded', 'keitaro_save_default_work_status' );
+add_action( 'personal_options_update', 'keitaro_save_work_status' );
+add_action( 'edit_user_profile_update', 'keitaro_save_work_status' );
+
 /**
  * Saves additional user fields to the database
  */
@@ -874,7 +917,7 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
+	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] || 1 ) );
 
 }
 
