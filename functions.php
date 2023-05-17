@@ -211,9 +211,24 @@ function keitaro_theme_setup() {
 		'type'         => 'boolean',
 	  ]);
 
+	keitaro_add_former_employee_role();
+
 }
 
 add_action( 'after_setup_theme', 'keitaro_theme_setup' );
+
+function keitaro_add_former_employee_role(){
+    $roles_set = get_option('former_employee_role_set');
+
+    if(!$roles_set){
+        add_role( 'former_employee', 'Former Employee', array(
+            'read' => true, // True allows that capability, False specifically removes it.
+            'upload_files' => true
+        ) );
+        update_option( 'former_employee_role_set', true );
+    }
+
+}
 
 function custom_excerpt_length( $length ) {
 	return 30;
@@ -782,10 +797,6 @@ function keitaro_custom_profile_data( $user ) {
 		endif;
 	endif;
 
-	if ( current_user_can( 'manage_options', $user->ID ) ) :
-		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
-	endif;
-
 	if ( current_user_can( 'edit_posts', $user->ID ) ) :
 		$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 	endif;
@@ -796,14 +807,6 @@ function keitaro_custom_profile_data( $user ) {
 		<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
 
 		<table class="form-table">
-			<?php if ( current_user_can( 'manage_options', $user->ID ) ) : ?>
-			<tr>
-				<th><label for="user_work_status"><?php esc_html_e( 'Current Employee', 'keitaro' ); ?></label></th>
-				<td>
-					<input type="checkbox" <?php checked( $current_work_status ); ?> name="user_work_status" id="user_work_status" value="1">
-				</td>
-			</tr>
-			<?php endif; ?>
 			<tr>
 				<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
 				<td>
@@ -881,20 +884,6 @@ function keitaro_save_work_position( $user_id ) {
 
 add_action( 'personal_options_update', 'keitaro_save_work_position' );
 add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
-
-function keitaro_save_work_status( $user_id ) {
-
-	// only saves if the current user can manage options
-	if ( ! current_user_can( 'manage_options', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
-		return false;
-	endif;
-
-	update_user_meta( $user_id, 'user_work_status', esc_attr( $_POST['user_work_status'] ) );
-
-}
-
-add_action( 'personal_options_update', 'keitaro_save_work_status' );
-add_action( 'edit_user_profile_update', 'keitaro_save_work_status' );
 
 /**
  * Saves additional user fields to the database
