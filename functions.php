@@ -703,6 +703,7 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 function keitaro_author_box_alt( $author = false, $display = true, $print = '' ) {
 
+	$user 					= get_userdata($author);
 	$author_posts           = get_the_author_posts_link( $author );
 	$author_title           = sprintf("%s %s", __('About', 'keitaro'), get_the_author());
 	$author_description     = get_the_author_meta( 'description' );
@@ -721,7 +722,7 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 				),
 		$author_title,
 		! empty( $author_description ) && ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '</p>' : '',
-		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s</p>', get_the_author_meta( 'user_work_status', $author ) ? sprintf('%s %s', $author_posts, __('is part of', 'keitaro')) : sprintf('%s %s', $author_posts, __('was part of', 'keitaro')), get_bloginfo( 'title' )))
+		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s</p>', !in_array( 'former_employee', (array) $user->roles) ? sprintf('%s %s', $author_posts, __('is part of', 'keitaro')) : sprintf('%s %s', $author_posts, __('was part of', 'keitaro')), get_bloginfo( 'title' )))
 	);
 
 	if ( true === $display ) :
