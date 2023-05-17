@@ -897,13 +897,13 @@ function keitaro_save_default_work_status() {
 	foreach(get_users() as $user) {
 		$current_work_status = get_the_author_meta( 'user_work_status', $user->ID );
 
-		if (!isset($current_work_status)){
+		if (empty($current_work_status)){
 			update_user_meta( $user->ID, 'user_work_status', esc_attr( 1 ) );
 		}
 	}
 }
 
-add_action( 'wp_loaded', 'keitaro_save_default_work_status' );
+add_action( 'wp', 'keitaro_save_default_work_status' );
 add_action( 'personal_options_update', 'keitaro_save_work_status' );
 add_action( 'edit_user_profile_update', 'keitaro_save_work_status' );
 
