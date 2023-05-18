@@ -19,8 +19,8 @@ $thumbnail_caption = esc_html( get_the_post_thumbnail_caption() );
 
 ?>
 <figure class="post-thumbnail">
-	<a class="d-block" href="<?php ( is_attachment() ? the_post_thumbnail_url() : the_permalink() ); ?>">
-		<?php the_post_thumbnail( $thumbnail_size ); ?>
+	<a href="<?php ( is_attachment() ? the_post_thumbnail_url() : the_permalink() ); ?>">
+		<?php the_post_thumbnail( $thumbnail_size, ['class' => 'img-fluid', 'decoding'=> 'async', 'loading' => 'lazy'] ); ?>
 	</a>
 	<?php
 
