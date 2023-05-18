@@ -205,10 +205,11 @@ function keitaro_theme_setup() {
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
 
-	register_meta('user', 'user_work_status', [
+	register_meta('user', 'user_meta_image', [
+		'default'	   => 1,
 		'single'       => true,
-		'description'  => 'Current Employee',
-		'type'         => 'boolean',
+		'description'  => 'Custom Profile Picture',
+		'type'         => 'integer',
 	  ]);
 
 	keitaro_add_former_employee_role();
@@ -739,7 +740,7 @@ function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 
 	$custom_avatar_url  = wp_get_attachment_image_url( get_the_author_meta( 'user_meta_image', $author ) );
 	$default_avatar_url = get_avatar_url( '', array( 'size' => $size ) );
-	$custom_avatar      = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s">', $custom_avatar_url, $size );
+	$custom_avatar      = sprintf( '<img alt="Author avatar" src="%1$s" class="avatar avatar-96 photo avatar-default" height="%2$s" width="%2$s" />', $custom_avatar_url, $size );
 
 	if ( $custom_avatar_url ) :
 		$avatar = $custom_avatar;
@@ -785,9 +786,10 @@ function keitaro_continue_to_second_blog_posts_page_button( $text, $link ) {
 
 function keitaro_custom_profile_data( $user ) {
 
-	if ( current_user_can( 'upload_files', $user->ID ) ) :
+	if ( current_user_can( 'upload_files' ) ) :
 		wp_enqueue_media();
 		wp_enqueue_script( 'keitaro-custom-profile-picture', get_stylesheet_directory_uri() . '/assets/js/custom-profile-picture.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/custom-profile-picture.min.js' ) );
+		wp_create_nonce( 'update-user_' . $user->ID );
 
 		// Get thumbnail version of the current attachment
 		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
@@ -796,15 +798,16 @@ function keitaro_custom_profile_data( $user ) {
 		if ( empty( $current_profile_picture_id ) ) :
 			$current_profile_picture = get_avatar_url( '' );
 		endif;
+
 	endif;
 
-	if ( current_user_can( 'edit_posts', $user->ID ) ) :
+	if ( current_user_can( 'edit_posts') ) :
 		$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 	endif;
 
 	?>
 
-	<?php if ( current_user_can( 'edit_posts', $user->ID ) ) : ?>
+	<?php if ( current_user_can( 'edit_posts' ) ) : ?>
 		<h3><?php esc_html_e( 'Additional Options', 'keitaro' ); ?></h3>
 
 		<table class="form-table">
@@ -816,11 +819,13 @@ function keitaro_custom_profile_data( $user ) {
 			</tr>
 			<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
 				<tr>
-					<th><label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label></th>
+					<th>
+						<label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label>
+					</th>
 					<td>
-						<a href="javascript:;" class="custom-profile-picture">
-							<img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96"><br />
-						</a>
+						<button type="button" class="button button-link current custom-profile-picture">
+							<img class="current-profile-picture" src="<?php echo esc_url( $current_profile_picture ); ?>" width="96" />
+						</button>
 						<p class="description"><?php esc_html_e( 'Set a custom picture for your user profile to replace your currently-used one or the default Gravatar &mdash; useful when an email address is not associated with an existing Gravatar profile.', 'keitaro' ); ?></p>
 						<p>
 							<button type='button' class="button custom-profile-picture"><?php echo ( empty( $current_profile_picture_id ) ? esc_html__( 'Upload Image', 'keitaro' ) : esc_html__( 'Replace Image', 'keitaro' ) ); ?></button>
@@ -834,7 +839,6 @@ function keitaro_custom_profile_data( $user ) {
 			<?php endif; ?>
 		</table><!-- end form-table -->
 		<?php
-
 	endif;
 
 }
@@ -856,7 +860,7 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 	endif;
 
 	if ( $display ) :
-		$print .= sprintf( '<div><a data-media-widget-title="%1$s" href="#" class="custom-image"><img class="current-custom-image" src="%2$s" width="96"></a></div>', $btn_label_add, $custom_image_url );
+		$print .= sprintf( '<div><button data-media-widget-title="%1$s" class="button button-link custom-image"><img class="current-custom-image avatar avatar-96 photo" src="%2$s" width="96" height="96" /></button></div>', $btn_label_add, $custom_image_url );
 		$print .= sprintf( '<button data-media-widget-title="%1$s" type="button" class="button custom-image">%1$s</button>&nbsp;', $btn_label_add );
 		if ( $attachment_id ) :
 			$print .= sprintf( '<button data-media-widget-title="%1$s" type="button" class="button custom-image-remove">%1$s</button>', $btn_label_remove );
@@ -896,7 +900,7 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] || 1 ) );
+	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
 
 }
 
