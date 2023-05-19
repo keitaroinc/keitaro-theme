@@ -815,6 +815,7 @@ function keitaro_custom_profile_data( $user ) {
 				<th><label for="user_work_position"><?php esc_html_e( 'Work Position', 'keitaro' ); ?></label></th>
 				<td>
 					<input type="text" name="user_work_position" id="user_work_position" placeholder="Web Developer" class="regular-text" value="<?php echo esc_attr( $current_work_position ); ?>">
+					<p class="description"><?php esc_html_e( 'Work Position is automatically reset when the user is transitioned to the Former Employee role.', 'keitaro' ); ?></p>
 				</td>
 			</tr>
 			<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
@@ -889,6 +890,38 @@ function keitaro_save_work_position( $user_id ) {
 
 add_action( 'personal_options_update', 'keitaro_save_work_position' );
 add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
+
+/**
+ * Reset the user work position when the user is added to the Former Employee group
+ */
+function keitaro_reset_work_position( $user_id, $role ){
+
+	if ($role === 'former_employee'){
+		update_user_meta( $user_id, 'user_work_position', esc_attr('') );
+	}
+}
+
+/**
+ * Reset the user work position when the user profile is updated or viewed
+ */
+function keitaro_reset_work_position_on_user_edit( $user ){
+
+	if ( in_array( 'former_employee', (array) $user->roles) ){
+		update_user_meta( $user->ID, 'user_work_position', esc_attr('') );
+	}
+}
+
+function keitaro_reset_work_position_on_update_profile( $user_id ){
+
+	$current_user = get_userdata($user_id);
+
+	if ( in_array( 'former_employee', (array) $current_user->roles) ){
+		update_user_meta( $current_user->ID, 'user_work_position', esc_attr('') );
+	}
+}
+
+add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2);
+add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile');
 
 /**
  * Saves additional user fields to the database
