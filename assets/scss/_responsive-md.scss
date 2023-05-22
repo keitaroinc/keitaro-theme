@@ -100,8 +100,9 @@
 		max-width: $container-max-width;
 		margin: auto;
 
-		.wp-block-column {
-			flex-basis: calc(100%/5);
+		&:not(.is-not-stacked-on-mobile)>.wp-block-column {
+			flex-basis: 33%;
+			flex-grow: 0;
 		}
 	}
 
@@ -198,6 +199,10 @@
 	.is-style-team-group {
 		padding-left: $spacer/2;
 		padding-right: $spacer/2;
+
+		.wp-block-column {
+			flex-grow: 0;
+		}
 	}
 
 	.page-template-partners {

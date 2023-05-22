@@ -170,6 +170,12 @@
 		}
 	}
 
+	.is-style-team-group {
+		&:not(.is-not-stacked-on-mobile)>.wp-block-column {
+			flex-basis: 25%;
+		}
+	}
+
 	.home {
 		.wp-block-cover {
 			min-height: 75vh;
@@ -197,12 +203,6 @@
 		.wp-block-column {
 			flex-basis: 33%;
 			flex-grow: 1;
-		}
-	}
-
-	.is-style-team-group {
-		.wp-block-column {
-			flex-basis: calc(100%/3);
 		}
 	}
 

@@ -81,6 +81,12 @@
 
   }
 
+  .is-style-team-group {
+	&:not(.is-not-stacked-on-mobile)>.wp-block-column {
+		flex-basis: 15%;
+	}
+  }
+
   .is-style-media-text-feature-transparent {
     &.has-media-on-the-right {
       .wp-block-media-text__media {
