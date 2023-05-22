@@ -901,16 +901,11 @@ function keitaro_reset_work_position( $user_id, $role ){
 	}
 }
 
+add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2);
+
 /**
  * Reset the user work position when the user profile is updated or viewed
  */
-function keitaro_reset_work_position_on_user_edit( $user ){
-
-	if ( in_array( 'former_employee', (array) $user->roles) ){
-		update_user_meta( $user->ID, 'user_work_position', esc_attr('') );
-	}
-}
-
 function keitaro_reset_work_position_on_update_profile( $user_id ){
 
 	$current_user = get_userdata($user_id);
@@ -920,7 +915,6 @@ function keitaro_reset_work_position_on_update_profile( $user_id ){
 	}
 }
 
-add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2);
 add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile');
 
 /**
