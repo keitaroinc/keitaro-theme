@@ -374,6 +374,7 @@ pre {
 
 	.wp-block-columns {
 		margin-bottom: 0;
+		flex-wrap: wrap !important;
 	}
 
 	&.has-background {
