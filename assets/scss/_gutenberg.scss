@@ -75,7 +75,7 @@
 		background-color: $white;
 		padding: $spacer*4 $spacer*3;
 		box-shadow: $card-box-shadow-lg;
-		margin: $spacer;
+		word-break: normal;
 
 		*:last-child {
 			margin-bottom: 0;
