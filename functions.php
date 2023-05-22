@@ -818,7 +818,7 @@ function keitaro_custom_profile_data( $user ) {
 					<p class="description"><?php esc_html_e( 'Work Position is automatically reset when the user is transitioned to the Former Employee role.', 'keitaro' ); ?></p>
 				</td>
 			</tr>
-			<?php if ( current_user_can( 'upload_files', $user->ID ) ) : ?>
+			<?php if ( current_user_can( 'upload_files' ) ) : ?>
 				<tr>
 					<th>
 						<label for="user_meta_image"><?php esc_html_e( 'Custom Profile Picture', 'keitaro' ); ?></label>
@@ -880,7 +880,7 @@ function keitaro_custom_image_placeholder( $attachment_id, $display = true, $pri
 function keitaro_save_work_position( $user_id ) {
 
 	// only saves if the current user can edit user profiles
-	if ( ! current_user_can( 'edit_posts', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
+	if ( ! current_user_can( 'edit_posts' ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
@@ -929,7 +929,7 @@ add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile');
 function keitaro_save_custom_profile_picture( $user_id ) {
 
 	// only saves if the current user can edit user profiles
-	if ( ! current_user_can( 'upload_files', $user_id ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
+	if ( ! current_user_can( 'upload_files' ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
