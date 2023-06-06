@@ -33,7 +33,7 @@ function keitaro_sales_form_check_spam($content)
 			global $akismet_api_host, $akismet_api_port;
 
 			// set remaining required values for akismet api
-			$content['blog'] = get_option('home');
+			$content['blog'] = get_option( 'home' );
 			$content['user_ip'] = $_SERVER['REMOTE_ADDR'];
 			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 			$content['referrer'] = $_SERVER['HTTP_REFERER'];
@@ -76,10 +76,10 @@ if (isset($_GET['salesFormSubmitted']) && wp_verify_nonce($_REQUEST['_wpnonce'],
 	$consent           = isset($_POST['salesFormConsent']) ? $_POST['salesFormConsent'] : false;
 	$submitted_message = isset($_POST['salesFormMessage']) ? str_replace("\r\n", '<br>', trim(esc_html($_POST['salesFormMessage']))) : '';
 
-	$spam_check['comment_author']       = $sender;
+	$spam_check['comment_type'] = 'contact-form';
+	$spam_check['comment_author'] = $sender;
 	$spam_check['comment_author_email'] = $sender_email;
-	$spam_check['comment_author_url']   = get_option('home');
-	$spam_check['comment_content']      = $submitted_message;
+	$spam_check['comment_content'] = $submitted_message;
 
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
