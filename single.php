@@ -22,7 +22,7 @@ if ( have_posts() ) :
 
 			<div class="row">
 
-				<div class="col-lg-10 offset-lg-1">
+				<div class="col-lg-8 offset-lg-2">
 
 					<main id="main" class="site-main" role="main">
 						<?php
