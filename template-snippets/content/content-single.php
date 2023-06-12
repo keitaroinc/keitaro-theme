@@ -47,7 +47,11 @@
 		</div>
 	</div>
 
-	<?php get_template_part( SNIPPETS_DIR . '/about-author' ); ?>
+	<?php
+		if ( ! is_singular( array( 'showcases' ) ) ) :
+			get_template_part( SNIPPETS_DIR . '/about-author' );
+		endif;
+	?>
 	<?php get_template_part( SNIPPETS_DIR . '/sales-form' ); ?>
 	<?php get_template_part( SNIPPETS_DIR . '/read-next' ); ?>
 </article>
