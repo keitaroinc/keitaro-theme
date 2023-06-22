@@ -175,7 +175,7 @@ if (get_the_terms(get_the_ID(), $tag_id)) :
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="salesFormEmail">Email</label>
-								<input class="form-control" required="required" type="email" name="salesFormEmail" id="salesFormEmail" />
+								<input class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="required" type="email" name="salesFormEmail" id="salesFormEmail" />
 							</div>
 						</div>
 						<div class="col-md-6">
