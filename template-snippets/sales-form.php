@@ -130,7 +130,7 @@ if (get_the_terms(get_the_ID(), $tag_id)) :
 
 						try {
 							// Check email content with Akismet before sending.
-							if (true === keitaro_sales_form_check_spam($spam_check)) :
+							if ('true' === keitaro_sales_form_check_spam($spam_check)) :
 								throw new Exception(esc_html__("Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro'));
 							else :
 
