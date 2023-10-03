@@ -112,6 +112,14 @@
 		}
 	}
 
+	.page{
+		.wp-block-column {
+			.wp-block-group__inner-container {
+				padding: $spacer*3;
+			}
+		}
+	}
+
 	.page-template-partners {
 		.wp-block-column {
 			>.wp-block-group {
@@ -229,10 +237,6 @@
 	.is-style-list-checked-alt {
 		flex-direction: column;
 	}
-
-}
-
-@include media-breakpoint-down(md) {
 
 	.home {
 		.wp-block-cover {
