@@ -368,10 +368,9 @@
 
 		position: relative;
 
-		a {
+		> a {
 			@extend .btn;
 			@extend .btn-link;
-			@extend .stretched-link;
 			white-space: normal;
 			text-align: initial;
 			padding-left: 0;
@@ -406,7 +405,7 @@
 				grid-column: 1 / 2;
 			}
 
-			a {
+			> a {
 				grid-column: 2 / auto;
 				margin-bottom: 0;
 				font-size: $h4-font-size;
@@ -450,5 +449,14 @@
 				margin-bottom: 0;
 			}
 		}
+	}
+}
+
+.wp-block-latest-posts__post-excerpt {
+	a {
+		margin-top: 1.5rem;
+		@extend .btn;
+		@extend .btn-outline-dark;
+		display: table;
 	}
 }

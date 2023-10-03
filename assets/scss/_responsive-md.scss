@@ -151,7 +151,7 @@
 			padding: $spacer;
 
 			&:first-child {
-				a {
+				> a {
 					font-size: $h2-font-size;
 				}
 			}
