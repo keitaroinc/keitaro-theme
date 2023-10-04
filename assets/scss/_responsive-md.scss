@@ -172,12 +172,6 @@
 		}
 	}
 
-	.hentry-grid {
-		.post-thumbnail {
-			height: $spacer*15;
-		}
-	}
-
 }
 
 @include media-breakpoint-down(md) {

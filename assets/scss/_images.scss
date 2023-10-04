@@ -1,9 +1,9 @@
 .wp-post-image,
 .post-thumbnail {
-	max-width: 100%;
-	min-width: 100%;
+	width: 100%;
 	height: auto;
 	aspect-ratio: 16/9;
+	object-fit: cover;
 }
 
 .hentry-first {
@@ -31,9 +31,9 @@
 	}
 
 	.wp-post-image {
-		width: auto;
+		width: inherit;
 		height: 100%;
-		object-fit: cover;
+		// object-fit: cover;
 	}
 }
 
