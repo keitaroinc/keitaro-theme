@@ -439,6 +439,9 @@
 }
 
 .wp-block-latest-posts__featured-image {
+	display: flex;
+	flex-direction: column;
+
 	img {
 		width: 100%;
 	}
