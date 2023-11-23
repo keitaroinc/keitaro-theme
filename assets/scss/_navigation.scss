@@ -64,7 +64,8 @@
 	.menu-item {
 		a {
 			&:before {
-				color: $keitaro-gray-light;
+				// color: $keitaro-gray-light;
+				filter: invert(100%);
 				content: $breadcrumb-divider;
 				display: inline-block;
 				margin-right: $spacer/2;
@@ -124,12 +125,11 @@
 }
 
 .breadcrumb-item {
-	&:last-child {
-		color: $keitaro-green-gray-l-10;
-	}
+	filter: opacity(.8) invert(30%);
 
 	&+.breadcrumb-item {
 		&:before {
+			filter: opacity(.5) invert(50%);
 			padding-right: $spacer - 0.25;
 		}
 	}

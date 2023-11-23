@@ -7,6 +7,7 @@
 
 	.breadcrumb-item {
 		a {
+			filter: opacity(.8) invert(80%);
 			color: inherit;
 		}
 	}
