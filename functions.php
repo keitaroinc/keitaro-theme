@@ -325,44 +325,6 @@ function open_graph_tags() {
 }
 add_action( 'wp_head', 'open_graph_tags' );
 
-/* Create Job Applications content type */
-
-function custom_post_type_job_applications() {
-
-	$labels = array(
-		'name'               => _x( 'Job Applications', 'Post Type General Name', 'keitaro' ),
-		'singular_name'      => _x( 'Job Application', 'Post Type Singular Name', 'keitaro' ),
-		'menu_name'          => __( 'Job Applications', 'keitaro' ),
-		'all_items'          => __( 'All Job Applications', 'keitaro' ),
-		'view_item'          => __( 'View Job Application', 'keitaro' ),
-		'add_new_item'       => __( 'Add New Job Application', 'keitaro' ),
-		'add_new'            => __( 'Add New', 'keitaro' ),
-		'edit_item'          => __( 'Edit Job Application', 'keitaro' ),
-		'update_item'        => __( 'Update Job Application', 'keitaro' ),
-		'search_items'       => __( 'Search Job Applications', 'keitaro' ),
-		'not_found'          => __( 'Not Found', 'keitaro' ),
-		'not_found_in_trash' => __( 'Not found in Trash', 'keitaro' ),
-	);
-
-	$args = array(
-		'label'        => __( 'Job Applications', 'keitaro' ),
-		'description'  => __( 'Custom post type for Job Applications ', 'keitaro' ),
-		'labels'       => $labels,
-		// Features this CPT supports in Post Editor
-		'supports'     => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
-		// CPT taxonomies.
-		'taxonomies'   => array( 'category', 'post_tag' ),
-		'public'       => true,
-		'has_archive'  => true,
-		'show_in_rest' => true,
-
-	);
-
-	register_post_type( 'job-applications', $args );
-}
-
-add_action( 'init', 'custom_post_type_job_applications' );
-
 /* Create Showcases content type */
 
 function custom_post_type_showcases() {
