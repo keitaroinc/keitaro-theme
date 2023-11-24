@@ -20,7 +20,7 @@
 
 	get_template_part( SNIPPETS_DIR . '/header/entry-header-read-next' );
 
-	if ( ! is_singular( array( 'job-applications', 'showcases' ) ) ) :
+	if ( ! is_singular( array( 'showcases' ) ) ) :
 		get_template_part( SNIPPETS_DIR . '/post-author' );
 	endif;
 

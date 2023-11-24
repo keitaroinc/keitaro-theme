@@ -16,7 +16,7 @@
 		<div class="col-lg-10 offset-lg-1">
 			<?php
 
-			if ( ! is_singular( array( 'job-applications', 'showcases' ) ) ) :
+			if ( ! is_singular( array( 'showcases' ) ) ) :
 				get_template_part( SNIPPETS_DIR . '/post-author' );
 			endif;
 			get_template_part( SNIPPETS_DIR . '/header/entry-header' );
