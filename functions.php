@@ -547,7 +547,7 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 
 		?>
 		<?php if ( $collapse ) : ?>
-			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
+			<button type="button" title="<?php _e('Toggle Menu', 'keitaro') ?>" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		<?php endif; ?>
