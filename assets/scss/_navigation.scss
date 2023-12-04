@@ -62,10 +62,18 @@
 	list-style: outside none;
 
 	.menu-item {
+
+		&.current_page_item {
+			a {
+				&:before {
+					color: inherit;
+				}
+			}
+		}
+
 		a {
 			&:before {
-				// color: $keitaro-gray-light;
-				filter: invert(100%);
+				color: $keitaro-gray-light;
 				content: $breadcrumb-divider;
 				display: inline-block;
 				margin-right: $spacer/2;
