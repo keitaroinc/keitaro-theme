@@ -11,6 +11,11 @@
 		"prismjs": "^1.29.0"
 	},
 	"scripts": {
+		"about:build": "echo 'Adjust file operations commands (i.e. cp) based on the OS you are running. These commands are specific to Linux-based operating systems.'",
+		"build": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/ && cp node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/ && sass --load-path=node_modules --no-source-map --style=compressed assets/scss/style.scss style.css",
+		"copy:fonts": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/",
+		"copy:js": "cp node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/",
+		"dev:scss": "sass --load-path=node_modules --watch assets/scss/style.scss style.css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -21,21 +26,12 @@
 		"keitaro"
 	],
 	"author": "Goce Mitevski",
-	"license": "ISC",
+	"license": "Apache-2.0",
 	"homepage": "http://www.keitaro.com",
 	"devDependencies": {
-		"autoprefixer": "^10.4.13",
-		"gulp": "^4.0.2",
-		"gulp-cli": "^2.3.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-postcss": "^9.0.1",
-		"gulp-rename": "^2.0.0",
-		"gulp-sass": "^5.1.0",
-		"gulp-sourcemaps": "^2.6.5",
-		"gulp-uglify": "^3.0.2",
 		"jquery": "^3.6.3",
 		"postcss": "^8.4.21",
-		"sass": "^1.58.0"
+		"sass": "^1.72.0"
 	},
 	"browserslist": [
 		"defaults",
