@@ -26,7 +26,7 @@
 		"keitaro"
 	],
 	"author": "Goce Mitevski",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"homepage": "http://www.keitaro.com",
 	"devDependencies": {
 		"jquery": "^3.6.3",
