@@ -93,11 +93,6 @@ function keitaro_theme_setup() {
 	add_post_type_support( 'page', 'excerpt' );
 
 	/*
-	 * Add support for excerpts on Pages
-	 */
-	add_post_type_support( 'page', 'excerpt' );
-
-	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
