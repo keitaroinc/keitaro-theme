@@ -30,7 +30,6 @@
 	"homepage": "http://www.keitaro.com",
 	"devDependencies": {
 		"jquery": "^3.6.3",
-		"postcss": "^8.4.21",
 		"sass": "^1.72.0"
 	},
 	"browserslist": [
