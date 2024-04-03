@@ -13,7 +13,7 @@ jsAssets=(
 	"node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js"
 )
 
-echo "Copying required CSS assets from node_modules..."
+echo "🔔 Copying required CSS assets from node_modules..."
 
 for asset in ${cssAssets[@]}
 do
@@ -21,12 +21,19 @@ do
 	cp $asset assets/css
 done
 
-echo "Copying required JS assets from node_modules..."
+echo "🔔 Copying required JS assets from node_modules..."
 
 for asset in ${jsAssets[@]}
 do
-	echo  ✅ $asset
+	echo ✅ $asset
 	cp $asset assets/js
 done
 
-echo "Done"
+echo "🔔 Minifying JS assets..."
+
+find assets/js/ -type f \
+    -name "*.js" ! -name "*.min.js" \
+    -exec echo {} \; \
+    -exec npx uglifyjs -o {}.min.js {} \;
+
+echo "✅ Done"
