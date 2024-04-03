@@ -29,6 +29,7 @@
 	"homepage": "http://www.keitaro.com",
 	"devDependencies": {
 		"jquery": "^3.6.3",
-		"sass": "^1.72.0"
+		"sass": "^1.72.0",
+		"uglify-js": "^3.17.4"
 	}
 }
