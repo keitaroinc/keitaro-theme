@@ -14,7 +14,6 @@
 		"about:build": "echo 'Adjust file operations commands (i.e. cp) based on the OS you are running. These commands are specific to Linux-based operating systems.'",
 		"build": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/ && cp node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/ && sass --load-path=node_modules --no-source-map --style=compressed assets/scss/style.scss style.css",
 		"copy:fonts": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/",
-		"copy:js": "cp node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/",
 		"dev:scss": "sass --load-path=node_modules --watch assets/scss/style.scss style.css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -31,11 +30,5 @@
 	"devDependencies": {
 		"jquery": "^3.6.3",
 		"sass": "^1.72.0"
-	},
-	"browserslist": [
-		"defaults",
-		"not IE 11",
-		"not IE_Mob 11",
-		"maintained node versions"
-	]
+	}
 }
