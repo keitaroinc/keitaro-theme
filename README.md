@@ -11,7 +11,6 @@ Our mission is continuous improvement and enrichment of our knowledge and expert
 - WordPress 4.8+
 - Node.js
 - Sass
-- gulp.js
 
 ## Install
 
@@ -19,7 +18,7 @@ Run `npm install` to install all required Node.js modules
 
 ## Build
 
-Run `npx gulp` to (re)build and minify all static CSS and JS assets.
+Run `npm run build` to recreate all static CSS and JS assets.
 
 ## Syntax highlighting
 
