@@ -1,5 +1,7 @@
 #!/bin/bash
 
+assetsPath=assets/js/
+
 echo "🔔 Copying required CSS assets from node_modules..."
 
 cssAssets=(
@@ -31,7 +33,7 @@ done
 
 echo "🔔 Minifying JS assets..."
 
-find assets/js/ -type f -name "*.js" ! -name "*.min.js" -exec echo {} \; -exec npx uglifyjs -m -o {}.min {} \;
-find assets/js/ -type f -name "*.js.min" -exec rename -f 's/\.js\.min$/.min.js/' {} \;
+find $assetsPath -type f -name "*.js" ! -name "*.min.js" -exec echo {} \; -exec npx uglifyjs -m -o {}.min {} \;
+find $assetsPath -type f -name "*.js.min" -exec rename -f 's/\.js\.min$/.min.js/' {} \;
 
 echo "✅ Done"
