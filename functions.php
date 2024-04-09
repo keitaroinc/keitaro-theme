@@ -200,12 +200,16 @@ function keitaro_theme_setup() {
 	// $starter_content = array();
 	// add_theme_support( 'starter-content', $starter_content );
 
-	register_meta('user', 'user_meta_image', [
-		'default'	   => 1,
-		'single'       => true,
-		'description'  => 'Custom Profile Picture',
-		'type'         => 'integer',
-	  ]);
+	register_meta(
+		'user',
+		'user_meta_image',
+		array(
+			'default'      => 1,
+			'single'       => true,
+			'description'  => 'Custom Profile Picture',
+			'type'         => 'integer',
+		)
+		);
 
 	keitaro_add_former_employee_role();
 
@@ -213,16 +217,20 @@ function keitaro_theme_setup() {
 
 add_action( 'after_setup_theme', 'keitaro_theme_setup' );
 
-function keitaro_add_former_employee_role(){
-    $roles_set = get_option('former_employee_role_set');
+function keitaro_add_former_employee_role() {
+	$roles_set = get_option( 'former_employee_role_set' );
 
-    if(!$roles_set){
-        add_role( 'former_employee', 'Former Employee', array(
-            'read' => true, // True allows that capability, False specifically removes it.
-            'upload_files' => true
-        ) );
-        update_option( 'former_employee_role_set', true );
-    }
+	if ( ! $roles_set ) {
+		add_role(
+			 'former_employee',
+			'Former Employee',
+			array(
+				'read' => true, // True allows that capability, False specifically removes it.
+				'upload_files' => true,
+			)
+			);
+		update_option( 'former_employee_role_set', true );
+	}
 
 }
 
@@ -542,7 +550,7 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 
 		?>
 		<?php if ( $collapse ) : ?>
-			<button type="button" title="<?php _e('Toggle Menu', 'keitaro') ?>" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
+			<button type="button" title="<?php echo esc_attr( 'Toggle Menu', 'keitaro' ); ?>" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		<?php endif; ?>
@@ -661,9 +669,9 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 function keitaro_author_box_alt( $author = false, $display = true, $print = '' ) {
 
-	$user 					= get_userdata($author);
+	$user                   = get_userdata( $author );
 	$author_posts           = get_the_author_posts_link( $author );
-	$author_title           = sprintf("%s %s", __('About', 'keitaro'), get_the_author());
+	$author_title           = sprintf( '%s %s', __( 'About', 'keitaro' ), get_the_author() );
 	$author_description     = get_the_author_meta( 'description' );
 	$author_posts_number    = get_the_author_posts( $author );
 	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
@@ -680,7 +688,7 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 				),
 		$author_title,
 		! empty( $author_description ) && ! empty( $author_work_position ) ? '<p class="work-position"><strong>' . $author_work_position . '</strong> ' . sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ) . '</p>' : '',
-		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) :  (! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' )), $author_description) : sprintf('<p class="author-description mb-0">%1$s %2$s</p>', !in_array( 'former_employee', (array) $user->roles) ? sprintf('%s %s', $author_posts, __('is part of', 'keitaro')) : sprintf('%s %s', $author_posts, __('was part of', 'keitaro')), get_bloginfo( 'title' )))
+		! empty( $author_description ) ? sprintf( '<p class="author-description mb-0">%s</p>', $author_description ) : ( ! empty( $author_work_position ) ? sprintf( '<p class="author-description mb-2"><strong>%1$s</strong> %2$s</p>', $author_work_position, sprintf( '%s %s', __( 'at', 'keitaro' ), get_bloginfo( 'title' ) ), $author_description ) : sprintf( '<p class="author-description mb-0">%1$s %2$s</p>', ! in_array( 'former_employee', (array) $user->roles ) ? sprintf( '%s %s', $author_posts, __( 'is part of', 'keitaro' ) ) : sprintf( '%s %s', $author_posts, __( 'was part of', 'keitaro' ) ), get_bloginfo( 'title' ) ) )
 	);
 
 	if ( true === $display ) :
@@ -758,7 +766,7 @@ function keitaro_custom_profile_data( $user ) {
 
 	endif;
 
-	if ( current_user_can( 'edit_posts') ) :
+	if ( current_user_can( 'edit_posts' ) ) :
 		$current_work_position = get_the_author_meta( 'user_work_position', $user->ID );
 	endif;
 
@@ -851,28 +859,28 @@ add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
 /**
  * Reset the user work position when the user is added to the Former Employee group
  */
-function keitaro_reset_work_position( $user_id, $role ){
+function keitaro_reset_work_position( $user_id, $role ) {
 
-	if ($role === 'former_employee'){
-		update_user_meta( $user_id, 'user_work_position', esc_attr('') );
+	if ( 'former_employee' === $role ) {
+		update_user_meta( $user_id, 'user_work_position', esc_attr( '' ) );
 	}
 }
 
-add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2);
+add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2 );
 
 /**
  * Reset the user work position when the user profile is updated or viewed
  */
-function keitaro_reset_work_position_on_update_profile( $user_id ){
+function keitaro_reset_work_position_on_update_profile( $user_id ) {
 
-	$current_user = get_userdata($user_id);
+	$current_user = get_userdata( $user_id );
 
-	if ( in_array( 'former_employee', (array) $current_user->roles) ){
-		update_user_meta( $current_user->ID, 'user_work_position', esc_attr('') );
+	if ( in_array( 'former_employee', (array) $current_user->roles ) ) {
+		update_user_meta( $current_user->ID, 'user_work_position', esc_attr( '' ) );
 	}
 }
 
-add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile');
+add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile' );
 
 /**
  * Saves additional user fields to the database

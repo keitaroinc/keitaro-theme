@@ -45,11 +45,13 @@ if ( ! empty( $page_title ) ) :
 						<h1 class="page-title"><?php echo wp_kses_post( $page_title ); ?></h1>
 					</div>
 					<?php
-					if ( is_author() ) : ?>
+					if ( is_author() ) :
+					?>
 						<div class="col-lg col-xl-6 d-flex justify-content-center justify-content-lg-start">
 						<?php keitaro_author_box( get_the_author_meta( 'ID' ) ); ?>
 						</div>
-					<?php endif;
+					<?php
+					endif;
 					?>
 				</div>
 				<?php endif; ?>
