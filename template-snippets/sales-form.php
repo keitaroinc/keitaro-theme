@@ -40,15 +40,15 @@ function keitaro_sales_form_check_spam($content)
 			$content['permalink'] = get_permalink();
 			$content['comment_type'] = 'contact-form';
 
-			$queryString = '';
+			$query_string = '';
 
 			foreach ($content as $key => $data) {
 				if (!empty($data)) {
-					$queryString .= $key . '=' . urlencode(stripslashes($data)) . '&';
+					$query_string .= $key . '=' . urlencode(stripslashes($data)) . '&';
 				}
 			}
 
-			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
+			$response = akismet_http_post($query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
 
 			if ($response[1] == 'true') {
 				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
