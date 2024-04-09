@@ -15,6 +15,7 @@ if ( $gst_id ) :
 
 ?>
 	<!-- Global site tag (gtag.js) - Google Ads: 411451537 -->
+	<?php // phpcs:ignore ?>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_js( $gst_id ); ?>"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];

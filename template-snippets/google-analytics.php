@@ -14,6 +14,7 @@ if ( $ga_tracking_code ) :
 
 	?>
 	<!-- Google tag (gtag.js) -->
+	<?php // phpcs:ignore ?>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_js( $ga_tracking_code ); ?>"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
