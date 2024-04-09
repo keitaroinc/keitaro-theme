@@ -32,9 +32,9 @@ Syntactically highlighted code blocks are rendered with the Okaidia theme.
 
 ## Test
 
-Execute `run_tests.sh` to validate the codebase with the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).
+Execute `run-tests.sh` to validate the codebase with the [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).
 
-Run `phpcbf . --standard=./phpcs.xml --extensions=php` to automatically resolve coding errors.
+Run `format-code.sh` to automatically resolve coding standard and formatting errors.
 
 ## Visual Design
 
