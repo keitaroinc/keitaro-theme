@@ -50,7 +50,7 @@ function keitaro_sales_form_check_spam($content)
 
 			$response = akismet_http_post($query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
 
-			if ($response[1] == 'true') {
+			if ('true' == $response[1]) {
 				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
 				$is_spam = $response[1];
 			}
