@@ -18,7 +18,11 @@ Run `npm install` to install all required Node.js modules
 
 ## Build
 
-Run `npm run build` to recreate all static CSS and JS assets.
+Run `npm run build` to rebuild SCSS assets into CSS once. If you want to watch for changes in the SCSS files, run `npm run dev:build`.
+
+## Assets
+
+Any update of relevant npm packages associated to (S)CSS, JavaScript and fonts, needs to complete with running of the `copy-assets.sh` script, so all the relevant assets are updated with their latest (minified and non-minified) versions.
 
 ## Syntax highlighting
 
