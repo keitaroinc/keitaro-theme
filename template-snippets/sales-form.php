@@ -20,7 +20,7 @@ function keitaro_sales_form_check_spam($content)
 {
 
 	// innocent until proven guilty
-	$isSpam = false;
+	$is_spam = false;
 
 	$content = (array) $content;
 
@@ -52,12 +52,12 @@ function keitaro_sales_form_check_spam($content)
 
 			if ($response[1] == 'true') {
 				// update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
-				$isSpam = $response[1];
+				$is_spam = $response[1];
 			}
 		}
 	}
 
-	return $isSpam;
+	return $is_spam;
 }
 
 $tag_id = 'sales-tag';
