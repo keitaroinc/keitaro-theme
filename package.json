@@ -11,10 +11,9 @@
 		"prismjs": "^1.29.0"
 	},
 	"scripts": {
-		"about:build": "echo 'Adjust file operations commands (i.e. cp) based on the OS you are running. These commands are specific to Linux-based operating systems.'",
-		"build": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/ && cp node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/ && sass --load-path=node_modules --no-source-map --style=compressed assets/scss/style.scss style.css",
-		"copy:fonts": "cp -r node_modules/@fortawesome/fontawesome-free/webfonts/. assets/fonts/",
-		"dev:scss": "sass --load-path=node_modules --watch assets/scss/style.scss style.css",
+		"about:build": "echo 'Adjust file operations commands (i.e. cp) based on the OS you are running. Currently-used commands are specific to Linux-based operating systems.'",
+		"build": "sass --load-path=node_modules --no-source-map --style=compressed assets/scss/style.scss style.css",
+		"dev:build": "sass --load-path=node_modules --watch assets/scss/style.scss style.css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
