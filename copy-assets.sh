@@ -1,6 +1,18 @@
 #!/bin/bash
 
-assetsPath=assets/js/
+assetsPath=assets/js
+
+echo "🔔 Copying required Font file assets from node_modules..."
+
+fontAssets=(
+	"node_modules/@fortawesome/fontawesome-free/webfonts/."
+)
+
+for asset in ${fontAssets[@]}
+do
+	echo ✅ $asset
+	cp -r $asset assets/fonts
+done
 
 echo "🔔 Copying required CSS assets from node_modules..."
 
@@ -28,7 +40,7 @@ jsAssets=(
 for asset in ${jsAssets[@]}
 do
 	echo ✅ $asset
-	cp $asset assets/js
+	cp $asset $assetsPath
 done
 
 echo "🔔 Minifying JS assets..."
