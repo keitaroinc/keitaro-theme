@@ -5,12 +5,13 @@ jQuery(document).ready(function ($) {
 // Uploading files
     var file_frame;
 
-    $('.custom-profile-picture-remove').on('click', function (event) {
+    $('.custom-picture-remove').on('click', function (event) {
         $('#user_meta_image').val('');
+		$('#showcases_background_id').val('');
         $('#submit').click();
     });
 
-    $('.custom-profile-picture').on('click', function (event) {
+    $('.custom-picture').on('click', function (event) {
 
         // If the media frame already exists, reopen it.
         if (file_frame) {
@@ -34,7 +35,8 @@ jQuery(document).ready(function ($) {
 
             // Do something with attachment.id and/or attachment.url here
             $('#user_meta_image').val(attachment.id);
-            $('.current-profile-picture').attr('src', attachment.url);
+			$('#showcases_background_id').val(attachment.id);
+            $('.current-picture').attr('src', attachment.url);
         });
 
         // Finally, open the modal
