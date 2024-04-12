@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint
     steps:
+      - name: action-phpcs
+        uses: thenabeel/action-phpcs@v8
       - name: Check out source repository
         uses: actions/checkout@v3
       - name: Check for errors related with PHP Community Standards
