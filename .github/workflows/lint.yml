@@ -8,5 +8,4 @@ jobs:
     name: Lint
     steps:
       - name: Check for errors related with PHP Community Standards
-        shell: bash
-        run: sh ../../run-test.sh
+        run: bash ${GITHUB_WORKSPACE}/run-test.sh
