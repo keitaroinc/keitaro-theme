@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint
     steps:
+      - shell: bash
       - name: Check out source repository
         uses: actions/checkout@v3
       - name: Check for errors related with PHP Community Standards
-        run: sh ${GITHUB_WORKSPACE}/run-test.sh
+        run: cd ../../ && sh run-test.sh
