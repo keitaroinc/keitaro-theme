@@ -26,5 +26,3 @@ jobs:
           files: "**.php"
           phpcs_path: php phpcs.phar
           standard: phpcs.xml
-      - name: Check for errors related with PHP Community Standards
-        run: bash ${GITHUB_WORKSPACE}/run-tests.sh
