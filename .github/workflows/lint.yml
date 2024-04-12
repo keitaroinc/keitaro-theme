@@ -1,15 +1,26 @@
-name: Lint
+name: PHPCS
 
 on: [push, pull_request]
+  paths:
+      - "**.php"
+      - "phpcs.xml"
 
 jobs:
-  lint:
+  phpcs:
     runs-on: ubuntu-latest
-    name: Lint
+    name: PHPCS
     steps:
-      - name: action-phpcs
-        uses: thenabeel/action-phpcs@v8
       - name: Check out source repository
         uses: actions/checkout@v3
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
+      - name: action-phpcs
+        uses: thenabeel/action-phpcs@v8
+        with:
+          files: "**.php"
+          phpcs_path: php phpcs.phar
+          standard: phpcs.xml
       - name: Check for errors related with PHP Community Standards
         run: bash ${GITHUB_WORKSPACE}/run-tests.sh
