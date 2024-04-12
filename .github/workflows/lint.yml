@@ -1,7 +1,12 @@
 name: PHPCS
 
-on: [push, pull_request]
-  paths:
+on:
+  push:
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+  pull_request:
+    paths:
       - "**.php"
       - "phpcs.xml"
 
