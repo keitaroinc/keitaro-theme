@@ -51,7 +51,19 @@ if ( have_posts() ) :
 
 			</div>
 
-			<?php get_template_part( SNIPPETS_DIR . '/cta-connect', null, array('title' => __('How may we help you?', 'keitaro'), 'button_text' => __("Let's Connect", 'keitaro')) ); ?>
+			<?php
+			get_template_part(
+				 SNIPPETS_DIR . '/cta-connect',
+				null,
+				array(
+					'title' => __( 'How may we help you?', 'keitaro' ),
+					'button_text' => __(
+					"Let's Connect",
+						   'keitaro'
+				   ),
+				)
+				);
+?>
 
 		<?php
 
