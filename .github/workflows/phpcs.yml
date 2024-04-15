@@ -40,6 +40,7 @@ jobs:
           phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Core
           phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Docs
           phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Extra
+          which phpcs
           phpcs -i
 
       - name: Run PHPCS checks
