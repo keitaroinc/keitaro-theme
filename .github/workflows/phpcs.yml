@@ -26,7 +26,7 @@ jobs:
           php-version: 'latest'
           ini-values: 'memory_limit=1G'
           coverage: none
-          tools: cs2pr, php-cs-fixer, phpunit
+          tools: cs2pr, phpcs, php-cs-fixer, phpunit
 
       - name: Install Composer dependencies
         uses: "ramsey/composer-install@v3"
