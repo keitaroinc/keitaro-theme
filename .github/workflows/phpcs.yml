@@ -26,7 +26,7 @@ jobs:
           php-version: 'latest'
           ini-values: 'memory_limit=1G'
           coverage: none
-          tools: cs2pr
+          tools: cs2pr, php-cs-fixer, phpunit
 
       - name: Install Composer dependencies
         uses: "ramsey/composer-install@v3"
@@ -34,14 +34,9 @@ jobs:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
-      - name: Install PHP_CodeSniffer
-        run: |
-          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-          php phpcs.phar --version
-
       - name: Run PHPCS checks
         id: phpcs
-        run: php phpcs.phar --report-full --report-checkstyle=./phpcs-report.xml
+        run: phpcs --report-full --report-checkstyle=./phpcs-report.xml
 
       - name: Show PHPCS results in PR
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
