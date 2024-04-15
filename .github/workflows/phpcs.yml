@@ -23,8 +23,8 @@ jobs:
       - name: Setup PHP
         uses: "shivammathur/setup-php@v2"
         with:
-          php-version: 'latest'
-          ini-values: 'memory_limit=1G'
+          php-version: "latest"
+          ini-values: "memory_limit=1G"
           coverage: none
           tools: cs2pr, phpcs, php-cs-fixer, phpunit
 
@@ -33,6 +33,9 @@ jobs:
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
+
+      - name: Check PHPCS
+        run: phpcs --help
 
       - name: Run PHPCS checks
         id: phpcs
