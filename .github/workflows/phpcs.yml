@@ -21,4 +21,4 @@ jobs:
           curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
           php phpcs.phar --version
           find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-          php phpcs.phar -p -s -v -n . --standard=./phpcs.xml --extensions=php
+          php phpcs.phar -p -s -v -n . --standard=WordPress
