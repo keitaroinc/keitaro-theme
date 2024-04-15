@@ -5,7 +5,7 @@
 
   <!-- Set a description for this ruleset. -->
   <description>A custom ruleset to take in account both WordPress and WebDevStudios code standards.</description>
-  <file>./vendor/wp-coding-standards/wpcs</file>
+  <rule ref="./vendor/wp-coding-standards/wpcs"></rule>
 
   <!-- Include the WordPress-Extra ruleset, with some WDS exclusions. -->
   <rule ref="WordPress">
