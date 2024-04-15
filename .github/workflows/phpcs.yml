@@ -34,8 +34,8 @@ jobs:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
-      - name: Check PHPCS
-        run: phpcs --help
+      - name: Installed PHPCS standards
+        run: phpcs -i
 
       - name: Run PHPCS checks
         id: phpcs
