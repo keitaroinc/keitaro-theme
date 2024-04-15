@@ -7,7 +7,7 @@
   <description>A custom ruleset to take in account both WordPress and WebDevStudios code standards.</description>
 
   <!-- Include the WordPress-Extra ruleset, with some WDS exclusions. -->
-  <rule ref="WordPress-Extra">
+  <rule ref="WordPress">
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
