@@ -34,8 +34,13 @@ jobs:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
-      - name: Add WordPress Coding Standards Rule
-        run: phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress
+      - name: Add WordPress Coding Standards sniffs
+        run: |
+        phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress
+        phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Core
+        phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Docs
+        phpcs --config-set installed_paths ../../wp-coding-standards/wpcs/WordPress-Extra
+        phpcs -i
 
       - name: Run PHPCS checks
         id: phpcs
