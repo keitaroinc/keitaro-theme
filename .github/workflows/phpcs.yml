@@ -35,7 +35,6 @@ jobs:
           custom-cache-suffix: $(date -u "+%Y-%m")
 
       - name: Run PHPCS checks
-        uses: "ramsey/composer-install@v3"
         id: phpcs
         run: phpcs --report-full --report-checkstyle=./phpcs.xml
 
