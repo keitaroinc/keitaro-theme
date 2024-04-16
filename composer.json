@@ -3,5 +3,10 @@
 	  "phpcompatibility/php-compatibility": "^9.0",
 	  "phpcsstandards/phpcsdevtools": "^1.0",
 	  "wp-coding-standards/wpcs": "^3.1"
+	},
+	"config": {
+	  "allow-plugins": {
+		"dealerdirect/phpcodesniffer-composer-installer": true
+	  }
 	}
   }
