@@ -29,22 +29,15 @@ jobs:
           tools: cs2pr, phpcs, php-cs-fixer, phpunit
 
       - name: Install Composer dependencies
-        uses: "ramsey/composer-install@v3"
+        uses: "ramsey/composer-install@v2"
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
-      - name: Add WordPress Coding Standards sniffs
-        run: |
-          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Core
-          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Docs
-          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Extra
-          phpcs -i
-
       - name: Run PHPCS checks
         id: phpcs
-        run: phpcs --report-full --report-checkstyle=./phpcs.xml
+        run: vendor/bin/phpcs --report-full --report-checkstyle=./phpcs-report.xml
 
       - name: Show PHPCS results in PR
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
-        run: cs2pr ./phpcs.xml
+        run: cs2pr ./phpcs-report.xml
