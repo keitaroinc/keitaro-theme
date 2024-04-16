@@ -36,7 +36,6 @@ if ( ! function_exists( 'breadcrumb_item' ) ) :
 	 */
 	function breadcrumb_item( $url, $title = '', $wrapper = 'a' ) {
 		printf( '<li class="breadcrumb-item"><%3$s %1$s>%2$s</%3$s></li>', ( esc_url( $url ) ? 'href="' . esc_url( $url ) . '"' : '' ), wp_kses_post( $title ), esc_attr( $wrapper ) );
-
 	}
 
 endif;
@@ -57,7 +56,6 @@ if ( ! function_exists( 'is_paginated_url' ) ) {
 		endif;
 
 		return $url;
-
 	}
 }
 
@@ -86,10 +84,8 @@ if ( ! is_front_page() ) {
 
 		if ( get_query_var( 'paged' ) > 1 ) :
 			breadcrumb_item( get_page_link( get_queried_object()->ID ), get_queried_object()->post_title );
-		else :
-			if ( get_queried_object() ) :
+		elseif ( get_queried_object() ) :
 				breadcrumb_item( false, get_queried_object()->post_title, 'span' );
-						endif;
 		endif;
 	} elseif ( is_post_type_archive() ) {
 		breadcrumb_item( false, post_type_archive_title( '', false ), 'span' );
@@ -113,11 +109,9 @@ if ( ! is_front_page() ) {
 		// If it is a custom post type display name and link.
 		if ( 'post' !== $current_post_type ) {
 			breadcrumb_item( get_post_type_archive_link( $current_post_type ), get_post_type_object( $current_post_type )->labels->name );
-		} else {
+		} elseif ( get_option( 'page_for_posts' ) ) {
 
-			if ( get_option( 'page_for_posts' ) ) :
 				breadcrumb_item( get_post_type_archive_link( $current_post_type ), get_the_title( get_option( 'page_for_posts' ) ) );
-						endif;
 		}
 
 		// Get post category info.

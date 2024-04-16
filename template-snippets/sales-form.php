@@ -31,9 +31,9 @@ function keitaro_sales_form_check_spam( $content ) {
 
 			// Set remaining required values for Akismet API.
 			$content['blog'] = get_option( 'home' );
-			$content['user_ip'] = esc_url_raw( isset( $_SERVER['REMOTE_ADDR'] ) ? wp_unslash( $_SERVER['REMOTE_ADDR'] ) : '' );
-			$content['user_agent'] = esc_url_raw( isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '' );
-			$content['referrer'] = esc_url_raw( isset( $_SERVER['HTTP_REFERER'] ) ? wp_unslash( $_SERVER['HTTP_REFERER'] ) : '' );
+			$content['user_ip'] = sanitize_text_field( isset( $_SERVER['REMOTE_ADDR'] ) ? wp_unslash( $_SERVER['REMOTE_ADDR'] ) : '' );
+			$content['user_agent'] = sanitize_text_field( isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '' );
+			$content['referrer'] = sanitize_text_field( isset( $_SERVER['HTTP_REFERER'] ) ? wp_unslash( $_SERVER['HTTP_REFERER'] ) : '' );
 			$content['permalink'] = get_permalink();
 			$content['comment_type'] = 'contact-form';
 
@@ -64,14 +64,14 @@ $autoreply_sent = false;
 
 $send_to = get_option( 'keitaro_settings' )['sales_contact'] ?? false;
 
-if ( isset( $_GET['salesFormSubmitted'] ) && wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? esc_url_raw( wp_unslash( $_REQUEST['_wpnonce'] ) ) : null, 'keitaroSalesForm' ) ) :
-	$sender            = isset( $_POST['salesFormName'] ) ? trim( esc_url_raw( wp_unslash( $_POST['salesFormName'] ) ) ) : '';
-	$sender_email      = isset( $_POST['salesFormEmail'] ) ? trim( esc_url_raw( wp_unslash( $_POST['salesFormEmail'] ) ) ) : '';
-	$phone             = isset( $_POST['salesFormPhone'] ) ? trim( esc_url_raw( wp_unslash( $_POST['salesFormPhone'] ) ) ) : '';
-	$subject           = sprintf( '%1$s %2$s', __( 'New message from', 'keitaro' ), trim( esc_html( $sender ) ) );
+if ( isset( $_GET['salesFormSubmitted'] ) && wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : null, 'keitaroSalesForm' ) ) :
+	$sender            = isset( $_POST['salesFormName'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['salesFormName'] ) ) ) : '';
+	$sender_email      = isset( $_POST['salesFormEmail'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['salesFormEmail'] ) ) ) : '';
+	$phone             = isset( $_POST['salesFormPhone'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['salesFormPhone'] ) ) ) : '';
+	$subject           = sprintf( '%1$s %2$s', __( 'New message from', 'keitaro' ), trim( sanitize_text_field( $sender ) ) );
 	$subject_autoreply = sprintf( '%1$s %2$s', __( 'Thank you for contacting', 'keitaro' ), get_bloginfo( 'name' ) );
-	$consent           = isset( $_POST['salesFormConsent'] ) ? esc_url_raw( wp_unslash( $_POST['salesFormConsent'] ) ) : false;
-	$submitted_message = isset( $_POST['salesFormMessage'] ) ? str_replace( "\r\n", '<br>', trim( esc_url_raw( wp_unslash( $_POST['salesFormMessage'] ) ) ) ) : '';
+	$consent           = isset( $_POST['salesFormConsent'] ) ? sanitize_text_field( wp_unslash( $_POST['salesFormConsent'] ) ) : false;
+	$submitted_message = isset( $_POST['salesFormMessage'] ) ? str_replace( "\r\n", '<br>', trim( sanitize_text_field( wp_unslash( $_POST['salesFormMessage'] ) ) ) ) : '';
 
 	$spam_check['comment_type'] = 'contact-form';
 	$spam_check['comment_author'] = $sender;
@@ -123,7 +123,7 @@ if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 				<form method="POST" action="<?php echo esc_url( wp_nonce_url( add_query_arg( 'salesFormSubmitted', true, get_the_permalink() ) ) ); ?>#salesForm">
 					<?php
 
-					if ( ( isset( $_GET['salesFormSubmitted'] ) ) && wp_verify_nonce( esc_url_raw( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'keitaroSalesForm' ) ) :
+					if ( ( isset( $_GET['salesFormSubmitted'] ) ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'keitaroSalesForm' ) ) :
 
 						try {
 							// Check email content with Akismet before sending.

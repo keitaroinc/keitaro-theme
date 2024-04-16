@@ -64,7 +64,6 @@ class Keitaro_Theme_Settings {
 			</form>
 		</div>
 		<?php
-
 	}
 
 	/**

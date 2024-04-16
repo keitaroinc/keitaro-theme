@@ -37,7 +37,7 @@ function keitaro_theme_setup() {
 		)
 	);
 
-	require_once dirname( __FILE__ ) . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
+	require_once __DIR__ . '/' . SNIPPETS_DIR . '/class-keitaro-theme-settings.php';
 
 	/**
 	 * Load text domain for localization
@@ -215,6 +215,14 @@ function keitaro_theme_setup() {
 		)
 	);
 
+	/*
+	* Allow file uploads by users with Contributor role
+	*/
+	$user = wp_get_current_user();
+	if ( in_array( 'contributor', (array) $user->roles ) && ! current_user_can( 'upload_files' ) ) {
+		add_action( 'admin_init', 'keitaro_allow_contributor_uploads' );
+	}
+
 	keitaro_add_former_employee_role();
 }
 
@@ -306,7 +314,6 @@ function custom_meta_descriptions() {
 	?>
 	<meta name="description" content="<?php echo esc_html( $meta_description ); ?>">
 	<?php
-
 }
 
 add_action( 'wp_head', 'custom_meta_descriptions' );
@@ -494,7 +501,6 @@ function keitaro_theme_login_logo() {
 		}
 	</style>
 	<?php
-
 }
 
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
@@ -912,7 +918,7 @@ function keitaro_save_work_position( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_work_position', esc_attr( isset( $_POST['user_work_position'] ) ? esc_url_raw( wp_unslash( $_POST['user_work_position'] ) ) : null ) );
+	update_user_meta( $user_id, 'user_work_position', esc_attr( isset( $_POST['user_work_position'] ) ? sanitize_text_field( wp_unslash( $_POST['user_work_position'] ) ) : null ) );
 }
 
 add_action( 'personal_options_update', 'keitaro_save_work_position' );
@@ -962,7 +968,7 @@ function keitaro_save_custom_profile_picture( $user_id ) {
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', esc_attr( isset( $_POST['user_meta_image'] ) ? esc_url_raw( wp_unslash( $_POST['user_meta_image'] ) ) : '' ) );
+	update_user_meta( $user_id, 'user_meta_image', esc_attr( isset( $_POST['user_meta_image'] ) ? sanitize_text_field( wp_unslash( $_POST['user_meta_image'] ) ) : '' ) );
 }
 
 add_action( 'personal_options_update', 'keitaro_save_custom_profile_picture' );
@@ -978,7 +984,6 @@ add_filter( 'jetpack_implode_frontend_css', '__return_false' );
  */
 function keitaro_remove_jetpack_css() {
 	 wp_deregister_style( 'grunion.css' ); // Grunion contact form.
-
 }
 
 add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
@@ -996,13 +1001,6 @@ function keitaro_search_posts_only( $query ) {
 	return $query;
 }
 add_filter( 'pre_get_posts', 'keitaro_search_posts_only' );
-
-/*
- * Allow file uploads by users with Contributor role
- */
-if ( current_user_can( 'contributor' ) && ! current_user_can( 'upload_files' ) ) {
-	add_action( 'admin_init', 'keitaro_allow_contributor_uploads' );
-}
 
 /**
  * Allow file uploads by users with a Contributor role
@@ -1073,7 +1071,6 @@ function keitaro_register_sales_tag_taxonomy() {
 		'show_in_menu'       => true,
 		'show_in_nav_menus'  => true,
 		'show_in_quick_edit' => true,
-		'show_admin_column'  => true,
 		'show_in_rest'       => true,
 		'rewrite'            => array( 'slug' => 'sales_tag' ),
 	);
