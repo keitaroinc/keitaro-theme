@@ -6,7 +6,6 @@
  *
  * @package WordPress
  * @subpackage Keitaro
- *
  */
 
 if ( post_password_required() ) {
@@ -28,16 +27,16 @@ if ( post_password_required() ) {
 			} else {
 				printf(
 						/* translators: 1: number of comments, 2: post title */
-						esc_html(
+					esc_html(
 														/* translators: Single and plural forms */
-							_nx(
-										'%1$s Reply to &ldquo;%2$s&rdquo;',
-								 '%1$s Replies to &ldquo;%2$s&rdquo;',
-								 $comments_number,
-								 'comments title',
-								 'keitaro'
-								)
-						),
+						_nx(
+							'%1$s Reply to &ldquo;%2$s&rdquo;',
+							'%1$s Replies to &ldquo;%2$s&rdquo;',
+							$comments_number,
+							'comments title',
+							'keitaro'
+						)
+					),
 					esc_html( number_format_i18n( $comments_number ) ),
 					esc_html( get_the_title() )
 				);
@@ -50,13 +49,13 @@ if ( post_password_required() ) {
 			<?php
 
 			wp_list_comments(
-				 array(
-					 'avatar_size' => 100,
-					 'style'       => 'ol',
-					 'short_ping'  => true,
-					 'reply_text'  => __( 'Reply', 'keitaro' ),
-				 )
-				);
+				array(
+					'avatar_size' => 100,
+					'style'       => 'ol',
+					'short_ping'  => true,
+					'reply_text'  => __( 'Reply', 'keitaro' ),
+				)
+			);
 
 			?>
 		</ol>
@@ -64,17 +63,17 @@ if ( post_password_required() ) {
 		<?php
 
 		the_comments_pagination(
-			 array(
-				 'prev_text' => '<span class="screen-reader-text">' . __( 'Previous', 'keitaro' ) . '</span>',
-				 'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>',
-			 )
-			);
+			array(
+				'prev_text' => '<span class="screen-reader-text">' . __( 'Previous', 'keitaro' ) . '</span>',
+				'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'keitaro' ) . '</span>',
+			)
+		);
 
 	endif;
 
-// If comments are closed and there are comments, let's leave a little note, shall we?
+	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	printf( '<p class="no-comments">%s</p>', esc_html__( 'Comments are closed.', 'keitaro' ) );
+		printf( '<p class="no-comments">%s</p>', esc_html__( 'Comments are closed.', 'keitaro' ) );
 	endif;
 
 	comment_form();

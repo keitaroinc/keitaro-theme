@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for the thumbnail of each post
  *
@@ -22,13 +21,13 @@ $thumbnail_caption = esc_html( get_the_post_thumbnail_caption() );
 	<a href="<?php ( is_attachment() ? the_post_thumbnail_url() : the_permalink() ); ?>">
 		<?php
 		the_post_thumbnail(
-			 $thumbnail_size,
+			$thumbnail_size,
 			array(
 				'class' => 'img-fluid',
 				'decoding' => 'async',
 			)
-			);
-?>
+		);
+		?>
 	</a>
 	<?php
 

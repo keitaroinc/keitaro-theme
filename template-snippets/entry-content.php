@@ -21,7 +21,7 @@
 			'link_before' => '<span class="page-number">',
 			'link_after'  => '</span>',
 		)
-		);
+	);
 
 	?>
 </div><!-- .entry-content -->

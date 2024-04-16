@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for the author of each post
  *
@@ -8,6 +7,7 @@
  * @package WordPress
  * @subpackage Keitaro
  */
+
 ?>
 
 <div class="row">

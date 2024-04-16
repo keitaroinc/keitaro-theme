@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for LeadFeeder
  *
@@ -13,7 +12,7 @@ $lead_feeder_id = get_option( 'keitaro_settings' )['lead_feeder_id'] ?? false;
 
 if ( $lead_feeder_id ) :
 
-?>
+	?>
 	<script>
 		(function(ss, ex) {
 			window.ldfdr = window.ldfdr || function() {
@@ -33,6 +32,6 @@ if ( $lead_feeder_id ) :
 		})('<?php echo esc_js( $lead_feeder_id ); ?>');
 	</script>
 
-<?php
+	<?php
 
 endif;

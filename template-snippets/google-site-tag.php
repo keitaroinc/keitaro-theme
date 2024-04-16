@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for Google Site Tag ID
  *
@@ -13,7 +12,7 @@ $gst_id = get_option( 'keitaro_settings' )['gst_verification_id'] ?? false;
 
 if ( $gst_id ) :
 
-?>
+	?>
 	<!-- Global site tag (gtag.js) - Google Ads: 411451537 -->
 	<?php // phpcs:ignore ?>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_js( $gst_id ); ?>"></script>
@@ -26,6 +25,6 @@ if ( $gst_id ) :
 		gtag('js', new Date());
 		gtag('config', '<?php echo esc_js( $gst_id ); ?>');
 	</script>
-<?php
+	<?php
 
 endif;

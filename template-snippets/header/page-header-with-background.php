@@ -1,8 +1,8 @@
 <?php
-
 /**
  * Temporary snippet for rendering Page headers with a background image
  */
+
 $image_id = get_option( 'keitaro_settings' )['showcases_background_id'];
 
 // phpcs:ignore
@@ -15,4 +15,4 @@ echo do_blocks('<!-- wp:cover {"url":"' . wp_get_attachment_url($image_id) . '",
 <p class="has-text-align-center" style="font-size:24px">' . get_option( 'keitaro_settings' )['showcases_description'] . '</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->'
-	);
+);

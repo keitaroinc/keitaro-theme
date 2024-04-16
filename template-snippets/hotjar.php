@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for Horjar
  *
@@ -13,7 +12,7 @@ $hotjar_id = get_option( 'keitaro_settings' )['hotjar_id'] ?? false;
 
 if ( $hotjar_id ) :
 
-?>
+	?>
 	<!-- Hotjar Tracking Code for https://keitaro.com/ -->
 	<script>
 		(function(h, o, t, j, a, r) {
@@ -32,6 +31,6 @@ if ( $hotjar_id ) :
 		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 	</script>
 
-<?php
+	<?php
 
 endif;

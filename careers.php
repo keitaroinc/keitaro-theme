@@ -21,7 +21,7 @@ get_header();
 </div>
 <div class='bg-white'>
   <?php
-  get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-careers' );
-  get_footer();
-  ?>
+	get_template_part( SNIPPETS_DIR . '/sidebars/keitaro-careers' );
+	get_footer();
+	?>
 </div>

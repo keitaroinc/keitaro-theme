@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template for all pages, when not overridden
  *

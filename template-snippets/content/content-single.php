@@ -1,5 +1,4 @@
 <?php
-
 /**
  * General template snippet for Single content
  *
@@ -40,16 +39,16 @@
 				get_template_part( SNIPPETS_DIR . '/entry-content' );
 			endif;
 
-			// Remove comments template temporarily
-			// comments_template();
+			// Remove comments template temporarily.
+			// comments_template();.
 
 			?>
 		</div>
 	</div>
 
 	<?php
-		if ( ! is_singular( array( 'showcases' ) ) ) :
-			get_template_part( SNIPPETS_DIR . '/about-author' );
+	if ( ! is_singular( array( 'showcases' ) ) ) :
+		get_template_part( SNIPPETS_DIR . '/about-author' );
 		endif;
 	?>
 	<?php get_template_part( SNIPPETS_DIR . '/sales-form' ); ?>

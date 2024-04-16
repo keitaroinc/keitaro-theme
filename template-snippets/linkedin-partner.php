@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for LinkedIn Patner ID
  *
@@ -13,7 +12,7 @@ $linkedin_partner_id = get_option( 'keitaro_settings' )['li_partner_id'] ?? fals
 
 if ( $linkedin_partner_id ) :
 
-?>
+	?>
 
 	<script type="text/javascript">
 		_linkedin_partner_id = "<?php echo esc_js( $linkedin_partner_id ); ?>";
@@ -39,6 +38,6 @@ if ( $linkedin_partner_id ) :
 	<noscript>
 		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=<?php echo esc_js( $linkedin_partner_id ); ?>&fmt=gif" />
 	</noscript>
-<?php
+	<?php
 
 endif;

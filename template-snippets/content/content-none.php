@@ -25,7 +25,7 @@
 					<p>
 						<?php
 
-						// translators: Shown when no posts have been published yet and linked to the page for creating a new post
+						// translators: Shown when no posts have been published yet and linked to the page for creating a new post.
 						echo wp_kses_post( sprintf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'keitaro' ), esc_url( admin_url( 'post-new.php' ) ) ) );
 
 						?>

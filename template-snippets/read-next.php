@@ -7,21 +7,21 @@ $current_post_type = get_post_type( get_the_ID() );
 $post_cats = array();
 $post_tags = array();
 
-// Get current post categories
+// Get current post categories.
 if ( $get_cats ) :
 	foreach ( $get_cats as $item ) :
 		array_push( $post_cats, $item->term_id );
 	endforeach;
 endif;
 
-// Get current post tags
+// Get current post tags.
 if ( $get_tags ) :
 	foreach ( get_the_terms( get_the_ID(), 'post_tag' ) as $item ) :
 		array_push( $post_tags, $item->term_id );
 	endforeach;
 endif;
 
-// Get posts that have any of the tags and categories of the current post
+// Get posts that have any of the tags and categories of the current post.
 $read_more_content = new WP_Query(
 	array(
 		'post__not_in'   => array( get_the_ID() ),
@@ -34,7 +34,7 @@ $read_more_content = new WP_Query(
 
 if ( $read_more_content->have_posts() ) :
 
-?>
+	?>
 	<section class="read-next">
 		<h2 class="read-next-title text-center has-text-align-center"><?php esc_html_e( 'Read Next', 'keitaro' ); ?></h2>
 		<div class="row">
@@ -51,9 +51,9 @@ if ( $read_more_content->have_posts() ) :
 			?>
 		</div>
 	</section>
-<?php
+	<?php
 
 endif;
 
-// Reset query data to go back to the default WordPress loop
+// Reset query data to go back to the default WordPress loop.
 wp_reset_postdata();

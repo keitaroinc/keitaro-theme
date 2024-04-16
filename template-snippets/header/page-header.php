@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for .page-header
  *
@@ -35,7 +34,7 @@ endif;
 
 if ( ! empty( $page_title ) ) :
 
-?>
+	?>
 	<header class="page-header">
 		<div class="row">
 			<div class="col-lg-10 offset-lg-1">
@@ -46,18 +45,18 @@ if ( ! empty( $page_title ) ) :
 					</div>
 					<?php
 					if ( is_author() ) :
-					?>
+						?>
 						<div class="col-lg col-xl-6 d-flex justify-content-center justify-content-lg-start">
 						<?php keitaro_author_box( get_the_author_meta( 'ID' ) ); ?>
 						</div>
-					<?php
+						<?php
 					endif;
 					?>
 				</div>
 				<?php endif; ?>
 				<?php if ( $page_subtitle ) : ?>
 					<div class="lead"><?php echo wp_kses_post( $page_subtitle ); ?></div>
-				<?php
+					<?php
 
 				endif;
 
@@ -65,5 +64,5 @@ if ( ! empty( $page_title ) ) :
 			</div>
 		</div>
 	</header>
-<?php
+	<?php
 endif;

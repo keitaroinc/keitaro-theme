@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for Read Next content
  *

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template for all pages, when not overridden
  *
@@ -12,7 +11,7 @@
 get_header();
 
 if ( have_posts() ) :
-?>
+	?>
 	<div class="container-fluid">
 		<div id="primary" class="content-area">
 			<?php get_template_part( SNIPPETS_DIR . '/header/page-header' ); ?>
@@ -65,7 +64,7 @@ if ( have_posts() ) :
 		<?php
 	endif;
 
-		?>
+	?>
 
 		</div>
 

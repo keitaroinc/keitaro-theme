@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template for all pages, when not overridden
  *
@@ -13,7 +12,7 @@ get_header();
 
 if ( have_posts() ) :
 	$first = true;
-?>
+	?>
 
 	<?php get_template_part( SNIPPETS_DIR . '/header/page-header-with-background' ); ?>
 
@@ -53,17 +52,17 @@ if ( have_posts() ) :
 
 			<?php
 			get_template_part(
-				 SNIPPETS_DIR . '/cta-connect',
+				SNIPPETS_DIR . '/cta-connect',
 				null,
 				array(
 					'title' => __( 'How may we help you?', 'keitaro' ),
 					'button_text' => __(
-					"Let's Connect",
-						   'keitaro'
-				   ),
+						"Let's Connect",
+						'keitaro'
+					),
 				)
-				);
-?>
+			);
+			?>
 
 		<?php
 
@@ -72,7 +71,7 @@ if ( have_posts() ) :
 		get_template_part( SNIPPETS_DIR . '/content/content-none' );
 
 	endif;
-		?>
+	?>
 
 		</div>
 

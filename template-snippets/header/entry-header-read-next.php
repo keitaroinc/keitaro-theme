@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for the header of each post
  *

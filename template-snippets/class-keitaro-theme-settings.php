@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for custom theme settings
  *
@@ -14,9 +13,10 @@
  */
 class Keitaro_Theme_Settings {
 
-
 	/**
-	 * Holds the values to be used in the fields callbacks
+	 * Create $options variable to store values
+	 *
+	 * @var $options Holds the values to be used in the fields callbacks
 	 */
 	private $options;
 
@@ -24,7 +24,7 @@ class Keitaro_Theme_Settings {
 	 * Start up
 	 */
 	public function __construct() {
-		 add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
+		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'keitaro_settings_page_init' ) );
 	}
 
@@ -49,7 +49,7 @@ class Keitaro_Theme_Settings {
 		// Set class property.
 		$this->options = get_option( 'keitaro_settings' );
 
-?>
+		?>
 		<div class="wrap">
 			<h1><?php esc_html_e( 'Keitaro Settings', 'keitaro' ); ?></h1>
 			<form method="post" action="options.php">
@@ -63,7 +63,7 @@ class Keitaro_Theme_Settings {
 				?>
 			</form>
 		</div>
-	<?php
+		<?php
 
 	}
 
@@ -71,7 +71,7 @@ class Keitaro_Theme_Settings {
 	 * Register and add settings
 	 */
 	public function keitaro_settings_page_init() {
-	register_setting(
+		register_setting(
 			'keitaro_option_group',
 			'keitaro_settings',
 			array( $this, 'sanitize' )
@@ -264,7 +264,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function sales_contact_callback() {
-	printf(
+		printf(
 			'<input type="email" id="sales_contact" name="keitaro_settings[sales_contact]" value="%s" />',
 			isset( $this->options['sales_contact'] ) ? esc_attr( $this->options['sales_contact'] ) : ''
 		);
@@ -284,7 +284,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function google_analytics_tracking_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="ga_tracking_id" name="keitaro_settings[ga_tracking_id]" value="%s" />',
 			isset( $this->options['ga_tracking_id'] ) ? esc_attr( $this->options['ga_tracking_id'] ) : ''
 		);
@@ -294,7 +294,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function google_search_console_verification_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="gsc_verification_id" name="keitaro_settings[gsc_verification_id]" value="%s" />',
 			isset( $this->options['gsc_verification_id'] ) ? esc_attr( $this->options['gsc_verification_id'] ) : ''
 		);
@@ -314,7 +314,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function facebook_pixel_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="fb_pixel_id" name="keitaro_settings[fb_pixel_id]" value="%s" />',
 			isset( $this->options['fb_pixel_id'] ) ? esc_attr( $this->options['fb_pixel_id'] ) : ''
 		);
@@ -324,7 +324,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function li_partner_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="li_partner_id" name="keitaro_settings[li_partner_id]" value="%s" />',
 			isset( $this->options['li_partner_id'] ) ? esc_attr( $this->options['li_partner_id'] ) : ''
 		);
@@ -334,7 +334,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function lead_forensics_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="lead_forensics_id" name="keitaro_settings[lead_forensics_id]" value="%s" />',
 			isset( $this->options['lead_forensics_id'] ) ? esc_attr( $this->options['lead_forensics_id'] ) : ''
 		);
@@ -364,7 +364,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function hotjar_id_callback() {
-	printf(
+		printf(
 			'<input type="text" id="hotjar_id" name="keitaro_settings[hotjar_id]" value="%s" />',
 			isset( $this->options['hotjar_id'] ) ? esc_attr( $this->options['hotjar_id'] ) : ''
 		);
@@ -374,7 +374,7 @@ class Keitaro_Theme_Settings {
 	 * Get the settings option array and print one of its values
 	 */
 	public function showcases_description_callback() {
-	printf(
+		printf(
 			'<textarea class="large-text" id="showcases_description" name="keitaro_settings[showcases_description]">%s</textarea>',
 			isset( $this->options['showcases_description'] ) ? esc_html( $this->options['showcases_description'] ) : ''
 		);
@@ -394,7 +394,7 @@ class Keitaro_Theme_Settings {
 		$showcase_background_id = isset( $this->options['showcases_background_id'] ) ? $this->options['showcases_background_id'] : 2428;
 		$showcase_background_url = wp_get_attachment_image_url( $showcase_background_id, 'medium' );
 
-	?>
+		?>
 		<button type="button" class="button button-link current custom-picture">
 			<img class="current-picture" src="<?php echo esc_url( $showcase_background_url ); ?>" width="300" />
 		</button>
@@ -407,7 +407,7 @@ class Keitaro_Theme_Settings {
 		</p>
 		<input type="hidden" name="keitaro_settings[showcases_background_id]" id="showcases_background_id" value="<?php echo esc_attr( $showcase_background_id ); ?>" class="regular-text" />
 
-<?php
+		<?php
 	}
 }
 

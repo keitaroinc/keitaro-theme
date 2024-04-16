@@ -1,5 +1,4 @@
 <?php
-
 /**
  * General template snippet for content
  *

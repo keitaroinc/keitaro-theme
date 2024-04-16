@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template snippet for custom theme functions
  *
@@ -13,8 +12,13 @@ define( 'SNIPPETS_DIR', 'template-snippets' );
 define( 'DEFAULT_HEADER_IMAGE', get_stylesheet_directory_uri() . '/assets/img/keitaro-hero-bg.png' );
 define( 'DEFAULT_OG_IMAGE_URL', get_stylesheet_directory_uri() . '/assets/img/keitaro-default-og-photo-1200x630.jpg' );
 
-// Initialize theme
+/**
+ * Initialize WordPress theme
+ *
+ * @return void
+ */
 function keitaro_theme_setup() {
+
 	/**
 	 * Remove WordPress version meta tag
 	 */
@@ -216,8 +220,13 @@ function keitaro_theme_setup() {
 
 add_action( 'after_setup_theme', 'keitaro_theme_setup' );
 
+/**
+ * Add Former Employee option to Role select
+ *
+ * @return void
+ */
 function keitaro_add_former_employee_role() {
-   $roles_set = get_option( 'former_employee_role_set' );
+	$roles_set = get_option( 'former_employee_role_set' );
 
 	if ( ! $roles_set ) {
 		add_role(
@@ -232,12 +241,24 @@ function keitaro_add_former_employee_role() {
 	}
 }
 
+/**
+ * Customize excerpt length
+ *
+ * @param integer $length Excerpt length in number of characters.
+ * @return integer
+ */
 function custom_excerpt_length( $length ) {
 	return 30;
 }
 
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+/**
+ * Customize excerpt more content
+ *
+ * @param string $more Content of the more placeholder.
+ * @return string
+ */
 function custom_excerpt_more( $more ) {
 	return '...';
 }
@@ -247,7 +268,6 @@ add_filter( 'excerpt_more', 'custom_excerpt_more' );
 /**
  * Enqueue custom Gutenberg assets to set and/or override styles, functionalities and more.
  */
-
 function gutenberg_assets() {
 	wp_enqueue_script(
 		'gutenberg-overrides',
@@ -259,10 +279,14 @@ function gutenberg_assets() {
 
 add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
 
-/* Set custom meta descriptions */
-
+/**
+ * Set custom meta descriptions
+ *
+ * @return void
+ */
 function custom_meta_descriptions() {
-	/* Reset post data to the post in the main query */
+
+	// Reset post data to the post in the main query.
 	wp_reset_postdata();
 
 	$meta_description = get_bloginfo( 'description' ) . ' ' . __( 'by', 'keitaro' ) . ' ' . get_bloginfo( 'name' ) . '.';
@@ -279,24 +303,21 @@ function custom_meta_descriptions() {
 		$meta_description = __( 'Search results for', 'keitaro' ) . ' ' . get_search_query() . ' ' . __( 'on', 'keitaro' ) . ' ' . get_home_url() . '.';
 	endif;
 
-?>
+	?>
 	<meta name="description" content="<?php echo esc_html( $meta_description ); ?>">
-<?php
+	<?php
 
 }
 
 add_action( 'wp_head', 'custom_meta_descriptions' );
 
-/* Set custom meta tags for Open Graph */
-
+/**
+ * Set custom meta tags for Open Graph
+ *
+ * @return void
+ */
 function open_graph_tags() {
-	/* We are not adding explicit tags for title and description as these
-	 * can be reused from the existing meta tags */
-
-	/**
-	 * We need to add the twitter:card tag to enable large images on posts
-	 */
-?>
+	?>
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@KeitaroInc">
 	<meta name="twitter:creator" content="@KeitaroInc">
@@ -307,21 +328,24 @@ function open_graph_tags() {
 	 * If no Featured image is set, the src of the first <img /> tag in the content is used.
 	 */
 	if ( get_the_post_thumbnail() ) :
-	?>
+		?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url(); ?>" />
 	<?php else : ?>
 		<?php if ( is_front_page() ) : ?>
 			<meta property="og:image" content="<?php echo esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
 		<?php else : ?>
 			<meta property="og:image" content="<?php echo ! empty( extract_featured_image() ) ? esc_url( extract_featured_image() ) : esc_url( DEFAULT_OG_IMAGE_URL ); ?>" />
-	<?php
+			<?php
 		endif;
 	endif;
 }
 add_action( 'wp_head', 'open_graph_tags' );
 
-/* Create Showcases content type */
-
+/**
+ * Create Showcases content type
+ *
+ * @return void
+ */
 function custom_post_type_showcases() {
 	$labels = array(
 		'name'               => _x( 'Showcases', 'Post Type General Name', 'keitaro' ),
@@ -342,7 +366,7 @@ function custom_post_type_showcases() {
 		'label'        => __( 'Showcases', 'keitaro' ),
 		'description'  => __( 'Custom post type for Showcases ', 'keitaro' ),
 		'labels'       => $labels,
-		// Features this CPT supports in Post Editor
+		// Features this CPT supports in Post Editor.
 		'supports'     => array( 'title', 'editor', 'trackbacks', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields' ),
 		// CPT taxonomies.
 		'taxonomies'   => array( 'category', 'post_tag' ),
@@ -357,9 +381,11 @@ function custom_post_type_showcases() {
 
 add_action( 'init', 'custom_post_type_showcases' );
 
-
-/* Set custom meta tag for Google Search Console */
-
+/**
+ * Set custom meta tag for Google Search Console
+ *
+ * @return void
+ */
 function google_search_console_tags() {
 	 $gsc_verification_id = get_option( 'keitaro_settings' )['gsc_verification_id'] ?? false;
 
@@ -370,15 +396,23 @@ function google_search_console_tags() {
 
 add_action( 'wp_head', 'google_search_console_tags' );
 
+/**
+ * CSS overrides to WordPress Block styles
+ *
+ * @return void
+ */
 function wp_block_overrides() {
 	 wp_enqueue_style( 'wp-block-overrides', get_stylesheet_directory_uri() . '/assets/css/wp-block.css', null, filemtime( get_stylesheet_directory() . '/assets/css/wp-block.css' ) );
-	// wp_enqueue_script( 'keitaro-carrers',  get_stylesheet_directory_uri() . '/blocks/blockcareers.js', null, null, false );
 }
 
-// Override the appearance of the Gutenberg block editor
+// Override the appearance of the Gutenberg block editor.
 add_action( 'admin_enqueue_scripts', 'wp_block_overrides' );
-/* Set custom script for Metricool */
 
+/**
+ * Set custom script for Metricool
+ *
+ * @return void
+ */
 function metricool_hash() {
 	 $metricool_verification_hash_id = get_option( 'keitaro_settings' )['metricool_verification_hash_id'];
 
@@ -389,26 +423,31 @@ function metricool_hash() {
 
 add_action( 'wp_head', 'metricool_hash' );
 
-// Add static CSS and JS theme assets
+/**
+ * Add static CSS and JS theme assets
+ *
+ * @return void
+ */
 function keitaro_theme_scripts() {
-	// Futura PT font from Typekit
+
+	// Futura PT font from Typekit.
 	wp_enqueue_script( 'futura-pt', get_stylesheet_directory_uri() . '/assets/js/futura-pt.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/futura-pt.min.js' ), true );
 
-	// Main keitaro_theme stylesheet
+	// Main keitaro_theme stylesheet.
 	wp_enqueue_style( 'keitaro-theme', get_stylesheet_uri(), null, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
-	// jQuery
+	// jQuery.
 	wp_enqueue_script( 'jquery' );
 
-	// Bootstrap JS modules
+	// Bootstrap JS modules.
 	wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/bootstrap.min.js' ), true );
 
-	// Custom JS minified
+	// Custom JS minified.
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/custom.min.js' ), true );
 
-	// Prism.js - load only for pages, posts and custom post types
+	// Prism.js - load only for pages, posts and custom post types.
 	if ( is_singular() && ! is_page() ) :
-		// Main keitaro_theme stylesheet
+		// Main keitaro_theme stylesheet.
 		wp_enqueue_style( 'prism-css', get_stylesheet_directory_uri() . '/assets/css/prism-okaidia.css', null, filemtime( get_stylesheet_directory() . '/assets/css/prism-okaidia.css' ) );
 		wp_enqueue_style( 'prism-toolbar-css', get_stylesheet_directory_uri() . '/assets/css/prism-toolbar.css', null, filemtime( get_stylesheet_directory() . '/assets/css/prism-toolbar.css' ) );
 		wp_enqueue_script( 'clipboard-js', get_stylesheet_directory_uri() . '/assets/js/clipboard.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/clipboard.min.js' ), true );
@@ -422,13 +461,22 @@ add_action( 'wp_enqueue_scripts', 'keitaro_theme_scripts' );
 
 add_action( 'wp_enqueue_scripts', 'keitaro_jquery_deregister' );
 
+/**
+ * Deregister default jQuery
+ *
+ * @return void
+ */
 function keitaro_jquery_deregister() {
-  $jquery_path = '/assets/js/jquery.min.js';
+	$jquery_path = '/assets/js/jquery.min.js';
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', get_bloginfo( 'template_url' ) . $jquery_path, null, filemtime( get_stylesheet_directory() . $jquery_path ), true );
 }
 
-// Override default WordPress logo on wp-login.php
+/**
+ * Override default WordPress logo on wp-login.php
+ *
+ * @return void
+ */
 function keitaro_theme_login_logo() {
 	$custom_logo_id = get_theme_mod( 'custom_logo' );
 	$image          = wp_get_attachment_image_src( $custom_logo_id, 'full' );
@@ -451,7 +499,11 @@ function keitaro_theme_login_logo() {
 
 add_action( 'login_enqueue_scripts', 'keitaro_theme_login_logo' );
 
-// Register Widget areas
+/**
+ * Register Widget areas
+ *
+ * @return void
+ */
 function keitaro_widgets_init() {
 	register_sidebar(
 		array(
@@ -496,34 +548,44 @@ function keitaro_widgets_init() {
 
 add_action( 'widgets_init', 'keitaro_widgets_init' );
 
-/* Add support for hyperlinks to default WordPress Image widget */
-
-function keitaro_add_media_image_url( $widget, $return, $instance ) {
+/**
+ * Add support for hyperlinks to default WordPress Image widget
+ *
+ * @param object $widget Current widget object.
+ * @param array  $instance Current instance.
+ * @return void
+ */
+function keitaro_add_media_image_url( $widget, $instance ) {
 
 	// Are we dealing with a media_image widget?
 	if ( 'media_image' === $widget->id_base ) {
 
 		$handle = 'image_anchor_href';
 
-		// Get already set hyperlink value or empty string
+		// Get already set hyperlink value or empty string.
 		$hyperlink = isset( $instance[ $handle ] ) ? $instance[ $handle ] : '';
 
-	?>
+		?>
 		<p>
 			<label for="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>">
 				<?php esc_html_e( 'Hyperlink:', 'keitaro' ); ?>
 			</label>
 			<input class="widefat title" type="url" id="<?php echo esc_attr( $widget->get_field_id( $handle ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( $handle ) ); ?>" value="<?php echo esc_url( $hyperlink ); ?>" />
 		</p>
-	<?php
+		<?php
 
 	}
 }
 
-/*
+/**
  * Generate navigation menu for a predefined/registered menu location
+ *
+ * @param string  $menu_location Menu location identifier.
+ * @param string  $menu_class Menu class list.
+ * @param string  $menu_id Menu identifier.
+ * @param boolean $collapse Collapse toggle.
+ * @return void
  */
-
 function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collapse = false ) {
 
 	if ( has_nav_menu( $menu_location ) ) :
@@ -532,7 +594,7 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 			$menu_id = uniqid( 'navbar-' );
 		endif;
 
-	?>
+		?>
 		<?php if ( $collapse ) : ?>
 			<button type="button" title="<?php echo esc_attr( 'Toggle Menu', 'keitaro' ); ?>" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo esc_attr( $menu_id ); ?>" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>
@@ -554,31 +616,38 @@ function keitaro_menu( $menu_location, $menu_class = '', $menu_id = '', $collaps
 			?>
 		</div>
 		<!-- </nav> -->
-	<?php
+		<?php
 
 	endif;
 }
 
-/*
+/**
  * Override default link of the login form logo
+ *
+ * @return string
  */
-
 function keitaro_login_logo_url() {
 	 return home_url();
 }
 
 add_filter( 'login_headerurl', 'keitaro_login_logo_url' );
 
-/*
+/**
  * Override default title attribute of the login form logo
+ *
+ * @return string
  */
-
 function keitaro_login_logo_url_title() {
-   return get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' );
+	return get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' );
 }
 
 add_filter( 'login_headertitle', 'keitaro_login_logo_url_title' );
 
+/**
+ * Generate HTML element with a list of child pages of the specified parent page
+ *
+ * @param integer $parent_page_id Id of the parent page.
+ */
 function keitaro_child_pages_list( $parent_page_id ) {
 	$child_pages = get_children(
 		array(
@@ -591,17 +660,25 @@ function keitaro_child_pages_list( $parent_page_id ) {
 
 	if ( $child_pages ) :
 
-	?>
+		?>
 		<div class="service-list">
 			<?php foreach ( $child_pages as $page ) : ?>
 				<h4 class="service-list-item"><a href="<?php the_permalink( $page->ID ); ?>"><?php echo esc_html( $page->post_title ); ?></a></h4>
 			<?php endforeach; ?>
 		</div>
-	<?php
+		<?php
 
 	endif;
 }
 
+/**
+ * Generate HTML for author's box
+ *
+ * @param string  $author Author anchor with author name.
+ * @param boolean $display Display or return toggle.
+ * @param string  $print Output string.
+ * @return string
+ */
 function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 	$author_title           = get_the_author_posts_link( $author );
@@ -611,13 +688,13 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	$author_work_position   = get_the_author_meta( 'user_work_position' );
 	$author_stats           = sprintf(
 		'<p class="author-stats mb-0"><small>' .
-			// translators: Authors Stats: sentence
+			// translators: Authors Stats: sentence.
 			__( 'Contributed', 'keitaro' ) . ' <strong>' .
-			// translators: Authors Stats: number of author posts
+			// translators: Authors Stats: number of author posts.
 			_n( '%s post', '%s posts', $author_posts_number, 'keitaro' ) . '</strong> ' . __( 'and', 'keitaro' ) . ' <strong>' .
-			// translators: Authors Stats: number of author comments
+			// translators: Authors Stats: number of author comments.
 			_n( '%s comment', '%s comments', $author_comments_number, 'keitaro' ) . '</strong> ' .
-			// translators: Authors Stats: connector
+			// translators: Authors Stats: connector.
 			__( 'so far', 'keitaro' ) . '.</small></p>',
 		$author_posts_number,
 		$author_comments_number
@@ -625,10 +702,10 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 
 	$print .= sprintf(
 		'<div class="row flex-xl-nowrap align-items-center justify-content-center no-gutters author-box author vcard"><div class="col-auto d-flex justify-content-center">%2$s</div><div class="col-sm"><div class="author-info"><h4 class="author-title">%3$s</h4>%6$s%4$s%5$s</div></div></div>',
-		// translators: Authors Stats: title
+		// translators: Authors Stats: title.
 		__( 'Author', 'keitaro' ),
 		sprintf(
-			// translators: Authors Stats: author name
+			// translators: Authors Stats: author name.
 			'<div class="author-avatar">%2$s</div>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			keitaro_author_avatar( $author, ( is_single() ? 96 : 112 ), false )
@@ -646,21 +723,27 @@ function keitaro_author_box( $author = false, $display = true, $print = '' ) {
 	endif;
 }
 
+/**
+ * Generate HTML for alternative author's box
+ *
+ * @param integer $author Author identifier.
+ * @param boolean $display Display or return toggle.
+ * @param string  $print Output string.
+ * @return string
+ */
 function keitaro_author_box_alt( $author = false, $display = true, $print = '' ) {
 
 	$user                   = get_userdata( $author );
 	$author_posts           = get_the_author_posts_link( $author );
 	$author_title           = sprintf( '%s %s', __( 'About', 'keitaro' ), get_the_author() );
 	$author_description     = get_the_author_meta( 'description' );
-	$author_posts_number    = get_the_author_posts( $author );
-	$author_comments_number = count( get_comments( array( 'post_author' => $author ) ) );
 	$author_work_position   = get_the_author_meta( 'user_work_position' );
 
 	$print .= sprintf(
 		'<div class="row no-gutters my-5 align-items-center author vcard"><div class="col-auto d-flex justify-content-center">%1$s</div><div class="col-lg-8 align-self-center"><div class="author-info"><h3 class="author-title mb-2">%2$s</h3>%3$s%4$s</div></div></div>',
-		// translators: Authors Stats: title
+		// translators: Authors Stats: title.
 		sprintf(
-			// translators: Authors Stats: author name
+			// translators: Authors Stats: author name.
 			'<div class="author-avatar m-3 m-lg-4">%2$s</div>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			keitaro_author_avatar( $author, ( 112 ), false )
@@ -677,6 +760,14 @@ function keitaro_author_box_alt( $author = false, $display = true, $print = '' )
 	endif;
 }
 
+/**
+ * Generate HTML for author's avatar
+ *
+ * @param boolean $author Author identifier.
+ * @param integer $size Avatar image size in pixels.
+ * @param boolean $display Return or echo toggle.
+ * @return string
+ */
 function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 
 	$print = '';
@@ -702,27 +793,51 @@ function keitaro_author_avatar( $author = false, $size = 70, $display = true ) {
 	endif;
 }
 
+/**
+ * Print formatted post date in a <time> HTML element
+ *
+ * @return void
+ */
 function keitaro_posted_on() {
-  the_date( '', '<time datetime="' . get_the_date( 'c' ) . '" itemprop="datePublished">', '</time>' );
+	the_date( '', '<time datetime="' . get_the_date( 'c' ) . '" itemprop="datePublished">', '</time>' );
 }
 
-// Wrap text in highlight wrapper
+/**
+ * Wrap text in highlight wrapper
+ *
+ * @param string $text Text to be wrapped in the specified <span> HTML element.
+ * @return string
+ */
 function highlight( $text ) {
 	return sprintf( '<span class="highlight">%s</span>', $text );
 }
 
+/**
+ * Prints out HTML for Go to Top anchor visible on every page
+ *
+ * @param string $link_title URL of the current page.
+ */
 function keitaro_go_to_top_link( $link_title ) {
 	printf( '<a class="btn btn-go-to-top btn-info text-white"><span class="fa fa-fw fa-caret-up"></span></a>', esc_html( $link_title ) );
 }
 
+/**
+ * Generate HTML for navigating to a next page
+ *
+ * @param string $text Anchor text.
+ * @param string $link Anchor URL.
+ * @return void
+ */
 function keitaro_continue_to_second_blog_posts_page_button( $text, $link ) {
 	$link = get_post_type_archive_link( 'post' ) . 'page/2/';
 	printf( '<div class="call-to-action-secondary text-center"><a class="btn btn-success" href="%2$s">%1$s</a></div>', esc_html( $text ), esc_url( $link ) );
 }
 
-/* Support custom profile pictures in case avatars
- * are not available through Gravatar */
-
+/**
+ *  Support custom profile pictures in case avatars are not available through Gravatar
+ *
+ * @param object $user Current user object.
+ */
 function keitaro_custom_profile_data( $user ) {
 
 	if ( current_user_can( 'upload_files' ) ) :
@@ -730,7 +845,7 @@ function keitaro_custom_profile_data( $user ) {
 		wp_enqueue_script( 'keitaro-custom-picture', get_stylesheet_directory_uri() . '/assets/js/custom-picture.min.js', null, filemtime( get_stylesheet_directory() . '/assets/js/custom-picture.min.js' ) );
 		wp_create_nonce( 'update-user_' . $user->ID );
 
-		// Get thumbnail version of the current attachment
+		// Get thumbnail version of the current attachment.
 		$current_profile_picture_id = get_the_author_meta( 'user_meta_image', $user->ID );
 		$current_profile_picture    = wp_get_attachment_image_url( $current_profile_picture_id );
 
@@ -778,26 +893,26 @@ function keitaro_custom_profile_data( $user ) {
 				</tr>
 			<?php endif; ?>
 		</table><!-- end form-table -->
-<?php
+		<?php
 	endif;
 }
-
-// additional_user_fields
 
 add_action( 'show_user_profile', 'keitaro_custom_profile_data' );
 add_action( 'edit_user_profile', 'keitaro_custom_profile_data' );
 
 /**
  * Saves additional user fields to the database
+ *
+ * @param integer $user_id Unique user identifier.
  */
 function keitaro_save_work_position( $user_id ) {
 
-	// only saves if the current user can edit user profiles
+	// only saves if the current user can edit user profiles.
 	if ( ! current_user_can( 'edit_posts' ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_work_position', esc_attr( $_POST['user_work_position'] ) );
+	update_user_meta( $user_id, 'user_work_position', esc_attr( isset( $_POST['user_work_position'] ) ? esc_url_raw( wp_unslash( $_POST['user_work_position'] ) ) : null ) );
 }
 
 add_action( 'personal_options_update', 'keitaro_save_work_position' );
@@ -805,6 +920,10 @@ add_action( 'edit_user_profile_update', 'keitaro_save_work_position' );
 
 /**
  * Reset the user work position when the user is added to the Former Employee group
+ *
+ * @param integer $user_id Unique user identifier.
+ * @param string  $role Unique user role identifier.
+ * @return void
  */
 function keitaro_reset_work_position( $user_id, $role ) {
 
@@ -817,6 +936,8 @@ add_action( 'set_user_role', 'keitaro_reset_work_position', 10, 2 );
 
 /**
  * Reset the user work position when the user profile is updated or viewed
+ *
+ * @param integer $user_id Unique user identifier.
  */
 function keitaro_reset_work_position_on_update_profile( $user_id ) {
 
@@ -831,53 +952,41 @@ add_action( 'profile_update', 'keitaro_reset_work_position_on_update_profile' );
 
 /**
  * Saves additional user fields to the database
+ *
+ * @param integer $user_id Unique user identifier.
  */
 function keitaro_save_custom_profile_picture( $user_id ) {
 
-	// only saves if the current user can edit user profiles
+	// Only save if the current user can edit user profiles.
 	if ( ! current_user_can( 'upload_files' ) && ! wp_verify_nonce( 'update-user_' . $user_id ) ) :
 		return false;
 	endif;
 
-	update_user_meta( $user_id, 'user_meta_image', esc_attr( $_POST['user_meta_image'] ) );
+	update_user_meta( $user_id, 'user_meta_image', esc_attr( isset( $_POST['user_meta_image'] ) ? esc_url_raw( wp_unslash( $_POST['user_meta_image'] ) ) : '' ) );
 }
 
 add_action( 'personal_options_update', 'keitaro_save_custom_profile_picture' );
 add_action( 'edit_user_profile_update', 'keitaro_save_custom_profile_picture' );
 
-/*
- * Remove Jetpack CSS assets
- */
 
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
+/**
+ * Remove Jetpack CSS assets
+ *
+ * @return void
+ */
 function keitaro_remove_jetpack_css() {
-	 wp_deregister_style( 'grunion.css' ); // Grunion contact form
+	 wp_deregister_style( 'grunion.css' ); // Grunion contact form.
 
 }
 
 add_action( 'wp_enqueue_scripts ', 'keitaro_remove_jetpack_css' );
 
-
-/**
- * Remove default stylesheets loaded by Gutenberg
- *
- * @return void
- */
-function keitaro_remove_gutenberg_css() {
-   wp_dequeue_style( 'wp-block-library' );
-	wp_dequeue_style( 'wp-block-library-theme' );
-}
-
-/**
- * Currently deactivated but we might need it later
- */
-// add_action( 'wp_enqueue_scripts', 'keitaro_remove_gutenberg_css' );
-
 /**
  * Show search results only within posts
  *
- * @param object $query
+ * @param object $query WP_Query object.
  * @return $query
  */
 function keitaro_search_posts_only( $query ) {
@@ -895,12 +1004,17 @@ if ( current_user_can( 'contributor' ) && ! current_user_can( 'upload_files' ) )
 	add_action( 'admin_init', 'keitaro_allow_contributor_uploads' );
 }
 
+/**
+ * Allow file uploads by users with a Contributor role
+ *
+ * @return void
+ */
 function keitaro_allow_contributor_uploads() {
-  $contributor = get_role( 'contributor' );
+	$contributor = get_role( 'contributor' );
 	$contributor->add_cap( 'upload_files' );
 }
 
-// Remove emoji prefetch links and inline scripts from <head>
+// Remove emoji prefetch links and inline scripts from <head>.
 add_filter( 'emoji_svg_url', '__return_false' );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -909,6 +1023,8 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 /**
  * Extract first image URL from content
+ *
+ * @return string
  */
 function extract_featured_image() {
 	 global $post, $posts;
@@ -968,6 +1084,9 @@ add_action( 'init', 'keitaro_register_sales_tag_taxonomy' );
 
 /**
  * Reset number of showcases per page to 9 on Showcases archive page
+ *
+ * @param object $query WP_Query object.
+ * @return void
  */
 function keitaro_showcases_per_page( $query ) {
 	if ( $query->is_post_type_archive( 'showcases' ) && $query->is_main_query() ) {

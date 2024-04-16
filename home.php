@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template for the Home page or the Blog page
  *
@@ -13,7 +12,7 @@ get_header();
 
 if ( have_posts() ) :
 	$first = true;
-?>
+	?>
 	<div class="container-fluid">
 
 		<div id="primary" class="content-area">
@@ -32,7 +31,7 @@ if ( have_posts() ) :
 
 								the_post();
 								if ( $first ) {
-								?>
+									?>
 
 									<div class="col-lg-12">
 										<div class="row mb-5">
@@ -46,14 +45,14 @@ if ( have_posts() ) :
 									</div>
 
 									<?php $first = false; ?>
-								<?php
+									<?php
 								} else {
-								?>
+									?>
 									<div class="col-lg-4">
 										<?php get_template_part( SNIPPETS_DIR . '/content/content-grid' ); ?>
 									</div>
-							<?php
-							}
+									<?php
+								}
 
 							endwhile;
 
@@ -78,7 +77,7 @@ if ( have_posts() ) :
 		get_template_part( SNIPPETS_DIR . '/content/content-none' );
 
 	endif;
-		?>
+	?>
 
 		</div>
 

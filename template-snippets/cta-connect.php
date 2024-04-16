@@ -14,4 +14,4 @@ echo do_blocks('<!-- wp:group {"align":"wide"} -->
 	<!-- /wp:buttons -->
 </div>
 <!-- /wp:group -->'
-	);
+);

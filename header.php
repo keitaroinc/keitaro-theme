@@ -47,7 +47,7 @@
 
 		<?php
 		if ( ! is_front_page() ) :
-		?>
+			?>
 		<div class="container-fluid navbar-breadcrumbs">
 			<div class="row">
 				<div class="col-xl-10 offset-xl-1">
@@ -55,5 +55,5 @@
 				</div>
 			</div>
 		</div>
-		<?php
+			<?php
 		endif;

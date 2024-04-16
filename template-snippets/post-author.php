@@ -7,6 +7,7 @@
  * @package WordPress
  * @subpackage Keitaro
  */
+
 ?>
 
 <div class="post-author d-flex align-items-center mb-3">
@@ -14,7 +15,7 @@
 	keitaro_author_avatar( get_the_author_meta( 'ID' ), 40 );
 
 	if ( 'post' === get_post_type() ) :
-	?>
+		?>
 		<div class="entry-meta ml-3">
 			<?php
 			if ( is_singular() || is_archive() || is_home() || is_search() ) :

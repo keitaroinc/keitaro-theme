@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template for all posts, when not overridden
  *
@@ -13,7 +12,7 @@ get_header();
 
 if ( have_posts() ) :
 	$first = true;
-?>
+	?>
 	<div class="container-fluid">
 
 		<div id="primary" class="content-area">
