@@ -1,5 +1,7 @@
 # Keitaro Inc. - WordPress Theme
 
+[![phpcs](https://github.com/keitaroinc/keitaro-theme/actions/workflows/phpcs.yml/badge.svg)](https://github.com/keitaroinc/keitaro-theme/actions/workflows/phpcs.yml)
+
 The official WordPress theme of [Keitaro Inc.](http://www.keitaro.com/)
 
 Keitaro offers **reliable managed services based on open-source technologies**. Our passion for Linux and open-source defines us. Our core value is expertise, which we are continuously honing and upgrading in order to meet customers needs. We follow the market and stay on top of latest trends and bleeding edge technologies.
