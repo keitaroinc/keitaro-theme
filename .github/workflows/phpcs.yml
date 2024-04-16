@@ -36,11 +36,10 @@ jobs:
 
       - name: Add WordPress Coding Standards sniffs
         run: |
-          ./vendor/bin/phpcs --config-set installed_paths ./vendor/bin/wp-coding-standards/wpcs/WordPress
-          ./vendor/bin/phpcs --config-set installed_paths ./vendor/bin/wp-coding-standards/wpcs/WordPress-Core
-          ./vendor/bin/phpcs --config-set installed_paths ./vendor/bin/wp-coding-standards/wpcs/WordPress-Docs
-          ./vendor/bin/phpcs --config-set installed_paths ./vendor/bin/wp-coding-standards/wpcs/WordPress-Extra
-          ./vendor/bin/phpcs -i
+          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Core
+          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Docs
+          phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs/WordPress-Extra
+          phpcs -i
 
       - name: Run PHPCS checks
         id: phpcs
