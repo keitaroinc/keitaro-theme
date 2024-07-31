@@ -126,6 +126,16 @@ if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 					if ( ( isset( $_GET['salesFormSubmitted'] ) ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'keitaroSalesForm' ) ) :
 
 						try {
+							// Check if phone number is invalid.
+							if ( ! is_email( $sender_email ) ) :
+								throw new Exception( esc_html__( 'Seems like your email address is invalid. Please try again.', 'keitaro' ) );
+							endif;
+
+							// Check if phone number is invalid.
+							if ( ! preg_match( '/\+[0-9]{7,15}/', $phone ) ) :
+								throw new Exception( esc_html__( 'Seems like the phone number does not have a valid format. Please try again.', 'keitaro' ) );
+							endif;
+
 							// Check email content with Akismet before sending.
 							if ( 'true' === keitaro_sales_form_check_spam( $spam_check ) ) :
 								throw new Exception( esc_html__( "Seems like you are trying to submit spam. Sorry, that's not allowed.", 'keitaro' ) );
@@ -178,7 +188,7 @@ if ( get_the_terms( get_the_ID(), $tag_id ) ) :
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="salesFormPhone">Phone</label>
-								<input class="form-control" minlength="11" type="tel" placeholder="+1-123-456-7890" pattern="+[0-9]{11}" name="salesFormPhone" id="salesFormPhone" />
+								<input class="form-control" minlength="7" type="tel" required placeholder="+1234567890" pattern="\+[0-9]{7,15}" name="salesFormPhone" id="salesFormPhone" />
 							</div>
 						</div>
 					</div>
