@@ -6,6 +6,12 @@
 	object-fit: cover;
 }
 
+.post {
+	.wp-post-image {
+		aspect-ratio: auto;
+	}
+}
+
 .hentry-first {
 	margin-top: 0;
 
