@@ -30,7 +30,7 @@
 	endif;
 	?>
 
-	<div class="row">
+	<div class="row entry-content">
 		<div class="col-lg-10 offset-lg-1">
 			<?php
 			if ( is_archive() || is_home() || is_search() ) :
