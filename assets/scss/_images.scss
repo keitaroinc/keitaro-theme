@@ -15,6 +15,10 @@
 .hentry-first {
 	margin-top: 0;
 
+	.wp-post-image {
+		aspect-ratio: auto;
+	}
+
 	.post-thumbnail {
 		margin-bottom: $spacer*1.5;
 	}

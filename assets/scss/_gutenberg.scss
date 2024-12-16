@@ -351,7 +351,7 @@
 
 		position: relative;
 
-		> a {
+		>a {
 			@extend .btn;
 			@extend .btn-link;
 			white-space: normal;
@@ -382,7 +382,7 @@
 				grid-column: 1 / 2;
 			}
 
-			> a {
+			>a {
 				grid-column: 2 / auto;
 				margin-bottom: 0;
 				font-size: $h4-font-size;
@@ -435,6 +435,16 @@
 		@extend .btn;
 		@extend .btn-outline-dark;
 		display: table;
+	}
+}
+
+.wp-block-latest-posts__list {
+	li {
+		&:first-child {
+			.wp-post-image {
+				aspect-ratio: auto;
+			}
+		}
 	}
 }
 
