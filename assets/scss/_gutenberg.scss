@@ -297,6 +297,9 @@
 			@extend .btn;
 			@extend .btn-link;
 			@extend .stretched-link;
+			font-size: $h4-font-size;
+			line-height: $headings-line-height;
+			font-weight: calc($font-weight-base + 100);
 			white-space: normal;
 			text-align: initial;
 			padding-left: 0;
@@ -306,7 +309,7 @@
 		.wp-block-latest-posts__post-author,
 		.wp-block-latest-posts__post-date,
 		.wp-block-latest-posts__post-excerpt {
-			margin-top: $spacer;
+			margin-top: calc($spacer/2);
 		}
 
 		.wp-block-latest-posts__post-author,
