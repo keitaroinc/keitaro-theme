@@ -56,5 +56,9 @@
 		endif;
 	?>
 	<?php get_template_part( SNIPPETS_DIR . '/sales-form' ); ?>
-	<?php get_template_part( SNIPPETS_DIR . '/read-next' ); ?>
+	<div class="col-lg-10 offset-lg-1">
+		<div class="row">
+			<?php get_template_part( SNIPPETS_DIR . '/read-next' ); ?>
+		</div>
+	</div>
 </article>
