@@ -24,29 +24,29 @@
 		</div>
 	</div>
 
-	<div class="entry-content">
-
 	<?php
 	if ( has_post_thumbnail() ) :
 		get_template_part( SNIPPETS_DIR . '/post-thumbnail' );
 	endif;
 	?>
 
-	<div class="row">
-		<div class="col-lg-10 offset-lg-1">
-			<?php
-			if ( is_archive() || is_home() || is_search() ) :
-				get_template_part( SNIPPETS_DIR . '/entry-excerpt' );
-			else :
-				get_template_part( SNIPPETS_DIR . '/entry-content' );
-			endif;
+	<div class="entry-content">
 
-			// Remove comments template temporarily.
-			// comments_template();.
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				<?php
+				if ( is_archive() || is_home() || is_search() ) :
+					get_template_part( SNIPPETS_DIR . '/entry-excerpt' );
+				else :
+					get_template_part( SNIPPETS_DIR . '/entry-content' );
+				endif;
 
-			?>
+				// Remove comments template temporarily.
+				// comments_template();.
+
+				?>
+			</div>
 		</div>
-	</div>
 
 	</div>
 
