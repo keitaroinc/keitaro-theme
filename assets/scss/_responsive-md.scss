@@ -6,6 +6,13 @@
 	// 	background-position-y: 200%;
 	// }
 
+	.single {
+		.post-thumbnail {
+			margin-top: $spacer*2;
+			margin-bottom: $spacer*3;
+		}
+	}
+
 	.carousel-control-next,
 	.carousel-control-prev {
 		filter: invert(100%);
