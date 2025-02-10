@@ -5,6 +5,13 @@
 		margin: auto;
 	}
 
+	.post {
+		.post-thumbnail {
+			margin-top: 0;
+			margin-bottom: $spacer;
+		}
+	}
+
 	.entry-title{
 		margin-bottom: $spacer;
 	}
