@@ -29,7 +29,7 @@
 					<div class="d-flex flex-wrap justify-content-between">
 						<?php get_template_part( SNIPPETS_DIR . '/navigation/footer-secondary-menu' ); ?>
 						<footer class="copyright">
-							<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>. <?php esc_html_e( 'Some rights reserved.', 'keitaro' ); ?></p>
+							<p>&copy; 2012 &mdash; <?php echo esc_html( gmdate( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>. <?php esc_html_e( 'Some rights reserved.', 'keitaro' ); ?></p>
 						</footer>
 					</div>
 				</div>
