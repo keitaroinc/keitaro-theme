@@ -1092,3 +1092,22 @@ function keitaro_showcases_per_page( $query ) {
 }
 
 add_action( 'pre_get_posts', 'keitaro_showcases_per_page' );
+
+/**
+ * Add support for custom file type uploads
+ *
+ * @param array $types Custom file and MIME types.
+ * @return array
+ */
+function keitaro_custom_mime_types( $types ) {
+	return array_merge(
+		$types,
+		array(
+			'svg' => 'image/svg+xml',
+			'svgz' => 'image/svg+xml',
+			'webp' => 'image/webp',
+		)
+	);
+}
+
+add_filter( 'upload_mimes', 'keitaro_custom_mime_types' );
