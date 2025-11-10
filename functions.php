@@ -1111,4 +1111,4 @@ function keitaro_custom_mime_types( $types ) {
 }
 
 add_filter( 'upload_mimes', 'keitaro_custom_mime_types' );
-add_filter( 'mime_types', 'keitaro_custom_mime_types' );
+// add_filter( 'mime_types', 'keitaro_custom_mime_types' );
