@@ -8,7 +8,7 @@
 		"bootstrap": "^4.6.2",
 		"clipboard": "^2.0.11",
 		"popper.js": "^1.16.1",
-		"prismjs": "^1.29.0"
+		"prismjs": "^1.30.0"
 	},
 	"scripts": {
 		"about:build": "echo 'Adjust file operations commands (i.e. cp) based on the OS you are running. Currently-used commands are specific to Linux-based operating systems.'",
